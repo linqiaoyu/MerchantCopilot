@@ -1,0 +1,8 @@
+# 只列截至阶段 3 实际 import 的依赖,版本锁死当前安装版。
+# mem0/chromadb 等留到阶段 4 真用时再加,不预填。
+langgraph==1.2.0
+duckdb==1.5.2
+pandas==3.0.3
+numpy==2.4.5
+mcp==1.27.1
+pytest==9.0.3
