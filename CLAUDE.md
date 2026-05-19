@@ -21,15 +21,16 @@
 
 ## 📍 当前阶段
 
-**阶段 2:Agent 骨架**(当前)
+**阶段 3:工具接入(MCP)**(当前)
 
-数据底座最终 **4 张表:dim_product / fact_order / fact_live_session / fact_traffic**
+数据底座 **4 张表:dim_product / fact_order / fact_live_session / fact_traffic**
 (`fact_traffic` 为 Case 2 归因硬依赖,详见 `docs/stage1_summary.md`)。
+阶段 2 Agent 骨架已跑通(LangGraph 5 节点 + 条件边 + stub 降级,见 `docs/stage2_summary.md`)。
 
 完整阶段路线:
 1. ✅ 数据底座(完成,见 `docs/stage1_summary.md`)
-2. Agent 骨架(LangGraph 多节点,无工具/RAG/Memory)← 当前
-3. 工具接入(MCP)
+2. ✅ Agent 骨架(完成,见 `docs/stage2_summary.md`)
+3. 工具接入(MCP)← 当前
 4. RAG + Memory
 5. 可观测 + Streamlit Demo UI
 6. 评测闭环
