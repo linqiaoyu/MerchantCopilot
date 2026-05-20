@@ -21,18 +21,23 @@
 
 ## 📍 当前阶段
 
-**阶段 4:RAG + Memory**(当前)
+**阶段 4b:Mem0 + strategy 联调(待启动)**
+
+阶段 4 拆为 **4a**(RAG 子系统,已完成)+ **4b**(Mem0 商家画像 + strategy
+节点联调,待启动)。
 
 数据底座 **4 张表:dim_product / fact_order / fact_live_session / fact_traffic**
 (`fact_traffic` 为 Case 2 归因硬依赖,详见 `docs/stage1_summary.md`)。
 阶段 2 Agent 骨架已跑通(LangGraph 5 节点 + 条件边 + stub 降级,见 `docs/stage2_summary.md`)。
 阶段 3 工具接入已完成(1 个 MCP Server / 2 tool,SQL 全下沉,节点薄壳化,见 `docs/stage3_summary.md`)。
+阶段 4a RAG 子系统已跑通(BGE-M3 + bge-reranker-v2-m3 两阶段,15 篇 KB / 30 chunk,
+device 隔离把延迟从 46.7s 优化到 7.5s 稳态,详见 `docs/stage4a_summary.md`)。
 
 完整阶段路线:
 1. ✅ 数据底座(完成,见 `docs/stage1_summary.md`)
 2. ✅ Agent 骨架(完成,见 `docs/stage2_summary.md`)
 3. ✅ 工具接入(MCP)(完成,见 `docs/stage3_summary.md`)
-4. RAG + Memory ← 当前
+4. RAG + Memory:**4a ✅ 完成**(见 `docs/stage4a_summary.md`);**4b 待启动**
 5. 可观测 + Streamlit Demo UI
 6. 评测闭环
 7. (可选)HITL + 流式输出
@@ -48,7 +53,7 @@
 | Agent 编排 | LangGraph + StateGraph | 简历主线 |
 | LLM(主) | DeepSeek-V3 API | 演示稳定性 + 成本 |
 | LLM(备) | Qwen-Max API | provider 切换备用 |
-| Embedding | 开发期 bge-small-zh → 收尾期 BGE-M3 | 简历对齐 |
+| Embedding | BGE-M3 | 简历对齐;阶段 4a 直接上,消灭收尾期换模型返工风险 |
 | Rerank | bge-reranker-v2-m3 | 与 M3 配套 |
 | Memory | Mem0(开源版) | 简历对齐;Plan B 见下方 |
 | 工具协议 | 官方 Python MCP SDK | 简历对齐 |

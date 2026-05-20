@@ -205,3 +205,28 @@ SELECT ROUND(100.0*AVG(ABS(t.v-s.v)*1.0/s.v),2) AS daily_rel_diff_pct FROM
   JOIN (SELECT date, SUM(viewers) v FROM fact_live_session GROUP BY date) s
   USING(date);
 ```
+
+---
+
+## 阶段 4a:知识库(`generate_knowledge.py` + `data/knowledge_base/`)
+
+`generate_knowledge.py` 是作者一次性脚本(**需要 DeepSeek 或 Qwen API key**),
+按硬编码 TOPICS 列表生成行业知识 markdown,落到 `data/knowledge_base/`,供
+`app/rag/indexer.py` 切块入 Chroma。markdown **入 git**,Chroma 索引不入。
+
+**目前实际产出 15 篇**(7 运营 + 5 归因 + 3 女装),原计划 17 篇——
+`#16 fabric-risks` / `#17 basic-vs-trend` 因主题内容空间窄触发 hanzi 下限防御
+fail-fast,判定接受 15 篇为最终产物,**详见 `docs/stage4a_summary.md`**。
+
+常用命令:
+
+```bash
+# 批量生成(已存在 markdown 时拒绝运行,防覆盖)
+python data/generate_knowledge.py
+
+# dry-run:就第 1 个 topic 跑 3 次,看 prompts/输出/多样性(不落盘)
+python data/generate_knowledge.py --dry-run
+
+# 离线验证:对已落盘的 markdown 跑 hanzi 字数 / ## 数 / D 约束 grep 三项 check
+python data/generate_knowledge.py --verify
+```
