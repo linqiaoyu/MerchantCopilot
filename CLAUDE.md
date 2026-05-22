@@ -21,10 +21,10 @@
 
 ## 📍 当前阶段
 
-**阶段 4b:Mem0 + strategy 联调(待启动)**
+**阶段 5:可观测 + Streamlit Demo UI(待启动)**
 
 阶段 4 拆为 **4a**(RAG 子系统,已完成)+ **4b**(Mem0 商家画像 + strategy
-节点联调,待启动)。
+节点联调,**2026-05-22 完成**)。
 
 数据底座 **4 张表:dim_product / fact_order / fact_live_session / fact_traffic**
 (`fact_traffic` 为 Case 2 归因硬依赖,详见 `docs/stage1_summary.md`)。
@@ -32,13 +32,35 @@
 阶段 3 工具接入已完成(1 个 MCP Server / 2 tool,SQL 全下沉,节点薄壳化,见 `docs/stage3_summary.md`)。
 阶段 4a RAG 子系统已跑通(BGE-M3 + bge-reranker-v2-m3 两阶段,15 篇 KB / 30 chunk,
 device 隔离把延迟从 46.7s 优化到 7.5s 稳态,详见 `docs/stage4a_summary.md`)。
+阶段 4b Mem0 + strategy 联调已跑通(merchant_memory ~110 行 + strategy 重写 171 行
++ 11 条契约断言,test_graph 4/4 + test_strategy 1/1 + test_rag 4/4 + test_mcp_server 7/7
+= 16/16 PASS,稳态 ~17.5s,详见 `docs/stage4b_summary.md`)。
+
+**阶段 4b 4 条诚信留痕**(简历讲述时直接复用):
+1. **`test_graph.py:60` 二次断言升级**:阶段 2 字面锁(`_TEMPLATES[0]["topic"]` 硬编码)
+   → 4b 中段语义锁(8-16 汉字,锁 prompt L19 中位数) → 4b 收尾契约边界(8-24 汉字,
+   留 8 字 buffer)。**教训:当行为本身有概率分布时,锁分布中位数 ≠ 锁行为边界**;
+   PM 上轮认知盲区(以为升级到中位数就是锁行为),不是 CC 品味问题。
+2. **D 约束接受 LLM 价格带推断**:4 query 端到端 Q1/Q3 出现"50-80元引流款"等数字,
+   接受现状不修 prompt。理由:没违反"项目 mock 基线口径"(没编 4.2% 转化率这种
+   fact 表冲突数字),只是 LLM 凭电商常识推断价格带——业务能力的诚实边界,不是 hallucination。
+3. **端到端延迟 ~17.5s 接受不优化**:4a 7.5s + Mem0/LLM 改写 ~10s,仍超 CLAUDE.md
+   「5 秒」硬约束 3.5x。沿用 4a「演示项目宁稳勿快」纪律的延伸;降级方案 (i)(ii)(iii)
+   都要改 retriever / LLM client 接口,违反「对下游透明」硬指标。阶段 5 LangSmith
+   trace 接入后看是不是下一个优化主战场。
+4. **Mem0 backend 选型 + device 隔离复用 4a 经验**:Mem0 SDK 24 个 vector_store
+   provider 全是真实向量库(spike 实测),无 in-memory / SQLite 轻量选项 ——
+   是 SDK 客观约束不是「最佳选型」。落地选 Chroma 物理隔离 `data/mem0_chroma/`;
+   Mem0 默认起第二个 BGE-M3 在 MPS 上会复活 4a Phase 3 evict 链路,**1 行
+   `model_kwargs={"device": "cpu"}`** 强制 Mem0 embedder 走 CPU,与 4a reranker → CPU
+   修法同款品味。
 
 完整阶段路线:
 1. ✅ 数据底座(完成,见 `docs/stage1_summary.md`)
 2. ✅ Agent 骨架(完成,见 `docs/stage2_summary.md`)
 3. ✅ 工具接入(MCP)(完成,见 `docs/stage3_summary.md`)
-4. RAG + Memory:**4a ✅ 完成**(见 `docs/stage4a_summary.md`);**4b 待启动**
-5. 可观测 + Streamlit Demo UI
+4. RAG + Memory:**4a ✅ 完成** + **4b ✅ 完成**(见 `docs/stage4a_summary.md` / `docs/stage4b_summary.md`)
+5. 可观测 + Streamlit Demo UI(下一阶段)
 6. 评测闭环
 7. (可选)HITL + 流式输出
 

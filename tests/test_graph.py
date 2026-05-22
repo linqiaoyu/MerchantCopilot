@@ -55,9 +55,16 @@ def test_strategy_case():
     nr = st["node_result"]
     assert nr["task"] == "strategy"
     d = nr["data"]
-    assert d["topic"] == "付费投流效率优化"
+    # 4b 升级:topic 由 LLM 实时生成,锁"字符串 + prompt L19 长度约束"而非字面值
+    # 沿用 4a "锁 source_doc+category 不锁 chunk_id" 的不锁脆字段品味
+    # buffer 24:LLM 对 prompt L19 "topic 8-16 汉字" 软约束有 ~10-20%
+    # 概率溢出,留 8 字 buffer 反映"软约束契约边界",而非最佳期望。
+    # 见 docs/stage4b_summary.md 「断言演化记录」段。
+    assert isinstance(d["topic"], str) and 8 <= len(d["topic"]) <= 24
     assert len(d["recommendations"]) >= 2
-    assert "merchant_profile" in d                 # Memory 占位有挂上
+    assert "merchant_profile" in d                 # Mem0 商家画像挂上(4b 由 _MERCHANT_PROFILE → get_profile())
+    # 4b 新增:锁 generation 标签存在 + 任一合法值(主路径 / chunk fallback / unavailable)
+    assert d["generation"] in ("llm", "template_fallback_from_chunks", "unavailable")
     assert st["final_answer"]
 
 

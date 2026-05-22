@@ -1,5 +1,5 @@
 # 只列实际 import 的直接依赖,版本锁死当前安装版(transitive 如 torch 不列)。
-# mem0 留到阶段 4b 真用时再加,不预填。
+# 全部按"实际 import 时才加"节奏增量入栈,transitive 不列。
 langgraph==1.2.0
 duckdb==1.5.2
 pandas==3.0.3
@@ -10,3 +10,5 @@ pytest==9.0.3
 sentence-transformers==5.5.0
 chromadb==1.5.9
 langchain-text-splitters==1.1.2
+# 阶段 4b Memory:Mem0 商家画像 + A.5 确定性写入(infer=False);LLM/embedder/vector 全复用 4a 锁定栈
+mem0ai==2.0.2

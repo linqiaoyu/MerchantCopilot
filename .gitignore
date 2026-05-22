@@ -40,3 +40,6 @@ data/csv/fact_traffic.csv
 
 # --- 阶段 4a:Chroma 向量索引(indexer.py 可重建);knowledge_base 的 markdown 入 git ---
 data/chroma/
+
+# --- 阶段 4b:Mem0 商家画像 Chroma(seed_profile 自动重建)---
+data/mem0_chroma/
