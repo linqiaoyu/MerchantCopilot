@@ -18,6 +18,9 @@ env/
 *.swp
 *.swo
 
+# --- Claude Code IDE local config ---
+.claude/
+
 # --- macOS ---
 .DS_Store
 

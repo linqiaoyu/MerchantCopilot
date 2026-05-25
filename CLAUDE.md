@@ -21,7 +21,7 @@
 
 ## 📍 当前阶段
 
-**阶段 5:可观测 + Streamlit Demo UI(待启动)**
+**阶段 5 ✅ 完成 → 阶段 6:评测闭环 + Bad Case 回流(待启动)**
 
 阶段 4 拆为 **4a**(RAG 子系统,已完成)+ **4b**(Mem0 商家画像 + strategy
 节点联调,**2026-05-22 完成**)。
@@ -79,7 +79,7 @@ device 隔离把延迟从 46.7s 优化到 7.5s 稳态,详见 `docs/stage4a_summa
 | Rerank | bge-reranker-v2-m3 | 与 M3 配套 |
 | Memory | Mem0(开源版) | 简历对齐;Plan B 见下方 |
 | 工具协议 | 官方 Python MCP SDK | 简历对齐 |
-| 可观测 | LangSmith | 3 行接入 |
+| 可观测 | LangSmith | @traceable 12 处显式装饰(LangGraph 1.x 移除 env-var 自动 instrumentation,详 stage5_summary.md ★ 章节) |
 | Web 框架 | FastAPI | async 与 LangGraph 配合 |
 | Demo UI | Streamlit | **不要碰 React/Next.js** |
 | 关系库 | DuckDB | OLAP 极快,零运维 |
@@ -175,7 +175,7 @@ Router 节点 (LLM 分类) ──→ 路由到三类任务之一
 | BGE-M3 + Rerank 混合检索 | `app/rag/retriever.py` | **收尾期必须真的换上 M3,不能停在 small** |
 | Mem0 商家画像 | `app/memory/merchant_memory.py` | 至少存:类目、主力客群、风格偏好 |
 | MCP 封装工具 | `app/tools/*_server.py` | 真用 MCP SDK,不是普通 Python 函数 |
-| LangSmith 全链路 trace | 环境变量 + 真去界面看 trace | **必须能讲 1-2 个"用 trace 发现问题"的故事** |
+| LangSmith 全链路 trace | 环境变量 + 真去界面看 trace | **必须能讲 1-2 个"用 trace 发现问题"的故事** ✅ 已能讲 3 个 trace 故事:rerank 占 90% / Mem0 update 慢 289× / silent failure 假象诊断翻转 |
 | 评测体系 + Bad Case 回流 | `evals/` | **必须产出"前后对比"的数字**(X% → Y%) |
 
 任何代码改动如果偏离这个映射,要么有更好的对齐方案,要么不应该做。
@@ -198,7 +198,7 @@ Router 节点 (LLM 分类) ──→ 路由到三类任务之一
 ## 🔧 常用命令(实现一个加一个,不要预填)
 
 ```bash
-# 待补充
+streamlit run ui/app.py  # 阶段 5 Streamlit demo
 ```
 
 ---

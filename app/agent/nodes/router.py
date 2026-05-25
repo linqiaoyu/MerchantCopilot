@@ -11,6 +11,8 @@ import re
 from datetime import date
 from pathlib import Path
 
+from langsmith import traceable
+
 from app.agent.state import AgentState
 from app.llm.client import get_llm
 
@@ -67,6 +69,7 @@ def _llm_classify(query: str) -> tuple[str | None, float]:
     return None, 0.0
 
 
+@traceable(name="node_router", tags=["agent_node"])
 def router(state: AgentState) -> dict:
     """入口节点:决定 intent + time_window,并记一条 step。"""
     query = state["user_query"]

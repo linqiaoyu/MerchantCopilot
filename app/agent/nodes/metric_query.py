@@ -8,6 +8,8 @@
 """
 from __future__ import annotations
 
+from langsmith import traceable
+
 from app.agent.state import AgentState
 from app.tools.client import call_tool
 
@@ -31,6 +33,7 @@ def _focus_metric(query: str) -> str:
     return "gmv"
 
 
+@traceable(name="node_metric_query", tags=["agent_node"])
 def metric_query(state: AgentState) -> dict:
     tw = state.get("time_window") or {}
     result = call_tool(

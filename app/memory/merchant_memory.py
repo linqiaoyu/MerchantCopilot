@@ -17,6 +17,8 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
+from langsmith import traceable
+
 # 触发 app/llm/client.py 模块级 _load_dotenv(),保证 DEEPSEEK_API_KEY 在 env 中
 import app.llm.client  # noqa: F401
 
@@ -75,8 +77,12 @@ def get_client():
 
 
 def _list_all(merchant_id: str) -> list[dict]:
-    """Mem0 2.0 API:get_all 走 filters={'user_id': ...}(spike 验证)。"""
-    res = get_client().get_all(filters={"user_id": merchant_id})
+    """Mem0 2.0 API:get_all 走 filters={'user_id': ...}(spike 验证)。
+
+    top_k=100:mem0 默认 20,单商家 recent_concerns 量级 <100,留 20 倍 buffer;
+    阶段 5 第八轮 Mapping 2 已实测确认 mem0 写入正常,silent failure 假象来自此处截断。
+    """
+    res = get_client().get_all(filters={"user_id": merchant_id}, top_k=100)
     return res.get("results", []) if isinstance(res, dict) else list(res)
 
 
@@ -100,6 +106,7 @@ def seed_profile(merchant_id: str = MERCHANT_ID) -> dict:
     return {"added": added, "total": len(existing) + added}
 
 
+@traceable(name="mem0_update_concerns", tags=["memory"])
 def update_recent_concerns(query: str, merchant_id: str = MERCHANT_ID) -> None:
     """strategy 节点每次调用后追加 1 条 user_query,形成时序关注点。"""
     get_client().add(
@@ -110,6 +117,7 @@ def update_recent_concerns(query: str, merchant_id: str = MERCHANT_ID) -> None:
     )
 
 
+@traceable(name="mem0_get_profile", tags=["memory"])
 def get_profile(merchant_id: str = MERCHANT_ID) -> dict:
     """返回 {category, audience, style, recent_concerns: list[str]}。
 

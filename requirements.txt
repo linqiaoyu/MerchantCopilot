@@ -11,4 +11,8 @@ sentence-transformers==5.5.0
 chromadb==1.5.9
 langchain-text-splitters==1.1.2
 # 阶段 4b Memory:Mem0 商家画像 + A.5 确定性写入(infer=False);LLM/embedder/vector 全复用 4a 锁定栈
-mem0ai==2.0.2
+mem0ai[nlp]==2.0.2
+# 阶段 5 可观测:LangSmith trace(@traceable 显式装饰,LangGraph 1.x 需挂载点激活 callback 链)
+langsmith==0.8.5
+# 阶段 5 UI:Streamlit demo
+streamlit==1.57.0

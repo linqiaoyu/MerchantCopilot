@@ -19,6 +19,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from langsmith import traceable
+
 from app.agent.state import AgentState
 from app.llm.client import get_llm
 from app.memory.merchant_memory import (
@@ -60,6 +62,7 @@ def _fallback_recommendations(chunks: list) -> list[str]:
     return out
 
 
+@traceable(name="node_strategy", tags=["agent_node"])
 def strategy(state: AgentState) -> dict:
     query = state["user_query"]
     profile = get_profile(MERCHANT_ID)  # 自动 seed-on-empty,~50ms

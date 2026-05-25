@@ -18,6 +18,8 @@ from __future__ import annotations
 import time
 from dataclasses import dataclass, field
 
+from langsmith import traceable
+
 from .indexer import COLLECTION, get_chroma_client, get_embedder
 
 RERANK_MODEL = "BAAI/bge-reranker-v2-m3"
@@ -64,14 +66,44 @@ class Chunk:
     metadata: dict = field(default_factory=dict)
 
 
+# --- 阶段 5:LangSmith trace 三段拆分 ---
+# retrieve() 总耗时 = embed + dense + rerank;原 print 探针保留(沿用 4a/4b 调试惯例),
+# 与 @traceable 不冲突。三 wrapper 内部不打日志,留给 trace 视图统一展示。
+
+@traceable(name="rag_embed", tags=["rag"])
+def _embed_query(query: str) -> list[float]:
+    embedder = get_embedder()
+    return embedder.encode(
+        [query], normalize_embeddings=True, convert_to_numpy=True
+    )[0].tolist()
+
+
+@traceable(name="rag_dense", tags=["rag"])
+def _dense_search(query_emb: list[float], top_k: int = CANDIDATE_TOP_K) -> dict:
+    coll = get_chroma_client().get_collection(COLLECTION)
+    return coll.query(
+        query_embeddings=[query_emb],
+        n_results=top_k,
+        include=["documents", "metadatas", "distances"],
+    )
+
+
+@traceable(name="rag_rerank", tags=["rag"])
+def _rerank(candidates: list[str], query: str) -> list[float]:
+    reranker = get_reranker()
+    scores = reranker.predict([[query, d] for d in candidates])
+    return [float(s) for s in scores]
+
+
+@traceable(name="rag_retrieve", tags=["rag"])
 def retrieve(query: str, top_k: int = 5) -> list[Chunk]:
     """两阶段检索:dense 召回 top-20 → 重排 → top-k。
 
     打印三段耗时(embed / dense 召回 / rerank),便于阶段 5 LangSmith trace 串起来。
     """
-    # 0. 拿 collection;首次失败抛 RAGNotAvailableError(给出可操作的排查提示)
+    # 0. pre-flight:collection 缺失给出可操作的排查提示(_dense_search 内不再二次包裹)
     try:
-        coll = get_chroma_client().get_collection(COLLECTION)
+        get_chroma_client().get_collection(COLLECTION)
     except Exception as e:
         raise RAGNotAvailableError(
             f"Chroma collection '{COLLECTION}' 读取失败:{e}\n"
@@ -80,19 +112,12 @@ def retrieve(query: str, top_k: int = 5) -> list[Chunk]:
 
     # 1. encode query
     t_embed_0 = time.time()
-    embedder = get_embedder()
-    query_emb = embedder.encode(
-        [query], normalize_embeddings=True, convert_to_numpy=True
-    )[0].tolist()
+    query_emb = _embed_query(query)
     t_embed = time.time() - t_embed_0
 
     # 2. Chroma cosine 召回 top-20
     t_dense_0 = time.time()
-    res = coll.query(
-        query_embeddings=[query_emb],
-        n_results=CANDIDATE_TOP_K,
-        include=["documents", "metadatas", "distances"],
-    )
+    res = _dense_search(query_emb, top_k=CANDIDATE_TOP_K)
     t_dense = time.time() - t_dense_0
 
     docs = res["documents"][0]
@@ -105,8 +130,7 @@ def retrieve(query: str, top_k: int = 5) -> list[Chunk]:
 
     # 3. CrossEncoder 重排:输入 [query, doc] pairs,输出相关性分数(越大越相关)
     t_rerank_0 = time.time()
-    reranker = get_reranker()
-    scores = reranker.predict([[query, d] for d in docs])
+    scores = _rerank(docs, query)
     t_rerank = time.time() - t_rerank_0
 
     # 4. 按 score 倒序取 top-k

@@ -8,6 +8,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from langsmith import traceable
+
 from app.agent.state import AgentState
 from app.llm.client import get_llm
 
@@ -46,6 +48,7 @@ def _llm_answer(nr: dict) -> str | None:
         return None
 
 
+@traceable(name="node_insight", tags=["agent_node"])
 def insight(state: AgentState) -> dict:
     nr = state.get("node_result") or {}
     if not nr:

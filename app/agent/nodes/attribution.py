@@ -7,6 +7,8 @@ tool → 把统一契约直接放进 node_result。识别不到 → 诚实回退
 """
 from __future__ import annotations
 
+from langsmith import traceable
+
 from app.agent.state import AgentState
 from app.tools.client import call_tool
 
@@ -33,6 +35,7 @@ def _anomaly_type(query: str) -> str | None:
     return None
 
 
+@traceable(name="node_attribution", tags=["agent_node"])
 def attribution(state: AgentState) -> dict:
     tw = state.get("time_window") or {}
     atype = _anomaly_type(state["user_query"])

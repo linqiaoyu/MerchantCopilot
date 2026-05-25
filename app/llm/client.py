@@ -10,6 +10,8 @@ import os
 import urllib.request
 from pathlib import Path
 
+from langsmith import traceable
+
 
 def _load_dotenv() -> None:
     """极简 .env 加载(无 python-dotenv 依赖)。已存在的环境变量不覆盖。"""
@@ -76,6 +78,7 @@ class LLMClient:
             return f"{self._base_url}/chat/completions"
         return f"{self._base_url}/v1/chat/completions"
 
+    @traceable(name="llm_chat", tags=["llm"])
     def chat(self, system: str, user: str, temperature: float = 0.0,
              timeout: float = 20.0) -> str:
         """单轮 chat,返回 assistant 文本。失败抛异常,由调用方兜底。"""
