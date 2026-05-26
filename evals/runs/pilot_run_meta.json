@@ -1,0 +1,582 @@
+[
+  {
+    "query_id": "q_001",
+    "query_type": "data_query",
+    "difficulty": "simple",
+    "ts_start": 1779811514.55491,
+    "ts_end": 1779811519.298987,
+    "elapsed_sec": 4.74,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e6508-78bd-7942-86ea-56e32c980a93?poll=true",
+    "run_id": "019e6508-78bd-7942-86ea-56e32c980a93",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-05-11 ~ 2026-05-17:毛GMV ¥276,271",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_002",
+    "query_type": "data_query",
+    "difficulty": "medium",
+    "ts_start": 1779811530.156807,
+    "ts_end": 1779811533.848209,
+    "elapsed_sec": 3.69,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e6508-b5ad-7eb1-bcac-69848bc5914c?poll=true",
+    "run_id": "019e6508-b5ad-7eb1-bcac-69848bc5914c",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-05-01 ~ 2026-05-17:毛GMV ¥661,338",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_003",
+    "query_type": "data_query",
+    "difficulty": "medium",
+    "ts_start": 1779811545.529343,
+    "ts_end": 1779811548.5817358,
+    "elapsed_sec": 3.05,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e6508-f1ba-7442-b17e-b2bb01179dd1?poll=true",
+    "run_id": "019e6508-f1ba-7442-b17e-b2bb01179dd1",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-04-18 ~ 2026-05-17:客单价 ¥215.45",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_004",
+    "query_type": "data_query",
+    "difficulty": "complex",
+    "ts_start": 1779811559.857304,
+    "ts_end": 1779811563.4946501,
+    "elapsed_sec": 3.64,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e6509-29b1-7ac1-b788-7210a8e9a60f?poll=true",
+    "run_id": "019e6509-29b1-7ac1-b788-7210a8e9a60f",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-04-17:转化率 1.85%",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_005",
+    "query_type": "attribution",
+    "difficulty": "simple",
+    "ts_start": 1779811574.699302,
+    "ts_end": 1779811578.885822,
+    "elapsed_sec": 4.19,
+    "intent_routed": "attribution",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e6509-63ab-7e03-a6f5-6534f952c404?poll=true",
+    "run_id": "019e6509-63ab-7e03-a6f5-6534f952c404",
+    "error": null,
+    "node_result_task": "attribution",
+    "headline": "GMV ¥11,358(基线日均 ¥34,412)暴跌,根因:人货错配——单品「高端真丝醋酸连衣裙」(price_band=high/mature)当日订单份额 11.1%(日常仅 0.78%),与店铺主力客群(student+young_pro 86%)错配",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_006",
+    "query_type": "attribution",
+    "difficulty": "medium",
+    "ts_start": 1779811589.618863,
+    "ts_end": 1779811593.128261,
+    "elapsed_sec": 3.51,
+    "intent_routed": "attribution",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e6509-9df3-75a2-9642-9521dd5626a2?poll=true",
+    "run_id": "019e6509-9df3-75a2-9642-9521dd5626a2",
+    "error": null,
+    "node_result_task": "attribution",
+    "headline": "UV 9,800(≈日常 2.6x)暴涨但转化率掉到 1.85%,根因:付费投流泛流量灌入——付费投流转化 0.5% vs 自然 5.5%",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_007",
+    "query_type": "attribution",
+    "difficulty": "complex",
+    "ts_start": 1779811606.248228,
+    "ts_end": 1779811609.565578,
+    "elapsed_sec": 3.32,
+    "intent_routed": "attribution",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e6509-dee8-7970-8c29-dd81fd3d60ed?poll=true",
+    "run_id": "019e6509-dee8-7970-8c29-dd81fd3d60ed",
+    "error": null,
+    "node_result_task": "attribution",
+    "headline": "退款率从 4.5% 持续爬到 28.3%,根因:新品「网红同款针织开衫」(2026-04-22 上架)质量爆雷,退款主因「色差」占 89%",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_008",
+    "query_type": "attribution",
+    "difficulty": "complex",
+    "ts_start": 1779811620.329941,
+    "ts_end": 1779811623.839852,
+    "elapsed_sec": 3.51,
+    "intent_routed": "attribution",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650a-15ea-76f3-8a32-b03cffecd372?poll=true",
+    "run_id": "019e650a-15ea-76f3-8a32-b03cffecd372",
+    "error": null,
+    "node_result_task": "attribution",
+    "headline": "未识别的异常类型,建议人工排查",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_009",
+    "query_type": "strategy",
+    "difficulty": "simple",
+    "ts_start": 1779811634.5537438,
+    "ts_end": 1779811689.683638,
+    "elapsed_sec": 55.13,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650a-4d7b-7e43-9aa3-75f290b1eb80?poll=true",
+    "run_id": "019e650a-4d7b-7e43-9aa3-75f290b1eb80",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:主推价格带锚定与时段微调策略",
+    "recommendations": [
+      "将主推品严格锁定在¥100-300主力价格带中段，优先选150-200元基础款衬衫或针织衫，让观众一眼觉得值这个价",
+      "午场主推100-180元基础款引流，晚场上200-300元通勤风单品，根据时段客群差异微调价格带以匹配学生与职场新人",
+      "每场直播至少留两件百元以内福利款稳住低客单价人群，高价品占比不超过三分之一，避免抬高客单价导致学生客群流失"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-selection-price-band.md",
+        "heading": "用流量结构反推价格带验证"
+      },
+      {
+        "source_doc": "operation-selection-price-band.md",
+        "heading": "主推品必须锚定价格带中位"
+      },
+      {
+        "source_doc": "category_specific-mid-price-aov.md",
+        "heading": "客单价锚定与选品逻辑"
+      },
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "午场客群画像与排播要点"
+      },
+      {
+        "source_doc": "attribution-uv-up-gmv-flat.md",
+        "heading": "人群质量与货盘匹配的调整"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_010",
+    "query_type": "strategy",
+    "difficulty": "simple",
+    "ts_start": 1779811700.914321,
+    "ts_end": 1779811720.532584,
+    "elapsed_sec": 19.62,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650b-50b6-7cc1-877f-21f902c778da?poll=true",
+    "run_id": "019e650b-50b6-7cc1-877f-21f902c778da",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:午晚场差异化排播策略",
+    "recommendations": [
+      "午场前15分钟用100-180元低价引流款或当季爆款快速抓学生眼球，话术轻快活泼多用课间福利宿舍穿搭场景词",
+      "晚场前段主推200-300元职场通勤款或微正式穿搭，话术突出显质感不撞衫，单件讲解延长至4-5分钟展示面料细节",
+      "午场主推库存充足退货率低的基础款，晚场穿插高客单价专享款搭配直播间专属搭配方案服务感话术提升客单"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "晚场客群画像与排播要点"
+      },
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "午场客群画像与排播要点"
+      },
+      {
+        "source_doc": "category_specific-student-vs-young-pro.md",
+        "heading": "时段与话术的差异化适配"
+      },
+      {
+        "source_doc": "category_specific-student-vs-young-pro.md",
+        "heading": "学生与职场新人的选品逻辑不同"
+      },
+      {
+        "source_doc": "operation-selection-price-band.md",
+        "heading": "用流量结构反推价格带验证"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_011",
+    "query_type": "strategy",
+    "difficulty": "medium",
+    "ts_start": 1779811731.538645,
+    "ts_end": 1779811750.03493,
+    "elapsed_sec": 18.5,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650b-c855-7562-9d78-144ea7fe0c11?poll=true",
+    "run_id": "019e650b-c855-7562-9d78-144ea7fe0c11",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:夏装季选品节奏与时段适配调整",
+    "recommendations": [
+      "根据弹幕热词变化果断下播春装并启动夏装预热，避免库存积压拖累周转",
+      "午场前15分钟用低价引流款或当季爆款快速抓学生客群注意力，晚场主推质感实穿款匹配职场新人决策节奏",
+      "夏装首批上架聚焦百元内基础款与二百元质感款，覆盖学生性价比与职场新人实穿双重需求"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "午场客群画像与排播要点"
+      },
+      {
+        "source_doc": "attribution-conversion-drop-diagnose.md",
+        "heading": "诊断与调整的实操路径"
+      },
+      {
+        "source_doc": "category_specific-student-vs-young-pro.md",
+        "heading": "学生与职场新人的选品逻辑不同"
+      },
+      {
+        "source_doc": "category_specific-spring-window.md",
+        "heading": "下播节点与节奏控制"
+      },
+      {
+        "source_doc": "category_specific-spring-window.md",
+        "heading": "春款上新窗口判断"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_012",
+    "query_type": "strategy",
+    "difficulty": "medium",
+    "ts_start": 1779811762.024174,
+    "ts_end": 1779811780.6805289,
+    "elapsed_sec": 18.66,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650c-3f6e-7223-9bf4-c36e0bd3f2f6?poll=true",
+    "run_id": "019e650c-3f6e-7223-9bf4-c36e0bd3f2f6",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:引流利润款搭配策略与客群匹配",
+    "recommendations": [
+      "引流款选50-80元基础款如纯色T恤或半身裙，开场前15分钟快速过款，每款讲解不超过5分钟，拉新冲人气",
+      "利润款与引流款形成视觉关联如基础白T配同色系印花T，讲解遵循痛点解决方案逻辑，每款8-12分钟穿插秒杀刺激",
+      "午场用低价引流款和当季爆款快速抓眼球，话术轻快活泼多用课间福利场景词，主推库存充足退货率低的基础款"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-hook-vs-profit.md",
+        "heading": "利润款的承接与转化技巧"
+      },
+      {
+        "source_doc": "operation-hook-vs-profit.md",
+        "heading": "引流款的选品与投放节奏"
+      },
+      {
+        "source_doc": "category_specific-mid-price-aov.md",
+        "heading": "客单价锚定与选品逻辑"
+      },
+      {
+        "source_doc": "attribution-uv-up-gmv-flat.md",
+        "heading": "人群质量与货盘匹配的调整"
+      },
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "午场客群画像与排播要点"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_013",
+    "query_type": "strategy",
+    "difficulty": "complex",
+    "ts_start": 1779811793.363456,
+    "ts_end": 1779811812.184316,
+    "elapsed_sec": 18.82,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650c-b9d5-7923-a4f3-9e3a35f945a7?poll=true",
+    "run_id": "019e650c-b9d5-7923-a4f3-9e3a35f945a7",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:午晚场差异化排播策略",
+    "recommendations": [
+      "午场前15分钟用100-180元学生价基础款引流，话术强调课间福利和宿舍穿搭场景，每件停留2-3分钟避免拖沓",
+      "晚场以200-300元通勤风单品开场，主播小张用沉稳语调讲解面料细节和搭配方案，单件讲解延长至4-5分钟",
+      "根据流量结构验证价格带适配，若晚场主推品转化低于基线先检查投流人群是否错配，再决定是否降档"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "午场客群画像与排播要点"
+      },
+      {
+        "source_doc": "category_specific-student-vs-young-pro.md",
+        "heading": "时段与话术的差异化适配"
+      },
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "晚场客群画像与排播要点"
+      },
+      {
+        "source_doc": "category_specific-student-vs-young-pro.md",
+        "heading": "学生与职场新人的选品逻辑不同"
+      },
+      {
+        "source_doc": "operation-selection-price-band.md",
+        "heading": "用流量结构反推价格带验证"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_014",
+    "query_type": "strategy",
+    "difficulty": "complex",
+    "ts_start": 1779811823.329351,
+    "ts_end": 1779811840.58479,
+    "elapsed_sec": 17.26,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650d-2ee2-70b3-ba50-598a42237a72?poll=true",
+    "run_id": "019e650d-2ee2-70b3-ba50-598a42237a72",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:新品场付费与自然流量承接配比策略",
+    "recommendations": [
+      "午场针对学生客群用穿搭展示和场景话术承接自然流量，前十分钟不做促销以建立信任再切换成交节奏",
+      "晚场针对职场新人分开测试付费投流素材和出价，用付费流量打样高互动后带动自然推荐流量增长",
+      "新品试卖期先靠自然流量验证稳定出单再放量，放量前整理用户评价话术并确认供应链补货周期"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-paid-vs-organic.md",
+        "heading": "付费投流的核心定位"
+      },
+      {
+        "source_doc": "operation-paid-vs-organic.md",
+        "heading": "自然流量的承接节奏"
+      },
+      {
+        "source_doc": "operation-health-metrics.md",
+        "heading": "异常信号与初步归因"
+      },
+      {
+        "source_doc": "operation-newproduct-tempo.md",
+        "heading": "放量决策的核心依据"
+      },
+      {
+        "source_doc": "attribution-gmv-drop-drilldown.md",
+        "heading": "流量层排查：先确认“人没来”还是“来了不买”"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_015",
+    "query_type": "strategy",
+    "difficulty": "complex",
+    "ts_start": 1779811852.933574,
+    "ts_end": 1779811870.215795,
+    "elapsed_sec": 17.28,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650d-a287-7fe0-b288-1ea140597b5d?poll=true",
+    "run_id": "019e650d-a287-7fe0-b288-1ea140597b5d",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:引流利润款直播话术节奏排布策略",
+    "recommendations": [
+      "开场前15分钟用50-80元引流款快速拉新，话术聚焦学生和职场新人痛点如课间福利或通勤穿搭，每款讲解不超过5分钟",
+      "引流款下播后立即口播强调下一款是主推利润款，制造稀缺感，利润款讲解控制在8-12分钟并穿插秒杀或赠品刺激转化",
+      "午场节奏轻快活泼每件停留2-3分钟，晚场可适当放慢，利润款与引流款形成视觉或功能关联如基础白T配设计感衬衫"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-hook-vs-profit.md",
+        "heading": "利润款的承接与转化技巧"
+      },
+      {
+        "source_doc": "operation-hook-vs-profit.md",
+        "heading": "引流款的选品与投放节奏"
+      },
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "午场客群画像与排播要点"
+      },
+      {
+        "source_doc": "category_specific-mid-price-aov.md",
+        "heading": "客单价锚定与选品逻辑"
+      },
+      {
+        "source_doc": "operation-live-script-rhythm.md",
+        "heading": "开场：3分钟内锁定人群"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_016",
+    "query_type": "strategy",
+    "difficulty": "complex",
+    "ts_start": 1779811881.161013,
+    "ts_end": 1779811900.5538402,
+    "elapsed_sec": 19.39,
+    "intent_routed": "strategy",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650e-10ca-7871-bbab-db8cc69260f4?poll=true",
+    "run_id": "019e650e-10ca-7871-bbab-db8cc69260f4",
+    "error": null,
+    "node_result_task": "strategy",
+    "headline": "策略建议:学生客群主推位选品避坑指南",
+    "recommendations": [
+      "主推品严格锚定100-180元价格带，避免因定价超出学生心理价位导致点击率与停留时长双降",
+      "午场前15分钟必须用低价引流款或当季爆款快速抓眼球，避免学生因耐心不足而流失",
+      "选品侧重基础款、多色系、可搭配的卫衣或T恤，避开设计感强但定价偏高的单品，降低退货风险"
+    ],
+    "retrieved_chunks": [
+      {
+        "source_doc": "operation-selection-price-band.md",
+        "heading": "主推品必须锚定价格带中位"
+      },
+      {
+        "source_doc": "operation-schedule-day-vs-night.md",
+        "heading": "午场客群画像与排播要点"
+      },
+      {
+        "source_doc": "category_specific-student-vs-young-pro.md",
+        "heading": "学生与职场新人的选品逻辑不同"
+      },
+      {
+        "source_doc": "category_specific-student-vs-young-pro.md",
+        "heading": "时段与话术的差异化适配"
+      },
+      {
+        "source_doc": "operation-selection-price-band.md",
+        "heading": "用流量结构反推价格带验证"
+      }
+    ],
+    "profile_source": "mem0",
+    "generation": "llm",
+    "rag_status": "ok"
+  },
+  {
+    "query_id": "q_017",
+    "query_type": "cross_period",
+    "difficulty": "simple",
+    "ts_start": 1779811911.496918,
+    "ts_end": 1779811915.443747,
+    "elapsed_sec": 3.95,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650e-874a-73f0-bb00-48347dd5afe4?poll=true",
+    "run_id": "019e650e-874a-73f0-bb00-48347dd5afe4",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-05-17:毛GMV ¥50,898",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_018",
+    "query_type": "cross_period",
+    "difficulty": "medium",
+    "ts_start": 1779811927.3927948,
+    "ts_end": 1779811930.0830212,
+    "elapsed_sec": 2.69,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650e-c562-7b91-8a3f-89e9e07ae852?poll=true",
+    "run_id": "019e650e-c562-7b91-8a3f-89e9e07ae852",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-05-17:退款率 10.7%",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_019",
+    "query_type": "cross_period",
+    "difficulty": "complex",
+    "ts_start": 1779811941.475614,
+    "ts_end": 1779811945.194547,
+    "elapsed_sec": 3.72,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650e-fc69-7700-a622-66f4204c74d2?poll=true",
+    "run_id": "019e650e-fc69-7700-a622-66f4204c74d2",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-05-17:转化率 4.26%",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  },
+  {
+    "query_id": "q_020",
+    "query_type": "cross_period",
+    "difficulty": "complex",
+    "ts_start": 1779811956.07219,
+    "ts_end": 1779811959.50836,
+    "elapsed_sec": 3.44,
+    "intent_routed": "metric",
+    "trace_url": "https://smith.langchain.com/o/60d89aec-bee3-4cfd-bcc8-bce0b373449e/projects/p/94fd672f-0664-41f0-8370-ea0bb2967330/r/019e650f-3568-7021-a270-d924e12d14b3?poll=true",
+    "run_id": "019e650f-3568-7021-a270-d924e12d14b3",
+    "error": null,
+    "node_result_task": "metric",
+    "headline": "2026-05-17:毛GMV ¥50,898",
+    "recommendations": null,
+    "retrieved_chunks": null,
+    "profile_source": null,
+    "generation": null,
+    "rag_status": null
+  }
+]

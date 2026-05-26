@@ -1,0 +1,738 @@
+{
+  "merchant_id": "xiaozhang_women",
+  "total_count": 61,
+  "items": [
+    {
+      "id": "302a1861-7926-4baa-b4ac-dcc98d76bd9d",
+      "memory": "类目:女装,中端价格带 ¥100-300",
+      "hash": "431ac306394ffd9088e57198f0b60732",
+      "metadata": {
+        "kind": "category"
+      },
+      "created_at": "2026-05-20T20:20:48.773072+00:00",
+      "updated_at": "2026-05-20T20:20:48.773072+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "8e072557-0354-4e22-bd98-0a3fabb6b86c",
+      "memory": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%",
+      "hash": "da48d6ef23751582cfb634b2a0cbf5f1",
+      "metadata": {
+        "kind": "audience"
+      },
+      "created_at": "2026-05-20T20:20:48.916467+00:00",
+      "updated_at": "2026-05-20T20:20:48.916467+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "e700941f-a844-48e4-85b2-8ed82b60eb7f",
+      "memory": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场",
+      "hash": "2043c1b44b991017b958eb0398cad1ee",
+      "metadata": {
+        "kind": "style"
+      },
+      "created_at": "2026-05-20T20:20:49.017523+00:00",
+      "updated_at": "2026-05-20T20:20:49.017523+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "dce3f06a-5628-4270-b611-1b3635724bca",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-20T20:20:49.116052+00:00",
+      "updated_at": "2026-05-20T20:20:49.116052+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "6f9f1365-7188-4ab0-84b2-c3171ac268a1",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:23:28.591658+00:00",
+      "updated_at": "2026-05-21T12:23:28.591658+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "c6307c5e-b13c-4287-81ad-a79b17107037",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:25:32.071986+00:00",
+      "updated_at": "2026-05-21T12:25:32.071986+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "c05e2ed5-cf6a-4088-9bc5-c30def7968d5",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:31:57.563624+00:00",
+      "updated_at": "2026-05-21T12:31:57.563624+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "26166f02-e395-4a36-b869-95ed4066ed14",
+      "memory": "商家最近询问:怎么选品",
+      "hash": "b401573e65f96bdab94730507aa22363",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:33:16.743706+00:00",
+      "updated_at": "2026-05-21T12:33:16.743706+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "1eb759c4-2d5a-4ce7-bc9f-aa0914717320",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:33:35.427188+00:00",
+      "updated_at": "2026-05-21T12:33:35.427188+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "3dd3cefc-dace-4b24-a0e1-954709f0b33c",
+      "memory": "商家最近询问:怎么选品",
+      "hash": "b401573e65f96bdab94730507aa22363",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:35:04.791720+00:00",
+      "updated_at": "2026-05-21T12:35:04.791720+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "88d1427a-9cc7-423b-ae4c-3c1be35cf6f0",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:35:24.937310+00:00",
+      "updated_at": "2026-05-21T12:35:24.937310+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "a4d20477-171c-4b7b-b46f-d1f655f7eedf",
+      "memory": "商家最近询问:我是女装商家,主力客群是学生",
+      "hash": "843e0551565a12021d5cc84bc8c2e1a1",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:35:41.780941+00:00",
+      "updated_at": "2026-05-21T12:35:41.780941+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "f0dfe3dc-d2e2-462a-9fe3-2309b54cc448",
+      "memory": "商家最近询问:GMV 跌了怎么排查",
+      "hash": "c2b8c68274e2e3ad990a2e60564f3a0d",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T12:35:57.427317+00:00",
+      "updated_at": "2026-05-21T12:35:57.427317+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "0a4e2223-cf1a-4447-ae7d-9468ca2bbdb8",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T21:53:10.645135+00:00",
+      "updated_at": "2026-05-21T21:53:10.645135+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "eed07750-45a9-4f4f-814a-aa74a98ceef4",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T21:53:34.868012+00:00",
+      "updated_at": "2026-05-21T21:53:34.868012+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "c80b4eb4-ae72-46eb-8600-6c7790bc4f5a",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T21:54:37.346273+00:00",
+      "updated_at": "2026-05-21T21:54:37.346273+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "7220f8a6-58f5-459a-9a14-ffc9b3ebefd7",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T21:55:35.914359+00:00",
+      "updated_at": "2026-05-21T21:55:35.914359+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "90c2e2f6-584a-4a00-b372-3c5277d55dda",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T21:56:50.203943+00:00",
+      "updated_at": "2026-05-21T21:56:50.203943+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "08bbf694-ee6f-474b-a46a-a375bd0bb0d7",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T22:06:40.024437+00:00",
+      "updated_at": "2026-05-21T22:06:40.024437+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "81a21840-2281-438a-9197-148ecf390d81",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-21T22:06:59.878679+00:00",
+      "updated_at": "2026-05-21T22:06:59.878679+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "1583ea9e-f7e0-4a38-993d-62c7a106b396",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-22T15:46:18.877395+00:00",
+      "updated_at": "2026-05-22T15:46:18.877395+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "68fd630d-fa54-4711-8cc0-2b34927df9f0",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-22T15:46:41.748302+00:00",
+      "updated_at": "2026-05-22T15:46:41.748302+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "1b0207a8-7683-4fab-a633-ef4943042914",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-22T22:15:13.447011+00:00",
+      "updated_at": "2026-05-22T22:15:13.447011+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "b21206f0-f822-4faf-884d-f90b64efb15c",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-22T22:15:35.933726+00:00",
+      "updated_at": "2026-05-22T22:15:35.933726+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "026b9362-627b-4f88-842e-e00c854c6db6",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:19:22.879173+00:00",
+      "updated_at": "2026-05-24T12:19:22.879173+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "a1304c97-c0e9-4c6a-b694-091624b6cfe9",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:40:27.161543+00:00",
+      "updated_at": "2026-05-24T12:40:27.161543+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "bd119f68-2d20-4764-abfd-ec1f510648cc",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:41:19.172894+00:00",
+      "updated_at": "2026-05-24T12:41:19.172894+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "bd95124f-85dd-49a0-987e-c41d4d8a766e",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:42:45.436466+00:00",
+      "updated_at": "2026-05-24T12:42:45.436466+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "2cc7f0d3-9cda-4429-93b0-63645d6d8f5b",
+      "memory": "商家最近询问:退款率高怎么办,请给改进建议",
+      "hash": "52a829a8ba36628c100b448981b96eae",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:43:50.320257+00:00",
+      "updated_at": "2026-05-24T12:43:50.320257+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "9285c569-0d17-42fa-b85a-6b16f82814d9",
+      "memory": "商家最近询问:退款率高怎么办,请给改进建议",
+      "hash": "52a829a8ba36628c100b448981b96eae",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:44:03.017405+00:00",
+      "updated_at": "2026-05-24T12:44:03.017405+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "8cbd077b-b756-4b28-af65-c77d03dea16c",
+      "memory": "商家最近询问:退款率高怎么办,请给改进建议",
+      "hash": "52a829a8ba36628c100b448981b96eae",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:46:53.503219+00:00",
+      "updated_at": "2026-05-24T12:46:53.503219+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "cb54a871-6b2a-4d22-9a64-a07e22a0035a",
+      "memory": "商家最近询问:退款率高怎么办,请给改进建议",
+      "hash": "52a829a8ba36628c100b448981b96eae",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T12:47:09.978165+00:00",
+      "updated_at": "2026-05-24T12:47:09.978165+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "6efa468f-07a6-4f07-8b68-1f01fe410046",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:30:43.424667+00:00",
+      "updated_at": "2026-05-24T16:30:43.424667+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "3e3fae7f-52bf-4070-854c-6a5d08a21a95",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:31:31.965334+00:00",
+      "updated_at": "2026-05-24T16:31:31.965334+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "f235389d-b345-4aee-8832-dcbc9f48ddf6",
+      "memory": "商家最近询问:退款率高怎么办,请给改进建议",
+      "hash": "52a829a8ba36628c100b448981b96eae",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:33:04.679309+00:00",
+      "updated_at": "2026-05-24T16:33:04.679309+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "82cb95c1-6b9e-4e42-8011-bf3181d8f8d0",
+      "memory": "商家最近询问:退款率高怎么办,请给改进建议",
+      "hash": "52a829a8ba36628c100b448981b96eae",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:33:21.095930+00:00",
+      "updated_at": "2026-05-24T16:33:21.095930+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "d9e0ff92-baf5-44eb-8645-c40cb9fc8a3b",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:49:17.935462+00:00",
+      "updated_at": "2026-05-24T16:49:17.935462+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "921010b0-feb4-42bf-bb86-8016e205aebd",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:50:03.766143+00:00",
+      "updated_at": "2026-05-24T16:50:03.766143+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "7bf60760-cd6d-4acd-abea-3604b414e2e0",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:53:25.929541+00:00",
+      "updated_at": "2026-05-24T16:53:25.929541+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "f96a4963-5385-4a71-a661-8c8f7705ae0e",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T16:53:41.517991+00:00",
+      "updated_at": "2026-05-24T16:53:41.517991+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "cae98b8c-850b-4dff-8928-722c6b3a7581",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:04:39.287806+00:00",
+      "updated_at": "2026-05-24T17:04:39.287806+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "9bd7a65b-f284-4e5c-baf3-3ca62190b6e2",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:05:24.715079+00:00",
+      "updated_at": "2026-05-24T17:05:24.715079+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "3f096906-152c-495b-bb5c-006495a45a00",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:07:08.444702+00:00",
+      "updated_at": "2026-05-24T17:07:08.444702+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "3efd55a9-7579-4e9b-a9a1-c14cb32fec51",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:08:30.264662+00:00",
+      "updated_at": "2026-05-24T17:08:30.264662+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "8b70c33d-4cd4-45c9-9485-fe9c1c9630ff",
+      "memory": "商家最近询问:怎么选品",
+      "hash": "b401573e65f96bdab94730507aa22363",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:08:47.802083+00:00",
+      "updated_at": "2026-05-24T17:08:47.802083+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "47989186-d4b5-4a64-a2e0-82b59a7bb945",
+      "memory": "商家最近询问:主进程测试:写入怎么选品",
+      "hash": "3baf70361bb97a216d15327c8f623db2",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:10:07.040946+00:00",
+      "updated_at": "2026-05-24T17:10:07.040946+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "80182af9-6f5f-451b-826c-e4b0bfadfefd",
+      "memory": "商家最近询问:Mapping1 前快照测试",
+      "hash": "50272c9a2734a6f723c02fce41ab969b",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:34:57.102496+00:00",
+      "updated_at": "2026-05-24T17:34:57.102496+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "a495cfc7-7fbe-43a3-9d03-a34eed4e82b7",
+      "memory": "商家最近询问:Mapping1 后验证",
+      "hash": "a1bc4bdc73a072aae9aeefd025b61575",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:42:26.447886+00:00",
+      "updated_at": "2026-05-24T17:42:26.447886+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "97cb09b5-3609-4e03-9b6d-dcd7ca30d45f",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:43:33.119324+00:00",
+      "updated_at": "2026-05-24T17:43:33.119324+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "307a02a3-ba09-42a4-a0e3-fca68b651c56",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-24T17:44:16.679850+00:00",
+      "updated_at": "2026-05-24T17:44:16.679850+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "9b8acaff-6738-4a8f-b95c-6e5cbf96c8c8",
+      "memory": "Mapping2 spike 探针写入",
+      "hash": "f79980f11fd00370441113fde2419277",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:04:01.469199+00:00",
+      "updated_at": "2026-05-25T10:04:01.469199+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "b13eae8f-00a2-4a03-875e-c2a1168fc300",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:05:15.133767+00:00",
+      "updated_at": "2026-05-25T10:05:15.133767+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "40bc20b8-4372-4dea-ae22-aa3a09676a92",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:06:09.302545+00:00",
+      "updated_at": "2026-05-25T10:06:09.302545+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "8dc942fc-6a26-44c2-91da-4f8d21c94528",
+      "memory": "商家最近询问:阶段 5 第九轮 fix 验证",
+      "hash": "ac55ef91af6e8c5b0afb18fef6e4e1e4",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:15:56.462423+00:00",
+      "updated_at": "2026-05-25T10:15:56.462423+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "ac2a7ef1-5e12-4aff-9d22-c44856e89093",
+      "memory": "商家最近询问:怎么提升老客复购率",
+      "hash": "4d25ec83052153ec969ba6fdbe0e5dca",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:17:01.812185+00:00",
+      "updated_at": "2026-05-25T10:17:01.812185+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "54524114-1b3f-4d79-947e-8dd6278c01c0",
+      "memory": "商家最近询问:直播间上架节奏建议",
+      "hash": "f084035708cc7a6799e95a2d835f5f7f",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:17:23.068610+00:00",
+      "updated_at": "2026-05-25T10:17:23.068610+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "e8cf27a5-f793-40ec-ba84-0a31d2fc1d75",
+      "memory": "商家最近询问:新客转化率怎么优化",
+      "hash": "ea12e8815c5b1067d5ca0083e665b52c",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:17:42.185131+00:00",
+      "updated_at": "2026-05-25T10:17:42.185131+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "c9dafe50-51db-45b1-adc8-1fe840bba7ab",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:18:47.021140+00:00",
+      "updated_at": "2026-05-25T10:18:47.021140+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "9e91c69d-74e2-4600-b91b-1417ebf4ebef",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T10:19:39.345255+00:00",
+      "updated_at": "2026-05-25T10:19:39.345255+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "6bc4580e-899f-42e3-829f-5a9ae4e68f72",
+      "memory": "商家最近询问:付费投流转化率低,有什么改善建议",
+      "hash": "db878e4fe2a321fbec2b2441d9416cbd",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T20:38:32.942179+00:00",
+      "updated_at": "2026-05-25T20:38:32.942179+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    },
+    {
+      "id": "885d728a-cd8a-4d80-a6e5-f3852287b01e",
+      "memory": "商家最近询问:退款率高怎么办",
+      "hash": "82a3429fa2312c6ac2c76de67c5b4659",
+      "metadata": {
+        "kind": "recent_concern"
+      },
+      "created_at": "2026-05-25T20:39:39.707814+00:00",
+      "updated_at": "2026-05-25T20:39:39.707814+00:00",
+      "user_id": "xiaozhang_women",
+      "role": "user"
+    }
+  ]
+}

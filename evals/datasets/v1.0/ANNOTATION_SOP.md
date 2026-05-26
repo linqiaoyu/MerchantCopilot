@@ -29,6 +29,11 @@
 **字段重命名变更(vs PM 初稿)**:
 - `must_cite_rag_topics` → `must_cite_rag_doc_slugs`(锚点改为 chunk metadata 里实际存在的 `doc_slug`,可机械校验)
 
+**`must_cite_rag_doc_slugs` 字段适用性**(rc2 sanity check 修订):
+- `strategy` 类型:**必填 ≥1**,因 strategy 节点是唯一 RAG 消费者(`app/agent/nodes/strategy.py:31` 显式 import retrieve)
+- `attribution` 类型:**应为 `[]`**,因 attribution 节点架构上不走 RAG(stage 3 起设计决策:节点薄壳化 + SQL 全部下沉 MCP,详见 `evals/runs/attribution_rag_investigation.md`)
+- `data_query` / `cross_period` 类型:**应为 `[]``,因 metric_query 节点不走 RAG(纯 SQL 查数)
+
 ---
 
 ## 2. ground_truth.factual_anchor 写法
@@ -52,9 +57,40 @@
 
 **适用类型**:`strategy` / `attribution` 必须有;`data_query` / `cross_period` 可填空数组。
 
-**粒度要求**:不要写「选品」「投流」这种宽泛大类,要写「选品-高客单价类目」「投流-自然流量承接配比」这种 N-1 层细粒度。
+**粒度要求(所有类型通用)**:不要写「选品」「投流」这种宽泛大类,要写「选品-高客单价类目」「投流-自然流量承接配比」这种 N-1 层细粒度。
 
-**对齐源**:每个维度尽量能在 KB 某 chunk 找到对应。例如「选品-价格带匹配主力客群」对齐 `operation-selection-price-band.md` 的 ## 节标题。
+**对齐源因 query_type 而异(rc2.1 拆分)**——strategy 与 attribution 两类对齐源本质不同,6.2 judge rubric 设计时必须区分,避免混淆「测内容召回 vs 测节点行为」。
+
+### 3.1 strategy 类 dimensions 对齐源:content alignment(KB chunk 内容)
+
+每个维度对齐 RAG 知识库中某 chunk 的内容主题。例如:
+- 「选品-价格带匹配主力客群」对齐 `operation-selection-price-band.md` 的 ## 节标题
+- 「话术-开场促单收尾三段式」对齐 `operation-live-script-rhythm.md` 的 ## 节标题
+
+**评分逻辑**:LLM 答案中提到该维度的具体建议,且建议可追溯到 must_cite_rag_doc_slugs 中某篇 KB 的内容 → 该维度命中。
+
+### 3.2 attribution 类 dimensions 对齐源:behavior alignment(SQL drill-down 分支)
+
+attribution 节点架构上**不调 LLM 也不走 RAG**(详见 `evals/runs/attribution_rag_investigation.md`),归因方法论硬编码在 `app/tools/server.py:142-285` 的三个 SQL drill-down 函数。所以 attribution dimensions 的对齐源是**节点 SQL drill-down 行为**,不是 KB 内容。
+
+**q_005-q_008 dimensions → server.py SQL 分支对照表**:
+
+| query | dimensions | server.py SQL 分支 |
+|---|---|---|
+| q_005 | 归因-人货匹配 / 归因-转化率断崖 | `_attr_gmv_drop`(`server.py:142-209`):转化率拆解 + product 下钻 + target_audience join dim_product |
+| q_006 | 归因-流量结构 / 归因-流量质量 | `_attr_traffic_surge`(`server.py:211-254`):按 traffic_source 拆 + 各源转化率对比 |
+| q_007 | 归因-SKU 质量 / 归因-退款原因 | `_attr_refund_surge`(`server.py:256-285`):退款率按日序列 + SKU 分组 + refund_reason 分组 |
+| q_008 | 归因-人货匹配 / 归因-流量结构 | 跨分支(同时触发 `_attr_gmv_drop` 思路 + `_attr_traffic_surge` 思路;由 Insight 节点综合) |
+
+**评分逻辑**:LLM 答案中提到该维度的归因结论,且结论可追溯到对应 SQL drill-down 分支的输出(关键数字、字段、join 维度)→ 该维度命中。**不要求 LLM 引用任何 KB 内容**(架构上不可能)。
+
+### 3.3 6.2 judge rubric 设计指导
+
+strategy 类与 attribution 类的 dimensions 评分**逻辑不同**:
+- **strategy**:看 LLM 答案是否引用了 KB chunk 内容(content alignment)
+- **attribution**:看 LLM 答案是否正确触发了节点 SQL drill-down 分支(behavior alignment)
+
+6.2 LLM judge 设计时,strategy 维度 prompt 应给 judge 访问 RAG retrieved chunks;attribution 维度 prompt 应给 judge 访问 node_result.data 中的 SQL drill-down 输出字段。混用会导致 judge 评分逻辑错位。
 
 ---
 
@@ -159,31 +195,30 @@
 
 #### strategy(paired follow-up)
 
-在 §「strategy 非 paired」4 条基础上**追加 1 条**(判定法已按 PM 拍板 A' 定稿):
+在 §「strategy 非 paired」4 条基础上**追加 1 条作为信息项**(rc2 sanity check 后重新定稿):
 
-5. **Mem0 引用**:follow-up 答案中提及前置 strategy query 的核心主题词。5 条 paired follow-up 对应的前置主题词分别为:
+5. **Mem0 引用信息项**(不作硬 pass 条件):follow-up 答案中是否提及前置 query 核心主题词。仅作为 6.1 0/1 标注的**信息附加项**记录,不影响 §「strategy 非 paired」4 条 pass 判定。
 
-   | follow-up | 前置 query | 期望被 follow-up reference 的主题词(任一即可) | 信号干净度 |
-   |---|---|---|---|
-   | q_012 | q_009 | 价格带 / ¥100-300 / 中端价格 / 主力客群价格匹配 | ⚠️ 弱(题面绑定) |
-   | q_013 | q_010 | 午场 / 晚场 / 学生 vs 职场新人客群分工 | ⚠️ 弱(题面绑定) |
-   | q_014 | q_011 | **夏装季 / 春装窗口 / 季节性上新节奏** | ✅ **强(题面不涉)★** |
-   | q_015 | q_012 | 引流款 / 利润款 / 引流款利润款搭配 | ⚠️ 弱(题面绑定) |
-   | q_016 | q_013 | 学生客群 / 学生偏好 / 学生客群价格带 | ⚠️ 弱(题面绑定) |
+   | follow-up | 前置 query | 期望被 follow-up reference 的主题词(任一即可) |
+   |---|---|---|
+   | q_012 | q_009 | 价格带 / ¥100-300 / 中端价格 / 主力客群价格匹配 |
+   | q_013 | q_010 | 午场 / 晚场 / 学生 vs 职场新人客群分工 |
+   | q_014 | q_011 | **夏装季 / 春装窗口 / 季节性上新节奏** |
+   | q_015 | q_012 | 引流款 / 利润款 / 引流款利润款搭配 |
+   | q_016 | q_013 | 学生客群 / 学生偏好 / 学生客群价格带 |
 
-5 条全满足 = `pass = 1`。
+**注释 1(rc2 修订)**:由于 Mem0 实现 limitation(只存 query 原文不存 LLM 答案,详见 `DESIGN.md §4.4`)+ sanity check 发现的 topic drift 现象(详见 `DESIGN.md §4.5`),主题词出现可能来自:
+- 题面 leak(q_012/q_013/q_015/q_016 题面已显式包含对应主题词)
+- 被最近 concern 拉偏(q_014 实测被 q_013「学生连衣裙+午晚场」拉走,不是被 q_011「夏装季」推送)
 
-**⚠️ Mem0 实现 limitation 注释(必读,由 PM 第二轮 review 定稿)**:
+**注释 2(rc2 修订)**:6.2 judge rubric 设计时,Mem0 维度的**真实信号方向待 6.3 消融对照确认**(开 Mem0 vs 关 Mem0)。可能结论包括但不限于:
+- 「Mem0 注入设计预期主题」(rc1 假设,被 q_014 实测部分否决)
+- 「Mem0 是 recency anchoring,容易制造 topic drift」(rc2 实测假设,待 6.3 验证)
+- 「Mem0 信号在某些 follow-up 上是中性」(可能性也开放)
 
-Mem0 当前实现只存 query 原文不存 LLM 答案(详见 `DESIGN.md §4.4`)。题面去显式 ref(A' 方案)后,4/5 条 paired follow-up 的主题词与 follow-up 题面绑定(q_012 题面已含「引流款利润款」、q_013 含「午晚场」、q_015 含「引流款利润款」、q_016 含「学生客群」),LLM 凭题面也会答出对应主题词,**关 Mem0 也可能 pass**——这 4 条的 Mem0 边际信号被题面替代,信号弱。
+本条标 0/1 仅做信息项记录(follow-up 是否含期望主题词),不作 pass 条件;6.2 阶段再设计 Mem0 维度的多分制 rubric(基于 6.3 对照实验结论)。
 
-**只有 q_014 信号干净**:题面刻意不带「夏装季 / 春装」,follow-up 答案若提及夏装季 / 春装窗口期 / 季节性新品节奏,可断定 Mem0 真起作用;关 Mem0 后预期只答投流配比泛论不带季节窗口角度。
-
-**对 6.2 judge rubric 设计的指导**:
-
-- 重点用 **q_014** 校准 Mem0 维度(唯一能严格分离「Mem0 信号」与「题面 leak」的 case)
-- q_012 / q_013 / q_015 / q_016 作为辅助:主题词出现可能来自题面而非 Mem0,judge 需在标注中标记此不确定性,不要把这 4 条作为 Mem0 维度的主信号源
-- v2.0 修复方向:`update_recent_concerns` 应同时存 LLM 答案语义摘要,使 follow-up 即便题面 ref 主题,Mem0 仍能提供「上轮具体建议过什么」的边际信息
+**对 6.3 消融实验的指导**:重点用 **q_014** 验证 Mem0 信号方向(唯一能严格分离「Mem0 信号」与「题面 leak」的 case),关键观测点:关 Mem0 后 LLM 是否聚焦原 query 主题(付费投流配比)而非被 q_013 主题(学生连衣裙+午晚场)拉偏。
 
 ### 8.3 标注操作步骤
 

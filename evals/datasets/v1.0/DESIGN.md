@@ -109,21 +109,46 @@ PM 拍板「砍多画像需求」后,Mem0 评测信号靠**单画像内的时序
 
 v1.0 Mem0 信号在 paired follow-up 中受限于**阶段 4b 的 Mem0 实现**——`update_recent_concerns` 只存 `"商家最近询问:{query}"` 原文,**不存 LLM 答案语义摘要**(`app/memory/merchant_memory.py:109-117`)。这导致 follow-up 跑时 `recent_concerns` 拿到的仅是上轮 query 主题词,信号有效性取决于「follow-up 题面是否已经暗示上轮主题」。
 
-PM 拍板 A'(题面去显式 ref)后,paired 5 条信号干净度:
+PM 拍板 A'(题面去显式 ref)后的设计意图,paired 5 条信号干净度(**rc1 时的假设**):
 
-| follow-up | 题面内在主题 | Mem0 推主题 | 信号干净度 |
+| follow-up | 题面内在主题 | Mem0 推主题(rc1 假设) | rc1 信号干净度 |
 |---|---|---|---|
 | q_012 | 引流款 / 利润款(蕴含价格带分层) | 价格带 | ⚠️ 弱(绑定) |
 | q_013 | 学生客群 / 午晚场 | 午晚场 | ⚠️ 弱(绑定) |
-| q_014 | 付费投流 / 新品场 | **夏装季 / 春装窗口期** | ✅ **强 ★** |
+| q_014 | 付费投流 / 新品场 | **夏装季 / 春装窗口期** | ✅ **强 ★(rc1 假设)** |
 | q_015 | 引流款利润款 / 话术 | 引流款利润款 | ⚠️ 弱(绑定) |
 | q_016 | 学生客群 / 选品 | 学生客群 | ⚠️ 弱(绑定) |
 
-**只有 q_014 干净**:题面不涉夏装季/春装,follow-up 答案中若提及夏装季 / 春装窗口期 / 季节性新品节奏,可断定 Mem0 真起作用;其余 4 条主题词与 follow-up 题面绑定,LLM 凭题面也能答出对应主题词,无法严格区分「来自 Mem0」还是「来自题面」。
+**为什么不重新设计 5 条 paired**:真实商家 follow-up 大多同主题深入(用户问完价格带,下一句多半还在价格带话题里),强行造跨主题 follow-up(例如『刚问价格带,现在问退款率』)会失真。接受 v1.0 信号弱化,留痕,**v2.0+ 修复方向 (b):Mem0 应存 `query + LLM 答案语义摘要`** —— 这样即便 follow-up 题面已显式 ref 主题,Mem0 还能提供「上轮 LLM 具体建议过什么」的边际信息。
 
-**为什么不重新设计 5 条 paired**:真实商家 follow-up 大多同主题深入(用户问完价格带,下一句多半还在价格带话题里),强行造跨主题 follow-up(例如『刚问价格带,现在问退款率』)会失真。接受 v1.0 信号弱化,留痕,**v2.0+ 修复方向:Mem0 应存 `query + LLM 答案语义摘要`** —— 这样即便 follow-up 题面已显式 ref 主题,Mem0 还能提供「上轮 LLM 具体建议过什么」的边际信息。
+---
 
-**6.2 judge rubric 设计指导**:重点用 **q_014** 校准 Mem0 维度,其他 4 条作为辅助(标注时承认「主题词出现」可能来自题面而非 Mem0)。详见 `ANNOTATION_SOP.md` §8.2 第 5 条。
+### 4.5 rc2 sanity check 发现:q_014「唯一干净 Mem0 信号」假设被实测否决,topic drift 现象浮现
+
+**实测发现**(`evals/runs/sanity_check.md` §3):
+
+q_014 sanity 跑通后,Mem0 写入完全正常(recent_concerns 写入 5 条:`[q_013, q_012, q_011, q_010, q_009]`),strategy LLM prompt 也确实拿到了完整 5 条 concern 列表(`app/agent/nodes/strategy.py:90` 显式 unpack)。但 q_014 LLM 答案**完全不提夏装季 / 春装**,反而被最近的 q_013 concern「学生连衣裙 + 午晚场」拉偏:
+
+> q_014 query: "付费投流和自然流量在新品场上要怎么承接配比?"
+>
+> q_014 actual answer: "小张,针对你新上的那款学生连衣裙,建议午场和晚场用不同打法。午场面向学生..."(答 q_013 主题,不是 q_014 query 主题)
+
+**这暴露 Mem0 + strategy 的 2 个深层问题**:
+
+(a) **Mem0 信号实测是「recency anchoring」而非「主题对齐」**(待 6.3 验证):LLM 倾向锚定最近 concern(q_013)而非主题相关的 concern(q_011)。预期是 LLM 综合 N 条 concern 输出符合商家全景的建议,实测是 LLM 被最近一条拉偏 → **topic drift 现象**。
+
+(b) **RAG retrieval 不受 Mem0 影响**:`category_specific-spring-window` 必须先被 RAG 召回,LLM 才可能引用。RAG 只 embed 当前 query 文本,不读 recent_concerns。所以 rc1 的设计预期(题面不涉夏装,只有 Mem0 起作用才会引用)在架构上不成立——Mem0 信号 ≠ RAG 信号,二者独立。
+
+**这意味着**:6.3 消融时 Mem0 信号方向**待 6.3 验证**,可能出现「关 Mem0 反而提升 q_014 质量」(因为 Mem0 制造的 topic drift 被消除,LLM 重新聚焦原 query 主题)。需要 6.3 跑「开 Mem0 vs 关 Mem0」对照实验确认。
+
+**rc2 调整**:
+- 不在 6.1 阶段下「Mem0 真实信号是 topic drift」的结论。这是**假设**,待 6.3 跑对照实验验证
+- `ANNOTATION_SOP.md §8.2` 第 5 条改为「Mem0 引用信息项」,不作硬 pass 条件
+- v2.0 task **#17(新)**:Mem0 topic drift 修复方向——prompt 约束 或 主题相关性排序(LLM 处理 Mem0 上下文时被最近 concern 拉偏)
+- **task #17 与 task #15 留权衡**:若 v2.0 实现「Mem0 存 LLM 答案语义摘要」(task #15),topic drift 可能更严重(LLM 看到更长的最近一轮上下文)。两个 task 留给 v2.0 一起设计
+
+**简历 trace 故事候选**(详见 `evals/runs/trace_stories.md`):
+> 「sanity check 否决核心假设 — q_014 唯一干净 Mem0 信号假设在 sanity 阶段被实测否决,topic drift 现象浮现,改变 6.3 消融设计。」状态:候选,待 6.3 实测开/关 Mem0 对照后才能定稿。沿用阶段 5 方法论 1「pre-register mapping 反认知偏差」纪律。
 
 ---
 
@@ -184,3 +209,5 @@ PM 拍板 A'(题面去显式 ref)后,paired 5 条信号干净度:
 | query 措辞多样性(同义改写) | pilot 阶段先锁基础语义覆盖,改写鲁棒性留给 v2.0 | v2.0 加 paraphrase 子集 |
 | `operation-health-metrics` KB 未被任一 query 覆盖 | pilot 20 条筛后该 doc_slug 无对应 strategy / attribution 主题落点;不强行塞 query | v2.0 加「直播间健康度指标」相关 strategy query 时纳入 |
 | paired follow-up 中 4/5 条 Mem0 信号被题面绑定,真实有效信号只 q_014 一条 | Mem0 实现 limitation 导致(只存 query 原文不存 LLM 答案),详见 §4.4 | v2.0 修复 Mem0 implementation 后扩 paired 子集 |
+| `cross_period` 4 条(q_017-q_020)在当前 metric_query 实现下全 fail | metric_query 节点对时间范围表达式(月度 / 上下半月 / 90 天分段)解析不足,sanity check 实测全部默认到「数据集最新日 2026-05-17」;此为 prompt 工程层面问题(不是节点能力极限),sub-stage 6.4 之后可作为 prompt 工程改动尝试,sub-stage 6.1 不在范围 | stage6 sub-stage 6.4 后 prompt 工程改造尝试 |
+| `attribution` 类型 query 的 `must_cite_rag_doc_slugs` 字段为 `[]` | attribution 节点架构上不走 RAG(stage 3 起设计决策:节点薄壳化 + SQL 全部下沉 MCP),为架构事实非短板,详见 `evals/runs/attribution_rag_investigation.md` | 不补 |
