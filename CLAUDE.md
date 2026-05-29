@@ -21,7 +21,7 @@
 
 ## 📍 当前阶段
 
-**阶段 5 ✅ 完成 → 阶段 6:评测闭环 + Bad Case 回流(待启动)**
+**阶段 5 ✅ 完成 → 阶段 6:评测闭环 + Bad Case 回流(进行中)。6.1 eval dataset ✅ 完成(v1.1 80 条,tag `eval-dataset-v1.1`)→ 6.2 judge calibration 待启动**
 
 阶段 4 拆为 **4a**(RAG 子系统,已完成)+ **4b**(Mem0 商家画像 + strategy
 节点联调,**2026-05-22 完成**)。
@@ -60,8 +60,8 @@ device 隔离把延迟从 46.7s 优化到 7.5s 稳态,详见 `docs/stage4a_summa
 2. ✅ Agent 骨架(完成,见 `docs/stage2_summary.md`)
 3. ✅ 工具接入(MCP)(完成,见 `docs/stage3_summary.md`)
 4. RAG + Memory:**4a ✅ 完成** + **4b ✅ 完成**(见 `docs/stage4a_summary.md` / `docs/stage4b_summary.md`)
-5. 可观测 + Streamlit Demo UI(下一阶段)
-6. 评测闭环
+5. ✅ 可观测 + Streamlit Demo UI(完成,见 `docs/stage5_summary.md`)
+6. 评测闭环:**6.1 eval dataset ✅ 完成**(v1.1 80 条 = v1.0 20 + round1-3 49 + round4 11,tag `eval-dataset-v1.1`;分层设计/SOP/方法论 log 见 `evals/`)→ 6.2 judge calibration / 6.3 消融 / 6.4 bad case 回流 待启动
 7. (可选)HITL + 流式输出
 
 **每完成一个阶段,更新本节并在 docs/ 留一份阶段总结**。
