@@ -35,8 +35,10 @@
 ### 方法论 7:方案听起来对但代价不明,先调研主代码再列方案对照表
 
 **内容**:协作中遇到「听起来对但代价不明」的方案,纪律性先调研主代码(state / checkpointer / 写入节点等)再列方案对照表,不直接照拍板执行。
-**实战来源**:`evals/runs/trace_stories.md` 候选故事 3(CC 调研 LangGraph state/Mem0 写入节点,否决 PM 原方案 A「前置改 attribution case」——attribution 不写 Mem0,follow-up 跑时 recent_concerns 为空)。
-**沉淀阶段**:6.1(paired follow-up 设计)。
+**实战来源**:
+- `evals/runs/trace_stories.md` 候选故事 3(CC 调研 LangGraph state/Mem0 写入节点,否决 PM 原方案 A「前置改 attribution case」——attribution 不写 Mem0,follow-up 跑时 recent_concerns 为空)。
+- 6.2 judge 模型选择:PM 说「judge 用 GPT/Gemini」,CC 查 `.env` 无对应 key + `app/llm/client.py` 零 SDK 依赖,推翻 → 改 Qwen-Max(不同家于被测 DeepSeek + 零新 key/依赖)。详见 `calibration_sampling.md §5`(亦是方法论 12 实例 5)。
+**沉淀阶段**:6.1(paired follow-up 设计)→ 6.2(judge 模型选型)二次应用。
 
 ### 方法论 8:责任划分精确到 dataset / 文档 / Agent 三层,不用模糊措辞
 
@@ -74,8 +76,9 @@
 2. 声明「在 Task #29」≠ Task #29 物理存在 —— `TaskList` 空 + grep 无 `Task #29` 落地文件,证明方法论 7-11「都在 Task #29」实为只活在会话里。本文件即此实例的修复(持久化载体)。
 3. 声明「方法论 1-6 都在 CLAUDE.md」≠ CLAUDE.md 有该章节 —— grep `CLAUDE.md` 无编号方法论,实际在 `docs/stage5_summary.md:426-466`。写本 log 指针前核实,避免指向不存在的章节。
 4. 声明「EXPANSION_PLAN 改了多轮 = M」≠ git 实证为 A —— commit 前 CC 凭「6.1 多轮 edit 它」的内容直觉报「13A/5M」,PM 用 A/M 核实探针照出偏差:整个 v1.1 目录从未 commit,EXPANSION_PLAN 对 git 是 A(新增)不是 M(修改),实际 14A/4M。CC 的 A/M 直觉本身就栽在「声明层(以为改了=M)≠ 执行层(git 看是新增=A)」上。
+5. 声明「被测 Agent 是 Claude 系」≠ 代码实证「被测是 DeepSeek-V3」—— 6.2 judge 模型选型时,PM 指令「judge 用不同家(GPT/Gemini)降 self-eval,因被测是 Claude 系」。CC 调研 `app/llm/client.py` 实证被测 LLM 是 DeepSeek-V3(主)/ Qwen-Max(备),非 Claude;且 `.env` 只有 DEEPSEEK+QWEN key、无 GPT/Gemini key。PM 的被测身份声明错 → judge 模型指令不可执行;CC 改用 Qwen-Max(不同家于 DeepSeek + 零新 key/依赖)。详见 `calibration_sampling.md §5`。
 
-**★ 元观察**:方法论 12 在沉淀后的同一轮内连续照出**四个**同构实例(其中实例 4 是 CC 用刚沉淀的方法论照出自己的旧假设残留),显示「声明层 ≠ 执行层」是人机协作中高频反复出现的 gap 模式,**值得作为默认核实习惯**(涉及完整性/可追溯性的节点,先核实物理层事实再行动)。这条方法论的自我繁殖能力本身是其有效性的证据。
+**★ 元观察**:方法论 12 在沉淀后连续照出**五个**同构实例(实例 1-4 在 6.1 收尾同一轮、实例 5 在 6.2 judge 选型轮;其中实例 4 是 CC 用刚沉淀的方法论照出自己的旧假设残留),显示「声明层 ≠ 执行层」是人机协作中高频反复出现的 gap 模式,**值得作为默认核实习惯**(涉及完整性/可追溯性的节点,先核实物理层事实再行动)。这条方法论的自我繁殖能力本身是其有效性的证据。
 
 **★ 双向性(2026-05-29 递归留痕)**:第四个实例(A/M 口误)由 PM 主动加 A/M 核实探针照出;而 PM 在统计实例数量时又犯了「声明三个 ≠ 实际四个」的同构错(漏数实例 3),由 CC grep log 照出。**方法论 12 在同一轮内既照出 CC 的残留假设,也照出 PM 的统计声明错,证明该 gap 不分人机、双向高频** —— 不是「CC 容易犯」的单向问题,而是任何「声明」(无论谁说的)都需对照物理层核实的协作常态。
 
