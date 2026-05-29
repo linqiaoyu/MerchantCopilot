@@ -1,0 +1,5 @@
+query_id	sql_tag	result_json	summary
+q_066	SQL	[{"month": "2026-03", "orders": 4602}, {"month": "2026-04", "orders": 4838}]	见 factual_anchor_snapshots_round3.tsv,03 月和 04 月订单数对比
+q_067	SQL	[{"half": "H1_03", "daily_conv_pct": 4.28, "daily_refund_pct": 8.27, "days": 15}, {"half": "H2_03", "daily_conv_pct": 4.28, "daily_refund_pct": 7.39, "days": 16}]	见 factual_anchor_snapshots_round3.tsv,03 月上下半月双指标对比
+q_068	SQL	[{"month": "2026-02", "gmv": "377730.80", "orders": 1698, "days": 12}, {"month": "2026-04", "gmv": "1048681.52", "orders": 4838, "days": 30}]	见 factual_anchor_snapshots_round3.tsv,02 月(部分)vs 04 月 GMV 同比对比;注:02 月数据只有 02-17~28 共 12 天
+q_069	SQL	[{"month": "2026-03", "orders": 4602, "gmv": "990122.47", "uv": 107532, "conv_pct": 4.28, "days": 31}, {"month": "2026-04", "orders": 4838, "gmv": "1048681.52", "uv": 120961, "conv_pct": 4.0, "days": 30}, {"month": "2026-05", "orders": 3045, "gmv": "661337.62", "uv": 71202, "conv_pct": 4.28, "days": 17}]	见 factual_anchor_snapshots_round3.tsv,3 月份 × 3 指标矩阵;注:05 月只有 17 天

@@ -35,8 +35,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: GMV ¥276K 与 SQL 真值 ¥276,271 相对差 0%,时间窗对齐,单一聚合正确。
 
 ---
 
@@ -59,8 +59,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-data_query-条款②字段对齐违反 — LLM 未按主播分组,返回合并总数(3045 单/¥66.1万)而非小张 2,320/¥501K vs 小李 725/¥160K。
 
 ---
 
@@ -83,8 +83,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-data_query-条款②字段对齐违反 — LLM 未按子品类分组,返回全店平均客单价 ¥215.45,而非 query 要求的「最高子品类」(应为上衣 ¥227.28)。
 
 ---
 
@@ -107,8 +107,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-data_query-条款②字段对齐违反 — LLM 未按 traffic_source 分组,返回整体数据(UV 9,800,转化率 1.85%),而非 query 要求的 4 个流量源拆分(付费 0.50% / 私域 2.98% / 关注 3.47% / 自然 5.50%)。
 
 ---
 
@@ -137,8 +137,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: 根因人货错配命中,UV 3221 / 转化率 1.12% / P_C1 11.1% / mature 错配 关键数字全引,dims 2/2 命中(人货匹配 + 转化率断崖)。
 
 ---
 
@@ -165,8 +165,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比自然流量转化 5.5% → 泛流量购买意图极低,是流量结构问题非商品问题
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: 根因流量结构命中,投流 UV 65% / 自然 5.5% vs 付费 0.5% / 整体 1.85% 数字全引,dims 2/2 命中(流量结构 + 流量质量)。
 
 ---
 
@@ -189,8 +189,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 该 SKU 退款原因「色差」占 89% → 单品质量问题,非全店性
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: P_C3 + 色差 89% + 130 笔退款 + 末值 28.3% 命中,根因正确,dims 2/2 命中(SKU 质量 + 退款原因)。注:LLM 起点数字 4.5% 与 SQL 真值 6.7% 偏差但条款② ≥1 命中满足。
 
 ---
 
@@ -211,8 +211,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 未匹配到 GMV跌 / UV涨 / 退款涨 任一已知异常模式,已交人工排查(节点不臆造归因结论)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-attribution-条款①③违反 — LLM 跨 case 对比逻辑未触发,返回「未匹配已知异常模式」兜底回答,完全没识别 04-02 人货错配 vs 04-17 流量结构的机制差异,dims 0/2 命中。
 
 ---
 
@@ -253,8 +253,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `attribution-uv-up-gmv-flat.md` — 人群质量与货盘匹配的调整
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 2/2 命中(价格带匹配主力客群 + 中端客单价管理),建议 3≥2,RAG 2/2 命中白名单(operation-selection-price-band + category_specific-mid-price-aov),无幻觉。
 
 ---
 
@@ -300,8 +300,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `operation-selection-price-band.md` — 用流量结构反推价格带验证
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 2/2 命中(午场学生客群 + 晚场职场新人),建议 3≥2,RAG 2/2 命中白名单(operation-schedule-day-vs-night + category_specific-student-vs-young-pro),无幻觉。
 
 ---
 
@@ -341,8 +341,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `category_specific-spring-window.md` — 春款上新窗口判断
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 1/2 命中 ≥ceil(2/2)=1(季节窗口 ✓,小批量试卖未明示),建议 3≥3,RAG 命中 category_specific-spring-window,无幻觉。注:LLM 开头「针对你问的午场和晚场怎么排」是 topic drift(Mem0 推 q_010 引起),非 paired 类不列入第 5 条信息项但此处记录。
 
 ---
 
@@ -384,8 +384,9 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `operation-schedule-day-vs-night.md` — 午场客群画像与排播要点
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 2/2 命中(引流款利润款搭配 + 价格带分层),建议 3≥3,RAG 2/2 命中白名单(operation-hook-vs-profit + category_specific-mid-price-aov),无幻觉。
+**Mem0 引用信息项**: Mem0引用: 是 / 主题词或具体内容: 夏装季选品节奏(LLM 答「针对你最近问的夏装季选品节奏」— 引用 Mem0 推的实际最近 concern q_011,非 paired 设计配对的 q_009 价格带主题)
 
 ---
 
@@ -430,8 +431,9 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `operation-selection-price-band.md` — 用流量结构反推价格带验证
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 2/3 命中 ≥ceil(3/2)=2(午场学生客群集中 + 学生客群促单话术,新品首播位未明示),建议 3≥3,RAG 2/3 命中白名单(operation-schedule-day-vs-night + category_specific-student-vs-young-pro,任一即可),无幻觉。
+**Mem0 引用信息项**: Mem0引用: 是 / 主题词或具体内容: 午晚场排播(LLM 答「针对你最近问的午晚场怎么排播」— 但「午晚场」leak 自题面,Mem0 推的实际最近 concern q_012 引流利润款未被引用)
 
 ---
 
@@ -471,8 +473,9 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `attribution-gmv-drop-drilldown.md` — 流量层排查：先确认“人没来”还是“来了不买”
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 3/3 命中(投流自然流量承接 + 投流新品定向 + 上新小批量试卖)≥ceil(3/2)=2,建议 3≥3,RAG 2/3 命中白名单(operation-paid-vs-organic + operation-newproduct-tempo,任一即可),无幻觉。
+**Mem0 引用信息项**: Mem0引用: 否 / 主题词或具体内容: 无 — ★ 干净信号实测确认 topic drift:LLM 完全未提「夏装季」,被最近 concern q_013「学生连衣裙」拉偏(答「针对你新上的那款学生连衣裙」),且 category_specific-spring-window KB 也未被 RAG 召回。sanity check 预测的 topic drift 现象实测确认,简历 trace 故事 1 闭环。
 
 ---
 
@@ -512,8 +515,9 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `operation-live-script-rhythm.md` — 开场：3分钟内锁定人群
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 3/3 命中(开场促单收尾三段式 + 引流款向利润款过渡 + 直播节奏分段),建议 3≥3,RAG 2/2 命中白名单(operation-hook-vs-profit + operation-live-script-rhythm),无幻觉。
+**Mem0 引用信息项**: Mem0引用: 是 / 主题词或具体内容: 引流利润款搭配(主题词 leak 自题面,Mem0 推的实际最近 concern q_014 投流新品配比未被引用)
 
 ---
 
@@ -560,8 +564,9 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - `operation-selection-price-band.md` — 用流量结构反推价格带验证
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 1
+**理由**: pass: dims 3/3 命中(学生客群价格带控制 + 主推位避雷高客单价错配 + 款式偏好对齐)≥ceil(3/2)=2,建议 3≥3,RAG 2/3 命中白名单(operation-selection-price-band + category_specific-student-vs-young-pro,任一即可),无幻觉。
+**Mem0 引用信息项**: Mem0引用: 是 / 主题词或具体内容: 学生客群(主题词 leak 自题面,Mem0 推的实际最近 concern q_015 引流利润款话术未被引用)
 
 ---
 
@@ -585,8 +590,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-cross_period-条款③时间窗对齐违反 — metric_query 节点不解析月度时间窗,默认到 2026-05-17 单日。
 
 ---
 
@@ -610,8 +615,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-cross_period-条款③时间窗对齐违反 — metric_query 节点不解析月度时间窗,默认到 2026-05-17 单日。
 
 ---
 
@@ -635,8 +640,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-cross_period-条款③时间窗对齐违反 — metric_query 节点不解析上下半月时间窗,默认到 2026-05-17 单日。
 
 ---
 
@@ -660,8 +665,8 @@ Config: RAG on + Mem0 on + LangSmith trace on
 - 对比:基线日均毛GMV ¥34,412(剔除已知异常日)
 
 
-**PM 标注**: __
-**理由**: __
+**PM 标注**: 0
+**理由**: fail: §8.2-cross_period-条款③时间窗对齐违反 — metric_query 节点不解析 90 天分段时间窗,默认到 2026-05-17 单日。
 
 ---
 

@@ -211,3 +211,10 @@ q_014 sanity 跑通后,Mem0 写入完全正常(recent_concerns 写入 5 条:`[q_
 | paired follow-up 中 4/5 条 Mem0 信号被题面绑定,真实有效信号只 q_014 一条 | Mem0 实现 limitation 导致(只存 query 原文不存 LLM 答案),详见 §4.4 | v2.0 修复 Mem0 implementation 后扩 paired 子集 |
 | `cross_period` 4 条(q_017-q_020)在当前 metric_query 实现下全 fail | metric_query 节点对时间范围表达式(月度 / 上下半月 / 90 天分段)解析不足,sanity check 实测全部默认到「数据集最新日 2026-05-17」;此为 prompt 工程层面问题(不是节点能力极限),sub-stage 6.4 之后可作为 prompt 工程改动尝试,sub-stage 6.1 不在范围 | stage6 sub-stage 6.4 后 prompt 工程改造尝试 |
 | `attribution` 类型 query 的 `must_cite_rag_doc_slugs` 字段为 `[]` | attribution 节点架构上不走 RAG(stage 3 起设计决策:节点薄壳化 + SQL 全部下沉 MCP),为架构事实非短板,详见 `evals/runs/attribution_rag_investigation.md` | 不补 |
+| `q_014` 的 `must_cite_rag_doc_slugs` 含 `category_specific-spring-window` 死字段 | rc1 认知错误(以为 Mem0 推春装季 → RAG 召回春装 KB);rc2 sanity 实测否决:RAG 只 embed 当前 query 不读 Mem0,题面不含季节词时此 slug 永远召不回(§4.5(b))。**不回改 q_014**(方法论 9 留痕)| 见下方操作留痕 |
+
+**q_014 死字段操作留痕(v1.1 Round 4 边界 #1 裁决,2026-05-29)**:
+
+q_014 的 `must_cite_rag_doc_slugs` 含历史遗留的 `category_specific-spring-window` 死字段(RAG 不读 Mem0,此 slug 永远召不回)。**6.2 judge 判 q_014 的 grounding_to_context 维度时忽略 `spring-window`,只判 follow-up 题面对应 KB 是否命中**。v1.1 Round 4 新条目(q_070-077 干净模式)已采用「只列 follow-up 自身 KB」的正确范式(详见 `evals/datasets/v1.1/round4_design_notes.md §4`),与 q_014 schema 不一致是诚实演进,不回改。
+
+**这一行不只是留痕,是给 6.2 judge 的操作指令** —— 避免 q_014 与 q_070-077 用不同 grounding 标准。

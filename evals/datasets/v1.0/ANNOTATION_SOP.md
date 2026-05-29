@@ -163,6 +163,8 @@ strategy 类与 attribution 类的 dimensions 评分**逻辑不同**:
 
 如某条 paired follow-up 的前置 query 没跑过(被跳过),follow-up 应判 fail(因 Mem0 没数据)。
 
+**⚠️ Round 4 例外(v1.1,2026-05-29)**:本节「全序列连跑」只适用 v1.0 20 条(strategy query 连续,前置不被 Mem0 滑动窗口 evict)。**v1.1 Round 4 的 strategy paired(q_070-080)前置散在 q_011-q_063,全序列连跑会被滑动窗口 evict 冲掉前置信号**。6.3 消融对 paired 类必须走**双批次隔离执行**(批 A 非 paired 全序列连跑测 full baseline;批 B paired 每对清空→前置→follow-up→ON / 清空→follow-up→OFF),详见 `evals/datasets/v1.1/EXPANSION_PLAN.md §12` + `round4_design_notes.md §6`。
+
 ### 8.2 0/1 判据(按 query_type 分类)
 
 #### data_query / cross_period
