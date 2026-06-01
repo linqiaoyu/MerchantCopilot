@@ -50,7 +50,8 @@
 
 **内容**:假设被实测或 PM 否决时,旧假设原话保留 + 新章节标注实测发现 + 后续验证指导,不偷偷删除被否决的备选。
 **实战来源**:`evals/datasets/v1.1/EXPANSION_PLAN.md` §0(CC 配额被否决留痕)+ §6.5.2((ii)(iii) 否决留痕);`evals/runs/sample_size_estimation.md` §8.1(CC n=105 倾向被否决留痕);`evals/datasets/v1.0/DESIGN.md` §4.4(rc1 假设)+ §4.5(rc2 实测否决,rc1 原话保留);本轮 q_014 死字段不回改(`DESIGN.md` §8)。
-**沉淀阶段**:6.1(多轮 review)。
+- **6.2 实战补充(诊断不完整的留痕)**:strategy Spearman 不达标的修订,两次诊断(云端「judge 系统性偏高 0.25」/ CC「strategy 4 维质量门槛松」)都被重评否决 —— 收紧门槛后 Spearman 0.359→0.350 几乎没动,第三次才挖到真正主因(LLM judge 高方差 + judge 4 维框架结构性不含 topic drift)。**教训:修订方案要预注册「改了之后预期变多少」,实测没动就说明诊断没中根因,不是改得不够**。
+**沉淀阶段**:6.1(多轮 review)→ 6.2(诊断迭代)。
 
 ### 方法论 10:统计假设默认值要质疑
 
@@ -62,7 +63,8 @@
 
 **内容**:预注册假设要在 sub-stage 设计阶段把「实测 outcome 全部分支」想清楚,确保每个分支都是诚信胜利;存在「跑出来不好看就不讲」的分支说明预注册不充分。与方法论 1 区别:1 管认知偏差(防结果出来后合理化),11 管叙事风险(防隐性 cherry-picking)。
 **实战来源**:`evals/datasets/v1.1/EXPANSION_PLAN.md` §11.2 + §6.5.3(nil result 预注册 b 值两分支);`evals/runs/trace_stories.md` 候选故事 6;`evals/datasets/v1.1/round4_design_notes.md` §5(nil b∈[2,3] 定值 + 两分支)。
-**沉淀阶段**:6.1(EXPANSION_PLAN v2 §6.5)。
+- **6.2 实战(方向 A 三分支预注册命中)**:strategy Spearman 不达标后,预注册方向 A(judge 多次采样降方差)三分支 ——「A 成功(>0.7)/ A 部分成功(binary 稳但 strategy 未达)/ 走 B」。实测落「A 部分成功」(Spearman 0.350→0.605 方差排除但未达标 + binary α 稳 0.856),按预注册走 B 诚实降级。**预注册让「strategy 没到 0.7」成为命中的分支而非失败**。
+**沉淀阶段**:6.1(EXPANSION_PLAN v2 §6.5)→ 6.2(方向 A 三分支)。
 
 ---
 
@@ -78,13 +80,28 @@
 4. 声明「EXPANSION_PLAN 改了多轮 = M」≠ git 实证为 A —— commit 前 CC 凭「6.1 多轮 edit 它」的内容直觉报「13A/5M」,PM 用 A/M 核实探针照出偏差:整个 v1.1 目录从未 commit,EXPANSION_PLAN 对 git 是 A(新增)不是 M(修改),实际 14A/4M。CC 的 A/M 直觉本身就栽在「声明层(以为改了=M)≠ 执行层(git 看是新增=A)」上。
 5. 声明「被测 Agent 是 Claude 系」≠ 代码实证「被测是 DeepSeek-V3」—— 6.2 judge 模型选型时,PM 指令「judge 用不同家(GPT/Gemini)降 self-eval,因被测是 Claude 系」。CC 调研 `app/llm/client.py` 实证被测 LLM 是 DeepSeek-V3(主)/ Qwen-Max(备),非 Claude;且 `.env` 只有 DEEPSEEK+QWEN key、无 GPT/Gemini key。PM 的被测身份声明错 → judge 模型指令不可执行;CC 改用 Qwen-Max(不同家于 DeepSeek + 零新 key/依赖)。详见 `calibration_sampling.md §5`。
 6. 声明「授权抽样自检通过」≠ 核对了 qid 清单 —— 6.2 calibration,PM 在抽样 C 环节说「授权 CC 自检通过,我现在看不到 30 条具体内容」,**未核对 CC 的 qid 清单即授权**。PM 标注时凭印象挑了另一套 27 条 qid,与文件 30 条仅 18 重叠(9 条文件外作废 / 12 条真缺标)。PM 以为「27 vs 30 = 缺 3 条」,CC 用集合比对(`A∩B / B−A / A−B`)照出「不是缺 3 条,是两套抽样错位」。**教训:后续标注/评分基准的清单,授权前 qid 列表必须对齐(不必看全部内容,但 qid 要逐个核)**。
+7. 声明「配置项名在 .env」≠ 配置项有有效值 —— 6.2 step 4,CC 在 `calibration_sampling.md §5` 推荐 Qwen-Max 时说「零新 key(QWEN key 已在 .env)」,但只 grep 了 key **名**在列,没验值非空;step 4 跑 judge 才暴露 `QWEN_API_KEY` 是**空占位**。这把方法论 12 从「配置项存在 ≠ 物理存在」细化到「**配置项名存在 ≠ 配置项有有效值**」—— grep 到 `QWEN_API_KEY=` 这行 ≠ 等号后有值。**教训:judge/依赖选型说「零新 key」前,必须验 key 非空(grep 后 `wc -c` 验值长度),不是验 key 名存在**。
+8. 声明「judge 评了 30 条」≠ 30 条输入完整 —— 6.2 step 5,CC 生成 `calibration_agent_outputs.md` 时,pilot 复用的 4 条 strategy(q_009/011/013/014)`retrieved_chunks` 写成「(见 pilot_run_log.md 对应块)」**空占位**,judge 拿到残缺输入 → `grounding_to_context` 假 0。CC 在 step 5 误判为「judge 系统性偏高 0.25」,**Qwen 核实单跑才发现**这 4 条 judge 其实因 chunks 缺失偏**低**,方向相反。教训:judge/评测输入必须核到**内容完整**,占位文本 ≠ 真实数据;报根因前先核每条输入是否齐全。
 
-**★ 元观察**:方法论 12 在沉淀后连续照出**六个**同构实例(实例 1-4 在 6.1 收尾同一轮、实例 5-6 在 6.2;其中实例 4 是 CC 用刚沉淀的方法论照出自己的旧假设残留,实例 5/6 是 CC 照出 PM 的身份声明错 / 授权未核对),显示「声明层 ≠ 执行层」是人机协作中高频反复出现的 gap 模式,**值得作为默认核实习惯**(涉及完整性/可追溯性的节点,先核实物理层事实再行动)。这条方法论的自我繁殖能力本身是其有效性的证据。
+**★ 元观察**:方法论 12 在沉淀后连续照出**八个**同构实例(实例 1-4 在 6.1 收尾同一轮、实例 5-8 在 6.2;其中实例 4 是 CC 用刚沉淀的方法论照出自己的旧假设残留,实例 5/6 是 CC 照出 PM 的身份声明错 / 授权未核对,实例 7/8 又是 CC 自己没核物理值/输入完整性),显示「声明层 ≠ 执行层」是人机协作中高频反复出现的 gap 模式,**值得作为默认核实习惯**(涉及完整性/可追溯性的节点,先核实物理层事实再行动)。这条方法论的自我繁殖能力本身是其有效性的证据。**子模式留痕(两级递进)**:① 实例 4(A/M 凭直觉判)是「grep 到名 ≠ 核到值」—— 核值存在;② 实例 7(key 名在但值空)、实例 8(评了 30 条但 4 条 chunks 空占位)递进为「形式齐了但内容空/残缺占位」—— 核值**完整有效**,不只核值存在。配置/状态/输入核实必须核到内容完整(`git ls-files` 核跟踪态、`wc -c` 核值长度非空、逐条核 judge 输入字段齐全)。
 
 **★ 双向性(2026-05-29 递归留痕)**:第四个实例(A/M 口误)由 PM 主动加 A/M 核实探针照出;而 PM 在统计实例数量时又犯了「声明三个 ≠ 实际四个」的同构错(漏数实例 3),由 CC grep log 照出。**方法论 12 在同一轮内既照出 CC 的残留假设,也照出 PM 的统计声明错,证明该 gap 不分人机、双向高频** —— 不是「CC 容易犯」的单向问题,而是任何「声明」(无论谁说的)都需对照物理层核实的协作常态。
 
 **核实手段**:`git ls-files <path>` / `git status --short`(跟踪 + A/M 状态)/ `TaskList` + grep(任务/章节存在性)。
 **沉淀阶段**:6.1 收尾(打 `eval-dataset-v1.1` tag + 进度 commit 期间)。
+
+---
+
+## 方法论 13:LLM judge 即使 temperature=0 也有固有方差,calibration/评分需多次采样取众数降方差
+
+**内容**:LLM judge 单次评分不可靠 —— temperature=0 仍非确定(同 prompt 同输入,重跑分数会变)。calibration / 自动评分必须多次采样(≥3 次)取众数(连续值取中位),压掉单次抽样方差。**但多次采样只消除随机方差,消除不了系统性判据分歧**(judge 与 human 在某档边界的系统性偏差,采样多少次都在)。
+
+**实战来源**:6.2 calibration step 5。
+- 单次重评:binary q_021 翻转 1→0、strategy q_071 0.75→0.25(同 prompt temp=0 仍变)
+- 多次采样(3 次众数):binary α 0.688→**0.856** 稳定(q_021 [1,1,1])、strategy Spearman 0.350→**0.605**
+- **能力边界**:strategy 仍不达标(0.605<0.7),残留是系统性分歧(judge 比 human 宽一档 + 4 维不含 topic drift),非方差 —— 多次采样治不了系统性偏差
+
+**沉淀阶段**:6.2(judge calibration)。
 
 ---
 

@@ -76,17 +76,21 @@ _RUBRIC_BY_TYPE = {
         "这是设计正确的兜底(不臆造归因),但相对 factual_anchor 的具体根因未命中 → 仍判 fail。\n"
     ),
     "strategy": (
-        "【strategy 判据(SOP §8.2 + §3.1 content alignment,连续值)】4 维各 0/1,score=mean(4维):\n"
+        "【strategy 判据(SOP §8.2 + §3.1 content alignment,连续值)】4 维各 0/1,score=mean(4维)。\n"
+        "★ 质量门槛(6.2 calibration rc 收紧,SOP §3.1):达标=『质量达标』非『形式满足』——\n"
         "评分依据含 retrieved_chunks(RAG content alignment)。\n"
         "1. factual_accuracy:无 hallucination —— 不编造 fact 表不存在的数字"
         "(如与本 query 无关却说「转化率 4.2%→1.1%」)。无编造=1\n"
-        "2. grounding_to_context:至少 1 个建议可追溯到 must_cite_rag_doc_slugs 白名单内某篇 KB"
-        "(retrieved_chunks 命中 ≥1 即可)。命中=1\n"
+        "2. grounding_to_context:建议**真正追溯到 KB 实质内容**=1 —— 不是 retrieved_chunks 召回命中就算,"
+        "而是答案的具体建议讲到了某篇 must_cite KB 的核心方法/结论。仅召回命中但答案没用上 KB 内容 → 0\n"
         "   ★ 若本条 query 是 q_014:忽略死字段 category_specific-spring-window"
         "(RAG 不读 Mem0 永远召不回),只判 follow-up 题面对应 KB 是否命中(DESIGN.md §8)\n"
-        "3. actionability:可执行建议条数 ≥ expected_action_count。达标=1\n"
-        "4. strategy_relevance:答案覆盖 expected_strategy_dimensions ≥ ceil(N/2) 个。达标=1\n"
-        "   ★ 半干净 paired(题面 broad,画像层客群/价格带充斥):仍按 expected_dimensions 判覆盖,"
+        "3. actionability:建议**含具体参数/可直接执行**=1 —— 有具体价位/时长/阈值/步骤"
+        "(如『午场 100-180 元』『停留 2-3 分钟』『连续两场加购不降才放量』)。"
+        "仅给方向性原则(如『调整投流人群』『优化话术』无具体参数)即使条数 ≥expected 也 → 0\n"
+        "4. strategy_relevance:expected_strategy_dimensions **充分展开**=1 —— 覆盖 ≥ceil(N/2) 个维度"
+        "**且每个命中维度有实质具体建议**(非泛泛提及)。覆盖够数但维度只泛泛带过 → 0\n"
+        "   ★ 半干净 paired(题面 broad,画像层客群/价格带充斥):仍按 expected_dimensions 判,"
         "不因画像描述多就加分\n"
     ),
 }
@@ -144,16 +148,17 @@ def aggregate_score(query_type: str, dims: dict) -> dict:
 
 
 def judge_one(record: dict, agent_output: dict, provider: str = JUDGE_PROVIDER_DEFAULT,
-              client: LLMClient | None = None) -> dict:
+              client: LLMClient | None = None, timeout: float = 60.0) -> dict:
     """评一条。返回 {dimensions, score, verdict, scoring_mode, judge_provider}。
 
-    ⚠️ 仅 step 4(PM 标完)调用。
+    ⚠️ 仅 step 4(PM 标完)调用。timeout 默认 60s —— attribution 条含长 SQL anchor,
+    judge prompt 大,Qwen-max 响应可能 >20s(client 默认 timeout 偏短)。
     """
     cli = client or judge_client(provider)
     qtype = record["query_type"]
     system = build_judge_system(qtype)
     user = build_judge_user(record, agent_output)
-    raw = cli.chat(system=system, user=user, temperature=0.0)
+    raw = cli.chat(system=system, user=user, temperature=0.0, timeout=timeout)
     raw_stripped = raw.strip()
     if raw_stripped.startswith("```"):
         raw_stripped = raw_stripped.strip("`")

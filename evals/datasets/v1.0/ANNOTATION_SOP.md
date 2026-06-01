@@ -69,6 +69,14 @@
 
 **评分逻辑**:LLM 答案中提到该维度的具体建议,且建议可追溯到 must_cite_rag_doc_slugs 中某篇 KB 的内容 → 该维度命中。
 
+**★ 质量门槛(6.2 calibration 收紧,2026-06-01)**:6.2 judge 把 strategy 连续值 4 维(factual_accuracy / grounding_to_context / actionability / strategy_relevance)的命中标准从「形式满足」收紧为「质量达标」—— 因 calibration step5 实测 judge 按形式判几乎全给满(Spearman 0.359 不达标,judge 系统性偏高),human 按质量分档:
+- `grounding_to_context`=1 仅当建议**真追溯到 KB 实质内容**(召回命中但答案没用上 KB 内容 → 0)
+- `actionability`=1 仅当含**具体参数/可执行**(仅方向性原则如「调整投流人群」无参数,即使条数 ≥expected → 0)
+- `strategy_relevance`=1 仅当 expected 维度**充分展开**(覆盖够数但泛泛带过 → 0)
+- `factual_accuracy` 判据不变(无系统性分歧)
+
+`evals/judge.py` 的 strategy rubric 与本节**单一真相源**,不漂移。
+
 ### 3.2 attribution 类 dimensions 对齐源:behavior alignment(SQL drill-down 分支)
 
 attribution 节点架构上**不调 LLM 也不走 RAG**(详见 `evals/runs/attribution_rag_investigation.md`),归因方法论硬编码在 `app/tools/server.py:142-285` 的三个 SQL drill-down 函数。所以 attribution dimensions 的对齐源是**节点 SQL drill-down 行为**,不是 KB 内容。

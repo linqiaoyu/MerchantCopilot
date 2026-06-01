@@ -163,3 +163,42 @@ judge 对每条输出 4 个维度(各 0/1)+ 简短理由,按 query_type 聚合:
 - 输出文件不附分数/pass-fail 建议
 - 不新造 query(0/0.25 档缺失如实暴露)
 - 不手标(标注是 PM 的事)
+
+
+---
+
+## 9. 6.2 calibration 结论(step 4-5 完成,2026-06-01)
+
+### 9.1 一致性结果
+
+| 子集 | 统计量 | 值 | 阈值 | 状态 |
+|---|---|---|---|---|
+| binary(data_query/attribution/cross_period, n=18)| Krippendorff α | **0.856** | >0.667 | ✅ 达标 |
+| strategy(n=12)| Spearman | **0.605** | >0.7 | ❌ 不达标(诚实降级)|
+
+judge=Qwen-Max(跨家于被测 DeepSeek),**多次采样 3 次取众数**降 LLM 固有方差(方法论 13;单次重评 binary q_021 翻转 1→0、strategy q_071 方差,众数消除)。
+
+### 9.2 strategy 连续值 judge 诚实降级(B 留痕)
+
+strategy Spearman=0.605<0.7 不达标。**方差已排除**(多次采样 0.350→0.605 + binary α 稳 0.856 证明 LLM 方差不是 strategy 主因)。**真正主因=能力边界**:
+- judge 与 human 在「0.75 vs 1.0」档边界**系统性差一档**(7 条 judge 偏高,收紧质量门槛消除不了)
+- judge 4 维框架**结构性不含 topic drift**(q_014:human 因 drift 扣 0.5,judge content 4 维全满给高)
+→ **LLM judge 在 strategy 细粒度质量判断上与 human 对齐有本质能力边界,n=12 连续值校准达 0.7 不现实**。诚实降级,非降阈值凑达标。
+
+### 9.3 6.2 核心目标诚实评估
+
+| 子集 | judge 可信度 | 6.3 用法 |
+|---|---|---|
+| data_query/attribution/cross_period | ✅ binary α=0.856(多次采样稳)| McNemar 出 X%→Y% 主数字 |
+| strategy | ❌ 连续值 Spearman 0.605 | caveat「仅供参考不作显著结论」+ nil 三重叠加 |
+
+**6.2「judge 可信支撑 6.3」对 binary 三类达成;strategy 子集触及 LLM 能力边界、诚实降级。**
+
+### 9.4 strategy 6.3 nil 三重叠加(连 §6.5.3 / trace 故事 6)
+
+strategy 6.3 Mem0 消融三路全限:① 连续值 judge 不可信(0.605)② binary saturated(8/8)③ 画像 leak(干净 paired 5-7)。任一都跑不出可信显著 → **nil overdetermined(过度确定)**,强化 trace 故事 6。
+
+### 9.5 v2.0 判据精化观察项
+
+- **q_007**(binary 唯一分歧):judge factual=0(起点 4.5%≠真值 6.7%/缺 P_C3 44.8%)vs human=1(终点 28.3%+色差 89%+P_C3 命中即算)。attribution「关键数字命中=主信号 vs 全数字」松紧,留 v2.0(α=0.856 已达标,单条不影响)。
+- **q_071**(strategy judge 收紧过严):judge 稳定 0.25 vs human 0.75。收紧质量门槛对 q_071 过严,留 v2.0 judge prompt 精化。

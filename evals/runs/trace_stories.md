@@ -235,7 +235,16 @@ CC sanity check 抓出 3 个 silent failure(cross_period 时间窗 / attribution
 - 数学依据:`evals/runs/sample_size_estimation.md §3`(asymmetric saturation McNemar 数学下限)
 - v2.0 task #25(Mem0 topic drift 修复方向,含画像层 leak)+ task #15(Mem0 存 LLM 答案语义摘要)留权衡
 
-**状态**:候选 / 待 6.3 实测验证
+**★ 6.2 升级(2026-06-01):nil 从「单一原因」升级为「三重叠加 overdetermined」**
+
+6.2 judge calibration 后,strategy 子集 6.3 Mem0 消融的 nil **三条独立路全部受限**:
+1. **连续值 judge 不可信**:strategy Spearman=0.605<0.7 不达标(多次采样排除方差后仍未达,LLM judge 在 strategy 细粒度质量判断与 human 对齐有能力边界 + 4 维框架不含 topic drift)
+2. **binary judge saturated**:strategy 8/8 pass,无区分度(回 binary 也没用)
+3. **画像 leak**(原 §6.5.3):干净 paired 只 5-7
+
+**任一都导致 strategy 6.3 跑不出可信显著 → 三重叠加 = nil 是 overdetermined(过度确定)的预期结果**。这从「画像 leak 单一原因」升级为「画像 leak + judge 能力边界 + binary saturated 三重诚实预注册」。**overdetermined 的 nil 是最强的 nil**:从三个独立角度在跑实验前预知无显著信号并预注册,把「没结果」变成深度方法论思维的展示。
+
+**状态**:6.2 后三重叠加预注册定稿 / 6.3 实测验证 nil 闭环
 
 ---
 

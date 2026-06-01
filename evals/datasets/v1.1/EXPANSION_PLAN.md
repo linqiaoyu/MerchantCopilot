@@ -399,6 +399,12 @@ asymmetric saturation 场景(baseline=1.0,ablation<1.0,p_c=0):
 
 **双重验证**:binary McNemar(主)+ 连续值 t-test(对照)都预期 nil。任一跑出显著即触发否决分支。
 
+**★ 6.2 calibration 后升级:nil 三重叠加 overdetermined(2026-06-01)**:6.2 judge 校准实测后,strategy 子集 6.3 消融的 nil 由**三条独立原因叠加**(任一都导致跑不出可信显著):
+1. **连续值 judge 不可信**:strategy Spearman=0.605<0.7 不达标(多次采样排除方差后仍未达 —— LLM judge 在 strategy 细粒度质量判断与 human 对齐有能力边界 + judge 4 维框架不含 topic drift,详见 `evals/runs/calibration_sampling.md §9`)
+2. **binary judge saturated**:strategy 8/8 pass 无区分度(回 binary 替代也无效)
+3. **画像 leak**(本节原预注册):干净 paired 只 5-7
+**→ nil 从单一原因升级为 overdetermined**。6.3 strategy 子集:binary 三类(data_query/attribution/cross_period)用 McNemar 出 X%→Y% 主数字(judge α=0.856 达标);strategy 连续值 judge 标 caveat「Spearman 0.605 仅供参考,不作显著性结论」,nil 按三重叠加诚实预注册。强化 `trace_stories.md` 故事 6。
+
 #### 6.5.4 工程化诚实转化:nil result → trace 故事 6
 
 **简历讲故事价值**(PM 第四轮明确肯定):
