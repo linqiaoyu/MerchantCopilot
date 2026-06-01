@@ -1,0 +1,2286 @@
+{
+  "full": {
+    "q_001": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_002": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_003": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_004": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_005": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_006": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_007": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_008": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_017": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_018": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_019": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_020": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_021": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_022": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_023": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_024": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_025": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_026": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_027": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_028": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_029": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_030": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_031": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_032": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_033": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_034": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_066": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_067": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_068": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_069": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    }
+  },
+  "baseline": {
+    "q_001": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_002": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_003": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_004": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_005": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_006": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_007": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_008": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 0,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 0,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_017": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_018": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_019": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        1
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_020": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_021": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_022": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_023": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_024": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_025": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_026": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_027": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        1,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_028": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "data_query"
+    },
+    "q_029": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 0,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_030": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_031": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_032": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_033": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_034": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "attribution"
+    },
+    "q_066": {
+      "mode_score": 0,
+      "samples_scores": [
+        1,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_067": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 0,
+            "actionability": 1,
+            "strategy_relevance": 0
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_068": {
+      "mode_score": 1,
+      "samples_scores": [
+        1,
+        1,
+        1
+      ],
+      "samples": [
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 1,
+          "dims": {
+            "factual_accuracy": 1,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    },
+    "q_069": {
+      "mode_score": 0,
+      "samples_scores": [
+        0,
+        0,
+        0
+      ],
+      "samples": [
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        },
+        {
+          "score": 0,
+          "dims": {
+            "factual_accuracy": 0,
+            "grounding_to_context": 1,
+            "actionability": 1,
+            "strategy_relevance": 1
+          }
+        }
+      ],
+      "query_type": "cross_period"
+    }
+  }
+}

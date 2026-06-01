@@ -1,0 +1,1353 @@
+{
+  "q_009": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_010": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_011": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_012": {
+    "paired": "q_009",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_013": {
+    "paired": "q_010",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_014": {
+    "paired": "q_011",
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_015": {
+    "paired": "q_012",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_016": {
+    "paired": "q_013",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_035": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_036": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_037": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_038": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_039": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_040": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_041": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_042": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_043": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_044": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_045": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_046": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_047": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_048": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_049": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_050": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": true,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_051": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_052": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": true,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_053": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_054": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_055": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_056": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_057": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_058": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_059": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": true,
+      "xiaoli": true,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": true,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_060": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_061": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_062": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": true,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_063": {
+    "paired": null,
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_064": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": true,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_065": {
+    "paired": null,
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_070": {
+    "paired": "q_040",
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_071": {
+    "paired": "q_049",
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_072": {
+    "paired": "q_036",
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_073": {
+    "paired": "q_063",
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_074": {
+    "paired": "q_058",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_075": {
+    "paired": "q_037",
+    "full_sig": {
+      "price": false,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": false,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_076": {
+    "paired": "q_046",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": true,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 1,
+      "minus_mem0": 0
+    }
+  },
+  "q_077": {
+    "paired": "q_048",
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_078": {
+    "paired": "q_044",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_079": {
+    "paired": "q_046",
+    "full_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "mm_sig": {
+      "price": false,
+      "client": false,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": false,
+      "broad": false
+    },
+    "broad": {
+      "full": 0,
+      "minus_mem0": 0
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "q_080": {
+    "paired": "q_062",
+    "full_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": true,
+      "shift": true,
+      "broad": true
+    },
+    "mm_sig": {
+      "price": true,
+      "client": true,
+      "pct85": false,
+      "xiaoli": false,
+      "shift": true,
+      "broad": true
+    },
+    "broad": {
+      "full": 1,
+      "minus_mem0": 1
+    },
+    "mem0_exclusive_85": {
+      "full": 0,
+      "minus_mem0": 0
+    }
+  },
+  "_note": "画像锚定:做法Y CC判,regex 探测预注册具体信号(price/client双段/午晚/85%/小李)。broad=任一具体画像信号(预注册§3宽判据);mem0_exclusive_85=KB不含的85%客群结构(Mem0独有)。"
+}
