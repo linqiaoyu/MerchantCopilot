@@ -38,6 +38,18 @@ QUERY_METRIC_SCHEMA = {
             "pattern": _ISO_DATE,
             "description": "窗口结束日(ISO 8601)。省略则回退到数据集最新一天。",
         },
+        "group_by": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": ["streamer", "sub_category", "traffic_source",
+                         "price_band", "hour_bucket"],
+            },
+            "description": "可选:按用户维度分组(streamer 主播 / sub_category 子品类 "
+            "/ traffic_source 流量来源 / price_band 价位段 / hour_bucket 时段)。"
+            "省略=整体聚合(默认,行为字节级不变)。可双维如 [streamer, sub_category]。"
+            "传入时 data 追加 groups 列表,flat 指标仍为整体聚合(additive)。",
+        },
     },
     "required": ["metric"],
     "additionalProperties": False,

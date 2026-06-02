@@ -312,6 +312,29 @@ CC sanity check 抓出 3 个 silent failure(cross_period 时间窗 / attribution
 
 ---
 
+## 候选故事 10:责任分层诊断 — 修好数据层 0%→70%,瓶颈精确定位下移到 Insight(6.4)
+
+**6.4 实测**(`stage6_4_results.md`):task #26(metric_query parsing 升级:group_by + 多段时间窗,3 组件 additive)修复后,10 条 bad case 通过率 **before 0% → after 70%(χ²=7.0 校正 5.14 显著)**,回归 16/16 PASS。
+
+**责任分层诊断的硬度**:剩余 3 条 fail(q_025/068/069)**不是凭最终 fail 猜「还没修好」**,而是**逐条核 node_data 实证**:4 源 uv+orders 全在 / 日均+days=真值 / 3 月×3 指标全在 → **数据层 100% 修对,瓶颈下移到 Insight 呈现层**(LLM 编辑成叙事丢结构化值)。归属精确到「metric_query 数据层 ✅ / Insight 呈现层 ❌」。
+
+**叙事价值**:① 量化修复价值(0%→70%,χ² 显著);② 责任分层方法论(修一个组件暴露下一个下游瓶颈,靠核中间产物定位,不模糊甩锅);③ 自我克制(Insight 是大 blast radius + 会波及 6.3 已验证的 strategy 锚定,为修 3 个数字呈现去冒 strategy 退化风险不做,留 v2.0)。**关联**:`stage6_4_results.md` + `stage6_4_implementation_plan.md` + 方法论 8/12 实例 11。
+
+---
+
+## 候选故事 11:q_068 红线翻转的诚实处理 — 答案变好但 mode 翻转,拒绝 tune(6.4 ★ 诚信金矿)
+
+**事实**:6.4 修 q_066 的 period headline 改动,副作用让 **q_068 从 run-1 实 pass [1,1,1] → run-3 边界 fail [1,0,0]**,触「原 pass 不退化」红线。
+
+**CC 三条诚信判断**:
+1. **主动披露**:红线被自己的修复触发,主动报 mode 翻转(方法论 12 双向性)。
+2. **诚实归因**:核实 run-3 答案**客观变好**(gmv→日均归一让 factual_accuracy 稳定=1);残留 fail 是 grounding 维度(Insight 没 surface partial-month「2月从17号起12天」,而信息在 query + node_data days=12 里)。**run-1 的 [1,1,1] 是 judge 在 grounding 的运气**(run-1 答案同样没说 partial-month)→ 不是质量真退化,是 judge 方差(方法论 13)+ Insight 瓶颈。
+3. **拒绝 tune**:能改 label 喂 grounding 让 q_068 转 pass(→80%),但拒绝 —— teaching-to-test + 越过 Insight v2.0 边界。**「7/10 诚实 > 8/10 注水」**。
+
+**叙事硬度**:**面试官无法靠后视镜复制** —— 复制不了「红线真触发时主动披露 + 拒绝把 70% tune 成 80%」的判断。与 6.3 故事 9(judge scope 边界)、6.2(strategy judge 边界)构成 stage-6「诚信 + judge 可信边界」主线的收尾。**关联**:`stage6_4_results.md §4` + `methodology_log.md` 6.4 沉淀 + 方法论 12 双向 / 13。
+
+---
+
 ## 候选故事的纪律(阶段 5 方法论 1 延伸应用)
 
 1. **预注册假设** — 在每个 sub-stage 开始前把「假设是什么 / 怎么验证」写进 DESIGN.md

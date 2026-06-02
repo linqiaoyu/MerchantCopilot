@@ -21,7 +21,7 @@
 
 ## 📍 当前阶段
 
-**阶段 5 ✅ 完成 → 阶段 6:评测闭环 + Bad Case 回流(进行中)。6.1 eval dataset ✅ + 6.2 judge calibration ✅ + 6.3 消融实验 ✅(主线1 Memory 画像锚定显著:Mem0 独家聚合事实 0%→40% χ²=20,关掉就消失的独家事实;主线2 系统 vs 裸 LLM:纠正 judge 假阳后 26.7%→0% χ²=8,judge scope 边界连 6.2;RAG KB 冗余携带基础画像→方法论 12 实例 10;见 `evals/runs/ablation_6_3_report.md`)→ 6.4 bad case 回流 待启动。tag 等 6.4 一起打(stage-6 release)**
+**阶段 5 ✅ → 阶段 6 评测闭环 ✅ 完成(stage-6 release)。6.1 eval dataset ✅ + 6.2 judge calibration ✅ + 6.3 消融 ✅(主线1 Memory 独家聚合事实 0%→40% χ²=20;主线2 系统 vs 裸 LLM 纠正 judge 假阳后 26.7%→0% χ²=8;见 `ablation_6_3_report.md`)+ 6.4 bad case 修复回归 ✅(task #26 metric_query 解析升级 group_by+多段时间窗,3 组件 additive,通过率 0%→70% χ²=7.0 校正 5.14 显著,回归 16/16;剩余 3 条诚实归因 Insight 呈现层 v2.0;q_068 红线披露+拒绝 teaching-to-test;见 `stage6_4_results.md`)。两组 X%→Y% 入库,消融+bad case 回流构成完整闭环。→ 阶段 7(可选)HITL+流式 待定**
 
 阶段 4 拆为 **4a**(RAG 子系统,已完成)+ **4b**(Mem0 商家画像 + strategy
 节点联调,**2026-05-22 完成**)。
@@ -61,7 +61,7 @@ device 隔离把延迟从 46.7s 优化到 7.5s 稳态,详见 `docs/stage4a_summa
 3. ✅ 工具接入(MCP)(完成,见 `docs/stage3_summary.md`)
 4. RAG + Memory:**4a ✅ 完成** + **4b ✅ 完成**(见 `docs/stage4a_summary.md` / `docs/stage4b_summary.md`)
 5. ✅ 可观测 + Streamlit Demo UI(完成,见 `docs/stage5_summary.md`)
-6. 评测闭环:**6.1 eval dataset ✅ + 6.2 judge calibration ✅ + 6.3 消融实验 ✅**(v1.1 80 条 tag `eval-dataset-v1.1`;judge=Qwen-Max 跨家,binary α=0.856 / strategy Spearman 0.605 诚实降级,见 `calibration_sampling.md §9`;6.3 三配置消融 full/-Mem0/裸LLM,主线1 Memory 锚定显著三度量 + 主线2 系统 vs 裸 LLM,见 `ablation_6_3_report.md`)→ 6.4 bad case 回流 待启动(6.3+6.4 共同构成闭环,tag 6.4 完成后一起打)
+6. 评测闭环 ✅ 完成:**6.1 eval dataset ✅ + 6.2 judge calibration ✅ + 6.3 消融 ✅ + 6.4 bad case 修复回归 ✅**(v1.1 80 条 tag `eval-dataset-v1.1`;judge=Qwen-Max 跨家 binary α=0.856 / strategy Spearman 0.605 诚实降级,见 `calibration_sampling.md §9`;6.3 三配置消融 full/-Mem0/裸LLM 主线1 Memory 锚定三度量 + 主线2 系统 vs 裸 LLM,见 `ablation_6_3_report.md`;6.4 task #26 metric_query 解析升级 3 组件 additive 通过率 0%→70% χ²=7.0 校正 5.14 显著 回归 16/16,剩余 3 条归因 Insight 呈现层 v2.0,见 `stage6_4_results.md`)→ `stage-6` tag = 评测闭环 release
 7. (可选)HITL + 流式输出
 
 **每完成一个阶段,更新本节并在 docs/ 留一份阶段总结**。

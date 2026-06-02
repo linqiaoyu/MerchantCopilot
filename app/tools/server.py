@@ -43,7 +43,70 @@ def _shift(con, day: str, days: int) -> str:
 
 # ───────────────────────── tool 1: query_metric ─────────────────────────
 
-def _query_metric(metric: str, start: str | None, end: str | None) -> dict:
+# group_by 维度 → SQL 表达式(task #26 additive 扩展;不传 group_by 时此路径不触发)
+_GROUP_EXPR = {
+    "streamer": "o.streamer",
+    "traffic_source": "o.traffic_source",
+    "sub_category": "p.sub_category",
+    "price_band": "p.price_band",
+    "hour_bucket": (
+        "CASE WHEN EXTRACT(hour FROM o.order_time) >= 6 AND EXTRACT(hour FROM o.order_time) < 12 THEN '早(6-12)' "
+        "WHEN EXTRACT(hour FROM o.order_time) >= 12 AND EXTRACT(hour FROM o.order_time) < 18 THEN '中(12-18)' "
+        "WHEN EXTRACT(hour FROM o.order_time) >= 18 THEN '晚(18-24)' ELSE '凌晨(0-6)' END"
+    ),
+}
+_GROUP_NEEDS_JOIN = {"sub_category", "price_band"}
+
+
+def _query_metric_grouped(con, start: str, end: str, group_by: list[str]) -> list[dict]:
+    """按用户维度分组返回每组指标包(orders/gmv/aov/refund_rate_pct;
+    traffic_source 单维额外补 uv/转化率)。additive:仅 group_by 传入时调用。"""
+    dims = [d for d in group_by if d in _GROUP_EXPR]
+    if not dims:
+        return []
+    sel = ", ".join(f"{_GROUP_EXPR[d]} AS g{i}" for i, d in enumerate(dims))
+    pos = ", ".join(str(i + 1) for i in range(len(dims)))
+    join = ("JOIN dim_product p ON o.product_id = p.product_id"
+            if any(d in _GROUP_NEEDS_JOIN for d in dims) else "")
+    rows = con.execute(
+        f"""SELECT {sel}, COUNT(*) AS orders, SUM(o.gmv) AS gmv,
+                   AVG(o.is_refund::INT) AS refund_rate
+            FROM fact_order o {join}
+            WHERE o.date BETWEEN ? AND ?
+            GROUP BY {pos} ORDER BY {pos}""",
+        [start, end],
+    ).fetchall()
+    n = len(dims)
+    groups = []
+    for r in rows:
+        g = {dims[i]: r[i] for i in range(n)}
+        orders = r[n]
+        gmv = float(r[n + 1] or 0)
+        rr = float(r[n + 2] or 0)
+        g.update(orders=orders, gmv=round(gmv, 2),
+                 aov=round(gmv / orders, 2) if orders else 0.0,
+                 refund_rate_pct=round(rr * 100, 1))
+        groups.append(g)
+    if dims == ["traffic_source"]:  # 访客数/转化率只对流量来源维有意义,补 fact_traffic
+        vis = dict(con.execute(
+            "SELECT traffic_source, SUM(visitors) FROM fact_traffic "
+            "WHERE date BETWEEN ? AND ? GROUP BY 1", [start, end]).fetchall())
+        for g in groups:
+            g["uv"] = int(vis.get(g["traffic_source"], 0) or 0)
+            g["conversion_pct"] = round(g["orders"] / g["uv"] * 100, 2) if g["uv"] else 0.0
+    if dims == ["hour_bucket"]:  # 补空桶:mock 数据无 morning 订单 → 早场=0 是正确结果非漏数据
+        order = {"早(6-12)": 0, "中(12-18)": 1, "晚(18-24)": 2}
+        present = {g["hour_bucket"] for g in groups}
+        for b in order:
+            if b not in present:
+                groups.append({"hour_bucket": b, "orders": 0, "gmv": 0.0,
+                               "aov": 0.0, "refund_rate_pct": 0.0})
+        groups.sort(key=lambda g: order.get(g["hour_bucket"], 99))
+    return groups
+
+
+def _query_metric(metric: str, start: str | None, end: str | None,
+                  group_by: list[str] | None = None) -> dict:
     con = duckdb.connect(_DB_PATH, read_only=True)
     try:
         defaulted = not (start and end)
@@ -56,22 +119,24 @@ def _query_metric(metric: str, start: str | None, end: str | None) -> dict:
               SELECT COUNT(*) AS orders,
                      SUM(gmv) AS gmv,
                      SUM(CASE WHEN NOT is_refund THEN gmv ELSE 0 END) AS net_gmv,
-                     AVG(is_refund::INT) AS refund_rate
+                     AVG(is_refund::INT) AS refund_rate,
+                     COUNT(DISTINCT date) AS days
               FROM fact_order WHERE date BETWEEN ? AND ?
             ),
             v AS (
               SELECT SUM(visitors) AS uv
               FROM fact_traffic WHERE date BETWEEN ? AND ?
             )
-            SELECT o.orders, o.gmv, o.net_gmv, o.refund_rate, v.uv
+            SELECT o.orders, o.gmv, o.net_gmv, o.refund_rate, o.days, v.uv
             FROM o, v
             """,
             [start, end, start, end],
         ).fetchone()
-        orders, gmv, net_gmv, refund_rate, uv = row
+        orders, gmv, net_gmv, refund_rate, days, uv = row
         gmv = float(gmv or 0)
         net_gmv = float(net_gmv or 0)
         uv = int(uv or 0)
+        days = int(days or 0)
         conv = (orders / uv * 100) if uv else 0.0
         refund_pct = float(refund_rate or 0) * 100
         aov = (gmv / orders) if orders else 0.0
@@ -88,6 +153,9 @@ def _query_metric(metric: str, start: str | None, end: str | None) -> dict:
             list(_ANOMALY_DAYS),
         ).fetchone()[0]
         baseline_daily_gmv = float(base or 0)
+
+        # group_by 传入时分组(con 关闭前算好);默认 None → groups 不进 data
+        groups = _query_metric_grouped(con, start, end, group_by) if group_by else None
     finally:
         con.close()
 
@@ -100,6 +168,7 @@ def _query_metric(metric: str, start: str | None, end: str | None) -> dict:
         "conversion_pct": round(conv, 2),
         "refund_rate_pct": round(refund_pct, 1),
         "aov": round(aov, 2),
+        "days": days,
         "baseline_daily_gmv": round(baseline_daily_gmv, 2),
     }
 
@@ -120,6 +189,18 @@ def _query_metric(metric: str, start: str | None, end: str | None) -> dict:
     ]
     if defaulted:
         evidence.insert(0, f"未指定日期,默认使用数据集最新日 {start}")
+
+    # group_by:追加 groups 到 data + enrich headline/evidence(additive,不改 flat 字段)
+    if groups is not None:
+        data["groups"] = groups
+        dim_label = "×".join(group_by)
+        headline = f"{span}:按 {dim_label} 分组({len(groups)} 组)"
+        evidence.append(
+            f"按 {dim_label} 分组:" + "；".join(
+                f"{'/'.join(str(g[d]) for d in group_by)} "
+                f"orders={g['orders']} gmv={g['gmv']} aov={g['aov']} 退款率={g['refund_rate_pct']}%"
+                + (f" uv={g['uv']} 转化率={g['conversion_pct']}%" if 'uv' in g else "")
+                for g in groups))
 
     return {"task": "metric", "headline": headline, "data": data, "evidence": evidence}
 
@@ -368,6 +449,7 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
             arguments["metric"],
             arguments.get("start_date"),
             arguments.get("end_date"),
+            arguments.get("group_by"),
         )
     elif name == schemas.ATTRIBUTE_ANOMALY_NAME:
         result = _attribute_anomaly(
