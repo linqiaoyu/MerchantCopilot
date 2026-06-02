@@ -80,7 +80,6 @@ device 隔离把延迟从 46.7s 优化到 7.5s 稳态,详见 `docs/stage4a_summa
 | Memory | Mem0(开源版) | 简历对齐;Plan B 见下方 |
 | 工具协议 | 官方 Python MCP SDK | 简历对齐 |
 | 可观测 | LangSmith | @traceable 12 处显式装饰(LangGraph 1.x 移除 env-var 自动 instrumentation,详 stage5_summary.md ★ 章节) |
-| Web 框架 | FastAPI | async 与 LangGraph 配合 |
 | Demo UI | Streamlit | **不要碰 React/Next.js** |
 | 关系库 | DuckDB | OLAP 极快,零运维 |
 | 向量库 | Chroma | 本地起,零运维 |
@@ -99,7 +98,6 @@ app/tools/     # MCP Server
 app/rag/       # 检索
 app/memory/    # Mem0 封装
 app/llm/       # LLM 客户端封装(便于切换 provider)
-app/api/       # FastAPI 路由
 data/          # mock 数据生成 + DuckDB 文件 + 知识库 markdown
 evals/         # 评测集 + LLM-as-Judge
 ui/            # Streamlit demo
