@@ -25,7 +25,7 @@ pandas 3.0.3 / numpy 2.4.5)。pandas 3.0 默认 StringDtype 与 DuckDB scanner �
 `fact_live_session` 只有当日总 UV(不分来源),三表都给不出"分来源 UV"这个分母。
 
 决策:新增 `fact_traffic(date, traffic_source, visitors)`。
-- 它是 Case 2 演示的**硬依赖**,不是为扩展预留的抽象层,符合 CLAUDE.md "不做预留接口"。
+- 它是 Case 2 演示的**硬依赖**,不是为扩展预留的抽象层,符合 AGENTS.md "不做预留接口"。
 - 同时让"按渠道看转化率"这类指标查询能跑。
 - 口径自检:`SUM(fact_traffic.visitors)` 与 `SUM(fact_live_session.viewers)`
   日均相对差 0.00%(前者流量侧记账,后者直播侧记账,同义)。

@@ -119,7 +119,7 @@ strategy 用连续值(非 binary),「pass/fail 代表」对 strategy 体现为�
 
 **调研主代码发现两个事实**:
 1. **被测 Agent LLM 是 DeepSeek-V3(主)/ Qwen-Max(备),不是 Claude 系**(`app/llm/client.py` `_PROVIDERS`;`get_llm()` 优先返回 DeepSeek)。PM「被测是 Claude 系」与代码不符 —— 降 self-eval 的正确表述是 judge 应不同于 **DeepSeek**。
-2. **`.env` 只有 DEEPSEEK_API_KEY + QWEN_API_KEY,无 OPENAI / GEMINI key**;LLM client 是 stdlib urllib 直连(零 SDK 依赖)。用 GPT/Gemini 需新 key(+ 可能违反 CLAUDE.md「不引入新依赖」)。
+2. **`.env` 只有 DEEPSEEK_API_KEY + QWEN_API_KEY,无 OPENAI / GEMINI key**;LLM client 是 stdlib urllib 直连(零 SDK 依赖)。用 GPT/Gemini 需新 key(+ 可能违反 AGENTS.md「不引入新依赖」)。
 
 **选型结论(在 PM「你选可用的」授权内)**:judge 用 **Qwen-Max**:
 - ✅ 不同家于被测 DeepSeek(降 self-eval 成立)

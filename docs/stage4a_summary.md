@@ -28,8 +28,8 @@ test_graph / test_mcp_server 一行未改 —— RAG 改造对下游透明,这�
 1. **混合检索语义**:实现走「BGE-M3 dense 召回 → bge-reranker-v2-m3 重排」
    **两阶段**,不是 BGE-M3 招牌的 dense+sparse+ColBERT 多表征融合。简历表述
    对齐为「两阶段混合检索」。
-2. **Embedding**:直接上 BGE-M3,跳过 CLAUDE.md 原定的「dev=bge-small-zh
-   → 收尾期 BGE-M3」过渡,消灭收尾期换模型返工风险。CLAUDE.md 锁定栈表已同步。
+2. **Embedding**:直接上 BGE-M3,跳过 AGENTS.md 原定的「dev=bge-small-zh
+   → 收尾期 BGE-M3」过渡,消灭收尾期换模型返工风险。AGENTS.md 锁定栈表已同步。
 3. **依赖**:加 `sentence-transformers==5.5.0` / `chromadb==1.5.9` /
    `langchain-text-splitters==1.1.2`(不加 langchain 全家桶);torch 等
    transitive 不入 `requirements.txt`,沿用阶段 3「只列直接 import」约定。
@@ -107,7 +107,7 @@ python data/generate_knowledge.py --verify
    被 dense 召回选中,Rerank 排完还是它 —— **削弱 Rerank 演示价值**
 2. intro 与 h2-0 的 embedding 语义高度相似(导言就是一句话总结下文),
    容易出现「同一篇 intro + h2-0 都进 top-20」的语义冗余
-3. CLAUDE.md「保持简单」:「按 ## 严格切」是 3 行方案
+3. AGENTS.md「保持简单」:「按 ## 严格切」是 3 行方案
 
 **假切验证**(临时脚本 `/tmp/test_chunk_b.py`,跑完即删):
 不动 indexer,模拟「导言并入 h2-0」转换,验证 chunk 字符分布是否会触发二级切。
@@ -130,7 +130,7 @@ python data/generate_knowledge.py --verify
 
 按你期望写完 retriever + 测试探针,首跑 4 个 query,稳态平均 **46.7s/query**
 (BGE-M3 + bge-reranker-v2-m3 双模型都在 MPS 上)。
-**严重违反 CLAUDE.md「单次响应 ≤ 5 秒」硬约束 9.3×**。但召回质量极好
+**严重违反 AGENTS.md「单次响应 ≤ 5 秒」硬约束 9.3×**。但召回质量极好
 (Q2 refund-surge 双 chunk top-2 score >0.93,#3 骤降 0.60)。
 
 ### 4 轮诊断的递进(每轮证伪一个假设)
@@ -190,7 +190,7 @@ embed 27× 加速是修法的最大胜利 —— 证明 evict 真实存在;reran
 1. **边际收益不划算**:7.5→2-3s 改善 2-3×,但要重测命中分布,bge-reranker-v2-m3
    当前命中分布极漂亮(Q2 refund-surge 双 chunk top-2),换 base 有可能更差,
    **为延迟数字冒召回质量风险不划算**
-2. **CLAUDE.md 硬约束 vs 项目实质目标**:5s 是约束,demo 才是目标。
+2. **AGENTS.md 硬约束 vs 项目实质目标**:5s 是约束,demo 才是目标。
    7.5s 是合理 loading 体感,不是系统挂了
 3. **Mapping 3 设计意图是 Mapping 1 失败的降级**,触发条件 CPU rerank > 30s;
    实测 5.8-7.2s **远没触发**,启动 Mapping 3 等于主动降级模型质量,违反原设计

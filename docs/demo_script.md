@@ -133,7 +133,7 @@ RAG 子系统 span,讲一句「12 个 `@traceable` 都带 tag,可以按 componen
 
 ### Q1:为什么端到端 17s 超 5s 硬约束?
 
-A:CLAUDE.md 明确写 demo 是目标,5s 是约束;超 3 倍仍在合理 loading 体感(用户看到
+A:AGENTS.md 明确写 demo 是目标,5s 是约束;超 3 倍仍在合理 loading 体感(用户看到
 "分析中..." spinner 不会跑掉)。4a 已经把 46s 优化到 7.5s,继续优化的边际收益
 不划算 —— `top_k=5→3` 削 rerank pair 数会破坏 4a 召回质量 + 违反「对下游透明」
 硬指标。阶段 5 LangSmith trace 已经把分布可视化,90% 在 `rag_rerank`(CPU),
@@ -141,7 +141,7 @@ A:CLAUDE.md 明确写 demo 是目标,5s 是约束;超 3 倍仍在合理 loading 
 
 ### Q2:Mem0 不能换 SQLite 自实现?
 
-A:CLAUDE.md 一直有 Plan B(SQLite 一张表 + 简历表述改为「基于 Mem0 思路自实现」)。
+A:AGENTS.md 一直有 Plan B(SQLite 一张表 + 简历表述改为「基于 Mem0 思路自实现」)。
 本阶段第八轮证实 Mem0 写入完全正常,silent failure 是我们 API 用法 bug 不是 Mem0
 SDK 问题,**Plan B 没触发**。简历沿用「基于 Mem0 构建商家画像长期记忆」。
 
@@ -160,11 +160,11 @@ API key 缺失时 `@traceable` 静默 no-op,CI / 无网环境跑测试不受影�
 **16/16 测试零回归是硬证据**(`test_rag` / `test_strategy` / `test_graph` /
 `test_mcp_server` 一行未改)。
 
-### Q5:CLAUDE.md 里写「LangSmith 3 行接入」,你实际做了 12 处装饰,是不是夸大?
+### Q5:AGENTS.md 里写「LangSmith 3 行接入」,你实际做了 12 处装饰,是不是夸大?
 
-A:**好问题,这是诚信修订点**。CLAUDE.md L42「3 行接入」基于 LangGraph 0.x 时代
+A:**好问题,这是诚信修订点**。AGENTS.md L42「3 行接入」基于 LangGraph 0.x 时代
 官方文档假设,LangGraph 1.x 已经移除 env-var driven first-party 自动 instrumentation,
 **需要至少一个 `@traceable` 挂载点激活 callback 链**。我在阶段 5 第二轮真接入
 后翻车 —— SDK 装好 + env var 配齐但 0 条 trace,4 轮诊断证伪后确认根因。
-**本阶段已经修订 CLAUDE.md L42 为准确表述**(`@traceable` 12 处显式装饰),
+**本阶段已经修订 AGENTS.md L42 为准确表述**(`@traceable` 12 处显式装饰),
 诊断链留痕在 `docs/stage5_summary.md` ★ 章节。

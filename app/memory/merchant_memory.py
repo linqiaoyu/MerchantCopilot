@@ -25,7 +25,7 @@ import app.llm.client  # noqa: F401
 MERCHANT_ID = "xiaozhang_women"
 RECENT_N = 5
 
-# 三条 seed 事实对齐 CLAUDE.md「业务上下文」+ 简历映射「至少 类目/客群/风格偏好」
+# 三条 seed 事实对齐 AGENTS.md「业务上下文」+ 简历映射「至少 类目/客群/风格偏好」
 _SEED_FACTS: dict[str, str] = {
     "category": "类目:女装,中端价格带 ¥100-300",
     "audience": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%",

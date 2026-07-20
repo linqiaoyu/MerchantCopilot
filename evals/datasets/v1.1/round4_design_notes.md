@@ -222,7 +222,7 @@ SOP §8.1「全序列连跑」是 v1.0 20 条的标注流程(strategy query 连�
 4. **Q4 双批次执行前提 3 处落地**:round4_notes §6 + EXPANSION_PLAN §12 + SOP §8.1 例外标注
 5. **nil b∈[2,3] 定值(§5)+ trace 故事 7(滑动窗口→双批次隔离)留痕**
 
-review pass 后:打 git tag `eval-dataset-v1.0` 正式版(注:CLAUDE.md 收尾指令为 `eval-dataset-v1.0`;EXPANSION_PLAN §1 表述为 `eval-dataset-v1.1` 正式 —— **tag 名以 PM full review 时拍板为准**),6.1 收尾,直接进 6.2(PM 不手标 80 条,baseline pass/fail 由 6.2 judge 自动完成)。
+review pass 后:打 git tag `eval-dataset-v1.0` 正式版(注:AGENTS.md 收尾指令为 `eval-dataset-v1.0`;EXPANSION_PLAN §1 表述为 `eval-dataset-v1.1` 正式 —— **tag 名以 PM full review 时拍板为准**),6.1 收尾,直接进 6.2(PM 不手标 80 条,baseline pass/fail 由 6.2 judge 自动完成)。
 
 ---
 

@@ -1,7 +1,7 @@
 """LLM 客户端封装:DeepSeek-V3(主) / Qwen-Max(备),无 key 降级 LocalStub。
 
 阶段 2 用 stdlib urllib 直连 OpenAI 兼容 chat/completions 接口,
-不引入 openai/httpx 依赖(对齐 CLAUDE.md「保持简单 / 不引入新依赖」)。
+不引入 openai/httpx 依赖(对齐 AGENTS.md「保持简单 / 不引入新依赖」)。
 """
 from __future__ import annotations
 

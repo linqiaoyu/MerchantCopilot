@@ -1,6 +1,6 @@
 # 阶段 6 Trace 故事候选
 
-> 阶段 5 已经积累 3 个 trace 故事(rerank 占 90% / Mem0 update 慢 289× / silent failure 假象诊断翻转,见 `CLAUDE.md` 简历对应映射 + `stage5_summary.md`)。
+> 阶段 5 已经积累 3 个 trace 故事(rerank 占 90% / Mem0 update 慢 289× / silent failure 假象诊断翻转,见 `AGENTS.md` 简历对应映射 + `stage5_summary.md`)。
 >
 > 阶段 6 sanity check 阶段又浮现新的候选,但**简历能不能讲,取决于后续 6.2/6.3/6.4 是否验证假设**。在此预注册候选,纪律性不为简历好看而保留旧假设;若被实测否决,作为「假设被否决」的负面故事讲也行(沿用阶段 5 方法论 1 「pre-register mapping 反认知偏差」)。
 

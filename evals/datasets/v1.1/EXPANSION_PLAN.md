@@ -543,7 +543,7 @@ review pass 后 CC 才进入第 1 轮(data_query +8 + attribution +6 = 14 条)�
 
 ### 11.3 沉淀位置
 
-`stage6_summary.md`(stage6 全部完成时统一汇入)与方法论 7/8/9/10/11 一并入档 `CLAUDE.md` 「与我协作的方式」章节,见 task #29 描述。
+`stage6_summary.md`(stage6 全部完成时统一汇入)与方法论 7/8/9/10/11 一并入档 `AGENTS.md` 「与我协作的方式」章节,见 task #29 描述。
 
 ---
 

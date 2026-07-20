@@ -15,7 +15,7 @@ query 选型:**单 query "退款率高怎么办" 跑 1 次**。
   - test_strategy 端到端 ~17s/query,N=1 是延迟纪律的取舍
 
 降级路径(template_fallback_from_chunks / unavailable)由 generation 集合断言
-留位,不在 test 里 monkeypatch 触发(违反 CLAUDE.md「保持简单」);
+留位,不在 test 里 monkeypatch 触发(违反 AGENTS.md「保持简单」);
 真实触发由 5 路降级矩阵代码 review + 阶段 5 LangSmith trace 自然观察补齐。
 
 副作用说明:本测试触发 update_recent_concerns 写入 Mem0(累积 +1 条)。

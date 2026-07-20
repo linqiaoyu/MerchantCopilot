@@ -2,10 +2,10 @@
 
 > **作用**:方法论是本项目最大的简历资产(「我怎么和 AI 协作」的元层证据)。在本文件建立前,方法论 1-12 散落在 `docs/stage5_summary.md` + `evals/` 各文件 + 会话上下文里——**只活在会话里的方法论,一次 `/clear` 就蒸发**。本文件是方法论的**持久化沉淀过程记录**(带实战来源指针 + 沉淀阶段)。
 >
-> **与 CLAUDE.md 的关系(单一真相源原则)**:
+> **与 AGENTS.md 的关系(单一真相源原则)**:
 > - `methodology_log.md`(本文件)= 沉淀**过程**记录,按沉淀顺序,带实战来源指针。
-> - `CLAUDE.md` 方法论章节 = 最终**结晶**,给未来所有阶段读。
-> - 流程:先本 log 持久化(现在),stage6 stage_summary 时提炼进 CLAUDE.md。两者不冲突。
+> - `AGENTS.md` 方法论章节 = 最终**结晶**,给未来所有阶段读。
+> - 流程:先本 log 持久化(现在),stage6 stage_summary 时提炼进 AGENTS.md。两者不冲突。
 > - **方法论 1-6 的完整描述以 `docs/stage5_summary.md` 为单一真相源**,本 log 只写一句话摘要 + 指针,不重复全文(避免漂移)。
 >
 > **缘起(方法论 12 自指实战)**:2026-05-29 v1.1 Round 4 收尾,PM 指令「把方法论 12 加进 Task #29」。CC 核实 `TaskList` 空 + grep 无 `Task #29` 落地文件,证明 Task #29 是会话外 backlog 编号、从未在仓库物理存在 → 方法论 7-11「都在 Task #29」实为「只活在会话里」。PM 拍板建本文件持久化。
@@ -76,7 +76,7 @@
 **四个实战实例(同一元模式,全部在 2026-05-29 同一轮内浮现)**:
 1. 声明「未 commit」≠ git 已感知该文件 —— `git ls-files evals/datasets/v1.1/` 完全为空,发现整个 v1.1 目录(round1-3 共 49 条 query + design notes + snapshots)从未被 git 跟踪。PM「6 文件清单」基于「round1-3 已 commit」的错误假设,会导致 `eval-dataset-v1.1` tag 残缺(只含 31 条)。CC 不擅自扩 `git add`,暴露完整 untracked 清单给 PM 拍板。
 2. 声明「在 Task #29」≠ Task #29 物理存在 —— `TaskList` 空 + grep 无 `Task #29` 落地文件,证明方法论 7-11「都在 Task #29」实为只活在会话里。本文件即此实例的修复(持久化载体)。
-3. 声明「方法论 1-6 都在 CLAUDE.md」≠ CLAUDE.md 有该章节 —— grep `CLAUDE.md` 无编号方法论,实际在 `docs/stage5_summary.md:426-466`。写本 log 指针前核实,避免指向不存在的章节。
+3. 声明「方法论 1-6 都在 AGENTS.md」≠ AGENTS.md 有该章节 —— grep `AGENTS.md` 无编号方法论,实际在 `docs/stage5_summary.md:426-466`。写本 log 指针前核实,避免指向不存在的章节。
 4. 声明「EXPANSION_PLAN 改了多轮 = M」≠ git 实证为 A —— commit 前 CC 凭「6.1 多轮 edit 它」的内容直觉报「13A/5M」,PM 用 A/M 核实探针照出偏差:整个 v1.1 目录从未 commit,EXPANSION_PLAN 对 git 是 A(新增)不是 M(修改),实际 14A/4M。CC 的 A/M 直觉本身就栽在「声明层(以为改了=M)≠ 执行层(git 看是新增=A)」上。
 5. 声明「被测 Agent 是 Claude 系」≠ 代码实证「被测是 DeepSeek-V3」—— 6.2 judge 模型选型时,PM 指令「judge 用不同家(GPT/Gemini)降 self-eval,因被测是 Claude 系」。CC 调研 `app/llm/client.py` 实证被测 LLM 是 DeepSeek-V3(主)/ Qwen-Max(备),非 Claude;且 `.env` 只有 DEEPSEEK+QWEN key、无 GPT/Gemini key。PM 的被测身份声明错 → judge 模型指令不可执行;CC 改用 Qwen-Max(不同家于 DeepSeek + 零新 key/依赖)。详见 `calibration_sampling.md §5`。
 6. 声明「授权抽样自检通过」≠ 核对了 qid 清单 —— 6.2 calibration,PM 在抽样 C 环节说「授权 CC 自检通过,我现在看不到 30 条具体内容」,**未核对 CC 的 qid 清单即授权**。PM 标注时凭印象挑了另一套 27 条 qid,与文件 30 条仅 18 重叠(9 条文件外作废 / 12 条真缺标)。PM 以为「27 vs 30 = 缺 3 条」,CC 用集合比对(`A∩B / B−A / A−B`)照出「不是缺 3 条,是两套抽样错位」。**教训:后续标注/评分基准的清单,授权前 qid 列表必须对齐(不必看全部内容,但 qid 要逐个核)**。
@@ -133,12 +133,12 @@
 
 ## 协作纪律 log 7 条(⚠️ 仓库无落地,待补)
 
-**方法论 12 实例化标注**:recap 声明「协作纪律 log 7 条……都在 CLAUDE.md」,但 grep `CLAUDE.md` + `docs/` 均无落地 → 这 7 条目前**只活在会话 / PM 外部记忆里**,仓库未持久化。**本节据实标注为待补,不硬造内容**(方法论 9「不偷偷编」+ 方法论 12「不信任声明」)。
+**方法论 12 实例化标注**:recap 声明「协作纪律 log 7 条……都在 AGENTS.md」,但 grep `AGENTS.md` + `docs/` 均无落地 → 这 7 条目前**只活在会话 / PM 外部记忆里**,仓库未持久化。**本节据实标注为待补,不硬造内容**(方法论 9「不偷偷编」+ 方法论 12「不信任声明」)。
 
-**待补动作**:由 PM 提供 7 条原文,或 stage6 stage_summary 时从会话回溯整理,补入本节后再汇入 CLAUDE.md。在补齐前,本节空缺本身就是方法论 12 的一条留痕。
+**待补动作**:由 PM 提供 7 条原文,或 stage6 stage_summary 时从会话回溯整理,补入本节后再汇入 AGENTS.md。在补齐前,本节空缺本身就是方法论 12 的一条留痕。
 
 ---
 
-## 沉淀进 CLAUDE.md 的计划
+## 沉淀进 AGENTS.md 的计划
 
-stage6 全部完成时,方法论 1-12 + 附录 pattern + 协作纪律 log 7 条(补齐后)统一提炼进 `CLAUDE.md`「与我协作的方式」章节(原 Task #29 的终点目标)。在此之前本 log 是单一持久化真相源。
+stage6 全部完成时,方法论 1-12 + 附录 pattern + 协作纪律 log 7 条(补齐后)统一提炼进 `AGENTS.md`「与我协作的方式」章节(原 Task #29 的终点目标)。在此之前本 log 是单一持久化真相源。

@@ -97,7 +97,7 @@
 - [ ] 向量库:Chroma 本地起(锁定技术栈,装前确认)。
 - [ ] Memory:Mem0 开源版;**反复出问题就主动提降级 Plan B**
       (SQLite `merchant_profile` 单表,简历表述改「基于 Mem0 思路自实现
-      商家画像层」)—— 见 CLAUDE.md。
+      商家画像层」)—— 见 AGENTS.md。
 - [ ] `strategy.py`:阶段 2 留的 RAG/Memory 接入口注释,阶段 4 真接;
       接法对齐简历映射(`app/rag/retriever.py` 收尾期必须真换 BGE-M3,
       `app/memory/merchant_memory.py` 至少存 类目/主力客群/风格偏好)。

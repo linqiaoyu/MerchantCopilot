@@ -5,7 +5,7 @@
 阶段 5 是项目最后一个核心阶段(评测闭环留到阶段 6),双重目标:
 **(A) LangSmith 全链路 trace 接入**(简历对齐「LangSmith 全链路 trace」+
 「必须能讲 1-2 个用 trace 发现问题的故事」硬要求)+
-**(B) Streamlit demo UI**(简历对齐「面试演示项目」+ CLAUDE.md「不要碰 React/Next.js」
+**(B) Streamlit demo UI**(简历对齐「面试演示项目」+ AGENTS.md「不要碰 React/Next.js」
 锁定栈)。
 
 本阶段共 **10 轮**(对比 4a 4 轮 / 4b 7 轮),多出的 3 轮全部在「Mem0 silent
@@ -44,7 +44,7 @@ test_mcp_server 7/7),`test_rag` / `test_mcp_server` / `test_graph` / `test_strat
 | `app/llm/client.py` | `@traceable(name="llm_chat", tags=["llm"])`(类内方法装饰) | +2 行 |
 | `requirements.txt` | `langsmith==0.8.5` + `streamlit==1.57.0` + `mem0ai==2.0.2` → `mem0ai[nlp]==2.0.2`(Mapping 1 副产品) | +3 行(含 mem0ai 改写) |
 | `.gitignore` | `.claude/`(IDE 本地配置,工程卫生) | +2 行 |
-| `CLAUDE.md` | L42 LangSmith「3 行接入」→ 准确表述 / 简历表 LangSmith 验证标准 / 「当前阶段」段更新 + 「常用命令」加 streamlit | 3 处修订 + 1 行新增 |
+| `AGENTS.md` | L42 LangSmith「3 行接入」→ 准确表述 / 简历表 LangSmith 验证标准 / 「当前阶段」段更新 + 「常用命令」加 streamlit | 3 处修订 + 1 行新增 |
 | `docs/stage5_summary.md` | 本文件 | ~400 |
 | `docs/demo_script.md` | 5 分钟面试演示流程 | ~130 |
 
@@ -63,7 +63,7 @@ test_mcp_server 7/7 = 16/16 PASS**,4b 既有测试零回归。
    阶段 5 第二轮发现 SDK 装好 + env var 配齐后 LangSmith 项目 0 条 trace。
    诊断链定位到 LangGraph 1.x 已移除 0.x 的 env-var driven first-party 自动
    instrumentation,**通过 langchain-core callback 链 instrument graph.invoke
-   但需要至少一个挂载点(`@traceable` / `Runnable`)激活整条链**。CLAUDE.md L42
+   但需要至少一个挂载点(`@traceable` / `Runnable`)激活整条链**。AGENTS.md L42
    「3 行接入」基于 0.x 假设,本阶段收官修订。
 2. **C 方案:12 处 `@traceable` + retriever 拆 3 wrapper**(第三轮选型):
    备选 A(只 graph 入口 1 处)/ B(5 个节点共 5 处)/ C(12 处含 retriever
@@ -113,7 +113,7 @@ test_mcp_server 7/7 = 16/16 PASS**,4b 既有测试零回归。
     改 1 行(+`, top_k=100` 参数)+ 3 行 docstring 留痕诊断结论。**沉淀诊断到代码侧**
     而非只在文档:任何未来读 `_list_all` 的人都能从 docstring 看到「mem0 默认 20」
     这条 SDK 约定 + 「第八轮 Mapping 2 已实测确认 mem0 写入正常」诊断结论。
-11. **CLAUDE.md L42「LangSmith 3 行接入」修订**(本轮收官):
+11. **AGENTS.md L42「LangSmith 3 行接入」修订**(本轮收官):
     改前「3 行接入」基于 LangGraph 0.x 假设;改后「@traceable 12 处显式装饰
     (LangGraph 1.x 移除 env-var 自动 instrumentation,详 stage5_summary.md
     ★ 章节)」。**诚信暴露假设破裂** + 引导下次读者到本文件追溯诊断链。
@@ -122,7 +122,7 @@ test_mcp_server 7/7 = 16/16 PASS**,4b 既有测试零回归。
 
 ## ★ LangSmith 接入诊断链(LangGraph 1.x 假设破裂)
 
-阶段 5 第一轮的「3 行接入」假设来自 CLAUDE.md L42 + LangSmith 官方文档(基于
+阶段 5 第一轮的「3 行接入」假设来自 AGENTS.md L42 + LangSmith 官方文档(基于
 LangGraph 0.x 时代)。第二轮真接入后翻车 —— **测试 PASS 但 LangSmith 项目 0 条 trace**。
 
 ### 起点
@@ -150,7 +150,7 @@ LANGSMITH_PROJECT=merchant-copilot
 
 LangGraph 1.x 已移除 0.x 的 env-var driven first-party 自动 instrumentation,
 但**通过 langchain-core callback 链 instrument graph.invoke / node-to-node edge,
-需要至少一个挂载点(`@traceable` / `Runnable`)激活整条链**。CLAUDE.md L42
+需要至少一个挂载点(`@traceable` / `Runnable`)激活整条链**。AGENTS.md L42
 「3 行接入」基于 0.x 假设过时。
 
 ### 修法 + 改善对比
@@ -373,12 +373,12 @@ schema。LangSmith API key 缺失时 `@traceable` 静默 no-op(失败不抛错),
 
 ## 已知限制 / 后续
 
-1. **稳态延迟 ~17s,超 CLAUDE.md 5s 硬约束 3.4×**(沿用 4a/4b「演示项目宁稳勿快」
+1. **稳态延迟 ~17s,超 AGENTS.md 5s 硬约束 3.4×**(沿用 4a/4b「演示项目宁稳勿快」
    纪律不优化)。阶段 5 LangSmith trace 已经把延迟分布可视化:**90% 在
    `rag_rerank`(CPU)**,继续优化的边际收益不划算 —— `top_k=5→3` 削 rerank
    pair 数会破坏 4a 召回质量 + 违反「对下游透明」硬指标。
-2. **CLAUDE.md L42「LangSmith 3 行接入」基于 LangGraph 0.x 假设**(本轮收官修订
-   为「`@traceable` 12 处显式装饰」)。诚信留痕:CLAUDE.md 是 4 月初写的,
+2. **AGENTS.md L42「LangSmith 3 行接入」基于 LangGraph 0.x 假设**(本轮收官修订
+   为「`@traceable` 12 处显式装饰」)。诚信留痕:AGENTS.md 是 4 月初写的,
    LangGraph 1.x 升级在 4 月底,L42 没同步更新是项目治理小遗漏。
 3. **`mem0ai[nlp]==2.0.2` 装在 venv 17.8MB**(spaCy + `en_core_web_sm` + 14
    transitive deps)。**与 silent failure 无关**(Mapping 1 已证伪),诚信留痕
