@@ -93,7 +93,8 @@ def strategy(state: AgentState) -> dict:
                     for c in chunks
                 ],
             }, ensure_ascii=False)
-            raw = llm.chat(system=prompt, user=user_payload)
+            # Strategy needs synthesis across profile and KB, so retain thinking mode.
+            raw = llm.chat(system=prompt, user=user_payload, thinking=True)
             # 容错:LLM 可能给 ```json ... ``` 包裹(prompt L17 已禁,但兜底)
             raw_stripped = raw.strip()
             if raw_stripped.startswith("```"):

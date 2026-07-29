@@ -6,9 +6,8 @@
     * data_query/cross_period/attribution → AND(该类 SOP §8.2 判据) → binary 0/1
   - 4 维:factual_accuracy / grounding_to_context / actionability / strategy_relevance
 
-judge 模型:Qwen-Max(不同家于被测 DeepSeek-V3,降 self-eval;零新 key/依赖,
-  复用 app/llm/client.LLMClient)。provider 可配 —— 若 PM 改用 GPT/Gemini,
-  在 _PROVIDERS 加配置 + .env 加 key,judge_client(provider=...) 一行切换。
+judge 模型:Qwen 3.7 Plus 固定快照(不同家于被测 DeepSeek V4 Flash,降 self-eval;
+  零新 key/依赖,复用 app/llm/client.LLMClient)。它只用于离线评测。
 
 ⚠️ 标注独立性(DESIGN.md §5):judge 不得在 PM 标完 30 条前跑(避免 anchor)。
   本模块 step 1 只交付实现,step 4(PM 标注后)才调用 run_judge。
@@ -16,31 +15,19 @@ judge 模型:Qwen-Max(不同家于被测 DeepSeek-V3,降 self-eval;零新 key/�
 from __future__ import annotations
 
 import json
-import os
+from app.llm.client import LLMClient, get_judge_llm
 
-from app.llm.client import _PROVIDERS, LLMClient, _load_dotenv
-
-_load_dotenv()
-
-JUDGE_PROVIDER_DEFAULT = "qwen"  # 不同家于被测 DeepSeek;PM 可改 GPT/Gemini
+JUDGE_PROVIDER_DEFAULT = "qwen_judge"
 
 # 4 个固定评分维度(v1 锁,PM 6.2 opening prompt)
 DIMENSIONS = ("factual_accuracy", "grounding_to_context", "actionability", "strategy_relevance")
 
 
 def judge_client(provider: str = JUDGE_PROVIDER_DEFAULT) -> LLMClient:
-    """构造 judge LLM client(强制指定 provider,不走 get_llm 的 DeepSeek 优先)。"""
-    if provider not in _PROVIDERS:
-        raise ValueError(f"未知 judge provider: {provider}(可选 {list(_PROVIDERS)})")
-    cfg = _PROVIDERS[provider]
-    key = os.environ.get(cfg["key_env"], "").strip()
-    if not key:
-        raise RuntimeError(
-            f"judge provider={provider} 缺 {cfg['key_env']}。"
-            f"Qwen-Max 是零新依赖默认选择;若用 GPT/Gemini 需先在 .env 配 key + _PROVIDERS 加配置。"
-        )
-    base = os.environ.get(cfg["base_env"], "").strip() or cfg["base_default"]
-    return LLMClient(provider, key, base, cfg["model"])
+    """构造固定 Qwen judge；禁止借 provider 参数引入运行时切换。"""
+    if provider != JUDGE_PROVIDER_DEFAULT:
+        raise ValueError(f"judge 固定为 {JUDGE_PROVIDER_DEFAULT}")
+    return get_judge_llm()
 
 
 # ---- 按 query_type 的判据(SOP §8.2)写进 judge system prompt ----
@@ -96,7 +83,7 @@ _RUBRIC_BY_TYPE = {
 }
 
 _JUDGE_SYSTEM_TEMPLATE = (
-    "你是直播电商经营分析 Agent 的评测裁判。被测 Agent 用 DeepSeek-V3;你用不同家模型,客观评分。\n"
+    "你是直播电商经营分析 Agent 的评测裁判。被测 Agent 用 DeepSeek V4 Flash;你用不同家模型,客观评分。\n"
     "针对单条 query,依据下面的判据,对 4 个维度逐一判 0 或 1,并给一句中文理由。\n\n"
     "{rubric}\n"
     "【输出格式】严格输出一个 JSON(不要 ```包裹,不要多余文字):\n"

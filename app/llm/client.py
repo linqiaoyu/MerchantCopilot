@@ -1,68 +1,79 @@
-"""LLM 客户端封装:DeepSeek-V3(主) / Qwen-Max(备),无 key 降级 LocalStub。
+"""LLM client: runtime DeepSeek and offline-only Qwen judge.
 
-阶段 2 用 stdlib urllib 直连 OpenAI 兼容 chat/completions 接口,
-不引入 openai/httpx 依赖(对齐 AGENTS.md「保持简单 / 不引入新依赖」)。
+Uses only urllib against OpenAI-compatible chat/completions endpoints.  Runtime
+never falls back to Qwen: absence or failure of DeepSeek is explicit and callers
+choose a deterministic fallback.
 """
 from __future__ import annotations
 
 import json
 import os
 import urllib.request
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Iterator
 
 from langsmith import traceable
 
 
 def _load_dotenv() -> None:
-    """极简 .env 加载(无 python-dotenv 依赖)。已存在的环境变量不覆盖。"""
+    """Load a local .env without adding python-dotenv; existing values win."""
     env_path = Path(__file__).resolve().parents[2] / ".env"
     if not env_path.exists():
         return
     for raw in env_path.read_text(encoding="utf-8").splitlines():
         line = raw.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip())
+        if line and not line.startswith("#") and "=" in line:
+            key, _, value = line.partition("=")
+            os.environ.setdefault(key.strip(), value.strip())
 
 
 _load_dotenv()
 
-
-# provider 配置:主 DeepSeek-V3,备 Qwen-Max(顺序即优先级)
 _PROVIDERS = {
     "deepseek": {
         "key_env": "DEEPSEEK_API_KEY",
         "base_env": "DEEPSEEK_BASE_URL",
         "base_default": "https://api.deepseek.com",
-        "model": "deepseek-chat",  # DeepSeek-V3 的服务模型名
+        "model": "deepseek-v4-flash",
     },
-    "qwen": {
+    "qwen_judge": {
         "key_env": "QWEN_API_KEY",
         "base_env": "QWEN_BASE_URL",
         "base_default": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "model": "qwen-max",
+        "model": "qwen3.7-plus-2026-05-26",
     },
 }
 
 
-class LocalStub:
-    """无 API key 时的纯本地降级客户端。
+@dataclass(frozen=True)
+class Completion:
+    """Provider-neutral completion result used by agent and offline evaluation."""
 
-    它不做任何「伪 LLM 推理」——chat() 直接抛信号,由调用方
-    (Router / Insight)走各自的确定性兜底(规则分类 / 模板拼接)。
-    降级路径只有一条,不会出现「假装是 LLM 其实是 if-else」的误导。
-    """
+    text: str
+    usage: dict[str, int]
+    raw: dict
+
+
+class LocalStub:
+    """No-key runtime marker; callers must take their deterministic fallback."""
 
     is_stub = True
     provider = "local-stub"
+    model = "local-stub"
 
-    def chat(self, *args, **kwargs) -> str:  # noqa: D102
-        raise RuntimeError("LocalStub 无 LLM 能力,调用方应走确定性兜底")
+    def chat(self, *args, **kwargs) -> str:
+        raise RuntimeError("LocalStub has no LLM capability; use deterministic fallback")
+
+    def complete(self, *args, **kwargs) -> Completion:
+        raise RuntimeError("LocalStub has no LLM capability; use deterministic fallback")
+
+    def stream(self, *args, **kwargs) -> Iterator[str]:
+        raise RuntimeError("LocalStub has no LLM capability; use deterministic fallback")
 
 
 class LLMClient:
-    """OpenAI 兼容 chat/completions 的极简封装。"""
+    """Small OpenAI-compatible client with thinking, JSON Schema, usage and SSE."""
 
     is_stub = False
 
@@ -71,45 +82,180 @@ class LLMClient:
         self._api_key = api_key
         self._base_url = base_url.rstrip("/")
         self.model = model
+        self.last_usage: dict[str, int] = {}
 
     def _endpoint(self) -> str:
-        # DeepSeek base 不含 /v1;Qwen compatible-mode base 自带 /v1
         if self._base_url.endswith("/v1"):
             return f"{self._base_url}/chat/completions"
         return f"{self._base_url}/v1/chat/completions"
 
-    @traceable(name="llm_chat", tags=["llm"])
-    def chat(self, system: str, user: str, temperature: float = 0.0,
-             timeout: float = 20.0) -> str:
-        """单轮 chat,返回 assistant 文本。失败抛异常,由调用方兜底。"""
-        payload = json.dumps({
+    def _payload(
+        self,
+        system: str,
+        user: str,
+        temperature: float,
+        thinking: bool | None,
+        json_schema: dict | None,
+        stream: bool,
+    ) -> dict:
+        payload: dict = {
             "model": self.model,
             "messages": [
                 {"role": "system", "content": system},
                 {"role": "user", "content": user},
             ],
             "temperature": temperature,
-        }).encode("utf-8")
+        }
+        if thinking is not None:
+            payload["thinking"] = {"type": "enabled" if thinking else "disabled"}
+        if json_schema is not None:
+            # DeepSeek V4 supports JSON Output (json_object), not OpenAI's
+            # json_schema wire format.  The requested schema is validated
+            # deterministically by complete_json after provider JSON decoding.
+            payload["response_format"] = {"type": "json_object"}
+        if stream:
+            payload["stream"] = True
+            payload["stream_options"] = {"include_usage": True}
+        return payload
 
-        req = urllib.request.Request(
+    def _request(self, payload: dict, timeout: float):
+        return urllib.request.Request(
             self._endpoint(),
-            data=payload,
+            data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
             method="POST",
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {self._api_key}",
-            },
+            headers={"Content-Type": "application/json", "Authorization": f"Bearer {self._api_key}"},
         )
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+
+    @traceable(name="llm_complete", tags=["llm"])
+    def complete(
+        self,
+        system: str,
+        user: str,
+        temperature: float = 0.0,
+        timeout: float = 20.0,
+        *,
+        thinking: bool | None = None,
+        json_schema: dict | None = None,
+    ) -> Completion:
+        """Return text plus normalized token usage; provider failures are explicit."""
+        payload = self._payload(system, user, temperature, thinking, json_schema, False)
+        with urllib.request.urlopen(self._request(payload, timeout), timeout=timeout) as resp:
             body = json.loads(resp.read().decode("utf-8"))
-        return body["choices"][0]["message"]["content"].strip()
+        message = body["choices"][0]["message"]
+        text = (message.get("content") or "").strip()
+        raw_usage = body.get("usage") or {}
+        usage = {
+            key: int(raw_usage.get(key, 0) or 0)
+            for key in ("prompt_tokens", "completion_tokens", "total_tokens")
+        }
+        self.last_usage = usage
+        return Completion(text=text, usage=usage, raw=body)
+
+    @traceable(name="llm_chat", tags=["llm"])
+    def chat(self, system: str, user: str, temperature: float = 0.0,
+             timeout: float = 20.0, *, thinking: bool | None = None,
+             json_schema: dict | None = None) -> str:
+        """Compatibility wrapper for existing text-only call sites."""
+        return self.complete(
+            system, user, temperature, timeout, thinking=thinking, json_schema=json_schema
+        ).text
+
+    def complete_json(self, system: str, user: str, json_schema: dict,
+                      temperature: float = 0.0, timeout: float = 20.0,
+                      *, thinking: bool | None = None) -> tuple[dict, Completion]:
+        """Request, parse and validate the small object schemas used by this project."""
+        completion = self.complete(
+            system, user, temperature, timeout, thinking=thinking, json_schema=json_schema
+        )
+        try:
+            value = json.loads(completion.text)
+        except json.JSONDecodeError as exc:
+            raise ValueError("LLM response is not valid JSON") from exc
+        _validate_json_schema(value, json_schema)
+        return value, completion
+
+    @traceable(name="llm_stream", tags=["llm"])
+    def stream(self, system: str, user: str, temperature: float = 0.0,
+               timeout: float = 20.0, *, thinking: bool | None = None,
+               json_schema: dict | None = None) -> Iterator[str]:
+        """Yield content deltas from an OpenAI-compatible SSE response."""
+        payload = self._payload(system, user, temperature, thinking, json_schema, True)
+        with urllib.request.urlopen(self._request(payload, timeout), timeout=timeout) as resp:
+            for raw_line in resp:
+                line = raw_line.decode("utf-8").strip()
+                if not line.startswith("data:"):
+                    continue
+                data = line[5:].strip()
+                if data == "[DONE]":
+                    break
+                event = json.loads(data)
+                usage = event.get("usage")
+                if usage:
+                    self.last_usage = {
+                        key: int(usage.get(key, 0) or 0)
+                        for key in ("prompt_tokens", "completion_tokens", "total_tokens")
+                    }
+                choices = event.get("choices") or []
+                if choices:
+                    delta = choices[0].get("delta") or {}
+                    text = delta.get("content") or ""
+                    if text:
+                        yield text
+
+
+def _validate_json_schema(value: object, schema: dict, path: str = "$") -> None:
+    """Minimal deterministic validator for our object/array/scalar response schemas."""
+    expected = schema.get("type")
+    type_ok = {
+        "object": isinstance(value, dict), "array": isinstance(value, list),
+        "string": isinstance(value, str),
+        "number": isinstance(value, (int, float)) and not isinstance(value, bool),
+        "integer": isinstance(value, int) and not isinstance(value, bool),
+        "boolean": isinstance(value, bool),
+    }
+    if expected and not type_ok.get(expected, True):
+        raise ValueError(f"{path} expected {expected}")
+    if "enum" in schema and value not in schema["enum"]:
+        raise ValueError(f"{path} is not an allowed enum value")
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        if "minimum" in schema and value < schema["minimum"]:
+            raise ValueError(f"{path} below minimum")
+        if "maximum" in schema and value > schema["maximum"]:
+            raise ValueError(f"{path} above maximum")
+    if isinstance(value, dict):
+        required = schema.get("required", [])
+        missing = [key for key in required if key not in value]
+        if missing:
+            raise ValueError(f"{path} missing required keys: {missing}")
+        properties = schema.get("properties", {})
+        if schema.get("additionalProperties") is False:
+            unknown = set(value) - set(properties)
+            if unknown:
+                raise ValueError(f"{path} has unknown keys: {sorted(unknown)}")
+        for key, child in properties.items():
+            if key in value:
+                _validate_json_schema(value[key], child, f"{path}.{key}")
+    if isinstance(value, list) and "items" in schema:
+        for index, item in enumerate(value):
+            _validate_json_schema(item, schema["items"], f"{path}[{index}]")
+
+
+def _client_for(provider: str) -> LLMClient:
+    cfg = _PROVIDERS[provider]
+    key = os.environ.get(cfg["key_env"], "").strip()
+    if not key:
+        raise RuntimeError(f"{provider} requires {cfg['key_env']}")
+    base = os.environ.get(cfg["base_env"], "").strip() or cfg["base_default"]
+    return LLMClient(provider, key, base, cfg["model"])
 
 
 def get_llm() -> LLMClient | LocalStub:
-    """优先 DeepSeek,其次 Qwen;都无 key 返回 LocalStub(纯本地模式)。"""
-    for name, cfg in _PROVIDERS.items():
-        key = os.environ.get(cfg["key_env"], "").strip()
-        if key:
-            base = os.environ.get(cfg["base_env"], "").strip() or cfg["base_default"]
-            return LLMClient(name, key, base, cfg["model"])
-    return LocalStub()
+    """Return runtime DeepSeek only; Qwen is never a runtime fallback."""
+    if not os.environ.get(_PROVIDERS["deepseek"]["key_env"], "").strip():
+        return LocalStub()
+    return _client_for("deepseek")
+
+
+def get_judge_llm() -> LLMClient:
+    """Return the fixed-snapshot Qwen client for offline evaluation only."""
+    return _client_for("qwen_judge")

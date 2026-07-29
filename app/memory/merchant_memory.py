@@ -9,7 +9,7 @@ infer=False:全部走原文存储,不调 Mem0 的 LLM 抽取。
     单商家 + 信号弱场景下抽取不可控;A.5 保留 Mem0「按 user_id 隔离 + 时序记忆累积」
     的核心价值,丢弃噪音大的自动抽取。
 
-栈对齐:DeepSeek-V3 LLM + BGE-M3 embedder + Chroma vector store(独立 collection)。
+栈对齐:DeepSeek V4 Flash + BGE-M3 embedder + Chroma vector store(独立 collection)。
 init 必须配 LLM(Mem0 硬约束),infer=False 下实际不调,但对齐项目锁定栈。
 """
 from __future__ import annotations
@@ -48,7 +48,7 @@ def get_client():
         "llm": {
             "provider": "deepseek",
             "config": {
-                "model": "deepseek-chat",
+                "model": "deepseek-v4-flash",
                 "api_key": os.environ.get("DEEPSEEK_API_KEY", ""),
             },
         },
