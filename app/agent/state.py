@@ -36,3 +36,8 @@ class AgentState(TypedDict, total=False):
 
     CLI 可视化用,阶段 5 接 LangSmith 复用。
     """
+
+    recalled_memories: list[dict[str, Any]]
+    plan: Any
+    action_cursor: int
+    verification: dict[str, Any]
