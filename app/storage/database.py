@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import os
+from contextlib import contextmanager
 from pathlib import Path
+from typing import Iterator
 
 import psycopg
 from langgraph.checkpoint.postgres import PostgresSaver
@@ -49,8 +51,9 @@ def database_ready(dsn: str | None = None) -> bool:
         return False
 
 
-def create_checkpointer(dsn: str | None = None) -> PostgresSaver:
-    """Create and initialize LangGraph's official Postgres checkpointer."""
-    saver = PostgresSaver.from_conn_string(dsn or runtime_dsn())
-    saver.setup()
-    return saver
+@contextmanager
+def checkpointer_context(dsn: str | None = None) -> Iterator[PostgresSaver]:
+    """Keep the official saver connection open for the caller's graph lifetime."""
+    with PostgresSaver.from_conn_string(dsn or runtime_dsn()) as saver:
+        saver.setup()
+        yield saver

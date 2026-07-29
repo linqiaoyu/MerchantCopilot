@@ -1,6 +1,8 @@
 from pathlib import Path
 
-from app.storage.database import MIGRATIONS
+import inspect
+
+from app.storage.database import MIGRATIONS, checkpointer_context
 
 
 def test_memory_migration_declares_required_tables_and_vector_dimension():
@@ -15,3 +17,7 @@ def test_local_compose_uses_pgvector_and_persistent_volume():
     compose = Path("docker-compose.yml").read_text(encoding="utf-8")
     assert "pgvector/pgvector:pg16" in compose
     assert "merchantcopilot_pgdata" in compose
+
+
+def test_checkpointer_is_explicitly_connection_scoped():
+    assert inspect.isgeneratorfunction(checkpointer_context.__wrapped__)
