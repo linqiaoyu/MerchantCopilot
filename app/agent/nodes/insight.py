@@ -18,6 +18,26 @@ _PROMPT = (Path(__file__).resolve().parents[1] / "prompts" / "insight.txt").read
 )
 
 
+def _render_structured_result(nr: dict) -> str:
+    """确定性渲染 Metric/Attribution，避免 LLM 改写工具计算出的逐格数字。"""
+    data = nr.get("data", {})
+    lines = [nr.get("headline", "分析结果"), "", "结构化明细（工具原始结果）:"]
+
+    # 多段窗口额外声明有效天数；当数据窗不是完整自然窗时必须可见。
+    for period in data.get("periods", []):
+        window = period.get("window", {})
+        days = period.get("days")
+        lines.append(
+            f"- {period.get('label', '')}: 窗口 {window.get('start', '')} ~ "
+            f"{window.get('end', '')}，有效数据 {days} 天"
+        )
+
+    # json.dumps 是 lossless 的最终数值表面：groups、periods 以及归因 drill-down
+    # 都直接来自 node_result.data，既不由 LLM 重排也不经格式化计算。
+    lines.extend(["", "```json", json.dumps(data, ensure_ascii=False, sort_keys=True, default=str), "```"])
+    return "\n".join(lines)
+
+
 def _template_answer(nr: dict) -> str:
     """确定性模板兜底:headline + 依据 +(策略时)分条建议。"""
     lines = [nr["headline"], "", "依据:"]
@@ -54,6 +74,9 @@ def insight(state: AgentState) -> dict:
     if not nr:
         answer = "未获得任何分析结果,请重述问题或缩小范围。"
         method = "empty"
+    elif nr.get("task") in {"metric", "attribution"}:
+        # 结构化业务事实由确定性渲染器独占，防止 Insight LLM 漏列/改写数字。
+        answer, method = _render_structured_result(nr), "deterministic"
     else:
         llm_text = _llm_answer(nr)
         if llm_text:
