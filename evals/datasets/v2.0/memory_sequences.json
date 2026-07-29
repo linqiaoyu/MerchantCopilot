@@ -1,0 +1,2997 @@
+{
+  "version": "eval-dataset-v2.0-rc1",
+  "merchant_id": "xiaozhang_women",
+  "frozen_at": "2026-07-30",
+  "cases": [
+    {
+      "id": "mem-stable-01",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-1",
+      "query": "类目是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-01",
+          "occurred_at": "2026-02-17T09:00:00Z",
+          "thread_id": "thread-seed-1",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-01",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "valid_from_event_id": "evt-s-01"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-01"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-01",
+          "source_event_id": "evt-s-01"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-02",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-2",
+      "query": "主力客群是谁？",
+      "events": [
+        {
+          "event_id": "evt-s-02",
+          "occurred_at": "2026-02-18T09:00:00Z",
+          "thread_id": "thread-seed-2",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-02",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "valid_from_event_id": "evt-s-02"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-02"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-02",
+          "source_event_id": "evt-s-02"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-03",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-3",
+      "query": "偏好什么风格？",
+      "events": [
+        {
+          "event_id": "evt-s-03",
+          "occurred_at": "2026-02-19T09:00:00Z",
+          "thread_id": "thread-seed-3",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-03",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "valid_from_event_id": "evt-s-03"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-03"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-03",
+          "source_event_id": "evt-s-03"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-04",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-4",
+      "query": "主播排班是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-04",
+          "occurred_at": "2026-02-20T09:00:00Z",
+          "thread_id": "thread-seed-4",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-04",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "valid_from_event_id": "evt-s-04"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-04"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-04",
+          "source_event_id": "evt-s-04"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-05",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-5",
+      "query": "主力价格带是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-05",
+          "occurred_at": "2026-02-21T09:00:00Z",
+          "thread_id": "thread-seed-5",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-05",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "valid_from_event_id": "evt-s-05"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-05"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-05",
+          "source_event_id": "evt-s-05"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-06",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-6",
+      "query": "类目是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-06",
+          "occurred_at": "2026-02-22T09:00:00Z",
+          "thread_id": "thread-seed-6",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-06",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "valid_from_event_id": "evt-s-06"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-06"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-06",
+          "source_event_id": "evt-s-06"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-07",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-7",
+      "query": "主力客群是谁？",
+      "events": [
+        {
+          "event_id": "evt-s-07",
+          "occurred_at": "2026-02-23T09:00:00Z",
+          "thread_id": "thread-seed-7",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-07",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "valid_from_event_id": "evt-s-07"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-07"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-07",
+          "source_event_id": "evt-s-07"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-08",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-8",
+      "query": "偏好什么风格？",
+      "events": [
+        {
+          "event_id": "evt-s-08",
+          "occurred_at": "2026-02-24T09:00:00Z",
+          "thread_id": "thread-seed-8",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-08",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "valid_from_event_id": "evt-s-08"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-08"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-08",
+          "source_event_id": "evt-s-08"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-09",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-9",
+      "query": "主播排班是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-09",
+          "occurred_at": "2026-02-25T09:00:00Z",
+          "thread_id": "thread-seed-9",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-09",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "valid_from_event_id": "evt-s-09"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-09"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-09",
+          "source_event_id": "evt-s-09"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-10",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-10",
+      "query": "主力价格带是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-10",
+          "occurred_at": "2026-02-26T09:00:00Z",
+          "thread_id": "thread-seed-10",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-10",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "valid_from_event_id": "evt-s-10"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-10"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-10",
+          "source_event_id": "evt-s-10"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-11",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-11",
+      "query": "类目是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-11",
+          "occurred_at": "2026-02-27T09:00:00Z",
+          "thread_id": "thread-seed-11",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-11",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "valid_from_event_id": "evt-s-11"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-11"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-11",
+          "source_event_id": "evt-s-11"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-12",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-12",
+      "query": "主力客群是谁？",
+      "events": [
+        {
+          "event_id": "evt-s-12",
+          "occurred_at": "2026-02-16T09:00:00Z",
+          "thread_id": "thread-seed-12",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-12",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "valid_from_event_id": "evt-s-12"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-12"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-12",
+          "source_event_id": "evt-s-12"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-13",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-13",
+      "query": "偏好什么风格？",
+      "events": [
+        {
+          "event_id": "evt-s-13",
+          "occurred_at": "2026-02-17T09:00:00Z",
+          "thread_id": "thread-seed-13",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-13",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "valid_from_event_id": "evt-s-13"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-13"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-13",
+          "source_event_id": "evt-s-13"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-14",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-14",
+      "query": "主播排班是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-14",
+          "occurred_at": "2026-02-18T09:00:00Z",
+          "thread_id": "thread-seed-14",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-14",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "valid_from_event_id": "evt-s-14"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-14"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-14",
+          "source_event_id": "evt-s-14"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-15",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-15",
+      "query": "主力价格带是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-15",
+          "occurred_at": "2026-02-19T09:00:00Z",
+          "thread_id": "thread-seed-15",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-15",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "valid_from_event_id": "evt-s-15"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-15"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-15",
+          "source_event_id": "evt-s-15"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-16",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-16",
+      "query": "类目是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-16",
+          "occurred_at": "2026-02-20T09:00:00Z",
+          "thread_id": "thread-seed-16",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-16",
+          "subject": "merchant",
+          "predicate": "category",
+          "value": "女装，中端价格带 ¥100-300",
+          "valid_from_event_id": "evt-s-16"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-16"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-16",
+          "source_event_id": "evt-s-16"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-17",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-17",
+      "query": "主力客群是谁？",
+      "events": [
+        {
+          "event_id": "evt-s-17",
+          "occurred_at": "2026-02-21T09:00:00Z",
+          "thread_id": "thread-seed-17",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-17",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "18-24 学生与25-30职场新人",
+          "valid_from_event_id": "evt-s-17"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-17"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-17",
+          "source_event_id": "evt-s-17"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-18",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-18",
+      "query": "偏好什么风格？",
+      "events": [
+        {
+          "event_id": "evt-s-18",
+          "occurred_at": "2026-02-22T09:00:00Z",
+          "thread_id": "thread-seed-18",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-18",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "基础款实穿主导",
+          "valid_from_event_id": "evt-s-18"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-18"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-18",
+          "source_event_id": "evt-s-18"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-19",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-19",
+      "query": "主播排班是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-19",
+          "occurred_at": "2026-02-23T09:00:00Z",
+          "thread_id": "thread-seed-19",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-19",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "小张午场，小李工作日晚场",
+          "valid_from_event_id": "evt-s-19"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-19"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-19",
+          "source_event_id": "evt-s-19"
+        }
+      ]
+    },
+    {
+      "id": "mem-stable-20",
+      "category": "stable_profile",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-stable-20",
+      "query": "主力价格带是什么？",
+      "events": [
+        {
+          "event_id": "evt-s-20",
+          "occurred_at": "2026-02-24T09:00:00Z",
+          "thread_id": "thread-seed-20",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "source_type": "seed",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-s-20",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "¥100-300 主力价格带",
+          "valid_from_event_id": "evt-s-20"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-s-20"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-s-20",
+          "source_event_id": "evt-s-20"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-01",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-1",
+      "query": "现在的audience是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-01-old",
+          "occurred_at": "2026-03-02T09:00:00Z",
+          "thread_id": "thread-history-1",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "旧audience设定-1",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-01-new",
+          "occurred_at": "2026-05-02T09:00:00Z",
+          "thread_id": "thread-update-1",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "新audience设定-1",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-01-new",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "新audience设定-1",
+          "valid_from_event_id": "evt-t-01-new",
+          "supersedes": "fact-t-01-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-01-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-01-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-01-new",
+          "source_event_id": "evt-t-01-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-02",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-2",
+      "query": "现在的price_band是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-02-old",
+          "occurred_at": "2026-03-03T09:00:00Z",
+          "thread_id": "thread-history-2",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "旧price_band设定-2",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-02-new",
+          "occurred_at": "2026-05-03T09:00:00Z",
+          "thread_id": "thread-update-2",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "新price_band设定-2",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-02-new",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "新price_band设定-2",
+          "valid_from_event_id": "evt-t-02-new",
+          "supersedes": "fact-t-02-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-02-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-02-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-02-new",
+          "source_event_id": "evt-t-02-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-03",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-3",
+      "query": "现在的host_schedule是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-03-old",
+          "occurred_at": "2026-03-04T09:00:00Z",
+          "thread_id": "thread-history-3",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "旧host_schedule设定-3",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-03-new",
+          "occurred_at": "2026-05-04T09:00:00Z",
+          "thread_id": "thread-update-3",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "新host_schedule设定-3",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-03-new",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "新host_schedule设定-3",
+          "valid_from_event_id": "evt-t-03-new",
+          "supersedes": "fact-t-03-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-03-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-03-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-03-new",
+          "source_event_id": "evt-t-03-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-04",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-4",
+      "query": "现在的style是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-04-old",
+          "occurred_at": "2026-03-05T09:00:00Z",
+          "thread_id": "thread-history-4",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "旧style设定-4",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-04-new",
+          "occurred_at": "2026-05-05T09:00:00Z",
+          "thread_id": "thread-update-4",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "新style设定-4",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-04-new",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "新style设定-4",
+          "valid_from_event_id": "evt-t-04-new",
+          "supersedes": "fact-t-04-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-04-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-04-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-04-new",
+          "source_event_id": "evt-t-04-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-05",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-5",
+      "query": "现在的promotion_policy是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-05-old",
+          "occurred_at": "2026-03-06T09:00:00Z",
+          "thread_id": "thread-history-5",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "旧promotion_policy设定-5",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-05-new",
+          "occurred_at": "2026-05-06T09:00:00Z",
+          "thread_id": "thread-update-5",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "新promotion_policy设定-5",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-05-new",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "新promotion_policy设定-5",
+          "valid_from_event_id": "evt-t-05-new",
+          "supersedes": "fact-t-05-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-05-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-05-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-05-new",
+          "source_event_id": "evt-t-05-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-06",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-6",
+      "query": "现在的audience是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-06-old",
+          "occurred_at": "2026-03-07T09:00:00Z",
+          "thread_id": "thread-history-6",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "旧audience设定-6",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-06-new",
+          "occurred_at": "2026-05-07T09:00:00Z",
+          "thread_id": "thread-update-6",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "新audience设定-6",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-06-new",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "新audience设定-6",
+          "valid_from_event_id": "evt-t-06-new",
+          "supersedes": "fact-t-06-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-06-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-06-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-06-new",
+          "source_event_id": "evt-t-06-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-07",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-7",
+      "query": "现在的price_band是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-07-old",
+          "occurred_at": "2026-03-08T09:00:00Z",
+          "thread_id": "thread-history-7",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "旧price_band设定-7",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-07-new",
+          "occurred_at": "2026-05-08T09:00:00Z",
+          "thread_id": "thread-update-7",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "新price_band设定-7",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-07-new",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "新price_band设定-7",
+          "valid_from_event_id": "evt-t-07-new",
+          "supersedes": "fact-t-07-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-07-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-07-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-07-new",
+          "source_event_id": "evt-t-07-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-08",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-8",
+      "query": "现在的host_schedule是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-08-old",
+          "occurred_at": "2026-03-09T09:00:00Z",
+          "thread_id": "thread-history-8",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "旧host_schedule设定-8",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-08-new",
+          "occurred_at": "2026-05-09T09:00:00Z",
+          "thread_id": "thread-update-8",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "新host_schedule设定-8",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-08-new",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "新host_schedule设定-8",
+          "valid_from_event_id": "evt-t-08-new",
+          "supersedes": "fact-t-08-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-08-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-08-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-08-new",
+          "source_event_id": "evt-t-08-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-09",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-9",
+      "query": "现在的style是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-09-old",
+          "occurred_at": "2026-03-10T09:00:00Z",
+          "thread_id": "thread-history-9",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "旧style设定-9",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-09-new",
+          "occurred_at": "2026-05-10T09:00:00Z",
+          "thread_id": "thread-update-9",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "新style设定-9",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-09-new",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "新style设定-9",
+          "valid_from_event_id": "evt-t-09-new",
+          "supersedes": "fact-t-09-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-09-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-09-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-09-new",
+          "source_event_id": "evt-t-09-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-10",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-10",
+      "query": "现在的promotion_policy是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-10-old",
+          "occurred_at": "2026-03-11T09:00:00Z",
+          "thread_id": "thread-history-10",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "旧promotion_policy设定-10",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-10-new",
+          "occurred_at": "2026-05-11T09:00:00Z",
+          "thread_id": "thread-update-10",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "新promotion_policy设定-10",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-10-new",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "新promotion_policy设定-10",
+          "valid_from_event_id": "evt-t-10-new",
+          "supersedes": "fact-t-10-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-10-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-10-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-10-new",
+          "source_event_id": "evt-t-10-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-11",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-11",
+      "query": "现在的audience是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-11-old",
+          "occurred_at": "2026-03-12T09:00:00Z",
+          "thread_id": "thread-history-11",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "旧audience设定-11",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-11-new",
+          "occurred_at": "2026-05-12T09:00:00Z",
+          "thread_id": "thread-update-11",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "新audience设定-11",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-11-new",
+          "subject": "merchant",
+          "predicate": "audience",
+          "value": "新audience设定-11",
+          "valid_from_event_id": "evt-t-11-new",
+          "supersedes": "fact-t-11-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-11-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-11-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-11-new",
+          "source_event_id": "evt-t-11-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-12",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-12",
+      "query": "现在的price_band是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-12-old",
+          "occurred_at": "2026-03-13T09:00:00Z",
+          "thread_id": "thread-history-12",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "旧price_band设定-12",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-12-new",
+          "occurred_at": "2026-05-13T09:00:00Z",
+          "thread_id": "thread-update-12",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "新price_band设定-12",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-12-new",
+          "subject": "merchant",
+          "predicate": "price_band",
+          "value": "新price_band设定-12",
+          "valid_from_event_id": "evt-t-12-new",
+          "supersedes": "fact-t-12-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-12-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-12-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-12-new",
+          "source_event_id": "evt-t-12-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-13",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-13",
+      "query": "现在的host_schedule是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-13-old",
+          "occurred_at": "2026-03-14T09:00:00Z",
+          "thread_id": "thread-history-13",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "旧host_schedule设定-13",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-13-new",
+          "occurred_at": "2026-05-14T09:00:00Z",
+          "thread_id": "thread-update-13",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "新host_schedule设定-13",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-13-new",
+          "subject": "merchant",
+          "predicate": "host_schedule",
+          "value": "新host_schedule设定-13",
+          "valid_from_event_id": "evt-t-13-new",
+          "supersedes": "fact-t-13-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-13-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-13-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-13-new",
+          "source_event_id": "evt-t-13-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-14",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-14",
+      "query": "现在的style是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-14-old",
+          "occurred_at": "2026-03-15T09:00:00Z",
+          "thread_id": "thread-history-14",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "旧style设定-14",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-14-new",
+          "occurred_at": "2026-05-15T09:00:00Z",
+          "thread_id": "thread-update-14",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "新style设定-14",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-14-new",
+          "subject": "merchant",
+          "predicate": "style",
+          "value": "新style设定-14",
+          "valid_from_event_id": "evt-t-14-new",
+          "supersedes": "fact-t-14-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-14-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-14-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-14-new",
+          "source_event_id": "evt-t-14-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-temporal-15",
+      "category": "temporal_conflict",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-temporal-15",
+      "query": "现在的promotion_policy是什么？",
+      "events": [
+        {
+          "event_id": "evt-t-15-old",
+          "occurred_at": "2026-03-16T09:00:00Z",
+          "thread_id": "thread-history-15",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "旧promotion_policy设定-15",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-t-15-new",
+          "occurred_at": "2026-05-01T09:00:00Z",
+          "thread_id": "thread-update-15",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "新promotion_policy设定-15",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-t-15-new",
+          "subject": "merchant",
+          "predicate": "promotion_policy",
+          "value": "新promotion_policy设定-15",
+          "valid_from_event_id": "evt-t-15-new",
+          "supersedes": "fact-t-15-old"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-t-15-new"
+      ],
+      "forbidden_memory_ids": [
+        "fact-t-15-old"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-t-15-new",
+          "source_event_id": "evt-t-15-new"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-01",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-1",
+      "query": "回顾此前确认的经营约束 1。",
+      "events": [
+        {
+          "event_id": "evt-x-01",
+          "occurred_at": "2026-04-01T10:00:00Z",
+          "thread_id": "thread-old-1",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_1",
+          "value": "跨线程约束-1",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-01-scratch",
+          "occurred_at": "2026-04-11T10:00:00Z",
+          "thread_id": "thread-old-1",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-1",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-01",
+          "subject": "merchant",
+          "predicate": "constraint_1",
+          "value": "跨线程约束-1",
+          "valid_from_event_id": "evt-x-01"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-01"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-01"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-01",
+          "source_event_id": "evt-x-01"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-02",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-2",
+      "query": "回顾此前确认的经营约束 2。",
+      "events": [
+        {
+          "event_id": "evt-x-02",
+          "occurred_at": "2026-04-02T10:00:00Z",
+          "thread_id": "thread-old-2",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_2",
+          "value": "跨线程约束-2",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-02-scratch",
+          "occurred_at": "2026-04-12T10:00:00Z",
+          "thread_id": "thread-old-2",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-2",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-02",
+          "subject": "merchant",
+          "predicate": "constraint_2",
+          "value": "跨线程约束-2",
+          "valid_from_event_id": "evt-x-02"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-02"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-02"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-02",
+          "source_event_id": "evt-x-02"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-03",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-3",
+      "query": "回顾此前确认的经营约束 3。",
+      "events": [
+        {
+          "event_id": "evt-x-03",
+          "occurred_at": "2026-04-03T10:00:00Z",
+          "thread_id": "thread-old-3",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_3",
+          "value": "跨线程约束-3",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-03-scratch",
+          "occurred_at": "2026-04-13T10:00:00Z",
+          "thread_id": "thread-old-3",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-3",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-03",
+          "subject": "merchant",
+          "predicate": "constraint_3",
+          "value": "跨线程约束-3",
+          "valid_from_event_id": "evt-x-03"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-03"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-03"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-03",
+          "source_event_id": "evt-x-03"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-04",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-4",
+      "query": "回顾此前确认的经营约束 4。",
+      "events": [
+        {
+          "event_id": "evt-x-04",
+          "occurred_at": "2026-04-04T10:00:00Z",
+          "thread_id": "thread-old-4",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_4",
+          "value": "跨线程约束-4",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-04-scratch",
+          "occurred_at": "2026-04-14T10:00:00Z",
+          "thread_id": "thread-old-4",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-4",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-04",
+          "subject": "merchant",
+          "predicate": "constraint_4",
+          "value": "跨线程约束-4",
+          "valid_from_event_id": "evt-x-04"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-04"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-04"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-04",
+          "source_event_id": "evt-x-04"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-05",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-5",
+      "query": "回顾此前确认的经营约束 5。",
+      "events": [
+        {
+          "event_id": "evt-x-05",
+          "occurred_at": "2026-04-05T10:00:00Z",
+          "thread_id": "thread-old-5",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_5",
+          "value": "跨线程约束-5",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-05-scratch",
+          "occurred_at": "2026-04-15T10:00:00Z",
+          "thread_id": "thread-old-5",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-5",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-05",
+          "subject": "merchant",
+          "predicate": "constraint_5",
+          "value": "跨线程约束-5",
+          "valid_from_event_id": "evt-x-05"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-05"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-05"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-05",
+          "source_event_id": "evt-x-05"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-06",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-6",
+      "query": "回顾此前确认的经营约束 6。",
+      "events": [
+        {
+          "event_id": "evt-x-06",
+          "occurred_at": "2026-04-06T10:00:00Z",
+          "thread_id": "thread-old-6",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_6",
+          "value": "跨线程约束-6",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-06-scratch",
+          "occurred_at": "2026-04-16T10:00:00Z",
+          "thread_id": "thread-old-6",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-6",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-06",
+          "subject": "merchant",
+          "predicate": "constraint_6",
+          "value": "跨线程约束-6",
+          "valid_from_event_id": "evt-x-06"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-06"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-06"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-06",
+          "source_event_id": "evt-x-06"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-07",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-7",
+      "query": "回顾此前确认的经营约束 7。",
+      "events": [
+        {
+          "event_id": "evt-x-07",
+          "occurred_at": "2026-04-07T10:00:00Z",
+          "thread_id": "thread-old-7",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_7",
+          "value": "跨线程约束-7",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-07-scratch",
+          "occurred_at": "2026-04-17T10:00:00Z",
+          "thread_id": "thread-old-7",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-7",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-07",
+          "subject": "merchant",
+          "predicate": "constraint_7",
+          "value": "跨线程约束-7",
+          "valid_from_event_id": "evt-x-07"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-07"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-07"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-07",
+          "source_event_id": "evt-x-07"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-08",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-8",
+      "query": "回顾此前确认的经营约束 8。",
+      "events": [
+        {
+          "event_id": "evt-x-08",
+          "occurred_at": "2026-04-08T10:00:00Z",
+          "thread_id": "thread-old-8",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_8",
+          "value": "跨线程约束-8",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-08-scratch",
+          "occurred_at": "2026-04-18T10:00:00Z",
+          "thread_id": "thread-old-8",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-8",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-08",
+          "subject": "merchant",
+          "predicate": "constraint_8",
+          "value": "跨线程约束-8",
+          "valid_from_event_id": "evt-x-08"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-08"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-08"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-08",
+          "source_event_id": "evt-x-08"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-09",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-9",
+      "query": "回顾此前确认的经营约束 9。",
+      "events": [
+        {
+          "event_id": "evt-x-09",
+          "occurred_at": "2026-04-09T10:00:00Z",
+          "thread_id": "thread-old-9",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_9",
+          "value": "跨线程约束-9",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-09-scratch",
+          "occurred_at": "2026-04-19T10:00:00Z",
+          "thread_id": "thread-old-9",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-9",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-09",
+          "subject": "merchant",
+          "predicate": "constraint_9",
+          "value": "跨线程约束-9",
+          "valid_from_event_id": "evt-x-09"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-09"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-09"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-09",
+          "source_event_id": "evt-x-09"
+        }
+      ]
+    },
+    {
+      "id": "mem-cross-thread-10",
+      "category": "cross_thread_recall",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-new-10",
+      "query": "回顾此前确认的经营约束 10。",
+      "events": [
+        {
+          "event_id": "evt-x-10",
+          "occurred_at": "2026-04-10T10:00:00Z",
+          "thread_id": "thread-old-10",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "constraint_10",
+          "value": "跨线程约束-10",
+          "source_type": "user_approved",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-x-10-scratch",
+          "occurred_at": "2026-04-20T10:00:00Z",
+          "thread_id": "thread-old-10",
+          "kind": "working_note",
+          "subject": "run",
+          "predicate": "scratchpad",
+          "value": "仅旧线程短期草稿-10",
+          "source_type": "agent",
+          "status": "ephemeral"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-x-10",
+          "subject": "merchant",
+          "predicate": "constraint_10",
+          "value": "跨线程约束-10",
+          "valid_from_event_id": "evt-x-10"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-x-10"
+      ],
+      "forbidden_memory_ids": [
+        "scratch-x-10"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-x-10",
+          "source_event_id": "evt-x-10"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-01",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-1",
+      "query": "请使用与退款问题 1 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-01-target",
+          "occurred_at": "2026-05-01T12:00:00Z",
+          "thread_id": "thread-noise-source-1",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_1",
+          "value": "退款相关约束-1",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-01-noise",
+          "occurred_at": "2026-05-11T12:00:00Z",
+          "thread_id": "thread-noise-source-1",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_1",
+          "value": "无关投流话题-1",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-01-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_1",
+          "value": "退款相关约束-1",
+          "valid_from_event_id": "evt-n-01-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-01-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-01-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-01-target",
+          "source_event_id": "evt-n-01-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-02",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-2",
+      "query": "请使用与退款问题 2 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-02-target",
+          "occurred_at": "2026-05-02T12:00:00Z",
+          "thread_id": "thread-noise-source-2",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_2",
+          "value": "退款相关约束-2",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-02-noise",
+          "occurred_at": "2026-05-12T12:00:00Z",
+          "thread_id": "thread-noise-source-2",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_2",
+          "value": "无关投流话题-2",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-02-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_2",
+          "value": "退款相关约束-2",
+          "valid_from_event_id": "evt-n-02-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-02-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-02-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-02-target",
+          "source_event_id": "evt-n-02-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-03",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-3",
+      "query": "请使用与退款问题 3 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-03-target",
+          "occurred_at": "2026-05-03T12:00:00Z",
+          "thread_id": "thread-noise-source-3",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_3",
+          "value": "退款相关约束-3",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-03-noise",
+          "occurred_at": "2026-05-13T12:00:00Z",
+          "thread_id": "thread-noise-source-3",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_3",
+          "value": "无关投流话题-3",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-03-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_3",
+          "value": "退款相关约束-3",
+          "valid_from_event_id": "evt-n-03-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-03-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-03-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-03-target",
+          "source_event_id": "evt-n-03-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-04",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-4",
+      "query": "请使用与退款问题 4 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-04-target",
+          "occurred_at": "2026-05-04T12:00:00Z",
+          "thread_id": "thread-noise-source-4",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_4",
+          "value": "退款相关约束-4",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-04-noise",
+          "occurred_at": "2026-05-14T12:00:00Z",
+          "thread_id": "thread-noise-source-4",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_4",
+          "value": "无关投流话题-4",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-04-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_4",
+          "value": "退款相关约束-4",
+          "valid_from_event_id": "evt-n-04-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-04-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-04-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-04-target",
+          "source_event_id": "evt-n-04-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-05",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-5",
+      "query": "请使用与退款问题 5 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-05-target",
+          "occurred_at": "2026-05-05T12:00:00Z",
+          "thread_id": "thread-noise-source-5",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_5",
+          "value": "退款相关约束-5",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-05-noise",
+          "occurred_at": "2026-05-15T12:00:00Z",
+          "thread_id": "thread-noise-source-5",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_5",
+          "value": "无关投流话题-5",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-05-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_5",
+          "value": "退款相关约束-5",
+          "valid_from_event_id": "evt-n-05-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-05-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-05-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-05-target",
+          "source_event_id": "evt-n-05-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-06",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-6",
+      "query": "请使用与退款问题 6 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-06-target",
+          "occurred_at": "2026-05-06T12:00:00Z",
+          "thread_id": "thread-noise-source-6",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_6",
+          "value": "退款相关约束-6",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-06-noise",
+          "occurred_at": "2026-05-16T12:00:00Z",
+          "thread_id": "thread-noise-source-6",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_6",
+          "value": "无关投流话题-6",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-06-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_6",
+          "value": "退款相关约束-6",
+          "valid_from_event_id": "evt-n-06-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-06-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-06-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-06-target",
+          "source_event_id": "evt-n-06-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-07",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-7",
+      "query": "请使用与退款问题 7 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-07-target",
+          "occurred_at": "2026-05-07T12:00:00Z",
+          "thread_id": "thread-noise-source-7",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_7",
+          "value": "退款相关约束-7",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-07-noise",
+          "occurred_at": "2026-05-17T12:00:00Z",
+          "thread_id": "thread-noise-source-7",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_7",
+          "value": "无关投流话题-7",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-07-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_7",
+          "value": "退款相关约束-7",
+          "valid_from_event_id": "evt-n-07-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-07-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-07-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-07-target",
+          "source_event_id": "evt-n-07-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-08",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-8",
+      "query": "请使用与退款问题 8 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-08-target",
+          "occurred_at": "2026-05-08T12:00:00Z",
+          "thread_id": "thread-noise-source-8",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_8",
+          "value": "退款相关约束-8",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-08-noise",
+          "occurred_at": "2026-05-18T12:00:00Z",
+          "thread_id": "thread-noise-source-8",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_8",
+          "value": "无关投流话题-8",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-08-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_8",
+          "value": "退款相关约束-8",
+          "valid_from_event_id": "evt-n-08-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-08-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-08-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-08-target",
+          "source_event_id": "evt-n-08-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-09",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-9",
+      "query": "请使用与退款问题 9 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-09-target",
+          "occurred_at": "2026-05-09T12:00:00Z",
+          "thread_id": "thread-noise-source-9",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_9",
+          "value": "退款相关约束-9",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-09-noise",
+          "occurred_at": "2026-05-19T12:00:00Z",
+          "thread_id": "thread-noise-source-9",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_9",
+          "value": "无关投流话题-9",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-09-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_9",
+          "value": "退款相关约束-9",
+          "valid_from_event_id": "evt-n-09-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-09-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-09-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-09-target",
+          "source_event_id": "evt-n-09-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-noise-10",
+      "category": "irrelevant_memory",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-noise-10",
+      "query": "请使用与退款问题 10 直接相关的事实。",
+      "events": [
+        {
+          "event_id": "evt-n-10-target",
+          "occurred_at": "2026-05-10T12:00:00Z",
+          "thread_id": "thread-noise-source-10",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "refund_constraint_10",
+          "value": "退款相关约束-10",
+          "source_type": "tool",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-n-10-noise",
+          "occurred_at": "2026-05-20T12:00:00Z",
+          "thread_id": "thread-noise-source-10",
+          "kind": "verified_fact",
+          "subject": "merchant",
+          "predicate": "unrelated_topic_10",
+          "value": "无关投流话题-10",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-n-10-target",
+          "subject": "merchant",
+          "predicate": "refund_constraint_10",
+          "value": "退款相关约束-10",
+          "valid_from_event_id": "evt-n-10-target"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-n-10-target"
+      ],
+      "forbidden_memory_ids": [
+        "fact-n-10-noise"
+      ],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-n-10-target",
+          "source_event_id": "evt-n-10-target"
+        }
+      ]
+    },
+    {
+      "id": "mem-decision-01",
+      "category": "strategy_feedback_outcome",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-decision-followup-1",
+      "query": "之前策略 1 的已验证结果是什么？",
+      "events": [
+        {
+          "event_id": "evt-d-01-proposed",
+          "occurred_at": "2026-04-11T09:00:00Z",
+          "thread_id": "thread-decision-1",
+          "kind": "proposed_decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-1",
+          "source_type": "llm",
+          "status": "pending"
+        },
+        {
+          "event_id": "evt-d-01-feedback",
+          "occurred_at": "2026-04-16T09:00:00Z",
+          "thread_id": "thread-decision-1",
+          "kind": "feedback",
+          "subject": "strategy",
+          "predicate": "approval",
+          "value": "positive",
+          "source_type": "user",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-d-01-outcome",
+          "occurred_at": "2026-05-11T09:00:00Z",
+          "thread_id": "thread-decision-1",
+          "kind": "verified_outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-1 已验证结果",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-d-01-decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-1",
+          "valid_from_event_id": "evt-d-01-proposed",
+          "requires_feedback_event_id": "evt-d-01-feedback"
+        },
+        {
+          "fact_id": "fact-d-01-outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-1 已验证结果",
+          "valid_from_event_id": "evt-d-01-outcome",
+          "links_to": "fact-d-01-decision"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-d-01-decision",
+        "fact-d-01-outcome"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-d-01-decision",
+          "source_event_id": "evt-d-01-proposed"
+        },
+        {
+          "memory_id": "fact-d-01-outcome",
+          "source_event_id": "evt-d-01-outcome"
+        }
+      ]
+    },
+    {
+      "id": "mem-decision-02",
+      "category": "strategy_feedback_outcome",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-decision-followup-2",
+      "query": "之前策略 2 的已验证结果是什么？",
+      "events": [
+        {
+          "event_id": "evt-d-02-proposed",
+          "occurred_at": "2026-04-12T09:00:00Z",
+          "thread_id": "thread-decision-2",
+          "kind": "proposed_decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-2",
+          "source_type": "llm",
+          "status": "pending"
+        },
+        {
+          "event_id": "evt-d-02-feedback",
+          "occurred_at": "2026-04-17T09:00:00Z",
+          "thread_id": "thread-decision-2",
+          "kind": "feedback",
+          "subject": "strategy",
+          "predicate": "approval",
+          "value": "positive",
+          "source_type": "user",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-d-02-outcome",
+          "occurred_at": "2026-05-12T09:00:00Z",
+          "thread_id": "thread-decision-2",
+          "kind": "verified_outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-2 已验证结果",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-d-02-decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-2",
+          "valid_from_event_id": "evt-d-02-proposed",
+          "requires_feedback_event_id": "evt-d-02-feedback"
+        },
+        {
+          "fact_id": "fact-d-02-outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-2 已验证结果",
+          "valid_from_event_id": "evt-d-02-outcome",
+          "links_to": "fact-d-02-decision"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-d-02-decision",
+        "fact-d-02-outcome"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-d-02-decision",
+          "source_event_id": "evt-d-02-proposed"
+        },
+        {
+          "memory_id": "fact-d-02-outcome",
+          "source_event_id": "evt-d-02-outcome"
+        }
+      ]
+    },
+    {
+      "id": "mem-decision-03",
+      "category": "strategy_feedback_outcome",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-decision-followup-3",
+      "query": "之前策略 3 的已验证结果是什么？",
+      "events": [
+        {
+          "event_id": "evt-d-03-proposed",
+          "occurred_at": "2026-04-13T09:00:00Z",
+          "thread_id": "thread-decision-3",
+          "kind": "proposed_decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-3",
+          "source_type": "llm",
+          "status": "pending"
+        },
+        {
+          "event_id": "evt-d-03-feedback",
+          "occurred_at": "2026-04-18T09:00:00Z",
+          "thread_id": "thread-decision-3",
+          "kind": "feedback",
+          "subject": "strategy",
+          "predicate": "approval",
+          "value": "positive",
+          "source_type": "user",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-d-03-outcome",
+          "occurred_at": "2026-05-13T09:00:00Z",
+          "thread_id": "thread-decision-3",
+          "kind": "verified_outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-3 已验证结果",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-d-03-decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-3",
+          "valid_from_event_id": "evt-d-03-proposed",
+          "requires_feedback_event_id": "evt-d-03-feedback"
+        },
+        {
+          "fact_id": "fact-d-03-outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-3 已验证结果",
+          "valid_from_event_id": "evt-d-03-outcome",
+          "links_to": "fact-d-03-decision"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-d-03-decision",
+        "fact-d-03-outcome"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-d-03-decision",
+          "source_event_id": "evt-d-03-proposed"
+        },
+        {
+          "memory_id": "fact-d-03-outcome",
+          "source_event_id": "evt-d-03-outcome"
+        }
+      ]
+    },
+    {
+      "id": "mem-decision-04",
+      "category": "strategy_feedback_outcome",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-decision-followup-4",
+      "query": "之前策略 4 的已验证结果是什么？",
+      "events": [
+        {
+          "event_id": "evt-d-04-proposed",
+          "occurred_at": "2026-04-14T09:00:00Z",
+          "thread_id": "thread-decision-4",
+          "kind": "proposed_decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-4",
+          "source_type": "llm",
+          "status": "pending"
+        },
+        {
+          "event_id": "evt-d-04-feedback",
+          "occurred_at": "2026-04-19T09:00:00Z",
+          "thread_id": "thread-decision-4",
+          "kind": "feedback",
+          "subject": "strategy",
+          "predicate": "approval",
+          "value": "positive",
+          "source_type": "user",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-d-04-outcome",
+          "occurred_at": "2026-05-14T09:00:00Z",
+          "thread_id": "thread-decision-4",
+          "kind": "verified_outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-4 已验证结果",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-d-04-decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-4",
+          "valid_from_event_id": "evt-d-04-proposed",
+          "requires_feedback_event_id": "evt-d-04-feedback"
+        },
+        {
+          "fact_id": "fact-d-04-outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-4 已验证结果",
+          "valid_from_event_id": "evt-d-04-outcome",
+          "links_to": "fact-d-04-decision"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-d-04-decision",
+        "fact-d-04-outcome"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-d-04-decision",
+          "source_event_id": "evt-d-04-proposed"
+        },
+        {
+          "memory_id": "fact-d-04-outcome",
+          "source_event_id": "evt-d-04-outcome"
+        }
+      ]
+    },
+    {
+      "id": "mem-decision-05",
+      "category": "strategy_feedback_outcome",
+      "merchant_id": "xiaozhang_women",
+      "query_thread_id": "thread-decision-followup-5",
+      "query": "之前策略 5 的已验证结果是什么？",
+      "events": [
+        {
+          "event_id": "evt-d-05-proposed",
+          "occurred_at": "2026-04-15T09:00:00Z",
+          "thread_id": "thread-decision-5",
+          "kind": "proposed_decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-5",
+          "source_type": "llm",
+          "status": "pending"
+        },
+        {
+          "event_id": "evt-d-05-feedback",
+          "occurred_at": "2026-04-20T09:00:00Z",
+          "thread_id": "thread-decision-5",
+          "kind": "feedback",
+          "subject": "strategy",
+          "predicate": "approval",
+          "value": "positive",
+          "source_type": "user",
+          "status": "active"
+        },
+        {
+          "event_id": "evt-d-05-outcome",
+          "occurred_at": "2026-05-15T09:00:00Z",
+          "thread_id": "thread-decision-5",
+          "kind": "verified_outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-5 已验证结果",
+          "source_type": "tool",
+          "status": "active"
+        }
+      ],
+      "current_truth": [
+        {
+          "fact_id": "fact-d-05-decision",
+          "subject": "strategy",
+          "predicate": "recommendation",
+          "value": "策略-5",
+          "valid_from_event_id": "evt-d-05-proposed",
+          "requires_feedback_event_id": "evt-d-05-feedback"
+        },
+        {
+          "fact_id": "fact-d-05-outcome",
+          "subject": "strategy",
+          "predicate": "outcome",
+          "value": "策略-5 已验证结果",
+          "valid_from_event_id": "evt-d-05-outcome",
+          "links_to": "fact-d-05-decision"
+        }
+      ],
+      "expected_recall_ids": [
+        "fact-d-05-decision",
+        "fact-d-05-outcome"
+      ],
+      "forbidden_memory_ids": [],
+      "expected_provenance": [
+        {
+          "memory_id": "fact-d-05-decision",
+          "source_event_id": "evt-d-05-proposed"
+        },
+        {
+          "memory_id": "fact-d-05-outcome",
+          "source_event_id": "evt-d-05-outcome"
+        }
+      ]
+    }
+  ]
+}
