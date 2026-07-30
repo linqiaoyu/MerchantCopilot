@@ -13,7 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.agent.graph import build_graph  # noqa: E402
+from app.agent.runtime import run_query  # noqa: E402
 
 
 def main() -> None:
@@ -22,7 +22,7 @@ def main() -> None:
         sys.exit(1)
 
     query = sys.argv[1]
-    state = build_graph().invoke({"user_query": query})
+    state = run_query(query)
 
     print("=" * 10, "Steps", "=" * 10)
     for s in state.get("steps", []):

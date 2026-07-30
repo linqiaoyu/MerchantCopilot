@@ -45,12 +45,12 @@ class DemoRuntime:
 
     def execute(self, query: str, thread_id: str) -> dict[str, Any]:
         from langgraph.checkpoint.memory import MemorySaver
-
-        from app.agent.graph_v2 import build_graph_v2
+        from app.agent.runtime import run_query
 
         if self.graph is None:
+            from app.agent.graph_v2 import build_graph_v2
             self.graph = build_graph_v2(checkpointer=MemorySaver())
-        return self.graph.invoke({"user_query": query, "steps": []}, config={"configurable": {"thread_id": thread_id}})
+        return run_query(query, graph=self.graph, thread_id=thread_id)
 
 
 @asynccontextmanager
@@ -145,7 +145,8 @@ def stream_run(
             else:
                 try:
                     result = runtime.execute(body.query, thread_id)
-                    run.update({"status": "completed", "result": result.get("final_answer", "")})
+                    run.update({"status": "completed", "result": result.get("final_answer", ""),
+                                "node_result": result.get("node_result", {})})
                     yield _sse("node_completed", {"run_id": run["run_id"], "node": "agent"})
                     yield _sse("evidence", {"run_id": run["run_id"], "items": result.get("node_result", {}).get("evidence", [])})
                     yield _sse("final", {"run_id": run["run_id"], "answer": run["result"]})

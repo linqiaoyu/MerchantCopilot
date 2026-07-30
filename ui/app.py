@@ -10,7 +10,8 @@ from __future__ import annotations
 
 import streamlit as st
 
-from app.agent.graph import build_graph
+from app.agent.graph_v2 import build_graph_v2
+from app.agent.runtime import run_query
 from app.memory.merchant_memory import get_profile
 
 DEMO_MERCHANT_ID = "xiaozhang_women"
@@ -20,7 +21,7 @@ LANGSMITH_PROJECT = "merchant-copilot"
 @st.cache_resource
 def get_graph():
     """缓存 graph 单例 —— BGE-M3 / CrossEncoder / Mem0 客户端只在首次启动加载。"""
-    return build_graph()
+    return build_graph_v2()
 
 
 @st.cache_resource
@@ -122,7 +123,7 @@ if submitted:
         st.warning("请先输入问题")
     else:
         with st.spinner("分析中..."):
-            result = graph.invoke(_initial_state(query.strip()))
+            result = run_query(query.strip(), graph=graph)
 
         node_result = result.get("node_result", {})
         data = node_result.get("data", {})

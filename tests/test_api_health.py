@@ -55,7 +55,7 @@ def test_business_contract_requires_auth_and_idempotency(monkeypatch):
 def test_stream_endpoint_emits_lifecycle_without_real_llm(monkeypatch):
     monkeypatch.setenv("DEMO_ACCESS_TOKEN", "demo")
     runtime = DemoRuntime()
-    runtime.execute = lambda query, thread_id: {"final_answer": "已完成"}
+    runtime.execute = lambda query, thread_id: {"final_answer": "已完成", "node_result": {"data": {"gmv": 1}}}
     app.state.runtime = runtime
     client = TestClient(app)
     headers = {"Authorization": "Bearer demo", "Idempotency-Key": str(uuid4())}
@@ -74,6 +74,7 @@ def test_stream_endpoint_emits_lifecycle_without_real_llm(monkeypatch):
     recovered = client.get(f"/v1/runs/{run_id}", headers={"Authorization": "Bearer demo"})
     assert recovered.json()["status"] == "completed"
     assert recovered.json()["result"] == "已完成"
+    assert recovered.json()["node_result"] == {"data": {"gmv": 1}}
 
 
 def test_sse_failure_is_ordered_and_classified(monkeypatch):
