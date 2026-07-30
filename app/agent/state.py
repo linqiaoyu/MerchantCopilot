@@ -41,3 +41,6 @@ class AgentState(TypedDict, total=False):
     plan: Any
     action_cursor: int
     verification: dict[str, Any]
+
+    memory_candidates: list[dict[str, Any]]
+    """候选长期记忆及其确定性 policy 状态；持久化由 S1 Postgres repository 负责。"""
