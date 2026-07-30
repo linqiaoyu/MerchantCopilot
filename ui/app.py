@@ -34,17 +34,6 @@ def get_langsmith_client():
         return None
 
 
-def _initial_state(query: str) -> dict:
-    return {
-        "user_query": query,
-        "intent": "",
-        "time_window": {},
-        "steps": [],
-        "node_result": {},
-        "final_answer": "",
-    }
-
-
 def _fetch_latest_trace_url() -> str | None:
     """拿最新 LangGraph root run 的完整 URL。失败返回 None。"""
     client = get_langsmith_client()
