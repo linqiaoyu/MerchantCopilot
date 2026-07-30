@@ -12,11 +12,11 @@ v2 将 v1 单轮 Agent 升级为以 Memory 为核心、支持多轮和跨 thread
 
 ## 当前阶段
 
-**v2 / T01 进行中：冻结 v1 基线并重写项目章程。**
+**v2 / S0 审计完成，S2（T04 独立复算与人工复核清单）进行中。**
 
 v1 阶段 1–6 已完成，历史 release 是 stage-6；v1.0-baseline tag 固定 v2 开始前 main HEAD。历史实现、报告和数字保留为 v1 证据，不篡改历史。
 
-v2 依赖顺序：
+T01–T04 已有冻结与代码交付；T05–T08 均存在“已实现未验证/未实现”项，唯一权威状态见 `docs/v2_verification_ledger.md`。v2 依赖顺序：
 
 1. T01 基线与章程
 2. T02 模型迁移；T03 Insight 忠实度修复；T04 Memory 评测预注册
@@ -84,7 +84,7 @@ canonical 表：run_records、memory_events、memory_facts、memory_links、usag
 | 多轮有界 LangGraph Agent | app/agent/ | 路径测试；action/replan 上限 |
 | 分层、时序、可追溯 Memory | app/memory/、migrations/ | 60 组预注册评测与 Policy Gate 测试 |
 | MCP OLAP 工具调用 | app/tools/server.py | 参数和证据契约测试 |
-| BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/ | 单实例和检索预算测试 |
+| BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | 单实例和检索预算测试（adapter 待实现） |
 | FastAPI/SSE 幂等服务 | app/api/ | OpenAPI、SSE、鉴权并发测试 |
 | Flutter 参考客户端 | mobile/ | flutter analyze、≥12 测试、APK 扫描 |
 | 评测、消融和 bad-case 回流 | evals/ | 校准、统计、成本/延迟报告 |
