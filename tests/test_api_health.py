@@ -60,6 +60,10 @@ def test_stream_endpoint_emits_lifecycle_without_real_llm(monkeypatch):
     assert "event: final" in response.text
     assert "event: done" in response.text
     assert '"status": "completed"' in response.text
+    run_id = json.loads(re.search(r"data: (\{.*?\})", response.text).group(1))["run_id"]
+    recovered = client.get(f"/v1/runs/{run_id}", headers={"Authorization": "Bearer demo"})
+    assert recovered.json()["status"] == "completed"
+    assert recovered.json()["result"] == "已完成"
 
 
 def test_sse_failure_is_ordered_and_classified(monkeypatch):
