@@ -12,7 +12,7 @@
 | T03 | q_025 分组 100% surface | 已验证 | tests/test_insight_rendering.py::test_q025_group_values_are_all_surface | 无 |
 | T03 | q_069 3×3 surface 100% | 已验证 | tests/test_insight_rendering.py::test_q069_surfaces_complete_three_by_three_metric_matrix | 无 |
 | T03 | q_068 partial-month 明示 | 已验证 | tests/test_insight_rendering.py::test_q068_declares_partial_month_and_preserves_period_values | 无 |
-| T04 | 60 组、ID/Schema/预注册冻结 | 已验证 | evals/validate_v2_dataset.py；tests/test_eval_dataset_v2.py；tag eval-dataset-v2.0-rc1 | 无 |
+| T04 | 60 组、ID/Schema/预注册冻结 | 已验证 | evals/validate_v2_dataset.py；tests/test_eval_dataset_v2.py；tests/test_rederive_v2_truth.py；tag eval-dataset-v2.0-rc1 | 无 |
 | T04 | 两人独立复核全部 temporal truth | 未实现 | ANNOTATION_REVIEW.md 签核表为空 | Reviewer A/B 真人 |
 | T05 | migrations/五表/vector(1024)/Compose | 已验证 | tests/test_storage_schema.py | 无 |
 | T05 | 空库、重复 migration、恢复/checkpoint/vector/20 并发 | 已实现未验证 | app/storage/database.py、migrations/001_memory_core.sql | Colima/Postgres |
