@@ -39,11 +39,16 @@ class DemoRuntime:
     runs: dict[str, dict[str, Any]] = field(default_factory=dict)
     idempotency: dict[str, dict[str, Any]] = field(default_factory=dict)
     memories: dict[str, dict[str, Any]] = field(default_factory=dict)
+    graph: Any = None
 
     def execute(self, query: str, thread_id: str) -> dict[str, Any]:
+        from langgraph.checkpoint.memory import MemorySaver
+
         from app.agent.graph_v2 import build_graph_v2
 
-        return build_graph_v2().invoke({"user_query": query, "steps": []})
+        if self.graph is None:
+            self.graph = build_graph_v2(checkpointer=MemorySaver())
+        return self.graph.invoke({"user_query": query, "steps": []}, config={"configurable": {"thread_id": thread_id}})
 
 
 @asynccontextmanager

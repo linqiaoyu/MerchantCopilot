@@ -34,7 +34,8 @@ def _verify(state: dict) -> dict:
             "steps": [{"node": "EvidenceVerifier", "summary": "sufficient" if ok else "insufficient"}]}
 
 
-def build_graph_v2():
+def build_graph_v2(checkpointer=None):
+    """Build the bounded graph; callers may supply MemorySaver or PostgresSaver."""
     graph = StateGraph(AgentState)
     graph.add_node("router", router)
     graph.add_node("recall", _recall)
@@ -49,4 +50,4 @@ def build_graph_v2():
     graph.add_edge("executor", "verifier")
     graph.add_edge("verifier", "insight")
     graph.add_edge("insight", END)
-    return graph.compile()
+    return graph.compile(checkpointer=checkpointer)
