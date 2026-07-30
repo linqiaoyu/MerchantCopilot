@@ -39,6 +39,30 @@ _COLLECTION = "merchant_profile"
 _client = None
 
 
+def _vector_store_config() -> dict:
+    """Prefer the v2 pgvector index whenever the runtime supplies a database DSN.
+
+    Chroma is retained only for the pre-S1 local demo path; it is not the v2
+    deployment backend.  This makes the transition explicit rather than
+    silently mixing canonical Postgres facts with a second production store.
+    """
+    dsn = os.environ.get("DATABASE_URL", "").strip()
+    if dsn:
+        return {
+            "provider": "pgvector",
+            "config": {
+                "collection_name": "mem0_merchant_profile",
+                "connection_string": dsn,
+                "embedding_model_dims": 1024,
+                "hnsw": True,
+            },
+        }
+    return {
+        "provider": "chroma",
+        "config": {"collection_name": _COLLECTION, "path": _CHROMA_PATH},
+    }
+
+
 def get_client():
     """懒加载 Mem0 单例,沿用 stage 3 client / stage 4a embedder 单例范式。"""
     global _client
@@ -63,13 +87,7 @@ def get_client():
                 "embedding_dims": 1024,
             },
         },
-        "vector_store": {
-            "provider": "chroma",
-            "config": {
-                "collection_name": _COLLECTION,
-                "path": _CHROMA_PATH,
-            },
-        },
+        "vector_store": _vector_store_config(),
     }
     _client = Memory.from_config(config)
     return _client
