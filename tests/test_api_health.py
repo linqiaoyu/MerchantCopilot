@@ -4,6 +4,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from uuid import uuid4
 
+import pytest
 from fastapi.testclient import TestClient
 
 from app.api.main import DemoRuntime, SSE_EVENT_TYPES, app, require_demo_token
@@ -35,6 +36,20 @@ def test_demo_token_dependency_rejects_missing_or_wrong(monkeypatch):
             assert exc.status_code == 401
         else:
             raise AssertionError("missing/wrong token must be rejected")
+
+
+@pytest.mark.parametrize(("method", "path", "body"), [
+    ("POST", "/v1/threads", {"merchant_id": "m1"}),
+    ("POST", "/v1/threads/no-thread/runs:stream", {"query": "GMV"}),
+    ("GET", "/v1/runs/no-run", None),
+    ("GET", "/v1/threads/no-thread/memories", None),
+    ("POST", "/v1/memories/no-memory/approve", None),
+    ("POST", "/v1/memories/no-memory/reject", None),
+    ("POST", "/v1/runs/no-run/feedback", {"score": 5}),
+])
+def test_every_business_route_rejects_missing_bearer(method, path, body):
+    response = TestClient(app).request(method, path, json=body)
+    assert response.status_code == 401
 
 
 def test_business_contract_requires_auth_and_idempotency(monkeypatch):
