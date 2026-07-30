@@ -19,7 +19,7 @@
 | T06 | Policy Gate ≥40 场景 | 已验证 | tests/test_memory_policy.py（53 passed） | 无 |
 | T06 | DB 幂等、supersede、索引失败补偿事务 | 已实现未验证 | app/memory/policy.py | Colima/Postgres |
 | T07 | pgvector backend | 未实现 | merchant_memory.py 仍为 Chroma | S1 后实现 |
-| T07 | 进程 BGE-M3 实例数=1 | 未实现 | RAG 与 Mem0 各自实例 | shared_bge adapter 实现 |
+| T07 | 进程 BGE-M3 实例数=1 | 已实现未验证 | app/memory/bge_adapter.py；tests/test_bge_adapter.py | 真实 Memory 初始化计数 |
 | T07 | 55/20/15/10 + 固定预算/provenance | 已验证 | tests/test_memory_retriever.py | 无 |
 | T07 | 60 组 Recall@5/时序/stale/注入/泄漏指标 | 未实现 | 无真实 runner/report | S1+S2 |
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |

@@ -4,4 +4,6 @@
 
 已验证：检索评分严格为 semantic 55% / recency 20% / importance 15% / confidence 10%，Core ≤8 条/800 字、Episodic 5、Decision/Outcome 3，且 provenance 包含 memory_id/source_event_id（tests/test_memory_retriever.py）。
 
-未实现：Mem0 pgvector backend、共享唯一 BGE-M3、结构化过滤真实查询、60 组指标与 Supabase p95。当前 merchant_memory.py 仍使用 Chroma 并创建第二个 HuggingFace BGE-M3 实例；不得表述为完成。
+已实现未验证：Mem0 2.0.2 的 shared_bge provider 通过 adapter 委托 RAG 单例，工厂注册契约已测试；真实进程模型实例计数待 Memory 初始化后验证。
+
+未实现：Mem0 pgvector backend、结构化过滤真实查询、60 组指标与 Supabase p95。当前 vector store 仍为 Chroma；不得表述为完成。

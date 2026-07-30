@@ -9,7 +9,7 @@ infer=False:全部走原文存储,不调 Mem0 的 LLM 抽取。
     单商家 + 信号弱场景下抽取不可控;A.5 保留 Mem0「按 user_id 隔离 + 时序记忆累积」
     的核心价值,丢弃噪音大的自动抽取。
 
-栈对齐:DeepSeek V4 Flash + BGE-M3 embedder + Chroma vector store(独立 collection)。
+栈对齐:DeepSeek V4 Flash + 与 RAG 共享的 BGE-M3 + Chroma vector store(迁移 pgvector 前过渡)。
 init 必须配 LLM(Mem0 硬约束),infer=False 下实际不调,但对齐项目锁定栈。
 """
 from __future__ import annotations
@@ -21,6 +21,7 @@ from langsmith import traceable
 
 # 触发 app/llm/client.py 模块级 _load_dotenv(),保证 DEEPSEEK_API_KEY 在 env 中
 import app.llm.client  # noqa: F401
+from app.memory.bge_adapter import register_shared_bge_provider
 
 MERCHANT_ID = "xiaozhang_women"
 RECENT_N = 5
@@ -44,6 +45,7 @@ def get_client():
     if _client is not None:
         return _client
     from mem0 import Memory
+    register_shared_bge_provider()
     config = {
         "llm": {
             "provider": "deepseek",
@@ -53,15 +55,11 @@ def get_client():
             },
         },
         "embedder": {
-            "provider": "huggingface",
-            # device='cpu' 走 model_kwargs 间接传(Mem0 没有顶层 device 字段,
-            # 内部 HuggingFaceEmbedding 把 model_kwargs 直接 unpack 进 SentenceTransformer)。
-            # 强制 CPU:避免与 app/rag/indexer 的 BGE-M3 单例(MPS)在同一设备
-            # 共存触发 4a 已诊断过的 model co-residency / shape cache 双向 evict。
-            # A.5 模式下 Mem0 单次 embed ≤ 30 字、节点内仅 1 次,CPU 性能完全够用。
+            "provider": "shared_bge",
+            # shared_bge provider 委托 app.rag.indexer:get_embedder，不再构造第二个模型。
             "config": {
                 "model": "BAAI/bge-m3",
-                "model_kwargs": {"device": "cpu"},
+                "embedding_dims": 1024,
             },
         },
         "vector_store": {
