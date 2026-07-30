@@ -55,8 +55,9 @@ def get_client():
             },
         },
         "embedder": {
-            "provider": "shared_bge",
-            # shared_bge provider 委托 app.rag.indexer:get_embedder，不再构造第二个模型。
+            # 2.0.2 config 白名单只接受 huggingface；factory 已被 shared_bge
+            # adapter 重定向，所以不会构造第二个 HuggingFaceEmbedding 模型。
+            "provider": "huggingface",
             "config": {
                 "model": "BAAI/bge-m3",
                 "embedding_dims": 1024,

@@ -17,7 +17,13 @@ class SharedBGEEmbedding(EmbeddingBase):
 
 
 def register_shared_bge_provider() -> None:
-    """Register once in Mem0's factory before Memory.from_config is called."""
+    """Register once before ``Memory.from_config``.
+
+    Mem0 2.0.2 validates provider names against a static config whitelist
+    before its extensible factory runs. ``shared_bge`` remains registered, but
+    the whitelisted ``huggingface`` alias is redirected to the same adapter.
+    """
     from mem0.utils.factory import EmbedderFactory
 
     EmbedderFactory.provider_to_class["shared_bge"] = "app.memory.bge_adapter.SharedBGEEmbedding"
+    EmbedderFactory.provider_to_class["huggingface"] = "app.memory.bge_adapter.SharedBGEEmbedding"
