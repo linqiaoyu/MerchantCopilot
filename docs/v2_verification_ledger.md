@@ -8,7 +8,7 @@
 | T01 | 简历能力均有代码与验证标准 | 已实现未验证 | AGENTS.md 映射表 | 后续各测试/报告 |
 | T02 | 活跃代码无 deepseek-chat/qwen-max | 已验证 | rg 活跃 app/evals；tests/test_llm_client.py | 无 |
 | T02 | thinking/non-thinking 各真实 smoke | 已验证 | evals/runs/t02_model_output_comparison.md | DeepSeek key（已历史执行） |
-| T02 | 无 Qwen key 主流程可运行 | 已实现未验证 | client 契约+smoke；全 Graph 未全量复跑 | DeepSeek key |
+| T02 | 无 Qwen key 主流程可运行 | 已实现未验证 | client 契约+smoke；全 Graph 未专门以仅 DeepSeek key 复跑 | DeepSeek key |
 | T03 | q_025 分组 100% surface | 已验证 | tests/test_insight_rendering.py::test_q025_group_values_are_all_surface | 无 |
 | T03 | q_069 3×3 surface 100% | 已验证 | tests/test_insight_rendering.py::test_q069_surfaces_complete_three_by_three_metric_matrix | 无 |
 | T03 | q_068 partial-month 明示 | 已验证 | tests/test_insight_rendering.py::test_q068_declares_partial_month_and_preserves_period_values | 无 |
@@ -25,4 +25,4 @@
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
 | T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 未实现 | graph_v2.py 已有单次 replan 条件边，但其余场景未完成 | Graph v2 实现 |
-| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；当前 collect 97 | 全量 pytest |
+| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；`.venv/bin/python -m pytest -q` = 100 passed, 2 skipped（pgvector DSN） | 仍需路径穷举验证 |
