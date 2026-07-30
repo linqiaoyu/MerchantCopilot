@@ -1,6 +1,10 @@
 """Bounded v2 graph: recall → plan → executor → verifier → synthesis."""
 from __future__ import annotations
 
+import os
+from datetime import datetime, timezone
+
+import psycopg
 from langgraph.graph import END, START, StateGraph
 
 from app.agent.nodes.attribution import attribution
@@ -12,10 +16,26 @@ from app.agent.state import AgentState
 from app.agent.planning import Action, Plan, next_plan, verify_evidence
 from app.memory.extractor import extract_candidates
 from app.memory.policy import gate_candidate
+from app.memory.retriever import assemble_context
+from app.storage.memory_repository import fetch_active_memories
 
 
 def _recall(state: dict) -> dict:
-    return {"recalled_memories": [], "steps": [{"node": "MemoryRecall", "summary": "no persistent backend configured"}]}
+    dsn = os.environ.get("DATABASE_URL", "").strip()
+    if not dsn:
+        return {"recalled_memories": [], "steps": [{"node": "MemoryRecall", "summary": "database unavailable; no recall"}]}
+    try:
+        from app.rag.indexer import get_embedder
+
+        vector = get_embedder().encode(state["user_query"], normalize_embeddings=True).tolist()
+        with psycopg.connect(dsn) as conn:
+            memories = fetch_active_memories(conn, merchant_id=state.get("merchant_id", "xiaozhang_women"), query_embedding=vector)
+        selected = assemble_context(memories, datetime.now(timezone.utc))
+        return {"recalled_memories": selected,
+                "steps": [{"node": "MemoryRecall", "summary": f"recalled={len(selected)}"}]}
+    except Exception as exc:
+        return {"recalled_memories": [],
+                "steps": [{"node": "MemoryRecall", "summary": f"recall unavailable: {type(exc).__name__}"}]}
 
 
 def _plan(state: dict) -> dict:

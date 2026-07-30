@@ -14,6 +14,7 @@ from uuid import UUID, uuid4
 import psycopg
 
 from app.memory.policy import CanonicalFact, MemoryCandidate, gate_candidate
+from app.memory.retriever import RetrievedMemory
 
 
 def create_or_get_run(
@@ -89,3 +90,27 @@ def mark_index_result(conn: psycopg.Connection, event_id: UUID, memory_id: UUID,
         vector = "[" + ",".join(str(value) for value in embedding) + "]"
         cur.execute("UPDATE memory_facts SET embedding = %s::vector WHERE memory_id = %s", (vector, memory_id))
         cur.execute("UPDATE memory_events SET index_status = 'indexed' WHERE event_id = %s", (event_id,))
+
+
+def fetch_active_memories(
+    conn: psycopg.Connection, *, merchant_id: str, query_embedding: list[float], candidate_limit: int = 20,
+) -> list[RetrievedMemory]:
+    """Fetch only current canonical facts; caller applies the fixed context budgets."""
+    vector = "[" + ",".join(str(value) for value in query_embedding) + "]"
+    with conn.cursor() as cur:
+        cur.execute(
+            """SELECT memory_id, source_event_id, memory_kind, content,
+                      1 - (embedding <=> %s::vector) AS semantic, importance, confidence, valid_from, valid_to, status
+                 FROM memory_facts
+                WHERE merchant_id = %s AND status = 'active' AND valid_to IS NULL AND embedding IS NOT NULL
+                ORDER BY embedding <=> %s::vector
+                LIMIT %s""",
+            (vector, merchant_id, vector, candidate_limit),
+        )
+        rows = cur.fetchall()
+    return [
+        RetrievedMemory(memory_id=str(row[0]), source_event_id=str(row[1]), kind=row[2], content=row[3],
+                         semantic=float(row[4]), importance=float(row[5]), confidence=float(row[6]),
+                         valid_from=row[7], valid_to=row[8], status=row[9])
+        for row in rows
+    ]

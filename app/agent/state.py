@@ -10,6 +10,9 @@ from typing import Annotated, Any, TypedDict
 
 
 class AgentState(TypedDict, total=False):
+    merchant_id: str
+    """单一 demo 商家的标识；v2 canonical Memory 的查询隔离键。"""
+
     user_query: str
     """用户原始问题(入口写入,全程只读)。"""
 

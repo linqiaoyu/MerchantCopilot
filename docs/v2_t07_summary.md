@@ -6,6 +6,6 @@
 
 已实现未验证：Mem0 2.0.2 的 shared_bge adapter 委托 RAG 单例，工厂注册契约已测试。该版本的 config 层另有静态 provider 白名单，因此 runtime 使用被 adapter 重定向的 `huggingface` 配置别名；真实进程模型实例计数待 Memory 初始化后验证。
 
-已实现未验证：当 `DATABASE_URL` 存在时，Mem0 配置切换到 1024 维 HNSW `pgvector`；无 DSN 的 pre-S1 本地演示才回退 Chroma。真实迁移、结构化过滤与检索结果仍未在 pgvector 上执行。
+已实现未验证：当 `DATABASE_URL` 存在时，Mem0 配置切换到 1024 维 HNSW `pgvector`；无 DSN 的 pre-S1 本地演示才回退 Chroma。`MemoryRecall` 已从 canonical `memory_facts` 查询 active、未过期且有 embedding 的事实，再按既有评分/预算组装包含 provenance 的上下文。真实迁移、向量写读与检索结果仍未在 pgvector 上执行。
 
 未实现：60 组指标与 Supabase p95。不得表述为完成。

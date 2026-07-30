@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from app.memory.policy import MemoryCandidate
-from app.storage.memory_repository import append_event, create_or_get_run, materialize_fact
+from app.storage.memory_repository import append_event, create_or_get_run, fetch_active_memories, materialize_fact
 
 
 class _Cursor:
@@ -13,6 +13,9 @@ class _Cursor:
         self.calls.append((sql, params))
 
     def fetchone(self):
+        return self.row
+
+    def fetchall(self):
         return self.row
 
     def __enter__(self):
@@ -49,3 +52,12 @@ def test_active_fact_supersedes_before_inserting_new_value():
     assert fact.status == "active"
     assert "UPDATE memory_facts SET status = 'superseded'" in conn.cursor_instance.calls[0][0]
     assert "INSERT INTO memory_facts" in conn.cursor_instance.calls[1][0]
+
+
+def test_recall_query_filters_stale_facts_and_uses_vector_distance():
+    conn = _Connection([])
+    assert fetch_active_memories(conn, merchant_id="m1", query_embedding=[0.0, 1.0]) == []
+    sql, params = conn.cursor_instance.calls[0]
+    assert "status = 'active' AND valid_to IS NULL AND embedding IS NOT NULL" in sql
+    assert "embedding <=> %s::vector" in sql
+    assert params[-1] == 20
