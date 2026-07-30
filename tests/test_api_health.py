@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from app.api.main import DemoRuntime, app, require_demo_token
+from app.api.main import DemoRuntime, SSE_EVENT_TYPES, app, require_demo_token
 
 
 def test_health_and_ready_are_public():
@@ -45,5 +45,26 @@ def test_stream_endpoint_emits_lifecycle_without_real_llm(monkeypatch):
     headers["Idempotency-Key"] = "r1"
     response = client.post(f"/v1/threads/{thread['thread_id']}/runs:stream", headers=headers, json={"query": "GMV"})
     assert response.status_code == 200
-    assert "event: run_started" in response.text
+    assert "event: meta" in response.text
+    assert "event: progress" in response.text
+    assert "event: final" in response.text
+    assert "event: done" in response.text
     assert '"status": "completed"' in response.text
+
+
+def test_sse_failure_is_ordered_and_classified(monkeypatch):
+    monkeypatch.setenv("DEMO_ACCESS_TOKEN", "demo")
+    runtime = DemoRuntime()
+    runtime.execute = lambda query, thread_id: (_ for _ in ()).throw(TimeoutError())
+    app.state.runtime = runtime
+    client = TestClient(app)
+    headers = {"Authorization": "Bearer demo", "Idempotency-Key": "t2"}
+    thread = client.post("/v1/threads", headers=headers, json={"merchant_id": "m1"}).json()
+    headers["Idempotency-Key"] = "r2"
+    response = client.post(f"/v1/threads/{thread['thread_id']}/runs:stream", headers=headers, json={"query": "GMV"})
+    assert response.text.index("event: meta") < response.text.index("event: error") < response.text.index("event: done")
+    assert '"code": "llm_timeout"' in response.text
+
+
+def test_sse_event_vocabulary_has_exactly_eleven_types():
+    assert len(SSE_EVENT_TYPES) == 11

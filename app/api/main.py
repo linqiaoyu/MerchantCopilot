@@ -54,6 +54,12 @@ async def _lifespan(application: FastAPI):
 
 app = FastAPI(title="MerchantCopilot v2", version="2.0.0", lifespan=_lifespan)
 
+# The mobile client is intentionally constrained to this stable event vocabulary.
+SSE_EVENT_TYPES = frozenset({
+    "meta", "progress", "final", "done", "error", "memory_pending",
+    "memory_approved", "memory_rejected", "retry", "warning", "quota",
+})
+
 
 def _runtime(request: Request) -> DemoRuntime:
     return request.app.state.runtime
@@ -111,14 +117,27 @@ def stream_run(
         runtime.idempotency[key] = run
 
     def events():
-        yield _sse("run_started", run)
+        yield _sse("meta", {"run_id": run["run_id"], "thread_id": thread_id})
         if run["status"] == "queued":
-            try:
-                result = runtime.execute(body.query, thread_id)
-                run.update({"status": "completed", "result": result.get("final_answer", "")})
-            except Exception as exc:  # boundary must expose a stable demo error
-                run.update({"status": "failed", "error": str(exc)})
-        yield _sse("run_finished", run)
+            run["status"] = "running"
+            yield _sse("progress", {"run_id": run["run_id"], "stage": "agent"})
+            if len(runtime.runs) > int(os.environ.get("DEMO_MONTHLY_RUN_CAP", "1000")):
+                run.update({"status": "failed", "error": {"code": "quota", "message": "demo run cap reached"}})
+                yield _sse("quota", run["error"])
+            else:
+                try:
+                    result = runtime.execute(body.query, thread_id)
+                    run.update({"status": "completed", "result": result.get("final_answer", "")})
+                    yield _sse("final", {"run_id": run["run_id"], "answer": run["result"]})
+                except Exception as exc:  # boundary must expose a stable demo error
+                    error = _classify_error(exc)
+                    run.update({"status": "failed", "error": error})
+                    yield _sse("error", error)
+        elif run["status"] == "completed":
+            yield _sse("final", {"run_id": run["run_id"], "answer": run.get("result", "")})
+        elif run["status"] == "failed":
+            yield _sse("error", run.get("error", {"code": "agent_failure"}))
+        yield _sse("done", {"run_id": run["run_id"], "status": run["status"]})
 
     return StreamingResponse(events(), media_type="text/event-stream")
 
@@ -162,4 +181,13 @@ def _get_or_404(rows: dict[str, dict[str, Any]], key: str, label: str) -> dict[s
 
 
 def _sse(event: str, payload: dict[str, Any]) -> str:
+    assert event in SSE_EVENT_TYPES
     return f"event: {event}\\ndata: {json.dumps(payload, ensure_ascii=False, default=str)}\\n\\n"
+
+
+def _classify_error(exc: Exception) -> dict[str, str]:
+    if isinstance(exc, TimeoutError):
+        return {"code": "llm_timeout", "message": "model request timed out"}
+    if isinstance(exc, ConnectionError):
+        return {"code": "database_unavailable", "message": "database unavailable"}
+    return {"code": "agent_failure", "message": str(exc)}
