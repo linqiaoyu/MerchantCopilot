@@ -12,7 +12,7 @@ v2 将 v1 单轮 Agent 升级为以 Memory 为核心、支持多轮和跨 thread
 
 ## 当前阶段
 
-**v2 / S0 审计完成，S2（T04 独立复算与人工复核清单）进行中。**
+**v2 / S0 审计完成；S2 的可复算与盲审材料已完成，待两位真人签核；S1 本地 pgvector 验收待 Colima 就绪；T08/T09 的不依赖 Postgres 部分进行中。**
 
 v1 阶段 1–6 已完成，历史 release 是 stage-6；v1.0-baseline tag 固定 v2 开始前 main HEAD。历史实现、报告和数字保留为 v1 证据，不篡改历史。
 
@@ -84,7 +84,7 @@ canonical 表：run_records、memory_events、memory_facts、memory_links、usag
 | 多轮有界 LangGraph Agent | app/agent/ | 路径测试；action/replan 上限 |
 | 分层、时序、可追溯 Memory | app/memory/、migrations/ | 60 组预注册评测与 Policy Gate 测试 |
 | MCP OLAP 工具调用 | app/tools/server.py | 参数和证据契约测试 |
-| BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | 单实例和检索预算测试（adapter 待实现） |
+| BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | adapter 工厂测试；真实进程单实例计数待验证 |
 | FastAPI/SSE 幂等服务 | app/api/ | OpenAPI、SSE、鉴权并发测试 |
 | Flutter 参考客户端 | mobile/ | flutter analyze、≥12 测试、APK 扫描 |
 | 评测、消融和 bad-case 回流 | evals/ | 校准、统计、成本/延迟报告 |
@@ -96,7 +96,7 @@ app/agent/ 编排与节点；app/tools/ MCP；app/rag/ 检索；app/memory/ Memo
 
 ## 协作方式
 
-- 写代码前先用 1–2 段说明设计，得到确认再实施；紧急修复也说明影响范围。
+- 默认自主连续推进 S0→S10；仅在触及“不做”、需要本机安装/账号、修改锁定技术栈或验收标准、或需要真人复核时报告所需动作，并继续不依赖该动作的工作。
 - 不静默扩范围；触及“不做”项必须停止并询问。
 - 保持简单，不写无消费方抽象；变量英文，关键业务注释中文。
 - 不触碰或提交 _drafts/ 和其他用户未跟踪文件，除非用户明确要求。
