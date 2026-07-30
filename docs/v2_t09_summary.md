@@ -6,4 +6,6 @@
 
 已验证：CLI、Streamlit、FastAPI 均通过 `app.agent.runtime.run_query()` 调用同一个 v2 图执行入口；API run 记录保留 `final_answer` 与 `node_result`，断线后可读取完成结果。
 
+CLI v2 smoke：`DEEPSEEK_API_KEY='' QWEN_API_KEY='' .venv/bin/python scripts/chat.py '2026-04-02 GMV 怎么样'` 实际走完 Router → Recall → Planner → MetricQuery → Verifier → Insight → MemoryPolicyGate，结构化结果与确定性答案均输出。
+
 未验证项：PostgresSaver 真实恢复、quota/数据库不可用的真实集成测试，以及三个界面同一 stub 输入的完整端到端渲染一致性。当前 runtime 是进程内演示实现，重启不会保留数据；不得表述为持久化服务已完成。
