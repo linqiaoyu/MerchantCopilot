@@ -61,8 +61,8 @@ app = FastAPI(title="MerchantCopilot v2", version="2.0.0", lifespan=_lifespan)
 
 # The mobile client is intentionally constrained to this stable event vocabulary.
 SSE_EVENT_TYPES = frozenset({
-    "meta", "progress", "final", "done", "error", "memory_pending",
-    "memory_approved", "memory_rejected", "retry", "warning", "quota",
+    "meta", "node_started", "node_completed", "tool_call", "evidence",
+    "memory_recalled", "memory_candidate", "token", "final", "error", "done",
 })
 
 
@@ -125,14 +125,16 @@ def stream_run(
         yield _sse("meta", {"run_id": run["run_id"], "thread_id": thread_id})
         if run["status"] == "queued":
             run["status"] = "running"
-            yield _sse("progress", {"run_id": run["run_id"], "stage": "agent"})
+            yield _sse("node_started", {"run_id": run["run_id"], "node": "agent"})
             if len(runtime.runs) > int(os.environ.get("DEMO_MONTHLY_RUN_CAP", "1000")):
                 run.update({"status": "failed", "error": {"code": "quota", "message": "demo run cap reached"}})
-                yield _sse("quota", run["error"])
+                yield _sse("error", run["error"])
             else:
                 try:
                     result = runtime.execute(body.query, thread_id)
                     run.update({"status": "completed", "result": result.get("final_answer", "")})
+                    yield _sse("node_completed", {"run_id": run["run_id"], "node": "agent"})
+                    yield _sse("evidence", {"run_id": run["run_id"], "items": result.get("node_result", {}).get("evidence", [])})
                     yield _sse("final", {"run_id": run["run_id"], "answer": run["result"]})
                 except Exception as exc:  # boundary must expose a stable demo error
                     error = _classify_error(exc)
@@ -159,24 +161,34 @@ def get_memories(thread_id: str, runtime: DemoRuntime = Depends(_runtime)) -> di
 
 
 @app.post("/v1/memories/{memory_id}/approve", dependencies=[Depends(require_demo_token)])
-def approve_memory(memory_id: str, runtime: DemoRuntime = Depends(_runtime)) -> dict[str, Any]:
+def approve_memory(memory_id: str, key: str = Depends(require_idempotency_key), runtime: DemoRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if key in runtime.idempotency:
+        return runtime.idempotency[key]
     memory = _get_or_404(runtime.memories, memory_id, "memory")
     memory["status"] = "approved"
+    runtime.idempotency[key] = memory
     return memory
 
 
 @app.post("/v1/memories/{memory_id}/reject", dependencies=[Depends(require_demo_token)])
-def reject_memory(memory_id: str, runtime: DemoRuntime = Depends(_runtime)) -> dict[str, Any]:
+def reject_memory(memory_id: str, key: str = Depends(require_idempotency_key), runtime: DemoRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if key in runtime.idempotency:
+        return runtime.idempotency[key]
     memory = _get_or_404(runtime.memories, memory_id, "memory")
     memory["status"] = "rejected"
+    runtime.idempotency[key] = memory
     return memory
 
 
 @app.post("/v1/runs/{run_id}/feedback", dependencies=[Depends(require_demo_token)])
-def record_feedback(run_id: str, body: FeedbackRequest, runtime: DemoRuntime = Depends(_runtime)) -> dict[str, Any]:
+def record_feedback(run_id: str, body: FeedbackRequest, key: str = Depends(require_idempotency_key), runtime: DemoRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if key in runtime.idempotency:
+        return runtime.idempotency[key]
     run = _get_or_404(runtime.runs, run_id, "run")
     run["feedback"] = body.model_dump()
-    return {"run_id": run_id, "accepted": True}
+    response = {"run_id": run_id, "accepted": True}
+    runtime.idempotency[key] = response
+    return response
 
 
 def _get_or_404(rows: dict[str, dict[str, Any]], key: str, label: str) -> dict[str, Any]:

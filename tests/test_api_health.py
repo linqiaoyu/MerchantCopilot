@@ -32,6 +32,7 @@ def test_business_contract_requires_auth_and_idempotency(monkeypatch):
     created = client.post("/v1/threads", headers=headers, json={"merchant_id": "m1"})
     assert created.status_code == 201
     assert client.post("/v1/threads", headers=headers, json={"merchant_id": "m1"}).json() == created.json()
+    assert client.post("/v1/runs/no-run/feedback", headers={"Authorization": "Bearer demo"}, json={"score": 5}).status_code == 400
 
 
 def test_stream_endpoint_emits_lifecycle_without_real_llm(monkeypatch):
@@ -46,7 +47,9 @@ def test_stream_endpoint_emits_lifecycle_without_real_llm(monkeypatch):
     response = client.post(f"/v1/threads/{thread['thread_id']}/runs:stream", headers=headers, json={"query": "GMV"})
     assert response.status_code == 200
     assert "event: meta" in response.text
-    assert "event: progress" in response.text
+    assert "event: node_started" in response.text
+    assert "event: node_completed" in response.text
+    assert "event: evidence" in response.text
     assert "event: final" in response.text
     assert "event: done" in response.text
     assert '"status": "completed"' in response.text
@@ -67,4 +70,7 @@ def test_sse_failure_is_ordered_and_classified(monkeypatch):
 
 
 def test_sse_event_vocabulary_has_exactly_eleven_types():
-    assert len(SSE_EVENT_TYPES) == 11
+    assert SSE_EVENT_TYPES == {
+        "meta", "node_started", "node_completed", "tool_call", "evidence",
+        "memory_recalled", "memory_candidate", "token", "final", "error", "done",
+    }
