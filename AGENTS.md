@@ -73,7 +73,7 @@ canonical 表：run_records、memory_events、memory_facts、memory_links、usag
 - Memory 门槛：Recall@5 ≥85%，当前有效事实准确率 ≥90%，stale-memory ≤5%，无关注入 ≤5%，跨 thread 短期状态泄漏为 0，重复 canonical event 为 0。未达标必须记录失败并诚实降级。
 - Judge 重新校准：binary Krippendorff α ≥0.80，strategy Spearman ≥0.60；未达标维度仅 reference-only。
 - Metric/Attribution 的结构化数字由确定性渲染器输出，须和 node_result.data 一致；LLM 只写导语与解释。
-- API 需要 Bearer 和幂等键；同 key 并发只执行一次；SSE 正常为 meta → progress → final → done，失败为 meta → error → done。
+- API 需要 Bearer 和幂等键；同 key 并发只执行一次；SSE 正常为 meta → node_started → node_completed → evidence → final → done，失败为 meta → error → done。
 - Local Self-host 不依赖本人的 Cloud Run、Supabase 或 API Key；仓库和 APK 不含真实 Key、DSN、token。
 - 压测分别报告 Demo 与临时 Scale Profile；Stub 50 并发错误率 <1%、无模型 API p95 <300ms、真实 5 并发 thread 全部完成且无串线；之后恢复 min=0,max=1。
 

@@ -17,12 +17,12 @@
 | T05 | migrations/五表/vector(1024)/Compose | 已验证 | tests/test_storage_schema.py | 无 |
 | T05 | 空库、重复 migration、恢复/checkpoint/vector/20 并发 | 已实现未验证 | app/storage/database.py、migrations/001_memory_core.sql | Colima/Postgres |
 | T06 | Policy Gate ≥40 场景 | 已验证 | tests/test_memory_policy.py（53 passed） | 无 |
-| T06 | DB 幂等、supersede、索引失败补偿事务 | 已实现未验证 | app/memory/policy.py | Colima/Postgres |
+| T06 | DB 幂等、supersede、索引失败补偿事务 | 已实现未验证 | app/storage/memory_repository.py；tests/test_memory_repository.py | Colima/Postgres |
 | T07 | pgvector backend | 未实现 | merchant_memory.py 仍为 Chroma | S1 后实现 |
 | T07 | 进程 BGE-M3 实例数=1 | 已实现未验证 | app/memory/bge_adapter.py；tests/test_bge_adapter.py | 真实 Memory 初始化计数 |
 | T07 | 55/20/15/10 + 固定预算/provenance | 已验证 | tests/test_memory_retriever.py | 无 |
 | T07 | 60 组 Recall@5/时序/stale/注入/泄漏指标 | 未实现 | 无真实 runner/report | S1+S2 |
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
-| T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 未实现 | graph_v2.py 只有直线路径 | Graph v2 实现 |
-| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；当前 collect 87 | 全量 pytest |
+| T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 未实现 | graph_v2.py 已有单次 replan 条件边，但其余场景未完成 | Graph v2 实现 |
+| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；当前 collect 97 | 全量 pytest |
