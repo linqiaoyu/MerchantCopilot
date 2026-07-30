@@ -59,7 +59,10 @@ async def _lifespan(application: FastAPI):
     yield
 
 
-app = FastAPI(title="MerchantCopilot v2", version="2.0.0", lifespan=_lifespan)
+app = FastAPI(
+    title="MerchantCopilot v2", version="2.0.0", lifespan=_lifespan,
+    docs_url=None, redoc_url=None, openapi_url=None,
+)
 
 # The mobile client is intentionally constrained to this stable event vocabulary.
 SSE_EVENT_TYPES = frozenset({

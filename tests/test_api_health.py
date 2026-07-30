@@ -15,6 +15,16 @@ def test_health_and_ready_are_public():
     assert client.get("/readyz").json() == {"status": "ready"}
 
 
+def test_public_http_surface_is_exactly_the_nine_fixed_routes():
+    paths = {route.path for route in app.routes}
+    assert paths == {
+        "/healthz", "/readyz", "/v1/threads", "/v1/threads/{thread_id}/runs:stream",
+        "/v1/runs/{run_id}", "/v1/threads/{thread_id}/memories",
+        "/v1/memories/{memory_id}/approve", "/v1/memories/{memory_id}/reject",
+        "/v1/runs/{run_id}/feedback",
+    }
+
+
 def test_demo_token_dependency_rejects_missing_or_wrong(monkeypatch):
     monkeypatch.setenv("DEMO_ACCESS_TOKEN", "demo")
     assert require_demo_token("Bearer demo") is None
