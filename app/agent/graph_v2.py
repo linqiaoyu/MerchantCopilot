@@ -9,11 +9,8 @@ from datetime import datetime, timezone
 import psycopg
 from langgraph.graph import END, START, StateGraph
 
-from app.agent.nodes.attribution import attribution
 from app.agent.nodes.insight import insight
-from app.agent.nodes.metric_query import metric_query
 from app.agent.nodes.router import router
-from app.agent.nodes.strategy import strategy
 from app.agent.state import AgentState
 from app.agent.planning import Action, Plan, next_plan, verify_evidence
 from app.memory.extractor import extract_candidates
@@ -22,6 +19,26 @@ from app.memory.retriever import assemble_context
 from app.storage.memory_repository import compensate_pending_indexes, fetch_active_memories
 
 MAX_RUN_SECONDS = 120
+
+
+def metric_query(state: dict) -> dict:
+    """Delay tool-node imports until their bounded action is actually chosen."""
+    from app.agent.nodes.metric_query import metric_query as implementation
+
+    return implementation(state)
+
+
+def attribution(state: dict) -> dict:
+    from app.agent.nodes.attribution import attribution as implementation
+
+    return implementation(state)
+
+
+def strategy(state: dict) -> dict:
+    # Strategy imports Mem0/RAG; metric-only API requests must not pay that cost.
+    from app.agent.nodes.strategy import strategy as implementation
+
+    return implementation(state)
 
 
 def _recall(state: dict) -> dict:
