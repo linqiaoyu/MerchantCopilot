@@ -6,4 +6,6 @@
 
 已验证：在本机运行 `flutter analyze` 为 0 error，`flutter test` 为 18 passed（不少于 12）。
 
-未实现或未验证：Android platform 工程、真实 HTTP/SSE 客户端连接、设备安全存储、离线/服务唤醒/Agent timeout UI、debug/release APK、APK 密钥扫描、local 与 Cloud Run 三类任务 smoke。Android SDK command-line tools 和许可尚不可用，因此不得表述为 T11 已验收。
+已实现：Flutter native Android 工程、`com.merchantcopilot.v2` application ID 与本地 release signing 配置占位均已加入仓库。
+
+未实现或未验证：真实 HTTP/SSE 客户端连接、设备安全存储、离线/服务唤醒/Agent timeout UI、debug/release APK、APK 密钥扫描、local 与 Cloud Run 三类任务 smoke。实际运行 `flutter build apk --debug` 在 93 秒后失败：Android NDK `28.2.13676358` 未安装，SDK manifest 下载也被拒绝；Android command-line tools 和许可同样尚不可用。因此不得表述为 T11 已验收。
