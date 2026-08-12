@@ -71,7 +71,7 @@ SSE 词表固定为：`meta`、`node_started`、`node_completed`、`tool_call`�
 
 ## Memory 与评测纪律
 
-Memory 使用 append-only event、可 supersede 的 fact 和 `source_event_id` provenance。LLM 推断默认 pending；策略建议在正向反馈前为 `proposed_decision`；向量索引失败不会丢失 canonical fact，并在后续 Recall 前补偿。
+Memory 使用 append-only event、可 supersede 的 fact 和 `source_event_id` provenance。LLM 推断默认 pending；策略建议在正向反馈前为 `proposed_decision`；向量索引失败不会丢失 canonical fact，并在后续 Recall 前补偿。实现和验证边界见 [Memory 设计](docs/v2_memory_design.md)。
 
 评测集 `eval-dataset-v2.0-rc1` 冻结了 60 组多轮序列。RC1 的 re-derivation 只能证明内部转录一致性，不能替代两位真人独立复核。门槛、允许的调参边界和失败陈述规则见 [预注册](evals/datasets/v2.0/PREREGISTRATION.md)。
 
