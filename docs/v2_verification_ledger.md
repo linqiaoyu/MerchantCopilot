@@ -27,5 +27,5 @@
 | T07 | 60 组 Recall@5/时序/stale/注入/泄漏指标 | 未实现 | 无真实 runner/report | S1+S2 |
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
-| T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 未实现 | graph_v2.py 已有单次 replan 条件边，但其余场景未完成 | Graph v2 实现 |
+| T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 已实现未验证 | graph_v2.py 的 bounded executor、tests/test_graph_v2.py 新增路径用例；pytest 受本机 Python 文件读取阻塞未出结果 | 运行新增图路径测试 |
 | T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；`.venv/bin/python -m pytest -q` = 118 passed, 2 skipped（pgvector DSN） | 仍需路径穷举验证 |
