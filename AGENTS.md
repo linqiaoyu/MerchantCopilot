@@ -82,11 +82,11 @@ canonical 表：run_records、memory_events、memory_facts、memory_links、usag
 | 能力陈述 | 代码位置 | 验证证据 |
 |---|---|---|
 | 多轮有界 LangGraph Agent | app/agent/ | 路径测试；action/replan 上限 |
-| 分层、时序、可追溯 Memory | app/memory/、migrations/ | 60 组预注册评测与 Policy Gate 测试 |
+| 分层、时序、可追溯 Memory | app/memory/、migrations/ | 60 组本地检索报告、Policy Gate 与 PostgreSQL 并发不变量测试 |
 | MCP OLAP 工具调用 | app/tools/server.py | 参数和证据契约测试 |
 | BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | adapter 工厂与真实同进程 Mem0 初始化；60 组本地检索报告 |
-| FastAPI/SSE 幂等服务 | app/api/ | OpenAPI、SSE、鉴权并发测试 |
-| Flutter 参考客户端 | mobile/ | flutter analyze、≥12 测试、APK 扫描 |
+| FastAPI/SSE 幂等服务 | app/api/ | 固定路由、SSE、鉴权、真实五并发与数据库不变量测试 |
+| Flutter 参考客户端 | mobile/ | flutter analyze、23 测试、Keystore/scanner 契约（APK 构建待验收） |
 | 评测、消融和 bad-case 回流 | evals/ | 校准、统计、成本/延迟报告 |
 | Cloud Run 扩展设计 | deploy/ | 部署记录和压测对照 |
 

@@ -18,7 +18,7 @@ Postgres 是唯一 canonical ledger：`run_records`、`memory_events`、`memory_
 3. 新 active value 写入同一 `(merchant, subject, predicate)` 时，旧 active fact 标为 `superseded` 并写入 `valid_to`，不删除历史。
 4. event/fact 先提交。向量索引失败只保留 `index_status=pending`；后续 Memory Recall 使用已有共享 BGE-M3 实例补偿，成功才标记 indexed。
 
-本地 pgvector 实测覆盖 20 并发 run 幂等、同一 event 十次重试、supersede、pending policy 和索引补偿。完整命令和边界见 [验证台账](v2_verification_ledger.md)。
+本地 pgvector 实测覆盖 20 并发 run 幂等、10 个并发重复 event 投递只保留一个 event、10 个并发同语义写入只保留一个 active fact、supersede、pending policy 和索引补偿。同语义写入在事务内取得 advisory lock，数据库部分唯一索引是最终不变量。完整命令和边界见 [验证台账](v2_verification_ledger.md)。
 
 ## 检索与 provenance
 

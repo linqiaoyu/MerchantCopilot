@@ -27,7 +27,7 @@ DEEPSEEK_API_KEY='' QWEN_API_KEY='' LANGSMITH_TRACING=false \\
 
 ## 3:50–4:45：HTTP/SSE、重启与并发边界
 
-展示固定的九条 API 和 SSE 词表。解释 Bearer demo token、UUID Idempotency-Key、SSE 正常/失败序列，以及 `PostgresRuntime` 的原子 queued→running claim。展示本地 pgvector HTTP/SSE 的 `run_id` 在 Uvicorn 重启后仍可读回；说明五个独立 Metric run 已在数据库中完成，但完整混合 SSE 并发与云端 Scale Profile 尚未验收。
+展示固定的九条 API 和 SSE 词表。解释 Bearer demo token、UUID Idempotency-Key、SSE 正常/失败序列，以及 `PostgresRuntime` 的原子 queued→running claim。展示本地 pgvector HTTP/SSE 的 `run_id` 在 Uvicorn 重启后仍可读回；说明默认 Metric/Attribution/Strategy 混合五并发 SSE 已实测 `5/5` 完成、无 thread 串线，且数据库已验证并发重复 event/同语义 fact 不变量；云端 Scale Profile 尚未验收。
 
 ## 4:45–5:35：Memory 60 组与跨 thread 边界
 
@@ -35,4 +35,4 @@ DEEPSEEK_API_KEY='' QWEN_API_KEY='' LANGSMITH_TRACING=false \\
 
 ## 5:35–6:20：客户端与发布边界
 
-展示 `mobile/` 的四页状态和 `flutter analyze` / 21 条测试记录；明确 Android APK、Keystore 安全持久化和 Cloud Run endpoint smoke 尚未验收。最后打开 `docs/v2_verification_ledger.md`，说明 Supabase/Cloud Run、Judge/完整消融、完整混合并发与 `v2.0.0` Release 均仍受阻。这样演示已覆盖多步 Agent、跨 thread Memory 指标、时序、证据来源与移动端实现边界，而不夸大未交付内容。
+展示 `mobile/` 的四页状态和 `flutter analyze` / 23 条测试记录；展示 Android Keystore AES-GCM token persistence 与 APK 密钥扫描器的源码/测试边界，明确 APK 构建、真机 Keystore 与 Cloud Run endpoint smoke 尚未验收。最后打开 `docs/v2_verification_ledger.md`，说明 Supabase/Cloud Run、Judge/完整消融与 `v2.0.0` Release 仍受阻。这样演示已覆盖多步 Agent、跨 thread Memory 指标、时序、证据来源与移动端实现边界，而不夸大未交付内容。
