@@ -16,7 +16,7 @@
 | T04 | 两人独立复核全部 temporal truth | 未实现 | ANNOTATION_REVIEW.md 签核表为空 | Reviewer A/B 真人 |
 | T05 | migrations/五表/vector(1024)/Compose | 已验证 | tests/test_storage_schema.py | 无 |
 | T05 | 空库 migration、连续执行两次、vector(1024)、20 并发幂等 | 已验证 | `DATABASE_URL=…:55432 … .venv/bin/python -m pytest -q tests/test_postgres_integration.py`（2 passed） | 本地 Colima/pgvector（已就绪） |
-| T05 | 重启后 run/checkpoint/memory 仍可读；同 thread 恢复、跨 thread 不串线 | 已实现未验证 | app/storage/database.py 的 `checkpointer_context`、PostgresSaver | Postgres checkpointer 端到端测试 |
+| T05 | 重启后 run/checkpoint/memory 仍可读；同 thread 恢复、跨 thread 不串线 | 已验证 | `tests/test_postgres_integration.py::test_postgres_checkpointer_persists_and_isolates_threads`；`docker-compose restart postgres` 后 `runs=2,facts=4,checkpoints=1` | 本地 Colima/pgvector（已就绪） |
 | T05 | Supabase 通过同一集成测试 | 未实现 | 无 Supabase 实测记录 | Supabase 项目与 direct/pooler DSN |
 | T06 | Policy Gate ≥40 场景 | 已验证 | tests/test_memory_policy.py（53 passed） | 无 |
 | T06 | DB 并发幂等、supersede、1024 维 index 写入 | 已验证 | `tests/test_postgres_integration.py::test_concurrent_idempotency_supersession_and_vector_dimension` | 本地 Colima/pgvector（已就绪） |

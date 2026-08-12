@@ -14,8 +14,8 @@
 - 本地 Colima + `pgvector/pgvector:pg16` 容器健康；由于宿主机 5432 已由用户管理的 PostgreSQL/SSH tunnel 占用，Compose 显式映射为 55432，示例 DSN 与自托管文档已同步。
 - 空库成功执行 `001_memory_core.sql`，确认五张 canonical 表和 `vector 0.8.6` 扩展存在；连续执行 migration 不重复建表。
 - `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 DATABASE_URL=…:55432 DATABASE_DIRECT_URL=…:55432 .venv/bin/python -m pytest -q tests/test_postgres_integration.py`：**2 passed**。覆盖 20 并发 run 幂等、重复 event 去重、事实 supersede，以及 `vector_dims(embedding)=1024`。
+- 加入官方 `PostgresSaver` 的真实读写测试后，同一命令为 **3 passed**：关闭并重新打开 saver 后可恢复 checkpoint，另一 thread 返回空。执行 `docker-compose restart postgres` 后仍读取到 `runs=2`、`facts=4`、`checkpoints=1`，证明项目本地持久 volume 保留三类状态。
 
 ## 未验证项
 
-- 进程/服务重启后的 run、Memory、Postgres checkpointer 读取；同一 thread 的 checkpoint 恢复与跨 thread 隔离。
 - Supabase 的 runtime pooler 与 direct migration DSN 使用同一套集成测试。

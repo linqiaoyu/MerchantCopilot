@@ -7,9 +7,10 @@ from uuid import UUID, uuid4
 
 import psycopg
 import pytest
+from langgraph.checkpoint.base import empty_checkpoint
 
 from app.memory.policy import MemoryCandidate
-from app.storage.database import apply_migrations
+from app.storage.database import apply_migrations, checkpointer_context
 from app.storage.memory_repository import append_event, create_or_get_run, mark_index_result, materialize_fact
 
 DSN = os.environ.get("DATABASE_URL", "")
@@ -55,3 +56,27 @@ def test_concurrent_idempotency_supersession_and_vector_dimension():
             assert cur.fetchone() == ("superseded", True)
             cur.execute("SELECT vector_dims(embedding) FROM memory_facts WHERE memory_id = %s", (UUID(second_fact.memory_id),))
             assert cur.fetchone() == (1024,)
+
+
+def test_postgres_checkpointer_persists_and_isolates_threads():
+    """A reopened saver must recover only the checkpoint for its own thread."""
+    thread_id = f"s1-checkpoint-{uuid4()}"
+    config = {"configurable": {"thread_id": thread_id, "checkpoint_ns": ""}}
+    checkpoint = empty_checkpoint()
+    checkpoint["channel_values"]["answer"] = "persisted"
+
+    with checkpointer_context(DSN) as saver:
+        saved_config = saver.put(
+            config,
+            checkpoint,
+            {"source": "input", "step": 0, "writes": {"answer": "persisted"}},
+            {},
+        )
+        assert saver.get_tuple(saved_config).checkpoint["channel_values"]["answer"] == "persisted"
+
+    with checkpointer_context(DSN) as reopened:
+        restored = reopened.get_tuple(config)
+        assert restored is not None
+        assert restored.checkpoint["channel_values"]["answer"] == "persisted"
+        other_thread = {"configurable": {"thread_id": f"{thread_id}-other", "checkpoint_ns": ""}}
+        assert reopened.get_tuple(other_thread) is None
