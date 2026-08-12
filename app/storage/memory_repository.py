@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
+from collections.abc import Callable
 from typing import Any
 from uuid import UUID, uuid4
 
@@ -90,6 +91,48 @@ def mark_index_result(conn: psycopg.Connection, event_id: UUID, memory_id: UUID,
         vector = "[" + ",".join(str(value) for value in embedding) + "]"
         cur.execute("UPDATE memory_facts SET embedding = %s::vector WHERE memory_id = %s", (vector, memory_id))
         cur.execute("UPDATE memory_events SET index_status = 'indexed' WHERE event_id = %s", (event_id,))
+
+
+def compensate_pending_indexes(
+    conn: psycopg.Connection,
+    *,
+    merchant_id: str,
+    encode: Callable[[str], list[float]],
+    limit: int = 20,
+) -> dict[str, int]:
+    """Retry canonical facts whose vector indexing previously failed.
+
+    The canonical event/fact is deliberately committed before this work.  A retry
+    failure therefore leaves `index_status=pending` for a later request instead
+    of losing the auditable fact.
+    """
+    with conn.cursor() as cur:
+        cur.execute(
+            """SELECT event_id, memory_id, content
+                 FROM memory_events AS event
+                 JOIN memory_facts AS fact ON fact.source_event_id = event.event_id
+                WHERE event.merchant_id = %s
+                  AND event.index_status = 'pending'
+                  AND fact.status = 'active'
+                  AND fact.embedding IS NULL
+                ORDER BY event.created_at
+                LIMIT %s""",
+            (merchant_id, limit),
+        )
+        pending = cur.fetchall()
+
+    indexed = 0
+    for event_id, memory_id, content in pending:
+        try:
+            embedding = encode(content)
+            if len(embedding) != 1024:
+                raise ValueError("Memory embedding must have 1024 dimensions")
+            mark_index_result(conn, event_id, memory_id, embedding)
+            indexed += 1
+        except Exception:
+            # Keep the pending marker: retries are safe and canonical data survives.
+            continue
+    return {"attempted": len(pending), "indexed": indexed, "pending": len(pending) - indexed}
 
 
 def fetch_active_memories(

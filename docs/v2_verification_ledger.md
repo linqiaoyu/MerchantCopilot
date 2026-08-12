@@ -20,7 +20,7 @@
 | T05 | Supabase 通过同一集成测试 | 未实现 | 无 Supabase 实测记录 | Supabase 项目与 direct/pooler DSN |
 | T06 | Policy Gate ≥40 场景 | 已验证 | tests/test_memory_policy.py（53 passed） | 无 |
 | T06 | DB 并发幂等、supersede、1024 维 index 写入 | 已验证 | `tests/test_postgres_integration.py::test_concurrent_idempotency_supersession_and_vector_dimension` | 本地 Colima/pgvector（已就绪） |
-| T06 | 同一 run 10 次事件重试、pending/feedback/source 唯一性、索引失败补偿 | 已实现未验证 | app/storage/memory_repository.py；tests/test_memory_repository.py | 真实 DB 专项测试 |
+| T06 | 同一 run 10 次事件重试、LLM causal pending、无反馈 Strategy 不复用、source 唯一性、索引失败补偿 | 已验证 | `tests/test_postgres_integration.py::test_policy_statuses_idempotent_event_retries_and_index_compensation`；本地 DB 回归合计 60 passed | 本地 Colima/pgvector（已就绪） |
 | T07 | pgvector backend | 已实现未验证 | `DATABASE_URL` 时 merchant_memory.py 配置 Mem0 pgvector/HNSW/vector(1024)；tests/test_bge_adapter.py | S1 真实连接/写读 |
 | T07 | 进程 BGE-M3 实例数=1 | 已实现未验证 | app/memory/bge_adapter.py；tests/test_bge_adapter.py | 真实 Memory 初始化计数 |
 | T07 | 55/20/15/10 + 固定预算/provenance | 已实现未验证 | tests/test_memory_retriever.py；app/storage/memory_repository.py 的 active/stale 向量查询契约 | S1 真实检索 |

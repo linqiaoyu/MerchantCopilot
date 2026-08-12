@@ -17,7 +17,7 @@ from app.agent.planning import Action, Plan, next_plan, verify_evidence
 from app.memory.extractor import extract_candidates
 from app.memory.policy import gate_candidate
 from app.memory.retriever import assemble_context
-from app.storage.memory_repository import fetch_active_memories
+from app.storage.memory_repository import compensate_pending_indexes, fetch_active_memories
 
 
 def _recall(state: dict) -> dict:
@@ -27,8 +27,15 @@ def _recall(state: dict) -> dict:
     try:
         from app.rag.indexer import get_embedder
 
-        vector = get_embedder().encode(state["user_query"], normalize_embeddings=True).tolist()
+        embedder = get_embedder()
+        vector = embedder.encode(state["user_query"], normalize_embeddings=True).tolist()
         with psycopg.connect(dsn) as conn:
+            compensate_pending_indexes(
+                conn,
+                merchant_id=state.get("merchant_id", "xiaozhang_women"),
+                encode=lambda content: embedder.encode(content, normalize_embeddings=True).tolist(),
+            )
+            conn.commit()
             memories = fetch_active_memories(conn, merchant_id=state.get("merchant_id", "xiaozhang_women"), query_embedding=vector)
         selected = assemble_context(memories, datetime.now(timezone.utc))
         return {"recalled_memories": selected,

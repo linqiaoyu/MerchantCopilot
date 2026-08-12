@@ -11,7 +11,13 @@ from langgraph.checkpoint.base import empty_checkpoint
 
 from app.memory.policy import MemoryCandidate
 from app.storage.database import apply_migrations, checkpointer_context
-from app.storage.memory_repository import append_event, create_or_get_run, mark_index_result, materialize_fact
+from app.storage.memory_repository import (
+    append_event,
+    compensate_pending_indexes,
+    create_or_get_run,
+    mark_index_result,
+    materialize_fact,
+)
 
 DSN = os.environ.get("DATABASE_URL", "")
 pytestmark = pytest.mark.skipif(not DSN, reason="requires local pgvector DATABASE_URL")
@@ -80,3 +86,53 @@ def test_postgres_checkpointer_persists_and_isolates_threads():
         assert restored.checkpoint["channel_values"]["answer"] == "persisted"
         other_thread = {"configurable": {"thread_id": f"{thread_id}-other", "checkpoint_ns": ""}}
         assert reopened.get_tuple(other_thread) is None
+
+
+def test_policy_statuses_idempotent_event_retries_and_index_compensation():
+    """Exercise the T06 policy and compensation behavior against real Postgres."""
+    suffix = str(uuid4())
+    merchant_id = f"s1-policy-{suffix}"
+    with psycopg.connect(DSN) as conn:
+        run = create_or_get_run(
+            conn,
+            thread_id=f"thread-{suffix}",
+            merchant_id=merchant_id,
+            idempotency_key=uuid4(),
+            request={"test": "policy"},
+        )
+        run_id = UUID(run["run_id"])
+
+        active = MemoryCandidate(f"active-{suffix}", "merchant", "constraint", "active", "mcp")
+        active_event = append_event(conn, run_id=run_id, merchant_id=merchant_id, candidate=active, source_ref="retry-once")
+        for _ in range(9):
+            assert append_event(conn, run_id=run_id, merchant_id=merchant_id, candidate=active, source_ref="retry-once") == active_event
+        active_fact = materialize_fact(conn, source_event_id=active_event, merchant_id=merchant_id, candidate=active, content="retryable")
+        mark_index_result(conn, active_event, UUID(active_fact.memory_id), None)
+
+        causal = MemoryCandidate(f"causal-{suffix}", "merchant", "cause", "inferred", "llm", causal_inference=True)
+        causal_event = append_event(conn, run_id=run_id, merchant_id=merchant_id, candidate=causal, source_ref=causal.candidate_id)
+        assert materialize_fact(conn, source_event_id=causal_event, merchant_id=merchant_id, candidate=causal, content="inferred").status == "pending"
+
+        strategy = MemoryCandidate(f"strategy-{suffix}", "merchant", "strategy", "proposal", "llm", kind="strategy")
+        strategy_event = append_event(conn, run_id=run_id, merchant_id=merchant_id, candidate=strategy, source_ref=strategy.candidate_id)
+        assert materialize_fact(conn, source_event_id=strategy_event, merchant_id=merchant_id, candidate=strategy, content="proposal").status == "proposed_decision"
+
+        result = compensate_pending_indexes(conn, merchant_id=merchant_id, encode=lambda _: [0.0] * 1024)
+        conn.commit()
+        assert result == {"attempted": 1, "indexed": 1, "pending": 0}
+        with conn.cursor() as cur:
+            cur.execute("SELECT count(*) FROM memory_events WHERE run_id = %s AND source_ref = 'retry-once'", (run_id,))
+            assert cur.fetchone() == (1,)
+            cur.execute("SELECT status FROM memory_facts WHERE source_event_id = %s", (causal_event,))
+            assert cur.fetchone() == ("pending",)
+            cur.execute("SELECT status FROM memory_facts WHERE source_event_id = %s", (strategy_event,))
+            assert cur.fetchone() == ("proposed_decision",)
+            cur.execute("SELECT index_status FROM memory_events WHERE event_id = %s", (active_event,))
+            assert cur.fetchone() == ("indexed",)
+            cur.execute(
+                """SELECT count(*) FROM memory_facts AS fact
+                     LEFT JOIN memory_events AS event ON event.event_id = fact.source_event_id
+                    WHERE fact.merchant_id = %s AND fact.status = 'active' AND event.event_id IS NOT NULL""",
+                (merchant_id,),
+            )
+            assert cur.fetchone() == (1,)
