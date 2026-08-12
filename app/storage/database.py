@@ -4,10 +4,12 @@ from __future__ import annotations
 import os
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Iterator
+from typing import TYPE_CHECKING, Iterator
 
 import psycopg
-from langgraph.checkpoint.postgres import PostgresSaver
+
+if TYPE_CHECKING:
+    from langgraph.checkpoint.postgres import PostgresSaver
 
 ROOT = Path(__file__).resolve().parents[2]
 MIGRATIONS = ROOT / "migrations"
@@ -52,8 +54,10 @@ def database_ready(dsn: str | None = None) -> bool:
 
 
 @contextmanager
-def checkpointer_context(dsn: str | None = None) -> Iterator[PostgresSaver]:
+def checkpointer_context(dsn: str | None = None) -> Iterator["PostgresSaver"]:
     """Keep the official saver connection open for the caller's graph lifetime."""
+    from langgraph.checkpoint.postgres import PostgresSaver
+
     with PostgresSaver.from_conn_string(dsn or runtime_dsn()) as saver:
         saver.setup()
         yield saver

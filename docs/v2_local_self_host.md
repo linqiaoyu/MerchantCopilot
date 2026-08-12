@@ -7,15 +7,15 @@
 ```bash
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
 cp .env.example .env  # 填入自己的 DEEPSEEK_API_KEY 与 DEMO_ACCESS_TOKEN
-docker compose up -d postgres
-DATABASE_URL=postgresql://merchantcopilot:merchantcopilot@localhost:5432/merchantcopilot DATABASE_DIRECT_URL=postgresql://merchantcopilot:merchantcopilot@localhost:5432/merchantcopilot .venv/bin/python scripts/migrate.py
+docker-compose up -d postgres
+DATABASE_URL=postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot DATABASE_DIRECT_URL=postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot .venv/bin/python scripts/migrate.py
 DEMO_ACCESS_TOKEN=your-local-token .venv/bin/uvicorn app.api.main:app --host 127.0.0.1 --port 8000
 ```
 
 验证命令（Postgres 就绪后）：
 
 ```bash
-DATABASE_URL=postgresql://merchantcopilot:merchantcopilot@localhost:5432/merchantcopilot DATABASE_DIRECT_URL=postgresql://merchantcopilot:merchantcopilot@localhost:5432/merchantcopilot .venv/bin/python -m pytest -q tests/test_postgres_integration.py
+DATABASE_URL=postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot DATABASE_DIRECT_URL=postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot .venv/bin/python -m pytest -q tests/test_postgres_integration.py
 ```
 
 安全边界：`.env` 不入库；本地 token 只用于 demo Bearer 校验；不要将 DSN 或 API key 写进截图、APK、报告或 git commit。

@@ -6,7 +6,8 @@ services:
       POSTGRES_USER: merchantcopilot
       POSTGRES_PASSWORD: merchantcopilot
     ports:
-      - "5432:5432"
+      # 5432 is occupied by a user-managed local Postgres/SSH tunnel on this Mac.
+      - "55432:5432"
     volumes:
       - merchantcopilot_pgdata:/var/lib/postgresql/data
     healthcheck:
