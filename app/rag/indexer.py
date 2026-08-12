@@ -12,6 +12,7 @@ from __future__ import annotations
 import re
 import time
 from pathlib import Path
+from threading import RLock
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 KB_DIR = _REPO_ROOT / "data" / "knowledge_base"
@@ -23,26 +24,47 @@ MAX_CHARS = 400  # 单 chunk 字符上限,超过用 RecursiveCharacterTextSplitt
 # --- 懒加载单例:embedder / chroma client ---
 _embedder = None
 _chroma_client = None
+_embedder_lock = RLock()
+_chroma_client_lock = RLock()
 
 
 def get_embedder():
     """BGE-M3 模块级懒加载单例。首次:已缓存 ~5-15s / 冷下载 ~60-120s。"""
     global _embedder
     if _embedder is None:
-        from sentence_transformers import SentenceTransformer  # noqa: F401
-        t0 = time.time()
-        print(f"[indexer] 加载 embedder {EMBEDDING_MODEL} ...", flush=True)
-        _embedder = SentenceTransformer(EMBEDDING_MODEL)
-        print(f"[indexer] embedder 加载完成 ({time.time() - t0:.1f}s)")
+        # FastAPI can start several SSE workers together.  The second check is
+        # essential: BGE-M3 must remain one process-local instance, including
+        # during a cold concurrent start.
+        with _embedder_lock:
+            if _embedder is None:
+                from sentence_transformers import SentenceTransformer  # noqa: F401
+                t0 = time.time()
+                print(f"[indexer] 加载 embedder {EMBEDDING_MODEL} ...", flush=True)
+                _embedder = SentenceTransformer(EMBEDDING_MODEL)
+                print(f"[indexer] embedder 加载完成 ({time.time() - t0:.1f}s)")
     return _embedder
+
+
+def encode_with_shared_embedder(inputs, **kwargs):
+    """Serialize BGE inference because the MPS-backed model is not thread-safe.
+
+    The API may accept concurrent requests, but one process must own exactly one
+    BGE-M3 instance.  Serializing encode calls protects that instance from MPS
+    crashes while Postgres and HTTP work remain concurrent.
+    """
+    embedder = get_embedder()
+    with _embedder_lock:
+        return embedder.encode(inputs, **kwargs)
 
 
 def get_chroma_client():
     global _chroma_client
     if _chroma_client is None:
-        import chromadb  # noqa: F401
-        CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-        _chroma_client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+        with _chroma_client_lock:
+            if _chroma_client is None:
+                import chromadb  # noqa: F401
+                CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+                _chroma_client = chromadb.PersistentClient(path=str(CHROMA_DIR))
     return _chroma_client
 
 
@@ -195,7 +217,7 @@ def build() -> dict:
     # 3. embed(一次性 batch,sentence-transformers 内部分批)
     embedder = get_embedder()
     t_embed_0 = time.time()
-    embeddings = embedder.encode(
+    embeddings = encode_with_shared_embedder(
         [c["embed_text"] for c in chunks],
         show_progress_bar=False,
         convert_to_numpy=True,

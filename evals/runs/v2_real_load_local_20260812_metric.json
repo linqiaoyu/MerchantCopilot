@@ -1,0 +1,62 @@
+{
+  "mode": "real_http_sse",
+  "concurrency": 5,
+  "completed": 0,
+  "failed": 5,
+  "duplicate_run_ids": false,
+  "thread_readback_mismatches": 0,
+  "elapsed_seconds": 1.449,
+  "throughput_rps": 0.0,
+  "latency_ms": null,
+  "samples": [
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "a40c2025-a49b-4496-8d45-2a8ca3e1209f",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 1370.0601670000196,
+      "error": "invalid SSE completion",
+      "event_types": []
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "b5afb1c4-cc4e-4071-b731-9e348b27de80",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 1403.3067079999455,
+      "error": "invalid SSE completion",
+      "event_types": []
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "4f058ea3-dccf-4218-81c0-6793a60a538b",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 1399.5345000000725,
+      "error": "invalid SSE completion",
+      "event_types": []
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "c00d45fe-5ec3-4742-b0b9-08f484d10606",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 1377.349041999878,
+      "error": "invalid SSE completion",
+      "event_types": []
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "6560a9b4-b120-4e82-90a7-d211c2d8fc11",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 1388.0086659999051,
+      "error": "invalid SSE completion",
+      "event_types": []
+    }
+  ],
+  "limitations": [
+    "API-level probe cannot count canonical memory duplicates or database optimistic conflicts.",
+    "Cloud Run resource curves, cold starts, and Scale Profile are reported separately."
+  ]
+}

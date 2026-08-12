@@ -17,10 +17,11 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
+from threading import Lock
 
 from langsmith import traceable
 
-from .indexer import COLLECTION, get_chroma_client, get_embedder
+from .indexer import COLLECTION, encode_with_shared_embedder, get_chroma_client
 
 RERANK_MODEL = "BAAI/bge-reranker-v2-m3"
 CANDIDATE_TOP_K = 20  # dense 召回数(第一阶段)
@@ -32,26 +33,29 @@ class RAGNotAvailableError(RuntimeError):
 
 # --- reranker 懒加载单例(沿用阶段 3 client.py 范式)---
 _reranker = None
+_reranker_lock = Lock()
 
 
 def get_reranker():
     global _reranker
     if _reranker is None:
-        try:
-            from sentence_transformers import CrossEncoder  # noqa: F401
+        with _reranker_lock:
+            if _reranker is None:
+                try:
+                    from sentence_transformers import CrossEncoder  # noqa: F401
 
-            t0 = time.time()
-            print(f"[retriever] 加载 reranker {RERANK_MODEL} (device=cpu)...", flush=True)
-            # device='cpu':embedder 留 MPS、reranker 转 CPU,避免双模型在 MPS 互相 evict
-            # shape cache(诊断 B'' 证实)。代价是 rerank 单次慢一点,换取 embed 稳态 ~35ms。
-            _reranker = CrossEncoder(RERANK_MODEL, device="cpu")
-            print(f"[retriever] reranker 加载完成 ({time.time() - t0:.1f}s)")
-        except Exception as e:
-            raise RAGNotAvailableError(
-                f"reranker {RERANK_MODEL} 加载失败:{e}\n"
-                "排查:网络可达 huggingface.co?内存/磁盘够?"
-                "BGE-M3 + reranker 共需约 2.5GB。"
-            ) from e
+                    t0 = time.time()
+                    print(f"[retriever] 加载 reranker {RERANK_MODEL} (device=cpu)...", flush=True)
+                    # device='cpu':embedder 留 MPS、reranker 转 CPU,避免双模型在 MPS 互相 evict
+                    # shape cache(诊断 B'' 证实)。代价是 rerank 单次慢一点,换取 embed 稳态 ~35ms。
+                    _reranker = CrossEncoder(RERANK_MODEL, device="cpu")
+                    print(f"[retriever] reranker 加载完成 ({time.time() - t0:.1f}s)")
+                except Exception as e:
+                    raise RAGNotAvailableError(
+                        f"reranker {RERANK_MODEL} 加载失败:{e}\n"
+                        "排查:网络可达 huggingface.co?内存/磁盘够?"
+                        "BGE-M3 + reranker 共需约 2.5GB。"
+                    ) from e
     return _reranker
 
 
@@ -72,8 +76,7 @@ class Chunk:
 
 @traceable(name="rag_embed", tags=["rag"])
 def _embed_query(query: str) -> list[float]:
-    embedder = get_embedder()
-    return embedder.encode(
+    return encode_with_shared_embedder(
         [query], normalize_embeddings=True, convert_to_numpy=True
     )[0].tolist()
 

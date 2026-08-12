@@ -1,0 +1,57 @@
+{
+  "mode": "real_http_sse",
+  "concurrency": 5,
+  "completed": 0,
+  "failed": 5,
+  "duplicate_run_ids": false,
+  "thread_readback_mismatches": 0,
+  "elapsed_seconds": 180.359,
+  "throughput_rps": 0.0,
+  "latency_ms": null,
+  "samples": [
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "1d44fd50-0964-442f-b068-188fec0c7dbf",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 109602.06012499997,
+      "error": "invalid SSE completion"
+    },
+    {
+      "query": "2026-04-02 GMV 为什么下跌",
+      "thread_id": "df924d65-96da-4eed-a423-83872c07f7ab",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 109600.941417,
+      "error": "invalid SSE completion"
+    },
+    {
+      "query": "给女装学生客群制定下周直播策略",
+      "thread_id": "",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 0.0,
+      "error": "TimeoutError"
+    },
+    {
+      "query": "2026-04-03 GMV 怎么样",
+      "thread_id": "84451045-26c8-43c5-81e0-3e53c12c9d7a",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 109585.15270800001,
+      "error": "invalid SSE completion"
+    },
+    {
+      "query": "退款率高应该怎么处理",
+      "thread_id": "ac88dc02-2105-418b-9565-6498b46c12bc",
+      "run_id": null,
+      "status": "failed",
+      "latency_ms": 109586.93412500003,
+      "error": "invalid SSE completion"
+    }
+  ],
+  "limitations": [
+    "API-level probe cannot count canonical memory duplicates or database optimistic conflicts.",
+    "Cloud Run resource curves, cold starts, and Scale Profile are reported separately."
+  ]
+}

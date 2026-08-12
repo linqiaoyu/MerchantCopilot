@@ -38,4 +38,4 @@
 | T13 | 60×6 消融完整性、配对效应/检验、成本延迟/失败样本汇总 | 已验证 | `tests/test_v2_ablation_analysis.py`；evals/analyze_v2_ablation.py 拒绝缺失与重复样本 | 无 |
 | T13 | Qwen 校准、完整 60×6 原始运行、指标门槛与 bad-case 报告 | 未实现 | 无 v2 模型/Judge 运行产物 | Qwen/DeepSeek 凭据与完整评测运行 |
 | T14 | Stub 50 并发、错误率<1%、无模型 API p95<300ms | 已验证 | Python 3.12 `scripts/load_stub_api.py` 重跑：50/50、0 error、p50 56.9ms、p95 65.2ms；边界测试 1 passed | 无 |
-| T14 | 真实 5 并发、串线/重复/冲突、Scale Profile 与云端资源曲线 | 未实现 | 无真实 Agent/Cloud Run 压测产物 | DeepSeek、Supabase、GCP deployment |
+| T14 | 真实 5 并发、串线/重复/冲突、Scale Profile 与云端资源曲线 | 已实现未验证 | `scripts/load_real_api.py` 以显式 endpoint/token 并发创建 5 个 thread、跑 HTTP/SSE、回读 `run_id → thread_id`，输出吞吐/p50/p95/重复 run ID；解析/单例/连接生命周期回归 11 passed。修复前报告保留 Saver 跨线程失败；修复后本地 pgvector 中 5 个独立 Metric thread 均 `completed`（run→thread 回读无错）。当前受限执行器会在并发 chunked SSE body 前断开，故脚本报告仍如实为失败；单条 `curl -N` 已实测完整正常事件链。尚无 full mix、canonical event/optimistic conflict 或云端资源曲线证据 | 可用 Cloud Run/Supabase；完整混合五并发环境 |

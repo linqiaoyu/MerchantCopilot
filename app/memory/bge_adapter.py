@@ -10,9 +10,9 @@ class SharedBGEEmbedding(EmbeddingBase):
     """No model construction here: delegate all encodes to app.rag.indexer."""
 
     def embed(self, text: str, memory_action: Optional[Literal["add", "search", "update"]] = None) -> list[float]:
-        from app.rag.indexer import get_embedder
+        from app.rag.indexer import encode_with_shared_embedder
 
-        vector = get_embedder().encode(text, normalize_embeddings=True)
+        vector = encode_with_shared_embedder(text, normalize_embeddings=True)
         return vector.tolist()
 
 

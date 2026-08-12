@@ -61,26 +61,29 @@ class DemoRuntime:
 
 @dataclass
 class PostgresRuntime:
-    """Persistent implementation selected only when the runtime DSN is configured."""
+    """Persistent implementation selected only when the runtime DSN is configured.
+
+    A PostgresSaver owns a synchronous connection.  FastAPI can invoke separate
+    SSE generators on different worker threads, so a saver/compiled graph must
+    be scoped to one execution instead of being shared by the application.
+    """
 
     dsn: str
-    graph: Any = None
-    _checkpointer_context: Any = None
 
     def execute(self, query: str, thread_id: str) -> dict[str, Any]:
         from app.agent.runtime import run_query
         from app.agent.graph_v2 import build_graph_v2
         from app.storage.database import checkpointer_context
 
-        if self.graph is None:
-            self._checkpointer_context = checkpointer_context(self.dsn)
-            self.graph = build_graph_v2(checkpointer=self._checkpointer_context.__enter__())
-        return run_query(query, graph=self.graph, thread_id=thread_id)
+        # Do not share a PostgresSaver connection across concurrent SSE runs.
+        # Graph construction is negligible next to model/tool execution and
+        # preserves a separate durable checkpointer session per request.
+        with checkpointer_context(self.dsn) as checkpointer:
+            graph = build_graph_v2(checkpointer=checkpointer)
+            return run_query(query, graph=graph, thread_id=thread_id)
 
     def close(self) -> None:
-        if self._checkpointer_context is not None:
-            self._checkpointer_context.__exit__(None, None, None)
-            self._checkpointer_context = None
+        """Per-execution checkpointer contexts are already closed."""
 
 
 @asynccontextmanager

@@ -46,15 +46,14 @@ def _recall(state: dict) -> dict:
     if not dsn:
         return {"recalled_memories": [], "steps": [{"node": "MemoryRecall", "summary": "database unavailable; no recall"}]}
     try:
-        from app.rag.indexer import get_embedder
+        from app.rag.indexer import encode_with_shared_embedder
 
-        embedder = get_embedder()
-        vector = embedder.encode(state["user_query"], normalize_embeddings=True).tolist()
+        vector = encode_with_shared_embedder(state["user_query"], normalize_embeddings=True).tolist()
         with psycopg.connect(dsn) as conn:
             compensate_pending_indexes(
                 conn,
                 merchant_id=state.get("merchant_id", "xiaozhang_women"),
-                encode=lambda content: embedder.encode(content, normalize_embeddings=True).tolist(),
+                encode=lambda content: encode_with_shared_embedder(content, normalize_embeddings=True).tolist(),
             )
             conn.commit()
             memories = fetch_active_memories(conn, merchant_id=state.get("merchant_id", "xiaozhang_women"), query_embedding=vector)
