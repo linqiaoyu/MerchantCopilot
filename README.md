@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-v2 仍在开发与验收中。唯一权威状态见 [验证台账](docs/v2_verification_ledger.md)：本地 pgvector、canonical Memory、60 组本地检索指标、持久化 API 与离线回归均已实测；T04 真人复核、Android APK、云端部署、Judge 校准/完整消融与 release 尚未完成，不能对外表述为 v2.0.0 已发布。
+v2 仍在开发与验收中。唯一权威状态见 [验证台账](docs/v2_verification_ledger.md)：本地 pgvector、canonical Memory、60 组本地检索指标、持久化 API、DeepSeek 历史 80 条基线与 Qwen binary Judge 重校准均已实测；debug/release APK 均已构建和密钥扫描，但 release 仍为 debug 签名。T04 双人复核、真机/endpoint smoke、云端部署、v2 完整 Agent/Judge 消融与 release 尚未完成，不能对外表述为 v2.0.0 已发布。strategy Judge 的重校准不达门槛，仅可 reference-only。
 
 历史 v1 的阶段报告、模型配置与数字保留在 `docs/stage*_summary.md` 和 `evals/runs/`，只作为历史证据，不代表当前 v2 配置。
 

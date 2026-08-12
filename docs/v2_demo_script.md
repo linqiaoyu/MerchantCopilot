@@ -1,6 +1,6 @@
 # v2 演示脚本（当前本地可验证部分，约 6–7 分钟）
 
-此脚本只使用已本地验证的内容；Android APK、Cloud Run、T04 双人签核、Judge 校准与完整消融未完成前，不把它们作为已交付能力演示。
+此脚本只使用已本地验证的内容；debug/release APK 的本机构建与密钥扫描、以及 Qwen binary Judge 重校准已有证据，但真机/endpoint smoke、Cloud Run、T04 双人签核与完整 v2 Agent/Judge 消融未完成前，不把它们作为已交付能力演示。strategy Judge 已降级为 reference-only。
 
 ## 0:00–0:40：边界与问题
 
@@ -35,4 +35,4 @@ DEEPSEEK_API_KEY='' QWEN_API_KEY='' LANGSMITH_TRACING=false \\
 
 ## 5:35–6:20：客户端与发布边界
 
-展示 `mobile/` 的四页状态和 `flutter analyze` / 23 条测试记录；展示 Android Keystore AES-GCM token persistence 与 APK 密钥扫描器的源码/测试边界，明确 APK 构建、真机 Keystore 与 Cloud Run endpoint smoke 尚未验收。最后打开 `docs/v2_verification_ledger.md`，说明 Supabase/Cloud Run、Judge/完整消融与 `v2.0.0` Release 仍受阻。这样演示已覆盖多步 Agent、跨 thread Memory 指标、时序、证据来源与移动端实现边界，而不夸大未交付内容。
+展示 `mobile/` 的四页状态和 `flutter analyze` / 23 条测试记录；展示 Android Keystore AES-GCM token persistence、debug/release APK 的本机构建和 APK 密钥扫描器证据，明确 release 仍为 debug 签名、真机 Keystore 与 Cloud Run endpoint smoke 尚未验收。最后打开 `docs/v2_verification_ledger.md`，说明 Supabase/Cloud Run、双人 temporal 签核、strategy Judge 重新校准和完整消融与 `v2.0.0` Release 仍受阻。这样演示已覆盖多步 Agent、跨 thread Memory 指标、时序、证据来源与移动端实现边界，而不夸大未交付内容。
