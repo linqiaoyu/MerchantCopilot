@@ -28,7 +28,7 @@
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
 | T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 已验证 | `.venv312/bin/python -m pytest -q tests/test_bge_adapter.py tests/test_graph_v2.py tests/test_planning.py`：17 passed（含 12 条图路径） | 无 |
-| T08 | 无终止路径与旧三任务回归 | 已验证 | 空 DeepSeek/Qwen key、关闭 LangSmith tracing 的 Python 3.12 全量回归：`145 passed, 6 skipped in 82.10s`；包含真实 BGE-M3 + reranker 的 `tests/test_rag.py`（4 passed，80.27s）以及 Graph、MCP、Postgres 恢复专项 | 无 |
+| T08 | 无终止路径与旧三任务回归 | 已验证 | 空 DeepSeek/Qwen key、关闭 LangSmith tracing 的 Python 3.12 回归；2026-08-12 本地 pgvector 环境收集 164 tests，覆盖全部测试文件的三组回归与随后完整 `pytest -q` 均 exit 0。包含真实 BGE-M3 + reranker 的 `tests/test_rag.py`（4 passed，80.27s）以及 Graph、MCP、Postgres 恢复专项 | 无 |
 | T09 | 固定 API/SSE、Bearer、DemoRuntime 幂等、断线恢复与错误分类 | 已验证 | `tests/test_api_health.py` 实际 16 passed（10.46s）；包含同 key 8 并发只执行一次 | 无 |
 | T09 | PostgresRuntime HTTP/SSE、PostgresSaver 恢复、真实 quota/数据库错误 | 已验证 | `tests/test_api_postgres_http_integration.py`：3 passed（本地 pgvector HTTP/SSE、幂等、读回、feedback、quota 不执行 Agent、ConnectionError→database_unavailable）；PostgresSaver 重开恢复：62 passed 专项中的 `test_postgres_checkpointer_persists_and_isolates_threads` | 三界面一致性仍单列未验收 |
 | T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 62 passed；Uvicorn 实测 `/healthz`、`/readyz` 均 200；空 DeepSeek/Qwen/DB、关闭 LangSmith tracing 的 Metric、Attribution、Strategy CLI 均真实完成（Strategy 经 BGE-M3 + reranker 冷启动）；本地 pgvector HTTP/SSE Metric 已完成，重启 Uvicorn 后相同 `run_id` 成功读回；另建临时 Python 3.12 venv 从 `requirements.txt` 零安装、`pip check` 后全量回归 `145 passed, 6 skipped in 130.39s` | 另一台机器按五条命令从零启动 |
