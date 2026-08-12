@@ -10,6 +10,7 @@ import json
 import os
 from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
+from pathlib import Path
 from threading import RLock
 from typing import Any
 from uuid import UUID, uuid4
@@ -19,6 +20,9 @@ import psycopg
 from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 
 class ThreadRequest(BaseModel):
