@@ -37,3 +37,5 @@
 | T12 | Demo Profile、secret、月度 cap、Cloud Run/Supabase smoke | 已实现未验证 | Dockerfile；deploy/cloudrun-demo.yaml；tests/test_deploy_config.py；cap repository 回归 | Supabase/GCP 部署权限与真人云端核验 |
 | T13 | 60×6 消融完整性、配对效应/检验、成本延迟/失败样本汇总 | 已验证 | `tests/test_v2_ablation_analysis.py`；evals/analyze_v2_ablation.py 拒绝缺失与重复样本 | 无 |
 | T13 | Qwen 校准、完整 60×6 原始运行、指标门槛与 bad-case 报告 | 未实现 | 无 v2 模型/Judge 运行产物 | Qwen/DeepSeek 凭据与完整评测运行 |
+| T14 | Stub 50 并发、错误率<1%、无模型 API p95<300ms | 已验证 | `scripts/load_stub_api.py` 重跑：50/50、0 error、p50 65.1ms、p95 74.8ms；边界测试 1 passed | 无 |
+| T14 | 真实 5 并发、串线/重复/冲突、Scale Profile 与云端资源曲线 | 未实现 | 无真实 Agent/Cloud Run 压测产物 | DeepSeek、Supabase、GCP deployment |
