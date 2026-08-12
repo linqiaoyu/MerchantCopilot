@@ -1,6 +1,7 @@
 import pytest
 
 from evals.run_v2_component_ablation import CONFIGURATIONS, evaluation_state, run
+from evals.seed_v2_component_ablation import load_manifest, manifest_sha256
 
 
 def test_component_ablation_flags_are_isolated():
@@ -19,3 +20,15 @@ def test_component_ablation_flags_are_isolated():
 def test_component_runner_rejects_missing_evaluation_database(tmp_path):
     with pytest.raises(ValueError, match="DATABASE_URL is required"):
         run(tmp_path / "runs.json", dsn="", merchant_id="eval", limit=1)
+
+
+def test_frozen_component_seed_is_complete_and_hashed():
+    manifest = load_manifest()
+    assert manifest["merchant_id"] == "eval-component-ablation"
+    assert {fact["predicate"] for fact in manifest["facts"]} == {"category", "audience", "style"}
+    assert len(manifest_sha256()) == 64
+
+
+def test_component_state_rejects_unknown_configuration():
+    with pytest.raises(ValueError, match="unknown component configuration"):
+        evaluation_state({"query": "x"}, "unknown", "eval")

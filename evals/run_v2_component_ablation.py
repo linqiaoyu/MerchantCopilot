@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from evals.run_v2_deepseek_baseline import _usage_total, load_records
+from evals.seed_v2_component_ablation import load_manifest, manifest_sha256, validate_seed
 
 CONFIGURATIONS = ("full", "minus_memory", "minus_rag", "bare")
 
@@ -38,18 +39,27 @@ def _contract(dsn: str, merchant_id: str) -> dict:
         "dataset": "historical-v1.0-v1.1-80", "model": "deepseek-v4-flash",
         "configurations": list(CONFIGURATIONS), "merchant_id": merchant_id,
         "database": "provided evaluation DSN" if dsn else "missing",
+        "seed_manifest_sha256": manifest_sha256(),
         "memory_candidate_extraction": "disabled",
         "judge": "not-called; raw Agent outputs only",
     }
 
 
-def run(output: Path, *, dsn: str, merchant_id: str, limit: int | None = None) -> dict:
+def run(output: Path, *, dsn: str, merchant_id: str, limit: int | None = None,
+        record_ids: set[str] | None = None) -> dict:
     if not dsn:
         raise ValueError("DATABASE_URL is required: full Memory needs a declared isolated evaluation seed")
+    if merchant_id != load_manifest()["merchant_id"]:
+        raise ValueError("merchant_id must match the frozen component-ablation seed")
+    validate_seed(dsn, merchant_id)
     from app.agent.graph_v2 import build_graph_v2
     from app.llm.client import capture_usage
 
     records = load_records()
+    if record_ids is not None:
+        records = [record for record in records if record["id"] in record_ids]
+        if {record["id"] for record in records} != record_ids:
+            raise ValueError("--ids must name frozen historical query ids")
     if limit is not None:
         records = records[:limit]
     contract = _contract(dsn, merchant_id)
@@ -89,9 +99,11 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--merchant-id", default="eval-component-ablation")
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--ids", help="comma-separated frozen query ids; useful for a low-cost smoke")
     args = parser.parse_args()
+    record_ids = set(args.ids.split(",")) if args.ids else None
     payload = run(args.output, dsn=os.environ.get("DATABASE_URL", "").strip(),
-                  merchant_id=args.merchant_id, limit=args.limit)
+                  merchant_id=args.merchant_id, limit=args.limit, record_ids=record_ids)
     print(json.dumps({name: len(rows) for name, rows in payload["runs"].items()}))
     return 0
 

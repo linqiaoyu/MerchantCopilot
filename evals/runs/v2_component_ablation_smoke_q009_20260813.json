@@ -1,0 +1,601 @@
+{
+  "runtime": {
+    "dataset": "historical-v1.0-v1.1-80",
+    "model": "deepseek-v4-flash",
+    "configurations": [
+      "full",
+      "minus_memory",
+      "minus_rag",
+      "bare"
+    ],
+    "merchant_id": "eval-component-ablation",
+    "database": "provided evaluation DSN",
+    "seed_manifest_sha256": "585cc9da774c39a3cb05bfce026b7bc166f09cf470302f6c6ff6ffc5e2bef1c5",
+    "memory_candidate_extraction": "disabled",
+    "judge": "not-called; raw Agent outputs only"
+  },
+  "runs": {
+    "full": {
+      "q_009": {
+        "query_type": "strategy",
+        "final_answer": "你的主推价格带应该锚定在100-300元的中段，也就是150-200元的基础款，这样学生和职场新人看一眼就觉得值，别让高客单品硬占主推位。因为你的主力客群18-24学生加上25-30职场新人合计约85%，且基础实穿是主导。具体建议：午场面向学生主推100-180元基础款，晚场面向职场新人主推200-300元通勤款；每场至少留两件百元内福利款限时限量稳住低客单，高价品占比控制在三分之一内，防止学生流失。",
+        "node_result": {
+          "task": "strategy",
+          "headline": "策略建议:主推价格带锚定策略",
+          "data": {
+            "topic": "主推价格带锚定策略",
+            "recommendations": [
+              "将主推款锚定在100-300元价格带中段的150-200元基础款，让学生和职场新人一眼觉得值这个价，避免高客单硬占主推位",
+              "午场面向18-24学生主推100-180元基础款，晚场面向职场新人主推200-300元通勤款，按时段微调价格带匹配客群",
+              "每场直播至少保留两件百元内福利款限时限量稳住低客单人群，高价品占比控制在三分之一内防学生客群流失"
+            ],
+            "merchant_profile": {
+              "category": "类目:女装,中端价格带 ¥100-300",
+              "audience": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%",
+              "style": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场",
+              "recent_concerns": [],
+              "canonical_context": [
+                {
+                  "memory_id": "44ed2272-f5da-5490-8782-41179f7066c8",
+                  "source_event_id": "f3628b19-6531-5e07-ad1c-e1f75b5bee20",
+                  "kind": "core",
+                  "subject": "merchant",
+                  "predicate": "category",
+                  "content": "类目:女装,中端价格带 ¥100-300"
+                },
+                {
+                  "memory_id": "49191ded-c80a-58af-87ab-583aef873d33",
+                  "source_event_id": "124c317f-3db9-5400-b246-bd8c5ff3a30e",
+                  "kind": "core",
+                  "subject": "merchant",
+                  "predicate": "style",
+                  "content": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场"
+                },
+                {
+                  "memory_id": "51b55f83-4360-59c2-8f87-4ccecb4d9b3d",
+                  "source_event_id": "d2a2a64d-1bdf-599e-acdb-1234ee218130",
+                  "kind": "core",
+                  "subject": "merchant",
+                  "predicate": "audience",
+                  "content": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%"
+                }
+              ]
+            },
+            "retrieved_chunks": [
+              {
+                "source_doc": "operation-selection-price-band.md",
+                "heading": "用流量结构反推价格带验证"
+              },
+              {
+                "source_doc": "operation-selection-price-band.md",
+                "heading": "主推品必须锚定价格带中位"
+              },
+              {
+                "source_doc": "category_specific-mid-price-aov.md",
+                "heading": "客单价锚定与选品逻辑"
+              },
+              {
+                "source_doc": "operation-schedule-day-vs-night.md",
+                "heading": "午场客群画像与排播要点"
+              },
+              {
+                "source_doc": "attribution-uv-up-gmv-flat.md",
+                "heading": "人群质量与货盘匹配的调整"
+              }
+            ],
+            "profile_source": "canonical_pgvector",
+            "generation": "llm",
+            "rag_status": "ok"
+          },
+          "evidence": [
+            "商家画像:类目:女装,中端价格带 ¥100-300;主力客群:18-24 学生 + 25-30 职场新人,合计约 85%",
+            "KB 召回 5 条相关片段(top-1:《用流量结构反推价格带验证》)",
+            "生成方式:llm"
+          ]
+        },
+        "recalled_memories": [
+          {
+            "memory_id": "44ed2272-f5da-5490-8782-41179f7066c8",
+            "source_event_id": "f3628b19-6531-5e07-ad1c-e1f75b5bee20",
+            "kind": "core",
+            "subject": "merchant",
+            "predicate": "category",
+            "content": "类目:女装,中端价格带 ¥100-300"
+          },
+          {
+            "memory_id": "49191ded-c80a-58af-87ab-583aef873d33",
+            "source_event_id": "124c317f-3db9-5400-b246-bd8c5ff3a30e",
+            "kind": "core",
+            "subject": "merchant",
+            "predicate": "style",
+            "content": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场"
+          },
+          {
+            "memory_id": "51b55f83-4360-59c2-8f87-4ccecb4d9b3d",
+            "source_event_id": "d2a2a64d-1bdf-599e-acdb-1234ee218130",
+            "kind": "core",
+            "subject": "merchant",
+            "predicate": "audience",
+            "content": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%"
+          }
+        ],
+        "steps": [
+          {
+            "node": "Router",
+            "summary": "intent=strategy method=llm confidence=0.90",
+            "intent": "strategy",
+            "method": "llm",
+            "confidence": 0.9,
+            "time_window": {}
+          },
+          {
+            "node": "MemoryRecall",
+            "summary": "recalled=3"
+          },
+          {
+            "node": "Planner",
+            "summary": "planned strategy, replan=0"
+          },
+          {
+            "node": "Strategy",
+            "summary": "策略建议:主推价格带锚定策略",
+            "data": {
+              "generation": "llm",
+              "rag_status": "ok",
+              "chunks": 5
+            }
+          },
+          {
+            "node": "EvidenceVerifier",
+            "summary": "sufficient"
+          },
+          {
+            "node": "Insight",
+            "summary": "final_answer via llm",
+            "method": "llm"
+          },
+          {
+            "node": "MemoryPolicyGate",
+            "summary": "disabled for no-memory evaluation"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 3500,
+          "completion_tokens": 771,
+          "total_tokens": 4271
+        },
+        "usage_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 289,
+              "completion_tokens": 16,
+              "total_tokens": 305
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 2112,
+              "completion_tokens": 304,
+              "total_tokens": 2416
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 1099,
+              "completion_tokens": 451,
+              "total_tokens": 1550
+            }
+          }
+        ],
+        "latency_ms": 52442.247
+      }
+    },
+    "minus_memory": {
+      "q_009": {
+        "query_type": "strategy",
+        "final_answer": "结论：建议主推价格带锚定在100-300元中段，优先选视觉显性价比的150-200元基础款，避免高客单品占唯一主推位。\n\n依据：从流量结构反推价格带的逻辑看，主推品需要锚定价格带中位；午场和晚场客群不同，要按时段切换主推。如果某时段转化明显低于基线，先核查流量来源是否错配，再调整，别盲目换品。\n\n建议：  \n1. 午场面向学生推100-180元基础款，晚场面向职场新人上200-300元通勤款。  \n2. 若主推品转化低于基线，先查流量来源错配，再决定降档或调投流人群，勿盲目换品。",
+        "node_result": {
+          "task": "strategy",
+          "headline": "策略建议:主推价格带锚定策略",
+          "data": {
+            "topic": "主推价格带锚定策略",
+            "recommendations": [
+              "将主推品锚定在¥100-300价格带中段，优先选视觉显性价比的150-200元基础款，避免高客单品占据唯一主推位",
+              "午场面向学生主推100-180元基础款，晚场面向职场新人上200-300元通勤款，按客群切换时段主推",
+              "若某时段主推品转化明显低于基线，先核查流量来源是否错配，再决定降档或调投流人群，勿盲目换品"
+            ],
+            "merchant_profile": {
+              "category": "",
+              "audience": "",
+              "style": "",
+              "recent_concerns": [],
+              "canonical_context": []
+            },
+            "retrieved_chunks": [
+              {
+                "source_doc": "operation-selection-price-band.md",
+                "heading": "用流量结构反推价格带验证"
+              },
+              {
+                "source_doc": "operation-selection-price-band.md",
+                "heading": "主推品必须锚定价格带中位"
+              },
+              {
+                "source_doc": "category_specific-mid-price-aov.md",
+                "heading": "客单价锚定与选品逻辑"
+              },
+              {
+                "source_doc": "operation-schedule-day-vs-night.md",
+                "heading": "午场客群画像与排播要点"
+              },
+              {
+                "source_doc": "attribution-uv-up-gmv-flat.md",
+                "heading": "人群质量与货盘匹配的调整"
+              }
+            ],
+            "profile_source": "canonical_empty",
+            "generation": "llm",
+            "rag_status": "ok"
+          },
+          "evidence": [
+            "商家画像:;",
+            "KB 召回 5 条相关片段(top-1:《用流量结构反推价格带验证》)",
+            "生成方式:llm"
+          ]
+        },
+        "recalled_memories": [],
+        "steps": [
+          {
+            "node": "Router",
+            "summary": "intent=strategy method=llm confidence=0.90",
+            "intent": "strategy",
+            "method": "llm",
+            "confidence": 0.9,
+            "time_window": {}
+          },
+          {
+            "node": "MemoryRecall",
+            "summary": "disabled for component ablation"
+          },
+          {
+            "node": "Planner",
+            "summary": "planned strategy, replan=0"
+          },
+          {
+            "node": "Strategy",
+            "summary": "策略建议:主推价格带锚定策略",
+            "data": {
+              "generation": "llm",
+              "rag_status": "ok",
+              "chunks": 5
+            }
+          },
+          {
+            "node": "EvidenceVerifier",
+            "summary": "sufficient"
+          },
+          {
+            "node": "Insight",
+            "summary": "final_answer via llm",
+            "method": "llm"
+          },
+          {
+            "node": "MemoryPolicyGate",
+            "summary": "disabled for no-memory evaluation"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 2723,
+          "completion_tokens": 1447,
+          "total_tokens": 4170
+        },
+        "usage_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 289,
+              "completion_tokens": 16,
+              "total_tokens": 305
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 1747,
+              "completion_tokens": 279,
+              "total_tokens": 2026
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 687,
+              "completion_tokens": 1152,
+              "total_tokens": 1839
+            }
+          }
+        ],
+        "latency_ms": 26109.332
+      }
+    },
+    "minus_rag": {
+      "q_009": {
+        "query_type": "strategy",
+        "final_answer": "结论：建议主推锚定100-300元中端价格带。你类目是女装中端带，主力客群18-24学生+25-30职场新人约85%，风格偏基础实穿，主推放基础款最能聚拢核心客群。建议：①午场你侧重学生偏好的百元档基础款，工作日晚场小李侧重职场新人通勤款；②先小批量测款，观察两场加购和回头表现，再决定是否把资源集中到某价位档。这次没有检索到更多依据，具体效果需人工进一步核实。",
+        "node_result": {
+          "task": "strategy",
+          "headline": "策略建议:主推中端百元至三百元",
+          "data": {
+            "topic": "主推中端百元至三百元",
+            "recommendations": [
+              "把主推款锚定在100-300元中端价格带，基础实穿款占主推位，先聚拢18-24学生与25-30职场新人这85%核心客群",
+              "午场由小张侧重学生偏好的百元档基础款，工作日晚场由小李侧重职场新人通勤款，形成双时段主推取舍",
+              "先按现有主推带做小批量测款，观察午晚两场核心客群的加购与回头表现，再决定是否把资源更集中到某个价位档"
+            ],
+            "merchant_profile": {
+              "category": "类目:女装,中端价格带 ¥100-300",
+              "audience": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%",
+              "style": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场",
+              "recent_concerns": [],
+              "canonical_context": [
+                {
+                  "memory_id": "44ed2272-f5da-5490-8782-41179f7066c8",
+                  "source_event_id": "f3628b19-6531-5e07-ad1c-e1f75b5bee20",
+                  "kind": "core",
+                  "subject": "merchant",
+                  "predicate": "category",
+                  "content": "类目:女装,中端价格带 ¥100-300"
+                },
+                {
+                  "memory_id": "49191ded-c80a-58af-87ab-583aef873d33",
+                  "source_event_id": "124c317f-3db9-5400-b246-bd8c5ff3a30e",
+                  "kind": "core",
+                  "subject": "merchant",
+                  "predicate": "style",
+                  "content": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场"
+                },
+                {
+                  "memory_id": "51b55f83-4360-59c2-8f87-4ccecb4d9b3d",
+                  "source_event_id": "d2a2a64d-1bdf-599e-acdb-1234ee218130",
+                  "kind": "core",
+                  "subject": "merchant",
+                  "predicate": "audience",
+                  "content": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%"
+                }
+              ]
+            },
+            "retrieved_chunks": [],
+            "profile_source": "canonical_pgvector",
+            "generation": "llm",
+            "rag_status": "disabled_for_component_ablation"
+          },
+          "evidence": [
+            "商家画像:类目:女装,中端价格带 ¥100-300;主力客群:18-24 学生 + 25-30 职场新人,合计约 85%",
+            "KB 召回 0 条相关片段(无召回)",
+            "生成方式:llm"
+          ]
+        },
+        "recalled_memories": [
+          {
+            "memory_id": "44ed2272-f5da-5490-8782-41179f7066c8",
+            "source_event_id": "f3628b19-6531-5e07-ad1c-e1f75b5bee20",
+            "kind": "core",
+            "subject": "merchant",
+            "predicate": "category",
+            "content": "类目:女装,中端价格带 ¥100-300"
+          },
+          {
+            "memory_id": "49191ded-c80a-58af-87ab-583aef873d33",
+            "source_event_id": "124c317f-3db9-5400-b246-bd8c5ff3a30e",
+            "kind": "core",
+            "subject": "merchant",
+            "predicate": "style",
+            "content": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场"
+          },
+          {
+            "memory_id": "51b55f83-4360-59c2-8f87-4ccecb4d9b3d",
+            "source_event_id": "d2a2a64d-1bdf-599e-acdb-1234ee218130",
+            "kind": "core",
+            "subject": "merchant",
+            "predicate": "audience",
+            "content": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%"
+          }
+        ],
+        "steps": [
+          {
+            "node": "Router",
+            "summary": "intent=strategy method=llm confidence=0.90",
+            "intent": "strategy",
+            "method": "llm",
+            "confidence": 0.9,
+            "time_window": {}
+          },
+          {
+            "node": "MemoryRecall",
+            "summary": "recalled=3"
+          },
+          {
+            "node": "Planner",
+            "summary": "planned strategy, replan=0"
+          },
+          {
+            "node": "Strategy",
+            "summary": "策略建议:主推中端百元至三百元",
+            "data": {
+              "generation": "llm",
+              "rag_status": "disabled_for_component_ablation",
+              "chunks": 0
+            }
+          },
+          {
+            "node": "EvidenceVerifier",
+            "summary": "sufficient"
+          },
+          {
+            "node": "Insight",
+            "summary": "final_answer via llm",
+            "method": "llm"
+          },
+          {
+            "node": "MemoryPolicyGate",
+            "summary": "disabled for no-memory evaluation"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 2382,
+          "completion_tokens": 4269,
+          "total_tokens": 6651
+        },
+        "usage_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 289,
+              "completion_tokens": 16,
+              "total_tokens": 305
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 1136,
+              "completion_tokens": 1664,
+              "total_tokens": 2800
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 957,
+              "completion_tokens": 2589,
+              "total_tokens": 3546
+            }
+          }
+        ],
+        "latency_ms": 39528.275
+      }
+    },
+    "bare": {
+      "q_009": {
+        "query_type": "strategy",
+        "final_answer": "结论：主推价格带锚定在¥100-300，覆盖18-30岁主流客群。\n\n依据：目前知识库和商家画像都没有具体数据支撑，这条策略属于LLM基于平台通用逻辑生成，**需人工进一步核实**是否适合你的店铺。\n\n具体建议：\n1. 主推位固定放¥100-300段位款，引流款和形象款围绕这一区间做上下延展。\n2. 每日开播主推款也定在这个价格段。\n3. 午场和晚场客流不同，同价格带内轮换风格和款式，避免单款播疲劳。",
+        "node_result": {
+          "task": "strategy",
+          "headline": "策略建议:主推价格带锚定策略",
+          "data": {
+            "topic": "主推价格带锚定策略",
+            "recommendations": [
+              "将主推位锚定¥100-300主力价格带，覆盖18-24学生与25-30职场新人的主流预算区间",
+              "以¥100-300段位款作为每日开播主推，引流款和形象款围绕此区间做上下延展",
+              "根据午场和晚场客流差异，在同价格带内轮换风格款式，避免单一款疲劳"
+            ],
+            "merchant_profile": {
+              "category": "",
+              "audience": "",
+              "style": "",
+              "recent_concerns": [],
+              "canonical_context": []
+            },
+            "retrieved_chunks": [],
+            "profile_source": "canonical_empty",
+            "generation": "llm",
+            "rag_status": "disabled_for_component_ablation"
+          },
+          "evidence": [
+            "商家画像:;",
+            "KB 召回 0 条相关片段(无召回)",
+            "生成方式:llm"
+          ]
+        },
+        "recalled_memories": [],
+        "steps": [
+          {
+            "node": "Router",
+            "summary": "intent=strategy method=llm confidence=0.90",
+            "intent": "strategy",
+            "method": "llm",
+            "confidence": 0.9,
+            "time_window": {}
+          },
+          {
+            "node": "MemoryRecall",
+            "summary": "disabled for component ablation"
+          },
+          {
+            "node": "Planner",
+            "summary": "planned strategy, replan=0"
+          },
+          {
+            "node": "Strategy",
+            "summary": "策略建议:主推价格带锚定策略",
+            "data": {
+              "generation": "llm",
+              "rag_status": "disabled_for_component_ablation",
+              "chunks": 0
+            }
+          },
+          {
+            "node": "EvidenceVerifier",
+            "summary": "sufficient"
+          },
+          {
+            "node": "Insight",
+            "summary": "final_answer via llm",
+            "method": "llm"
+          },
+          {
+            "node": "MemoryPolicyGate",
+            "summary": "disabled for no-memory evaluation"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 1573,
+          "completion_tokens": 762,
+          "total_tokens": 2335
+        },
+        "usage_calls": [
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 289,
+              "completion_tokens": 16,
+              "total_tokens": 305
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 771,
+              "completion_tokens": 287,
+              "total_tokens": 1058
+            }
+          },
+          {
+            "provider": "deepseek",
+            "model": "deepseek-v4-flash",
+            "usage": {
+              "prompt_tokens": 513,
+              "completion_tokens": 459,
+              "total_tokens": 972
+            }
+          }
+        ],
+        "latency_ms": 11538.399
+      }
+    }
+  }
+}

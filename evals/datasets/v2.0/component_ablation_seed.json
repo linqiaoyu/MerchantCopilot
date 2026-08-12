@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "merchant_id": "eval-component-ablation",
+  "purpose": "Frozen canonical profile seed for v2 component-ablation raw-output evaluation; not a human quality label.",
+  "facts": [
+    {"subject": "merchant", "predicate": "category", "content": "类目:女装,中端价格带 ¥100-300"},
+    {"subject": "merchant", "predicate": "audience", "content": "主力客群:18-24 学生 + 25-30 职场新人,合计约 85%"},
+    {"subject": "merchant", "predicate": "style", "content": "风格偏好:基础款实穿主导;主播小张午场、小李工作日晚场"}
+  ]
+}
