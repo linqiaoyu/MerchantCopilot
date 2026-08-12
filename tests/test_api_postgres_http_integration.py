@@ -62,3 +62,48 @@ def test_postgres_runtime_persists_sse_run_idempotently(postgres_http):
     feedback = client.post(f"/v1/runs/{run_id}/feedback", headers=_headers(), json={"score": 5, "comment": "可复现"})
     assert feedback.json() == {"run_id": run_id, "accepted": True}
     assert client.get(f"/v1/runs/{run_id}", headers={"Authorization": "Bearer postgres-demo"}).json()["feedback"] == {"score": 5, "comment": "可复现"}
+
+
+def test_postgres_runtime_quota_failure_does_not_execute_agent(postgres_http, monkeypatch):
+    client, merchant_id, calls = postgres_http
+    monkeypatch.setenv("DEMO_MONTHLY_RUN_CAP", "0")
+    thread = client.post("/v1/threads", headers=_headers(), json={"merchant_id": merchant_id}).json()
+
+    response = client.post(
+        f"/v1/threads/{thread['thread_id']}/runs:stream",
+        headers=_headers(),
+        json={"query": "GMV"},
+    )
+    assert response.status_code == 200
+    assert response.text.index("event: meta") < response.text.index("event: node_started") < response.text.index("event: error") < response.text.index("event: done")
+    assert '"code": "quota"' in response.text
+    assert calls == []
+
+    run_id = json.loads(re.search(r"data: (\{.*?\})", response.text).group(1))["run_id"]
+    recovered = client.get(f"/v1/runs/{run_id}", headers={"Authorization": "Bearer postgres-demo"})
+    assert recovered.json()["status"] == "failed"
+    assert recovered.json()["error"] == {"code": "quota", "message": "demo run cap reached"}
+
+
+def test_postgres_runtime_classifies_agent_connection_error(postgres_http, monkeypatch):
+    client, merchant_id, _ = postgres_http
+    monkeypatch.setattr(
+        PostgresRuntime,
+        "execute",
+        lambda *_: (_ for _ in ()).throw(ConnectionError("database connection lost")),
+    )
+    thread = client.post("/v1/threads", headers=_headers(), json={"merchant_id": merchant_id}).json()
+
+    response = client.post(
+        f"/v1/threads/{thread['thread_id']}/runs:stream",
+        headers=_headers(),
+        json={"query": "GMV"},
+    )
+    assert response.status_code == 200
+    assert response.text.index("event: meta") < response.text.index("event: error") < response.text.index("event: done")
+    assert '"code": "database_unavailable"' in response.text
+
+    run_id = json.loads(re.search(r"data: (\{.*?\})", response.text).group(1))["run_id"]
+    recovered = client.get(f"/v1/runs/{run_id}", headers={"Authorization": "Bearer postgres-demo"})
+    assert recovered.json()["status"] == "failed"
+    assert recovered.json()["error"] == {"code": "database_unavailable", "message": "database unavailable"}
