@@ -6,7 +6,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED_PARTS = {".git", ".venv", ".pytest_cache", "_drafts", "__pycache__"}
+# Local interpreter environments are generated, ignored, and can contain many
+# third-party source files.  They are not repository deliverables and scanning
+# them both delays the guard and obscures the source-tree result.
+EXCLUDED_PARTS = {".git", ".venv", ".venv312", ".pytest_cache", "_drafts", "__pycache__"}
 PATTERNS = {
     "private_key": re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
     "api_key_assignment": re.compile(r"(?i)(api[_-]?key|access[_-]?token|secret)\s*[=:]\s*['\"](?!['\"])[^'\"\s]{12,}"),
