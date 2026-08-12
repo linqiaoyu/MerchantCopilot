@@ -1,4 +1,4 @@
-"""Strategy node contract tests with controlled RAG, Memory, and LLM boundaries.
+"""Strategy node contract tests with controlled RAG, canonical Memory, and LLM boundaries.
 
 The real CLI smoke is recorded separately.  These tests deliberately avoid
 personal `.env`, model APIs, and a mutable Mem0 store so the repository's test
@@ -35,24 +35,22 @@ def _controlled_chunk():
 
 
 def test_strategy_node_contract(monkeypatch):
-    """LLM 主路径保留稳定的对外结果和 Memory 写入边界。"""
+    """LLM 主路径只消费 graph 已召回的 canonical Memory。"""
     import app.agent.nodes.strategy as strategy_node
 
-    writes = []
     client = type("Client", (), {
         "is_stub": False,
         "chat": lambda *_args, **_kwargs: '{"topic":"退款率治理优化方案","recommendations":["先按商品和场次拆分退款原因，再调整尺码说明、售后响应与投流人群，连续观察一周。"]}',
     })()
-    profile = {
-        "category": "类目:女装", "audience": "客群:学生与职场新人",
-        "style": "风格:基础款", "recent_concerns": ["退款率高怎么办"],
-    }
     monkeypatch.setattr(strategy_node, "get_llm", lambda: client)
-    monkeypatch.setattr(strategy_node, "get_profile", lambda *_: profile)
     monkeypatch.setattr(strategy_node, "retrieve", lambda *_args, **_kwargs: [_controlled_chunk()])
-    monkeypatch.setattr(strategy_node, "update_recent_concerns", lambda *args: writes.append(args))
-
-    out = strategy_node.strategy({"user_query": _QUERY})
+    recalled = [
+        {"predicate": "category", "content": "类目:女装"},
+        {"predicate": "audience", "content": "客群:学生与职场新人"},
+        {"predicate": "style", "content": "风格:基础款"},
+        {"predicate": "recent_concern", "content": "退款率高怎么办"},
+    ]
+    out = strategy_node.strategy({"user_query": _QUERY, "recalled_memories": recalled})
     nr = out["node_result"]
     d = nr["data"]
 
@@ -76,14 +74,13 @@ def test_strategy_node_contract(monkeypatch):
     # ── 4. recommendations 每条都是 str 且非空 ──
     assert all(isinstance(r, str) and r.strip() for r in d["recommendations"])
 
-    # ── 5. merchant_profile 包含简历硬契约三 key(子集锁,不锁集合等价)──
-    # 简历"基于 Mem0 构建商家画像长期记忆"的最小可观测契约,Mem0→Plan B 切换时透明
+    # ── 5. merchant_profile 包含 canonical profile 的三 key──
     mp = d["merchant_profile"]
     assert isinstance(mp, dict)
     assert {"category", "audience", "style"}.issubset(mp.keys())
 
     # ── 6. merchant_profile 三事实 key 都是非空 str ──
-    # seed_profile 必写非空,即便 Mem0 损坏 get_profile 会自动 seed 重建
+    # 已召回 canonical fact 必须透明投射到三字段
     for k in ("category", "audience", "style"):
         assert isinstance(mp[k], str) and mp[k].strip(), f"profile[{k!r}] 应非空 str"
 
@@ -109,28 +106,26 @@ def test_strategy_node_contract(monkeypatch):
     assert len(steps) == 1
     assert steps[0]["node"] == "Strategy"
 
-    # ── 11. recent_concerns 字段存在 + 类型(简历"长期记忆"最小可观测契约)──
+    # ── 11. recent_concerns 字段存在 + 类型──
     # 不锁内容不锁数量(与反向清单 #5 不冲突,粒度更窄);
     # 如果未来 get_profile 不返回 recent_concerns key,简历演示故事就断,这条挡住回归
     assert "recent_concerns" in mp
     assert isinstance(mp["recent_concerns"], list)
     assert d["generation"] == "llm"
-    assert d["profile_source"] == "mem0"
-    assert writes == [(_QUERY, strategy_node.MERCHANT_ID)]
+    assert d["profile_source"] == "canonical_pgvector"
+    assert mp["canonical_context"] == recalled
 
 
-def test_strategy_local_stub_does_not_initialize_mem0(monkeypatch):
-    """No-key local mode must retain deterministic RAG fallback without Mem0."""
+def test_strategy_local_stub_does_not_bypass_canonical_memory(monkeypatch):
+    """No-key local mode retains deterministic RAG fallback without Mem0 access."""
     import app.agent.nodes.strategy as strategy_node
     from app.llm.client import LocalStub
 
     monkeypatch.setattr(strategy_node, "get_llm", lambda: LocalStub())
-    monkeypatch.setattr(strategy_node, "get_profile", lambda *_: (_ for _ in ()).throw(AssertionError("Mem0 must not initialize")))
-    monkeypatch.setattr(strategy_node, "update_recent_concerns", lambda *_: (_ for _ in ()).throw(AssertionError("Mem0 must not write")))
     chunk = type("Chunk", (), {"metadata": {"heading": "投流节奏"}, "source_doc": "playbook", "content": "按转化率分时段调整预算。"})()
     monkeypatch.setattr(strategy_node, "retrieve", lambda *_args, **_kwargs: [chunk])
 
     result = strategy_node.strategy({"user_query": "给我一份下周直播投流策略"})["node_result"]
     assert result["data"]["generation"] == "template_fallback_from_chunks"
-    assert result["data"]["profile_source"] == "unavailable"
+    assert result["data"]["profile_source"] == "canonical_empty"
     assert result["data"]["merchant_profile"]["recent_concerns"] == []

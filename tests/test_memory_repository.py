@@ -63,3 +63,13 @@ def test_recall_query_filters_stale_facts_and_uses_vector_distance():
     assert "status = 'active' AND valid_to IS NULL AND embedding IS NOT NULL" in sql
     assert "embedding <=> %s::vector" in sql
     assert params[-1] == 20
+
+
+def test_recall_preserves_canonical_predicate_for_downstream_strategy_context():
+    from datetime import datetime, timezone
+
+    row = [(UUID(int=4), UUID(int=5), "core", "类目:女装", "merchant", "category",
+            .9, .8, .7, datetime.now(timezone.utc), None, "active")]
+    memories = fetch_active_memories(_Connection(row), merchant_id="m1", query_embedding=[0.0, 1.0])
+    assert memories[0].subject == "merchant"
+    assert memories[0].predicate == "category"

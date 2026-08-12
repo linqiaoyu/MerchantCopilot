@@ -20,6 +20,8 @@ class RetrievedMemory:
     valid_from: datetime
     valid_to: datetime | None = None
     status: str = "active"
+    subject: str = ""
+    predicate: str = ""
 
 
 def score(memory: RetrievedMemory, now: datetime) -> float:
@@ -76,5 +78,6 @@ def assemble_context(memories: list[RetrievedMemory], now: datetime, query: str 
         else:
             content = memory.content
         rows.append({"memory_id": memory.memory_id, "source_event_id": memory.source_event_id,
-                     "kind": memory.kind, "content": content})
+                     "kind": memory.kind, "subject": memory.subject,
+                     "predicate": memory.predicate, "content": content})
     return rows

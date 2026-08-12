@@ -146,7 +146,7 @@ def fetch_active_memories(
     vector = "[" + ",".join(str(value) for value in query_embedding) + "]"
     with conn.cursor() as cur:
         cur.execute(
-            """SELECT memory_id, source_event_id, memory_kind, content,
+            """SELECT memory_id, source_event_id, memory_kind, content, subject, predicate,
                       1 - (embedding <=> %s::vector) AS semantic, importance, confidence, valid_from, valid_to, status
                  FROM memory_facts
                 WHERE merchant_id = %s AND status = 'active' AND valid_to IS NULL AND embedding IS NOT NULL
@@ -157,7 +157,8 @@ def fetch_active_memories(
         rows = cur.fetchall()
     return [
         RetrievedMemory(memory_id=str(row[0]), source_event_id=str(row[1]), kind=row[2], content=row[3],
-                         semantic=float(row[4]), importance=float(row[5]), confidence=float(row[6]),
-                         valid_from=row[7], valid_to=row[8], status=row[9])
+                         subject=row[4], predicate=row[5], semantic=float(row[6]),
+                         importance=float(row[7]), confidence=float(row[8]),
+                         valid_from=row[9], valid_to=row[10], status=row[11])
         for row in rows
     ]

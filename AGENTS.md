@@ -12,7 +12,7 @@ v2 将 v1 单轮 Agent 升级为以 Memory 为核心、支持多轮和跨 thread
 
 ## 当前阶段
 
-**v2 / S0 审计完成；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；S2 的可复算与盲审材料已完成，待两位真人签核。T06 DB Policy/补偿、T07 真实 60 组检索、T08 有界路径、T09 本地持久化 HTTP/SSE 已验证；T10 三类无云端变量 Agent 与重启读回已实测，仍待另一台/清空机器五步启动；T11 Flutter 核心、Keystore token persistence 与 APK 扫描器已实现，2026-08-12 debug/release APK 均已本机构建并通过密钥扫描（release 仍为 debug 签名，真机与两 endpoint smoke 未验证）；T14 Stub、真实混合五并发 SSE 与 canonical 写入并发不变量已本地验证，云端 Scale Profile 压测待后续前置条件。**
+**v2 / S0 审计完成；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；S2 的可复算与盲审材料已完成，待两位真人签核。T06 DB Policy/补偿、T07 真实 60 组检索、T08 有界路径、T09 本地持久化 HTTP/SSE 已验证；Strategy 已改为只消费 graph 的 canonical pgvector recall，Mem0 不再绕过 policy gate；T10 三类无云端变量 Agent 与重启读回已实测，仍待另一台/清空机器五步启动；T11 Flutter 核心、Keystore token persistence 与 APK 扫描器已实现，2026-08-12 debug/release APK 均已本机构建并通过密钥扫描（release 仍为 debug 签名，真机与两 endpoint smoke 未验证）；T13 的真实本地 canonical-retrieval 60×6 矩阵已完成，Qwen/真人校准与 Agent/Judge 输出矩阵待完成；T14 Stub、真实混合五并发 SSE 与 canonical 写入并发不变量已本地验证，云端 Scale Profile 压测待后续前置条件。**
 
 v1 阶段 1–6 已完成，历史 release 是 stage-6；v1.0-baseline tag 固定 v2 开始前 main HEAD。历史实现、报告和数字保留为 v1 证据，不篡改历史。
 
@@ -82,7 +82,7 @@ canonical 表：run_records、memory_events、memory_facts、memory_links、usag
 | 能力陈述 | 代码位置 | 验证证据 |
 |---|---|---|
 | 多轮有界 LangGraph Agent | app/agent/ | 路径测试；action/replan 上限 |
-| 分层、时序、可追溯 Memory | app/memory/、migrations/ | 60 组本地检索报告、Policy Gate 与 PostgreSQL 并发不变量测试 |
+| 分层、时序、可追溯 Memory | app/memory/、migrations/、app/agent/nodes/strategy.py | 60 组与本地 60×6 检索报告、Policy Gate 与 PostgreSQL 并发不变量测试 |
 | MCP OLAP 工具调用 | app/tools/server.py | 参数和证据契约测试 |
 | BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | adapter 工厂与真实同进程 Mem0 初始化；60 组本地检索报告 |
 | FastAPI/SSE 幂等服务 | app/api/ | 固定路由、SSE、鉴权、真实五并发与数据库不变量测试 |
