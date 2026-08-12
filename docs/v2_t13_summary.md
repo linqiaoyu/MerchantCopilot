@@ -16,4 +16,6 @@
 
 已验证（限定范围）：`evals/run_v2_qwen_recalibration.py` 从历史 `calibration_agent_outputs.md` 解析 30/30 条完整 Agent 输出与已填写 PM 标签；该文档生成时明确先人工标注、后旧 Qwen 评分，因此重跑没有读取旧 Judge 分数。固定 `qwen3.7-plus-2026-05-26` 对每条执行三次；q_011 三次全异，追加两次仍为 `0.5/1.0/0.75/1.0/0.5`，故不伪造众数而标为 unresolved。原始 [运行工件](../evals/runs/v2_qwen_recalibration_legacy30_20260812.json) 和 [统计](../evals/runs/v2_qwen_recalibration_legacy30_20260812_report.json) 保留 92 次实际调用的逐条维度、分数和 provider 报告 token：90 条主体调用披露 239,890 tokens；两次 q_011 补采样未返回 usage 字段，不能从响应推导费用，需以账户账单核对。binary 18/18 的 Krippendorff α=1.000（≥0.80，可用）；strategy 仅 11/12 可解析、Spearman ρ=0.117，且存在 unresolved 样本，因此 strategy 为 `reference-only`，不得用于显著性或质量结论。这是历史人工标注语料上的 Judge 校准，不是 v2 Agent 质量结果。
 
+已实现：`evals/run_v2_component_ablation.py` 为冻结历史 80 条提供 `full`、`minus_memory`、`minus_rag`、`bare` 四个逐 case、即时 checkpoint 的 raw-output runner。`disable_memory_recall` 和 `disable_rag` 是只在离线评测 state 中生效的显式旗标；所有臂都禁用 candidate extraction，因而不会把评测回答写回 canonical ledger。runner 强制要求隔离的 `DATABASE_URL` 和声明的 Memory seed，拒绝把空 Memory 当作 full；当前本机没有该 seed，故尚未产生模型输出或质量结论。
+
 尚无 full/Memory/RAG 各配置的逐 case v2 Agent/Judge 原始输出矩阵及其 Judge bad-case 报告。真人标注不能由模型代填；后续 Agent/Judge runner 必须保留所有原始输出，而不能以 no-Memory 80 条基线、历史校准语料或确定性 retrieval 矩阵替代。因此不得表述为 T13 已验收。

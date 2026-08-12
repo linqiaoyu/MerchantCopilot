@@ -42,6 +42,9 @@ def strategy(state: dict) -> dict:
 
 
 def _recall(state: dict) -> dict:
+    if state.get("disable_memory_recall"):
+        return {"recalled_memories": [],
+                "steps": [{"node": "MemoryRecall", "summary": "disabled for component ablation"}]}
     dsn = os.environ.get("DATABASE_URL", "").strip()
     if not dsn:
         return {"recalled_memories": [], "steps": [{"node": "MemoryRecall", "summary": "database unavailable; no recall"}]}

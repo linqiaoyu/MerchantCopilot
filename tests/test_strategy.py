@@ -129,3 +129,16 @@ def test_strategy_local_stub_does_not_bypass_canonical_memory(monkeypatch):
     assert result["data"]["generation"] == "template_fallback_from_chunks"
     assert result["data"]["profile_source"] == "canonical_empty"
     assert result["data"]["merchant_profile"]["recent_concerns"] == []
+
+
+def test_strategy_component_ablation_skips_rag_retrieval(monkeypatch):
+    """The -RAG arm must not invoke retrieval and must expose that fact."""
+    import app.agent.nodes.strategy as strategy_node
+    from app.llm.client import LocalStub
+
+    monkeypatch.setattr(strategy_node, "get_llm", lambda: LocalStub())
+    monkeypatch.setattr(strategy_node, "retrieve", lambda *_args, **_kwargs: (_ for _ in ()).throw(AssertionError("must not retrieve")))
+    result = strategy_node.strategy({"user_query": "给我一份下周直播投流策略", "disable_rag": True})["node_result"]
+    assert result["data"]["rag_status"] == "disabled_for_component_ablation"
+    assert result["data"]["retrieved_chunks"] == []
+    assert result["data"]["generation"] == "unavailable"

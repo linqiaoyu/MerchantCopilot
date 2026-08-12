@@ -56,3 +56,9 @@ class AgentState(TypedDict, total=False):
 
     disable_memory_candidates: bool
     """Only offline no-Memory evaluations may skip candidate extraction entirely."""
+
+    disable_memory_recall: bool
+    """Offline component ablations may bypass canonical recall without changing runtime code."""
+
+    disable_rag: bool
+    """Offline component ablations may bypass KB retrieval without changing runtime code."""

@@ -91,10 +91,13 @@ def strategy(state: AgentState) -> dict:
     # ---- RAG:fail-safe 包裹 ----
     chunks: list = []
     rag_status = "ok"
-    try:
-        chunks = retrieve(query, top_k=5)
-    except RAGNotAvailableError as e:
-        rag_status = f"unavailable: {e.__class__.__name__}"
+    if state.get("disable_rag"):
+        rag_status = "disabled_for_component_ablation"
+    else:
+        try:
+            chunks = retrieve(query, top_k=5)
+        except RAGNotAvailableError as e:
+            rag_status = f"unavailable: {e.__class__.__name__}"
 
     # ---- LLM:fail-safe 包裹 ----
     prompt = _get_prompt()

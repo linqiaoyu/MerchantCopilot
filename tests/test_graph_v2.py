@@ -126,3 +126,10 @@ def test_memory_candidate_records_policy_gate_result(monkeypatch):
 def test_no_memory_evaluation_skips_candidate_extraction(monkeypatch):
     monkeypatch.setattr(graph_v2, "extract_candidates", lambda *_: (_ for _ in ()).throw(AssertionError("must not extract")))
     assert graph_v2._memory_candidate({"disable_memory_candidates": True})["memory_candidates"] == []
+
+
+def test_recall_can_be_disabled_for_component_ablation(monkeypatch):
+    monkeypatch.setenv("DATABASE_URL", "postgresql://should-not-be-opened")
+    result = graph_v2._recall({"disable_memory_recall": True})
+    assert result["recalled_memories"] == []
+    assert result["steps"][0]["summary"] == "disabled for component ablation"
