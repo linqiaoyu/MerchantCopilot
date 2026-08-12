@@ -7,7 +7,7 @@
 | Working | LangGraph thread state/checkpoint | 单 thread、可恢复 | 官方 PostgresSaver 已本地实测 |
 | Core | 稳定画像与经营约束 | 长期、可 supersede | canonical `memory_facts` |
 | Episodic | 历史问题与工具事实 | 时序可追溯 | append-only `memory_events` + facts |
-| Decision/Outcome | 建议、反馈与验证结果 | feedback 后可复用 | Policy Gate 与 schema 已实现；HTTP outcome 链路待验收 |
+| Decision/Outcome | 建议、反馈与验证结果 | feedback 后可复用 | Policy Gate、schema 与持久化 feedback 已本地验证 |
 
 Postgres 是唯一 canonical ledger：`run_records`、`memory_events`、`memory_facts`、`memory_links`、`usage_counters`。Mem0/pgvector 是检索索引，不能直接改写 canonical fact。
 
@@ -24,7 +24,7 @@ Postgres 是唯一 canonical ledger：`run_records`、`memory_events`、`memory_
 
 查询只读取 active、`valid_to IS NULL` 且有 embedding 的 canonical fact。评分权重固定为：semantic 55%、recency 20%、importance 15%、confidence 10%。预算固定：Core 最多 8 条/800 中文字符、Episodic 最终 5 条、Decision/Outcome 最终 3 条。
 
-每个注入 context row 携带 `memory_id` 与 `source_event_id`。当前 BGE shared adapter 通过 Mem0 2.0.2 的 factory 重定向复用 RAG 单例；真实进程单例计数、topic relevance gate 和 60 组指标仍未验收，不能声明达标。
+每个注入 context row 携带 `memory_id` 与 `source_event_id`。BGE shared adapter 通过 Mem0 2.0.2 的 factory 重定向复用 RAG 单例；冷启动与 encode 均受同一进程锁保护，避免并发请求构造第二个 BGE 实例或同时驱动 MPS 模型。topic relevance gate 与 60 组本地指标已验证（Recall@5=1.0、当前事实准确率=1.0、stale/无关注入/短期泄漏=0、provenance=1.0）；T04 的两位真人 temporal truth 签核仍未完成，不能表述为完整评测验收。
 
 ## 评测与失败陈述
 

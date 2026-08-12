@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-v2 仍在开发与验收中。唯一权威状态见 [验证台账](docs/v2_verification_ledger.md)：本地 pgvector、canonical Memory 与部分 API 持久化已实测；T04 真人复核、T07 真实指标、Flutter、云端部署、完整评测和 release 尚未完成，不能对外表述为 v2.0.0 已发布。
+v2 仍在开发与验收中。唯一权威状态见 [验证台账](docs/v2_verification_ledger.md)：本地 pgvector、canonical Memory、60 组本地检索指标、持久化 API 与离线回归均已实测；T04 真人复核、Android APK、云端部署、Judge 校准/完整消融与 release 尚未完成，不能对外表述为 v2.0.0 已发布。
 
 历史 v1 的阶段报告、模型配置与数字保留在 `docs/stage*_summary.md` 和 `evals/runs/`，只作为历史证据，不代表当前 v2 配置。
 
@@ -17,10 +17,23 @@ Request Ingest → Memory Recall → Bounded Planner → Action Executor
   → Event / Checkpoint Commit → SSE Final Response
 ```
 
+```mermaid
+flowchart LR
+  I[Request Ingest] --> R[Memory Recall]
+  R --> P[Bounded Planner]
+  P --> X[Action Executor]
+  X --> V[Evidence Verifier]
+  V -->|once only| P
+  V --> S[Synthesize]
+  S --> G[Memory Policy Gate]
+  G --> C[Event / Checkpoint Commit]
+  C --> O[SSE Final Response]
+```
+
 - 编排：LangGraph `StateGraph`；每 run 最多 3 actions、最多 1 次 replan、120 秒预算。
 - 主模型：`deepseek-v4-flash`；Router/参数生成使用 non-thinking，归因/策略初始使用 thinking。
 - 离线 Judge：`qwen3.7-plus-2026-05-26`，不作为运行时备用模型。
-- RAG 与 Memory：BGE-M3 共享单例；RAG 另用 `bge-reranker-v2-m3`。
+- RAG 与 Memory：BGE-M3 共享进程内单例；冷启动与 encode 均有锁，RAG 另用 `bge-reranker-v2-m3`。
 - Memory：Postgres canonical ledger + Mem0/pgvector 检索索引；Policy Gate 不可绕过。
 - 服务：FastAPI + SSE；客户端目标为 Flutter Android-first。
 

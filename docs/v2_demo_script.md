@@ -1,6 +1,6 @@
-# v2 演示脚本（当前可演示部分，约 5 分钟）
+# v2 演示脚本（当前本地可验证部分，约 6–7 分钟）
 
-此脚本只使用已本地验证的内容；Flutter、Cloud Run 和 60 组 Memory 指标未完成前，不把它们作为已交付能力演示。
+此脚本只使用已本地验证的内容；Android APK、Cloud Run、T04 双人签核、Judge 校准与完整消融未完成前，不把它们作为已交付能力演示。
 
 ## 0:00–0:40：边界与问题
 
@@ -15,7 +15,8 @@
 运行：
 
 ```bash
-.venv/bin/python scripts/chat.py '2026-04-02 GMV 怎么样'
+DEEPSEEK_API_KEY='' QWEN_API_KEY='' LANGSMITH_TRACING=false \\
+  .venv312/bin/python scripts/chat.py '2026-04-02 GMV 怎么样'
 ```
 
 指出 Metric/Attribution 的结构化数字由确定性渲染器直接来自 `node_result.data`，LLM 不改写逐格数字。可展示 q_025/q_068/q_069 的回归测试作为忠实度证据。
@@ -24,10 +25,14 @@
 
 展示 `docs/v2_t05_summary.md` 与 `docs/v2_t06_summary.md`：本地 pgvector 容器重启后 run/fact/checkpoint 仍保留；20 并发 run 幂等、十次 event 重试去重、旧 fact supersede、pending 索引补偿均有真实数据库测试。强调 Mem0 只是索引，canonical PostgreSQL 是事实源。
 
-## 3:50–4:35：HTTP/SSE 契约
+## 3:50–4:45：HTTP/SSE、重启与并发边界
 
-展示固定的九条 API 和 SSE 词表。解释 Bearer demo token、UUID Idempotency-Key、SSE 正常/失败序列，以及 `PostgresRuntime` 的原子 queued→running claim。指出持久化 HTTP/SSE 完整回归仍待本机 Python 环境恢复后执行。
+展示固定的九条 API 和 SSE 词表。解释 Bearer demo token、UUID Idempotency-Key、SSE 正常/失败序列，以及 `PostgresRuntime` 的原子 queued→running claim。展示本地 pgvector HTTP/SSE 的 `run_id` 在 Uvicorn 重启后仍可读回；说明五个独立 Metric run 已在数据库中完成，但完整混合 SSE 并发与云端 Scale Profile 尚未验收。
 
-## 4:35–5:00：诚实状态与下一步
+## 4:45–5:35：Memory 60 组与跨 thread 边界
 
-打开 `docs/v2_verification_ledger.md`，主动说明：T04 双人复核、T07 60 组指标与 topic gate、Flutter、Supabase/Cloud Run、Judge/消融和 release 尚未完成。最终完成后才扩展为包含跨 thread Memory、移动端与云端的 8 分钟脚本。
+打开 `evals/runs/v2_memory_local_20260812_py312_topic_gate.json`：60 组 local canonical retrieval 的 Recall@5=1.0、短期跨 thread 泄漏=0、无关注入=0。解释这证明的是冻结数据的本地可复算结果，不替代 T04 两位真人对 temporal truth 的签核。
+
+## 5:35–6:20：客户端与发布边界
+
+展示 `mobile/` 的四页状态和 `flutter analyze` / 21 条测试记录；明确 Android APK、Keystore 安全持久化和 Cloud Run endpoint smoke 尚未验收。最后打开 `docs/v2_verification_ledger.md`，说明 Supabase/Cloud Run、Judge/完整消融、完整混合并发与 `v2.0.0` Release 均仍受阻。这样演示已覆盖多步 Agent、跨 thread Memory 指标、时序、证据来源与移动端实现边界，而不夸大未交付内容。
