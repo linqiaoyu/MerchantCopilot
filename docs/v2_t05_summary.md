@@ -11,5 +11,11 @@
 
 ## 已验证
 
-- SQL/Compose 契约测试通过（9 passed，包含 T04/T02 快速测试）。
-- 本机没有 Docker，因此真实 Postgres migration 重复执行、重启恢复、vector 查询、checkpointer 和 20 并发幂等写入尚未执行；不得宣称这些验收项已通过。
+- 本地 Colima + `pgvector/pgvector:pg16` 容器健康；由于宿主机 5432 已由用户管理的 PostgreSQL/SSH tunnel 占用，Compose 显式映射为 55432，示例 DSN 与自托管文档已同步。
+- 空库成功执行 `001_memory_core.sql`，确认五张 canonical 表和 `vector 0.8.6` 扩展存在；连续执行 migration 不重复建表。
+- `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 DATABASE_URL=…:55432 DATABASE_DIRECT_URL=…:55432 .venv/bin/python -m pytest -q tests/test_postgres_integration.py`：**2 passed**。覆盖 20 并发 run 幂等、重复 event 去重、事实 supersede，以及 `vector_dims(embedding)=1024`。
+
+## 未验证项
+
+- 进程/服务重启后的 run、Memory、Postgres checkpointer 读取；同一 thread 的 checkpoint 恢复与跨 thread 隔离。
+- Supabase 的 runtime pooler 与 direct migration DSN 使用同一套集成测试。
