@@ -73,6 +73,6 @@ class MainActivity : FlutterActivity() {
         require(payload.size > 12) { "Invalid encrypted token" }
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
         cipher.init(Cipher.DECRYPT_MODE, secretKey(), GCMParameterSpec(128, payload.copyOfRange(0, 12)))
-        return cipher.doFinal(payload.copyOfRange(12, payload.size)).toString(Charsets.UTF_8)
+        return String(cipher.doFinal(payload.copyOfRange(12, payload.size)), Charsets.UTF_8)
     }
 }
