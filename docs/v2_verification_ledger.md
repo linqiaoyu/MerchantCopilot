@@ -31,4 +31,6 @@
 | T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；`.venv/bin/python -m pytest -q` = 118 passed, 2 skipped（pgvector DSN） | 仍需路径穷举验证 |
 | T09 | 固定 API/SSE、Bearer、幂等、断线恢复与错误分类 | 已实现未验证 | app/api/main.py；tests/test_api_health.py；Postgres API repository 回归 5 passed；HTTP pytest 受本机 Python 文件读取阻塞 | 持久化 HTTP/SSE 回归 |
 | T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 | 全新环境与真实三类请求 |
+| T11 | Flutter 固定 SSE 解析、Timeline 批准/拒绝、错误状态 | 已验证 | `cd mobile && flutter analyze && flutter test`（0 error；18 passed） | 无 |
+| T11 | Android debug/release APK、设备安全存储、两 endpoint smoke、APK 密钥扫描 | 未实现 | Android platform 工程与 APK 尚未生成 | Android command-line tools/许可；Cloud Run endpoint |
 | T12 | Demo Profile、secret、月度 cap、Cloud Run/Supabase smoke | 已实现未验证 | Dockerfile；deploy/cloudrun-demo.yaml；tests/test_deploy_config.py；cap repository 回归 | Supabase/GCP 部署权限与真人云端核验 |
