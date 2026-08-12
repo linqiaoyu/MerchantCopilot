@@ -15,7 +15,10 @@ PATTERNS = {
     "api_key_assignment": re.compile(r"(?i)(api[_-]?key|access[_-]?token|secret)\s*[=:]\s*['\"](?!['\"])[^'\"\s]{12,}"),
     "postgres_dsn_with_password": re.compile(r"postgres(?:ql)?://[^\s:@]+:[^\s@]{4,}@"),
 }
-LOCAL_DEMO_DSN = "postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot"
+LOCAL_DEMO_DSNS = (
+    "postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot",
+    "postgresql://merchantcopilot:merchantcopilot@127.0.0.1:55432/merchantcopilot",
+)
 
 
 def scan(root: Path = ROOT) -> list[str]:
@@ -30,11 +33,10 @@ def scan(root: Path = ROOT) -> list[str]:
         for name, pattern in PATTERNS.items():
             # 该字面值是 Compose 中的受控本地演示账号，不是外部凭证；其余 DSN
             # （包括写在文档或 README 中的真实连接串）仍应被拦截。
-            candidate = (
-                text.replace(LOCAL_DEMO_DSN, "")
-                if name == "postgres_dsn_with_password"
-                else text
-            )
+            candidate = text
+            if name == "postgres_dsn_with_password":
+                for local_dsn in LOCAL_DEMO_DSNS:
+                    candidate = candidate.replace(local_dsn, "")
             if pattern.search(candidate):
                 findings.append(f"{path.relative_to(root)}: {name}")
     return findings
