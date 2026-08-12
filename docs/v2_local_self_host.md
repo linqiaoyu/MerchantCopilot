@@ -2,10 +2,10 @@
 
 此链路不依赖个人 Cloud Run 或 Supabase 项目；使用者提供自己的 DeepSeek API key。`.env.example` 已给出本地 `55432` DSN，API 会在启动时加载 `.env`，并在 DSN 存在时使用 Postgres runtime 与官方 PostgresSaver。LangSmith tracing 默认关闭；它只在具有有效 LangSmith key 时由使用者显式启用，不是本地运行前置条件。
 
-在 Docker/Colima 可用的机器上，从干净环境的目标步骤不超过五条：
+在 Docker/Colima 与 Python 3.12 可用的机器上，从干净环境的目标步骤不超过五条：
 
 ```bash
-python -m venv .venv && .venv/bin/pip install -r requirements.txt
+python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 cp .env.example .env  # 填入自己的 DEEPSEEK_API_KEY 与 DEMO_ACCESS_TOKEN
 docker-compose up -d postgres
 .venv/bin/python scripts/migrate.py

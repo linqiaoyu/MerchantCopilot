@@ -41,10 +41,10 @@ flowchart LR
 
 ## 快速开始：本地自托管
 
-需要 Python、Docker Compose/Colima，以及你自己的 DeepSeek API key。Docker Compose 只启动 PostgreSQL + pgvector，Python Agent 在宿主机运行。
+需要 Python 3.12、Docker Compose/Colima，以及你自己的 DeepSeek API key。Docker Compose 只启动 PostgreSQL + pgvector，Python Agent 在宿主机运行。
 
 ```bash
-python -m venv .venv && .venv/bin/pip install -r requirements.txt
+python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 cp .env.example .env
 docker-compose up -d postgres
 .venv/bin/python scripts/migrate.py
