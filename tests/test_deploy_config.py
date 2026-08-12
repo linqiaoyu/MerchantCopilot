@@ -17,5 +17,6 @@ def test_image_preloads_models_and_excludes_secrets():
     ignored = Path(".dockerignore").read_text(encoding="utf-8")
     assert "python scripts/warm_models.py" in dockerfile
     assert "uvicorn app.api.main:app" in dockerfile
+    assert "pip install --upgrade pip" not in dockerfile
     assert ".env" in ignored
     assert ".venv312" in ignored
