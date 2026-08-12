@@ -139,7 +139,7 @@ def judge_one(record: dict, agent_output: dict, provider: str = JUDGE_PROVIDER_D
     """评一条。返回 {dimensions, score, verdict, scoring_mode, judge_provider}。
 
     ⚠️ 仅 step 4(PM 标完)调用。timeout 默认 60s —— attribution 条含长 SQL anchor,
-    judge prompt 大,Qwen-max 响应可能 >20s(client 默认 timeout 偏短)。
+    judge prompt 大，固定 Qwen Judge 响应可能超过 20 秒（client 默认 timeout 偏短）。
     """
     cli = client or judge_client(provider)
     qtype = record["query_type"]
