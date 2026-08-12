@@ -10,4 +10,6 @@
 
 已验证：`evals/run_v2_memory_ablation.py` 在本地 pgvector 上对冻结 60 cases 的六个预注册配置各运行一次、每 case 后 rollback，产出 [原始矩阵](../evals/runs/v2_memory_ablation_local_20260812.json) 与 [汇总](../evals/runs/v2_memory_ablation_local_20260812_report.json)。所有配置均为 60 rows：full 60/60 pass（p50 145.287ms，p95 182.836ms）；minus_memory 与 bare 各 0/60；raw_history 45/60，no_temporal_policy 40/60。minus_rag 仍为 60/60：该 runner 的 metric 是 canonical retrieval，RAG 不参与这个指标，不能把它错误写成质量下降。raw_history 在评测行采用 event-scoped semantic key 来模拟没有 supersession，同时不改变生产 canonical 表的部分唯一约束；内容、向量与 provenance 保持原样。Strategy 已只消费 graph 的已召回 canonical context，杜绝此前旧 Mem0 profile 的 policy 绕过。
 
+已验证：`evals/render_v2_memory_bad_cases.py` 从完整矩阵确定性生成 [bad-case 清单](../evals/runs/v2_memory_ablation_local_20260812_bad_cases.md)，不省略失败样本。它逐配置列出相对 full 的 case、类别、期望/实际召回、禁止召回和 provenance；因此 raw_history 的 15 条与 no_temporal_policy 的 20 条失败可直接审阅，minus_memory/bare 的 60 条完整缺失也保留，minus_rag 的零差异则明确解释为指标边界。
+
 尚无 Qwen 3.7 Plus 与真人配对的 v2 校准结果、逐 case Agent/Judge 原始输出矩阵及其成本/延迟汇总或 bad-case 报告。真人标注不能由模型代填；后续 Agent/Judge runner 必须保留所有原始输出，而不能以本确定性矩阵替代。因此不得表述为 T13 已验收。
