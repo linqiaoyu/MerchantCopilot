@@ -43,3 +43,14 @@ def test_index_failure_is_recoverable_and_compensated():
     failed = mark_index_result(fact, False)
     assert pending_index_facts([failed]) == [failed]
     assert mark_index_result(failed, True).index_status == "indexed"
+
+
+def test_candidate_extraction_failure_leaves_no_unreviewed_memory(monkeypatch):
+    import app.memory.extractor as extractor
+
+    client = type("Client", (), {
+        "is_stub": False,
+        "complete_json": lambda *_args, **_kwargs: (_ for _ in ()).throw(ValueError("bad json")),
+    })()
+    monkeypatch.setattr(extractor, "get_llm", lambda: client)
+    assert extractor.extract_candidates("run", "answer") == []

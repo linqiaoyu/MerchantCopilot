@@ -5,7 +5,7 @@ import json
 
 import pytest
 
-from app.llm.client import LLMClient, LocalStub, get_judge_llm, get_llm
+from app.llm.client import LLMClient, LocalStub, capture_usage, get_judge_llm, get_llm
 
 
 class _Response:
@@ -107,6 +107,18 @@ def test_complete_json_validates_schema(monkeypatch):
 
     assert value["intent"] == "metric"
     assert completion.usage["total_tokens"] == 0
+
+
+def test_capture_usage_is_scoped_to_the_call_context(monkeypatch):
+    monkeypatch.setattr("urllib.request.urlopen", lambda *args, **kwargs: _Response({
+        "choices": [{"message": {"content": "ok"}}],
+        "usage": {"prompt_tokens": 3, "completion_tokens": 2, "total_tokens": 5},
+    }))
+    client = LLMClient("deepseek", "key", "https://api.deepseek.com", "deepseek-v4-flash")
+    with capture_usage() as rows:
+        client.complete("system", "user")
+    assert rows == [{"provider": "deepseek", "model": "deepseek-v4-flash",
+                     "usage": {"prompt_tokens": 3, "completion_tokens": 2, "total_tokens": 5}}]
 
 
 def test_judge_rejects_non_fixed_provider():

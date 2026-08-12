@@ -53,3 +53,6 @@ class AgentState(TypedDict, total=False):
 
     memory_candidates: list[dict[str, Any]]
     """候选长期记忆及其确定性 policy 状态；持久化由 S1 Postgres repository 负责。"""
+
+    disable_memory_candidates: bool
+    """Only offline no-Memory evaluations may skip candidate extraction entirely."""

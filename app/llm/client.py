@@ -9,11 +9,37 @@ from __future__ import annotations
 import json
 import os
 import urllib.request
+from contextlib import contextmanager
+from contextvars import ContextVar
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterator
 
 from langsmith import traceable
+
+
+_usage_collector: ContextVar[list[dict[str, object]] | None] = ContextVar("llm_usage_collector", default=None)
+
+
+@contextmanager
+def capture_usage() -> Iterator[list[dict[str, object]]]:
+    """Collect per-call provider/model/token usage within one request or eval case.
+
+    ContextVar keeps concurrent API requests isolated; callers own retention and
+    aggregation, so runtime behavior does not gain a global mutable log.
+    """
+    rows: list[dict[str, object]] = []
+    token = _usage_collector.set(rows)
+    try:
+        yield rows
+    finally:
+        _usage_collector.reset(token)
+
+
+def _record_usage(provider: str, model: str, usage: dict[str, int]) -> None:
+    rows = _usage_collector.get()
+    if rows is not None:
+        rows.append({"provider": provider, "model": model, "usage": dict(usage)})
 
 
 def _load_dotenv() -> None:
@@ -149,6 +175,7 @@ class LLMClient:
             for key in ("prompt_tokens", "completion_tokens", "total_tokens")
         }
         self.last_usage = usage
+        _record_usage(self.provider, self.model, usage)
         return Completion(text=text, usage=usage, raw=body)
 
     @traceable(name="llm_chat", tags=["llm"])
@@ -195,6 +222,7 @@ class LLMClient:
                         key: int(usage.get(key, 0) or 0)
                         for key in ("prompt_tokens", "completion_tokens", "total_tokens")
                     }
+                    _record_usage(self.provider, self.model, self.last_usage)
                 choices = event.get("choices") or []
                 if choices:
                     delta = choices[0].get("delta") or {}

@@ -121,3 +121,8 @@ def test_memory_candidate_records_policy_gate_result(monkeypatch):
     monkeypatch.setattr(graph_v2, "gate_candidate", lambda _: "approved")
     result = _memory_candidate({"final_answer": "结论"})
     assert result["memory_candidates"] == [{"candidate_id": "candidate-1", "status": "approved", "subject": "merchant", "predicate": "policy", "value": "x"}]
+
+
+def test_no_memory_evaluation_skips_candidate_extraction(monkeypatch):
+    monkeypatch.setattr(graph_v2, "extract_candidates", lambda *_: (_ for _ in ()).throw(AssertionError("must not extract")))
+    assert graph_v2._memory_candidate({"disable_memory_candidates": True})["memory_candidates"] == []

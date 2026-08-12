@@ -147,6 +147,9 @@ def _after_verify(state: dict) -> str:
 
 
 def _memory_candidate(state: dict) -> dict:
+    if state.get("disable_memory_candidates"):
+        return {"memory_candidates": [],
+                "steps": [{"node": "MemoryPolicyGate", "summary": "disabled for no-memory evaluation"}]}
     candidates = extract_candidates("local-run", state.get("final_answer", ""))
     rows = [{"candidate_id": candidate.candidate_id, "status": gate_candidate(candidate),
              "subject": candidate.subject, "predicate": candidate.predicate, "value": candidate.value}
