@@ -64,6 +64,86 @@ def test_concurrent_idempotency_supersession_and_vector_dimension():
             assert cur.fetchone() == (1024,)
 
 
+def test_concurrent_semantic_fact_writes_leave_exactly_one_active_fact():
+    """Concurrent first writes cannot bypass canonical supersession."""
+    apply_migrations()
+    suffix = str(uuid4())
+    merchant_id = f"semantic-race-{suffix}"
+    with psycopg.connect(DSN) as conn:
+        run = create_or_get_run(
+            conn, thread_id=f"thread-{suffix}", merchant_id=merchant_id,
+            idempotency_key=uuid4(), request={"query": "race"},
+        )
+        conn.commit()
+    run_id = UUID(run["run_id"])
+
+    def write(index: int) -> str:
+        candidate = MemoryCandidate(
+            f"race-{suffix}-{index}", "merchant", "operating_constraint",
+            {"value": index}, "mcp",
+        )
+        with psycopg.connect(DSN) as conn:
+            event_id = append_event(
+                conn, run_id=run_id, merchant_id=merchant_id, candidate=candidate,
+                source_ref=candidate.candidate_id,
+            )
+            fact = materialize_fact(
+                conn, source_event_id=event_id, merchant_id=merchant_id,
+                candidate=candidate, content=f"concurrent-{index}",
+            )
+            conn.commit()
+        return fact.memory_id
+
+    with ThreadPoolExecutor(max_workers=10) as pool:
+        memory_ids = list(pool.map(write, range(10)))
+    assert len(set(memory_ids)) == 10
+
+    with psycopg.connect(DSN) as conn, conn.cursor() as cur:
+        cur.execute(
+            """SELECT count(*) FROM memory_facts
+                 WHERE merchant_id = %s AND subject = 'merchant'
+                   AND predicate = 'operating_constraint'
+                   AND status = 'active' AND valid_to IS NULL""",
+            (merchant_id,),
+        )
+        assert cur.fetchone() == (1,)
+        cur.execute("SELECT count(*) FROM memory_events WHERE run_id = %s", (run_id,))
+        assert cur.fetchone() == (10,)
+
+
+def test_concurrent_duplicate_event_delivery_appends_one_canonical_event():
+    apply_migrations()
+    suffix = str(uuid4())
+    merchant_id = f"event-race-{suffix}"
+    candidate = MemoryCandidate(f"event-{suffix}", "merchant", "constraint", "one", "mcp")
+    with psycopg.connect(DSN) as conn:
+        run = create_or_get_run(
+            conn, thread_id=f"thread-{suffix}", merchant_id=merchant_id,
+            idempotency_key=uuid4(), request={"query": "duplicate event"},
+        )
+        conn.commit()
+    run_id = UUID(run["run_id"])
+
+    def deliver(_: int) -> str:
+        with psycopg.connect(DSN) as conn:
+            event_id = append_event(
+                conn, run_id=run_id, merchant_id=merchant_id, candidate=candidate,
+                source_ref="duplicate-delivery",
+            )
+            conn.commit()
+        return str(event_id)
+
+    with ThreadPoolExecutor(max_workers=10) as pool:
+        event_ids = list(pool.map(deliver, range(10)))
+    assert len(set(event_ids)) == 1
+    with psycopg.connect(DSN) as conn, conn.cursor() as cur:
+        cur.execute(
+            "SELECT count(*) FROM memory_events WHERE run_id = %s AND source_ref = 'duplicate-delivery'",
+            (run_id,),
+        )
+        assert cur.fetchone() == (1,)
+
+
 def test_postgres_checkpointer_persists_and_isolates_threads():
     """A reopened saver must recover only the checkpoint for its own thread."""
     thread_id = f"s1-checkpoint-{uuid4()}"

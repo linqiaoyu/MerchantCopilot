@@ -19,7 +19,7 @@
 | T05 | 重启后 run/checkpoint/memory 仍可读；同 thread 恢复、跨 thread 不串线 | 已验证 | `tests/test_postgres_integration.py::test_postgres_checkpointer_persists_and_isolates_threads`；`docker-compose restart postgres` 后 `runs=2,facts=4,checkpoints=1` | 本地 Colima/pgvector（已就绪） |
 | T05 | Supabase 通过同一集成测试 | 未实现 | 无 Supabase 实测记录 | Supabase 项目与 direct/pooler DSN |
 | T06 | Policy Gate ≥40 场景 | 已验证 | tests/test_memory_policy.py（53 passed） | 无 |
-| T06 | DB 并发幂等、supersede、1024 维 index 写入 | 已验证 | `tests/test_postgres_integration.py::test_concurrent_idempotency_supersession_and_vector_dimension` | 本地 Colima/pgvector（已就绪） |
+| T06 | DB 并发幂等、supersede、1024 维 index 写入 | 已验证 | `tests/test_postgres_integration.py`：20 并发 run 幂等；10 并发重复 event 投递只保留一条 canonical event；10 并发同语义 active fact 写入恰保留一个当前事实；`003_memory_active_fact_invariant.sql` 部分唯一索引 + transaction advisory lock；1024 维 index 写入 | 本地 Colima/pgvector（已就绪） |
 | T06 | 同一 run 10 次事件重试、LLM causal pending、无反馈 Strategy 不复用、source 唯一性、索引失败补偿 | 已验证 | `tests/test_postgres_integration.py::test_policy_statuses_idempotent_event_retries_and_index_compensation`；本地 DB/API repository 组合回归合计 62 passed（1.21s） | 本地 Colima/pgvector（已就绪） |
 | T07 | pgvector backend | 已验证 | `DATABASE_URL=…:55432` 下 Mem0 以 HNSW/vector(1024) 初始化并完成 `get_all`；无 DSN 才 Chroma 回退 | 无 |
 | T07 | 进程 BGE-M3 实例数=1 | 已验证 | `shared_bge` adapter 只委托 `app.rag.indexer.get_embedder()`；真实同进程先加载 RAG BGE 后 Memory 初始化输出 `mem0_provider=shared_bge` | 无 |
@@ -38,4 +38,4 @@
 | T13 | 60×6 消融完整性、配对效应/检验、成本延迟/失败样本汇总 | 已验证 | `tests/test_v2_ablation_analysis.py`；evals/analyze_v2_ablation.py 拒绝缺失与重复样本 | 无 |
 | T13 | Qwen 校准、完整 60×6 原始运行、指标门槛与 bad-case 报告 | 未实现 | 无 v2 模型/Judge 运行产物 | Qwen/DeepSeek 凭据与完整评测运行 |
 | T14 | Stub 50 并发、错误率<1%、无模型 API p95<300ms | 已验证 | Python 3.12 `scripts/load_stub_api.py` 重跑：50/50、0 error、p50 56.9ms、p95 65.2ms；边界测试 1 passed | 无 |
-| T14 | 真实 5 并发、串线/重复/冲突、Scale Profile 与云端资源曲线 | 已实现未验证 | `scripts/load_real_api.py` 以显式 endpoint/token 并发创建 5 个 thread、跑 HTTP/SSE、回读 `run_id → thread_id`，输出吞吐/p50/p95/重复 run ID；解析/单例/连接生命周期回归 11 passed。修复 Saver 作用域、BGE 单例/encode 锁与 SSE 协议换行后，本地 pgvector Metric-only `5/5` 证据为 `…_sse_fixed.json`；默认混合 Metric/Attribution/Strategy `5/5 completed`、每条完整 SSE 生命周期、run ID 无重复、回读无错、p50 18,097.0ms/p95 18,099.0ms，证据为 `evals/runs/v2_real_load_local_20260812_mixed.json`。尚无 canonical event/optimistic conflict 或云端资源曲线证据 | 可用 Cloud Run/Supabase；数据库冲突审计、Scale Profile 与云端资源曲线 |
+| T14 | 真实 5 并发、串线/重复/冲突、Scale Profile 与云端资源曲线 | 已实现未验证 | `scripts/load_real_api.py` 以显式 endpoint/token 并发创建 5 个 thread、跑 HTTP/SSE、回读 `run_id → thread_id`，输出吞吐/p50/p95/重复 run ID；解析/单例/连接生命周期回归 11 passed。修复 Saver 作用域、BGE 单例/encode 锁与 SSE 协议换行后，本地 pgvector Metric-only `5/5` 证据为 `…_sse_fixed.json`；默认混合 Metric/Attribution/Strategy `5/5 completed`、每条完整 SSE 生命周期、run ID 无重复、回读无错、p50 18,097.0ms/p95 18,099.0ms，证据为 `…_mixed.json`。真实 PostgreSQL 还验证 10 并发重复 event 为 1 条、10 并发同语义事实恰 1 条 active（未处理冲突 0）。尚无云端资源曲线证据 | 可用 Cloud Run/Supabase；Scale Profile 与云端资源曲线 |

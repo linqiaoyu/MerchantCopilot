@@ -1,6 +1,6 @@
 # v2 T14：压测
 
-当前状态：本地 Stub API 基线已验证；真实 HTTP/SSE 五并发脚本已实现，并暴露且修复了 PostgresSaver 跨线程连接与 BGE-M3 并发冷启动问题。完整混合请求和云端验收尚未完成。
+当前状态：本地 Stub API 基线、真实混合 HTTP/SSE 五并发、canonical event/fact 并发不变量均已验证；真实脚本曾暴露并已修复 PostgresSaver 跨线程连接、BGE-M3 并发冷启动和 SSE 帧编码问题。云端验收尚未完成。
 
 实际命令：`DEEPSEEK_API_KEY='' QWEN_API_KEY='' LANGSMITH_TRACING=false .venv312/bin/python scripts/load_stub_api.py`
 
@@ -12,4 +12,6 @@
 
 混合路径本地实测：默认查询组覆盖 Metric、Attribution 与 Strategy，2026-08-12 本地 pgvector 运行 `5/5` 完成、无重复 run ID、无 run→thread 回读错配；每个 SSE 都是 `meta → node_started → node_completed → evidence → final → done`。报告为 `evals/runs/v2_real_load_local_20260812_mixed.json`，p50 `18,097.0ms`、p95 `18,099.0ms`（Strategy 单样本 `29,934.8ms`，总 wall time `29.988s`）。
 
-未验证项：canonical event 重复与 optimistic conflict 的并发数据库审计、Cloud Run Scale Profile 与恢复 Demo Profile、云端资源曲线、冷启动与费用报告。API 脚本可验证 run/thread 回读与 run ID 唯一性，但不能替代数据库与云端层证据。不得将本结果表述为云端压测。
+数据库并发审计：`tests/test_postgres_integration.py` 在本地 pgvector 上验证 10 个并发相同 `(run_id, source_ref)` 投递只追加一个 canonical event；另验证 10 个并发同 `(merchant, subject, predicate)` active fact 写入后恰有一个 current fact。`003_memory_active_fact_invariant.sql` 的部分唯一索引和写入事务 advisory lock 使未处理 optimistic conflict 为 0。
+
+未验证项：Cloud Run Scale Profile 与恢复 Demo Profile、云端资源曲线、冷启动与费用报告。API 脚本可验证 run/thread 回读与 run ID 唯一性，但不能替代云端层证据。不得将本结果表述为云端压测。

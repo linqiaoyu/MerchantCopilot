@@ -65,6 +65,10 @@ def materialize_fact(
     now = datetime.now(timezone.utc)
     with conn.cursor() as cur:
         if status == "active":
+            # 行锁无法覆盖“首条事实尚不存在”的竞态；以语义键序列化同一
+            # merchant/subject/predicate 的替换，再由 003 的部分唯一索引兜底。
+            semantic_key = f"{merchant_id}\x1f{candidate.subject}\x1f{candidate.predicate}"
+            cur.execute("SELECT pg_advisory_xact_lock(hashtextextended(%s, 0))", (semantic_key,))
             cur.execute(
                 """UPDATE memory_facts SET status = 'superseded', valid_to = %s
                    WHERE merchant_id = %s AND subject = %s AND predicate = %s
