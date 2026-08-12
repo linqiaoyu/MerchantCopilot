@@ -151,7 +151,12 @@ def judge_one(record: dict, agent_output: dict, provider: str = JUDGE_PROVIDER_D
         raw_stripped = raw_stripped.strip("`")
         if raw_stripped.lower().startswith("json"):
             raw_stripped = raw_stripped[4:].lstrip()
-    dims = json.loads(raw_stripped)
+    # Some compatible endpoints occasionally append prose after an otherwise
+    # valid JSON object.  Decode exactly one object, reject a non-object, and
+    # preserve normal JSON failures rather than asking a Judge question twice.
+    dims, _ = json.JSONDecoder().raw_decode(raw_stripped)
+    if not isinstance(dims, dict):
+        raise ValueError("Judge response must begin with a JSON object")
     agg = aggregate_score(qtype, dims)
     return {
         "id": record["id"],

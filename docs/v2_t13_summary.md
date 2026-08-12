@@ -1,6 +1,6 @@
 # v2 T13：Judge 校准、Memory 评测与消融
 
-当前状态：评测契约、离线统计工具、两家模型的真实连通性，以及本地 canonical-retrieval 60×6 矩阵已验证；尚未产出 v2 完整 Agent/Judge 实测。
+当前状态：评测契约、离线统计工具、两家模型的真实连通性、本地 canonical-retrieval 60×6 矩阵，以及历史独立人工标签上的 Qwen 重校准已验证；尚未产出 v2 完整 Agent/Judge 实测。
 
 已实现：冻结 60 组 Memory runner 只使用 canonical pgvector retrieval；`evals/analyze_v2_calibration.py` 以成对人类/Judge 标注计算固定门槛；`evals/analyze_v2_ablation.py` 只接受每个 preregistered 配置完整的 60 条原始结果，拒绝漏项/重复项，并输出 pass rate、p50/p95、成本、失败 case、配对效应与双侧精确 sign-test。
 
@@ -14,4 +14,6 @@
 
 已验证：`evals/run_v2_deepseek_baseline.py` 以固定 `deepseek-v4-flash`、no-Memory、禁用 candidate extraction 的契约，重跑历史 v1.0/v1.1 的全部 80 条 query；每条保留最终回答、node result、轨迹、provider token usage 与延迟，并立即 checkpoint。严格分析器确认 [原始输出](../evals/runs/v2_deepseek_baseline_80_20260812.json) 为 80/80、0 errors；[汇总](../evals/runs/v2_deepseek_baseline_80_20260812_report.json) 的分布为 data_query 12、attribution 10、cross_period 8、strategy 50，合计 192,514 tokens，p50 22,231.051ms、p95 42,603.81ms。API 响应不提供可计费单价，故报告只记录 token，并明确费用需按账户账单核对。此项不复用 v1 分数，也未调用 Qwen，不能据此陈述 Judge 质量或 v2 Agent/Mem0 的对照结论。
 
-尚无 Qwen 3.7 Plus 与真人配对的 v2 校准结果、full/Memory/RAG 各配置的逐 case Agent/Judge 原始输出矩阵及其 Judge bad-case 报告。真人标注不能由模型代填；后续 Agent/Judge runner 必须保留所有原始输出，而不能以 no-Memory 80 条基线或确定性 retrieval 矩阵替代。因此不得表述为 T13 已验收。
+已验证（限定范围）：`evals/run_v2_qwen_recalibration.py` 从历史 `calibration_agent_outputs.md` 解析 30/30 条完整 Agent 输出与已填写 PM 标签；该文档生成时明确先人工标注、后旧 Qwen 评分，因此重跑没有读取旧 Judge 分数。固定 `qwen3.7-plus-2026-05-26` 对每条执行三次；q_011 三次全异，追加两次仍为 `0.5/1.0/0.75/1.0/0.5`，故不伪造众数而标为 unresolved。原始 [运行工件](../evals/runs/v2_qwen_recalibration_legacy30_20260812.json) 和 [统计](../evals/runs/v2_qwen_recalibration_legacy30_20260812_report.json) 保留 92 次实际调用的逐条维度、分数和 provider 报告 token：90 条主体调用披露 239,890 tokens；两次 q_011 补采样未返回 usage 字段，不能从响应推导费用，需以账户账单核对。binary 18/18 的 Krippendorff α=1.000（≥0.80，可用）；strategy 仅 11/12 可解析、Spearman ρ=0.117，且存在 unresolved 样本，因此 strategy 为 `reference-only`，不得用于显著性或质量结论。这是历史人工标注语料上的 Judge 校准，不是 v2 Agent 质量结果。
+
+尚无 full/Memory/RAG 各配置的逐 case v2 Agent/Judge 原始输出矩阵及其 Judge bad-case 报告。真人标注不能由模型代填；后续 Agent/Judge runner 必须保留所有原始输出，而不能以 no-Memory 80 条基线、历史校准语料或确定性 retrieval 矩阵替代。因此不得表述为 T13 已验收。

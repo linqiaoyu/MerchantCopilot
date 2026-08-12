@@ -1,0 +1,3195 @@
+{
+  "source": "evals/runs/calibration_agent_outputs.md",
+  "scope": "legacy human-labelled v1 Agent outputs; judge calibration only, not a v2 quality result",
+  "judge_provider": "qwen_judge",
+  "judge_model": "qwen3.7-plus-2026-05-26",
+  "sample_count": 3,
+  "records": [
+    {
+      "id": "q_001",
+      "query_type": "data_query",
+      "human": 1,
+      "judge_scores": [
+        1,
+        1,
+        1
+      ],
+      "judge_mode": 1,
+      "samples": [
+        {
+          "id": "q_001",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "LLM 回答的毛 GMV 为 27万6千多（276,270.98），与真值 276,271 的相对差远小于 10%，事实准确。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM 提取和计算的数据时间窗口为 5月11日至17日，与 query 指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "作为数据查询，LLM 提供了合理的业务建议，满足默认建议条数要求，具备可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "查询仅要求总 GMV，未要求按维度拆分，LLM 返回合并总数符合预期，字段对齐正确。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_001",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "LLM回答的毛GMV为27万6千多（276,270.98），与真值276,271一致，误差在±10%以内。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM提取的时间窗口为5月11日至17日，与query指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "data_query不强制建议条数，LLM提供了2条合理的业务建议，满足要求。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "query仅要求查询总GMV，未要求按特定维度拆分，LLM返回了合并总数，字段对齐正确。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_001",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "LLM 回答的毛 GMV 为 27万6千多（276,270.98），与真值 276,271 的相对差远小于 10%，事实准确。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM 提取和计算的数据时间窗口为 5月11日至17日，与 query 指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "作为数据查询，LLM 提供了合理的业务建议，满足默认建议条数要求，具备可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "查询仅要求总 GMV，未要求按维度拆分，LLM 返回合并总数符合预期，字段对齐正确。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2595,
+        "completion_tokens": 3338,
+        "total_tokens": 5933
+      }
+    },
+    {
+      "id": "q_021",
+      "query_type": "data_query",
+      "human": 1,
+      "judge_scores": [
+        1,
+        1,
+        1
+      ],
+      "judge_mode": 1,
+      "samples": [
+        {
+          "id": "q_021",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "Agent回答的UV为120961，与evidence中的真值一致，符合准确度要求。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "Agent明确使用了2026-04-01至2026-04-30的时间窗口，与query要求完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "Agent针对数据表现给出了排查退款和优化流量等具体建议，具备可操作性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "Query仅要求查询总UV，无group by维度要求，Agent正确返回了聚合总数。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_021",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "Agent 回答 UV 为 12万出头，证据中明确具体数值为 120,961，与 SQL 真值相对差在 ±10% 以内，事实准确。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "Agent 证据中明确使用了 2026-04-01 至 2026-04-30 的时间窗口，与 query 指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "Agent 在回答数据后提供了两条具体的业务优化建议，满足行动建议的默认要求。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "Query 仅询问总 UV，无特定分组维度要求，Agent 返回了整体汇总数据，未发生维度拆分遗漏。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_021",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "Agent 回答 UV 为 12万出头，证据中明确具体数值为 120,961，与 SQL 真值相对差在 ±10% 以内，事实准确。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "Agent 证据中明确使用了 2026-04-01 至 2026-04-30 的时间窗口，与 query 指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "Agent 在回答数据后提供了两条具体的业务优化建议，满足行动建议的默认要求。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "Query 仅询问总 UV，无特定分组维度要求，Agent 返回了整体汇总数据，未发生维度拆分遗漏。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2586,
+        "completion_tokens": 2993,
+        "total_tokens": 5579
+      }
+    },
+    {
+      "id": "q_002",
+      "query_type": "data_query",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_002",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "LLM将两人合计数据误认为小张单人数据，且完全遗漏小李数据，与真值偏差远超10%。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM提取的时间窗口为5月1日至17日，与query指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "LLM针对退款率偏高等问题给出了具体的复盘与优化建议，具备可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求分别统计小张和小李的数据，LLM未进行主播维度拆分，直接返回了合并总数，属于group by静默失败。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_002",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "LLM将两人合计数据误认为小张单人数据，且完全遗漏小李数据，与真值偏差远超10%。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM提取的时间窗口为5月1日至17日，与query指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "LLM针对退款率偏高等问题给出了具体的复盘与优化建议，具备可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求分别统计小张和小李的数据，LLM未进行主播维度拆分，直接返回了合并总数，属于group by静默失败。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_002",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "LLM返回的是小张和小李的合计数据（3045单/66.1万），与真值中小张（2320单/50.1万）和小李（725单/16万）的各自数据严重不符，误差远超10%。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM提取的时间窗口为5月1日至17日，与query指定的2026-05-01到2026-05-17完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "LLM针对退款率偏高的问题给出了复盘原因和保持节奏的具体建议，具备可操作性。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求分别统计小张和小李各自的数据（group by streamer），但LLM仅返回了两人合并的总数，未进行维度拆分。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2787,
+        "completion_tokens": 4201,
+        "total_tokens": 6988
+      }
+    },
+    {
+      "id": "q_023",
+      "query_type": "data_query",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_023",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "LLM 返回的 GMV 数值为合并总数或未正确拆分，并非小张各自的真实 GMV，且完全缺失小李的数据，与 query 要求的各自真值不符。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM 提取和计算的日期范围（2026-05-01 至 2026-05-17）与 query 指定的时间窗完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "data_query 场景下 LLM 提供了 2 条具体的业务优化建议，满足默认行动建议要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query 明确要求按主播维度（小张和小李各自）分组查询，LLM 未进行维度拆分且遗漏了小李，属于典型的 group by silent failure。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_023",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未分别给出小张和小李的GMV，将总GMV误作单人GMV，数字与各自真值不符。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "提取的时间范围2026-05-01至2026-05-17与query要求完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了针对退款原因排查和压降的具体建议，满足默认要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求分别给出小张和小李的GMV（group by streamer），但LLM仅提及小张（或返回合并总数），未拆分主播维度。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_023",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 返回的 GMV 为两人总和（661,337.62），未提供小张和小李各自的 GMV 真值，数值与各自真值不符。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "Agent 正确识别并使用了 2026-05-01 到 2026-05-17 的时间范围。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "Agent 提供了针对退款率等问题的具体优化建议，满足 actionability 要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Query 要求分别统计小张和小李各自的 GMV（group by streamer），但 Agent 仅提及小张且返回的是合并总 GMV，发生 group by silent failure，未正确拆分维度。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2637,
+        "completion_tokens": 4031,
+        "total_tokens": 6668
+      }
+    },
+    {
+      "id": "q_024",
+      "query_type": "data_query",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_024",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未提供各子品类的客单价具体数字，仅返回整体客单价，无法验证分组数据的准确性。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "时间窗“4月18日到5月17日”与query指定的“2026-04-18到2026-05-17”一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "data_query不强制建议条数，默认1不作扣分项。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求按子品类分组，但LLM返回了合并后的整体客单价，未进行维度拆分，触发group by silent failure。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_024",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent未提供各子品类的客单价具体数字，仅返回整体客单价，未满足查询要求。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "Agent识别的时间窗口（4月18日至5月17日）与query指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "Agent提供了针对退款率偏高的排查建议，满足默认建议条数要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求按子品类分组展示，Agent仅返回整体合并数据，未进行维度拆分（group by silent failure）。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_024",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent未提供各子品类的客单价具体数字，仅返回整体客单价，未满足查询要求。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "Agent识别的时间窗口（4月18日至5月17日）与query指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "Agent提供了针对退款率偏高的排查建议，满足默认建议条数要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求按子品类分组展示，Agent仅返回整体合并数据，未进行维度拆分（group by silent failure）。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2823,
+        "completion_tokens": 4607,
+        "total_tokens": 7430
+      }
+    },
+    {
+      "id": "q_028",
+      "query_type": "data_query",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_028",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未提供各价位段的退款率数据，仅返回总体退款率，答非所问。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "时间窗“4月24到29号”与 query 指定的日期范围一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了2条具体的优化建议，满足默认要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query 要求按价位段拆分，LLM 仅返回合并总数，触发 group by silent failure。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_028",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "LLM 仅返回了总体退款率18.2%，未提供query要求的各价位段具体退款率数字，无法与分组真值对齐。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM 提取的时间范围（4月24到29号）与query指定的2026-04-24到2026-04-29完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "LLM 提供了2条具体的优化建议，满足data_query默认至少1条建议的要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Query明确要求按不同价位段拆分退款率，但LLM仅返回了合并后的总体退款率，存在group by silent failure。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_028",
+          "query_type": "data_query",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "LLM仅回答了整体退款率，未提供各价位段的具体退款率数值，无法与anchor中的细分真值比对。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "LLM提取的时间窗口（4月24到29号）与query指定的日期范围完全一致。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "LLM提供了2条具体的优化建议，满足默认至少1条建议的要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "query要求按不同价位段拆分，但LLM仅返回了合并后的总数，触发了group by silent failure。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3060,
+        "completion_tokens": 4880,
+        "total_tokens": 7940
+      }
+    },
+    {
+      "id": "q_005",
+      "query_type": "attribution",
+      "human": 1,
+      "judge_scores": [
+        1,
+        1,
+        1
+      ],
+      "judge_mode": 1,
+      "samples": [
+        {
+          "id": "q_005",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "准确引用了GMV、UV、转化率及P_C1订单份额等关键数字，误差均在允许范围内。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "覆盖了人货匹配与转化率断崖维度，且可追溯至按单品下钻及关联商品维度的SQL分支。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了检查推广渠道和区分投放人群等具体可落地的修复建议。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出转化率断崖与人货错配的核心根因，与事实锚点完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_005",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "准确引用了GMV、UV、转化率及P_C1订单份额等关键数字，与factual_anchor完全一致。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案涵盖了人货匹配与转化率断崖两个预期维度，且可追溯到按单品下钻及关联商品维度的SQL分支。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了检查推广渠道和区分投放人群等具体且可落地的修复建议。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出人货错配与转化率断崖的核心根因，与Case 1的factual_anchor主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_005",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "准确引用了GMV 11,358、UV 3,221、转化率1.12%及P_C1份额11.1%等关键数字，与factual_anchor完全一致。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确涵盖了“人货匹配”与“转化率断崖”两个预期维度，且能追溯到证据中的流量拆解与商品下钻分支。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了检查推广渠道和区分投放人群等具体且可落地的修复建议，满足至少1条的要求。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "归因结论准确识别出“人货错配”与“转化率断崖”的核心根因，与factual_anchor的主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3474,
+        "completion_tokens": 3612,
+        "total_tokens": 7086
+      }
+    },
+    {
+      "id": "q_007",
+      "query_type": "attribution",
+      "human": 1,
+      "judge_scores": [
+        1,
+        1,
+        1
+      ],
+      "judge_mode": 1,
+      "samples": [
+        {
+          "id": "q_007",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "正确引用了退款率攀升至28.3%及色差占比89%等关键数字，符合事实锚点。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确涵盖了SKU质量和退款原因两个预期维度，并可追溯到按SKU和退款原因下钻的证据。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了下架涉事商品、联系供应商核实及拦截未发货订单等具体可执行的修复建议。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出根因为新上架的网红同款针织开衫存在色差质量问题，与事实锚点主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_007",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "正确引用了色差占比89%及最终退款率28.3%等关键数字，与factual_anchor一致。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案涵盖了“归因-SKU质量”和“归因-退款原因”维度，并追溯到按SKU和退款原因下钻的证据。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了下架涉事SKU及拦截未发货订单等具体可执行的修复建议。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出根因为新上架SKU(P_C3)的色差问题，与Case 3的根因主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_007",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "正确引用了最终退款率28.3%及色差占比89%等关键数字，与事实锚点一致。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案涵盖了SKU质量和退款原因维度，并明确追溯到按SKU和退款原因下钻的分析结果。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了下架涉事SKU并联系供应商核实、拦截未发货订单等具体可执行的修复建议。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出根因为新上架SKU(P_C3)的色差问题，与事实锚点中的Case 3主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3528,
+        "completion_tokens": 4523,
+        "total_tokens": 8051
+      }
+    },
+    {
+      "id": "q_033",
+      "query_type": "attribution",
+      "human": 1,
+      "judge_scores": [
+        1,
+        1,
+        1
+      ],
+      "judge_mode": 1,
+      "samples": [
+        {
+          "id": "q_033",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "准确引用了GMV 11358、UV 3221、转化率1.12%及P_C1占比11.1%等关键数字，与factual_anchor完全一致。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确涵盖了预期维度中的转化率断崖和人货匹配，且能追溯到evidence中的指标拆解与单品下钻分支。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了调整投放推荐策略及上架前确认受众匹配等具体可执行的修复建议，满足至少1条的要求。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出转化率断崖及高端产品与年轻客群的人货错配，与Case 1的根因主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_033",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "准确引用了GMV 11358、UV 3221、转化率1.12%及P_C1占比11.1%等关键数字，与factual_anchor完全一致。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确涵盖了预期维度中的转化率断崖和人货匹配，且能追溯到evidence中的指标拆解与单品下钻分支。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了调整投放推荐策略及上架前确认受众匹配等具体可执行的修复建议，满足至少1条的要求。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出转化率断崖及高端产品与年轻客群的人货错配，与Case 1的根因主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_033",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "准确引用了GMV 11358、UV 3221、转化率1.12%及P_C1占比11.1%等关键数字，与factual_anchor完全一致。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确涵盖了预期维度中的转化率断崖和人货匹配，且能追溯到evidence中的指标拆解与单品下钻分支。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了调整投放推荐策略及上架前确认受众匹配等具体可执行的修复建议，满足至少1条的要求。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "准确识别出转化率断崖及高端产品与年轻客群的人货错配，与Case 1的根因主信号完全一致。"
+            }
+          },
+          "score": 1,
+          "verdict": "pass",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3423,
+        "completion_tokens": 3495,
+        "total_tokens": 6918
+      }
+    },
+    {
+      "id": "q_008",
+      "query_type": "attribution",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_008",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未引用任何factual_anchor中的关键数字。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未涵盖预期的人货匹配或流量结构等归因维度。"
+            },
+            "actionability": {
+              "score": 0,
+              "reason": "未提供基于正确归因的有效修复建议，仅为通用排查建议。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "走了unknown兜底，未识别出具体根因主信号。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_008",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent未引用任何factual_anchor中的关键数字（如UV、转化率等），直接走了兜底逻辑。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent未涵盖“归因-人货匹配”或“归因-流量结构”等预期维度，未追溯到SQL drill-down分支。"
+            },
+            "actionability": {
+              "score": 0,
+              "reason": "Agent仅提供通用的人工排查建议，未基于具体根因给出针对性修复建议，且按规则未命中根因判fail。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent未识别出04-02人货错配与04-17流量结构主导的本质不同，走了unknown兜底，未命中具体根因。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_008",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 未引用任何 factual_anchor 中的关键数字（如 UV、转化率、付费占比等），直接走了 unknown 兜底。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 未涵盖“归因-人货匹配”或“归因-流量结构”等预期维度，未追溯到 SQL drill-down 分支。"
+            },
+            "actionability": {
+              "score": 0,
+              "reason": "Agent 未提供基于具体归因的修复建议，仅给出了泛泛的人工排查建议。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未识别出 04-02 人货错配与 04-17 流量结构主导的两套根因机制，直接走 unknown 兜底，未命中 factual_anchor 根因主信号。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3417,
+        "completion_tokens": 3662,
+        "total_tokens": 7079
+      }
+    },
+    {
+      "id": "q_030",
+      "query_type": "attribution",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_030",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未引用任何factual_anchor中的关键数字（如3次异常、具体日期或89%退款率等）。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未涵盖任何具体的归因维度（如人货匹配、流量结构等），仅表示未匹配已知异常。"
+            },
+            "actionability": {
+              "score": 0,
+              "reason": "未提供针对具体异常根因的有效修复建议，仅给出通用的人工排查建议。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "未识别出任何具体根因（人货错配、流量结构、SKU质量），与factual_anchor的根因主信号不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_030",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未引用任何factual_anchor中的关键数字（如3次异常、具体日期或89%退款率等）。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未涵盖任何expected_strategy_dimensions，未追溯到SQL drill-down分支。"
+            },
+            "actionability": {
+              "score": 0,
+              "reason": "未提供针对具体根因的修复建议，仅给出通用的人工排查建议。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "节点走unknown兜底未识别具体根因，未命中factual_anchor中的人货错配、流量结构或退款爆雷等主信号。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_030",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未引用任何factual_anchor中的关键数字（如3次异常、具体日期或89%退款率等）。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未涵盖任何expected_strategy_dimensions中的具体归因维度，仅返回了unknown兜底话术。"
+            },
+            "actionability": {
+              "score": 0,
+              "reason": "未提供针对具体异常根因的修复建议，仅给出通用的人工排查建议，且兜底未命中根因判fail。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "节点走了unknown兜底，未识别出factual_anchor中的具体根因（人货错配、流量结构、SKU质量等），未命中主信号。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3378,
+        "completion_tokens": 3293,
+        "total_tokens": 6671
+      }
+    },
+    {
+      "id": "q_031",
+      "query_type": "attribution",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_031",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未引用factual_anchor中的关键数字如转化率4.27%或基线4.2%"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "缺乏SQL drill-down输出字段作为追溯依据且未完整覆盖时间窗推断维度"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了人工排查流量来源和商品点击等细节的修复建议"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "未命中factual_anchor中转化率正常波动的具体根因主信号仅停留在兜底说明"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_031",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "答案未引用factual_anchor中的转化率基线数据（如4.27%或4.2%）等关键数字。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确体现了预期维度中的“归因-模糊归因兜底”，说明未匹配已知异常并交人工。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了人工排查流量来源、商品点击或主播话术等细节的修复建议。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "仅触发unknown兜底，未命中factual_anchor中“转化率正常波动”的具体根因主信号。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_031",
+          "query_type": "attribution",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "未引用factual_anchor中的关键数字如转化率4.27%或基线4.2%"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确提及未匹配已知异常并交人工排查，涵盖了归因-模糊归因兜底维度"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了人工排查流量来源、商品点击等细节的修复建议"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "仅说明系统兜底逻辑，未识别出转化率正常波动这一具体根因主信号"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2820,
+        "completion_tokens": 6307,
+        "total_tokens": 9127
+      }
+    },
+    {
+      "id": "q_009",
+      "query_type": "strategy",
+      "human": 1.0,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_009",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群年龄、占比及价格带数据均与商家画像一致，未编造无关的虚假数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "建议明确追溯了召回KB的核心方法，如锚定价格带中位以及结合午晚场客群画像进行排品。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了具体的价格带区间、场次排品策略及福利款数量与占比阈值，具备强可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了价格带匹配主力客群与中端客单价管理两个维度，并给出了结合画像的排品与占比控制等实质建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_009",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群年龄、占比及价格带数据均与商家画像一致，未编造无关的虚假数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "回答明确建议锁定100-300元价格带的中段（150-200元），实质运用了must_cite KB中关于锚定价格带中位和客单价管理的核心结论。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的价格区间、排品时段、福利款数量及占比阈值，具备极强的直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "回答充分展开了价格带匹配主力客群和中端价格带客单价管理两个预期维度，并给出了匹配不同时段和控比的具体策略。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_009",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群年龄、占比及价格带数据均与商家画像一致，未编造无关的虚假业务指标。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确提出了锚定100-300元价格带中位（150-200元）的建议，实质运用了召回KB中关于价格带中位锚定与客单价管理的核心方法。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的价格区间（150-200元、100-180元等）、品类（衬衫/针织衫）及货盘结构阈值（福利款至少两件、高价品不超三分之一），具备强可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "答案充分展开了价格带匹配主力客群（分时段匹配学生与职场新人）及中端价格带客单价管理（锚定中位并控制高价品占比）两个预期维度，且均有实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3507,
+        "completion_tokens": 4950,
+        "total_tokens": 8457
+      }
+    },
+    {
+      "id": "q_035",
+      "query_type": "strategy",
+      "human": 0.75,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_035",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群占比、年龄段及价格带数值均与商家画像及中端价格带设定一致，未编造无关事实数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确运用了召回的《用流量结构反推价格带验证》核心逻辑，通过对比不同时段流量占比与价格带匹配度来验证并调整策略。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的时段（午场/晚场）、客群对应的主推价格区间（100-180元、200-300元、150-200元）等可直接执行的具体参数。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了流量结构反推价格带与价格带验证方法两个预期维度，并结合具体客群和时段给出了实质性的验证与调整建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_035",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "答案中引用的客群占比及价格带数值均源自商家画像与合理推演，未编造无关事实数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案实质运用了召回KB中流量结构反推价格带验证的核心逻辑，结合客群流量占比与转化基线给出了具体验证与调整建议。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的价位区间（100-180元、200-300元、150-200元）及明确的执行场景与触发条件，具备强可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了流量结构反推价格带与价格带验证方法两个预期维度，且均结合具体客群与转化信号给出了实质性策略。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_035",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群占比、价格带等数据均来源于商家画像，未编造事实表不存在的数字。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "回答具体阐述了根据午晚场不同客群流量占比来匹配和验证不同价格带的方法，实质用到了 must_cite KB 的核心结论。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的价位区间（100-180元、200-300元、150-200元）以及针对不同流量结构的具体调整步骤，可直接执行。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了流量结构反推价格带和价格带验证方法两个预期维度，且均给出了结合具体客群和价位段的实质性建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3519,
+        "completion_tokens": 4472,
+        "total_tokens": 7991
+      }
+    },
+    {
+      "id": "q_043",
+      "query_type": "strategy",
+      "human": 0.75,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_043",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中提及的价格带区间（如150-200元、100-300元）均符合商家画像及行业常识，未编造无关的转化率等虚假数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体运用了召回KB中的“价格带分层排播”与“组合销售单退对冲”等核心方法，实质性追溯了must_cite文档内容。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的价位区间（如100-180元、200-300元）、场次安排（午场/晚场）、数量（两件福利款）及具体话术，具备强可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "答案充分展开了“价格带分层组合”与“中端提升客单价”两个核心维度，且每个维度均有实质性的具体策略建议，满足覆盖度要求。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_043",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表中不存在的业务数据，提及的价格带区间与商家画像及行业常识相符。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案中的“主攻中段价位”和“搭配套餐单退对冲风险”等建议切实追溯并应用了召回KB的核心方法。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了具体的价位区间、分场次排品策略、福利款件数及具体话术，具备强可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了“价格带分层组合”与“中端提升客单价”等核心维度，并给出了分场次排品与套餐组合的实质建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_043",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表中不存在的业务指标数字，价格带参数符合画像设定。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "建议实质引用了价格带中位锚定及组合销售单退对冲等 KB 核心方法。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了具体的场次价位区间、福利款件数及组合销售话术，可直接执行。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了价格带分层组合与中端客单价提升两个核心维度，且均有具体落地建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3552,
+        "completion_tokens": 5023,
+        "total_tokens": 8575
+      }
+    },
+    {
+      "id": "q_057",
+      "query_type": "strategy",
+      "human": 1.0,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_057",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群比例和价格带数据均与商家画像及中端价格带设定相符，未编造无关或虚假的业务数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案实质运用了《主推品必须锚定价格带中位》和流量结构验证等 KB 的核心方法，给出了具体的价格带锚定和流量占比调整建议。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议中包含了具体的价位区间（200-300元、避开400元以上）以及明确的执行步骤（短视频测点击率、检查流量来源占比），具备直接可操作性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了人货匹配预审和主推位风险评估2个维度（达到≥2的要求），且均给出了短视频测款、锚定价格带等实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_057",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表中不存在的数字，引用的客群占比和价格带均符合画像与常识。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体建议追溯到了 must_cite KB 的核心方法，如主推款锚定价格带中位及用流量结构反推验证。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了具体的价位区间（200-300元、避开400元以上）和明确的执行步骤（开播前测点击率、晚场前看流量占比）。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了人货匹配预审、主推位风险评估和转化率断崖预防三个预期维度，且均给出了实质性建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_057",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表中不存在的数字，引用的客群占比和价格带均符合商家画像与业务常识。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "建议具体追溯到了主推品锚定价格带中位、客群心理价位差异及流量结构反推等 KB 核心方法，并非仅召回命中。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了具体的价位区间（200-300元、400元以上）和明确的执行步骤与判断阈值，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了人货匹配预审、主推位风险评估和转化率断崖预防三个预期维度，且每个维度均有实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3672,
+        "completion_tokens": 7494,
+        "total_tokens": 11166
+      }
+    },
+    {
+      "id": "q_062",
+      "query_type": "strategy",
+      "human": 0.75,
+      "judge_scores": [
+        0.5,
+        0.75,
+        0.75
+      ],
+      "judge_mode": 0.75,
+      "samples": [
+        {
+          "id": "q_062",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中的价格带、客群及时间参数均符合商家画像，无编造事实。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未引用 must_cite 中的 operation-newproduct-tempo，答案未体现新品上新的 KB 核心内容。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含开场3分钟、150-200元等具体参数与执行步骤，可直接落地。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "缺失“上新-新品收尾位置”维度，未能满足整场三段完整设计的预期要求。"
+            }
+          },
+          "score": 0.5,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_062",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "答案中的价格带、客群特征及时间参数均与商家画像相符，未编造虚假数据。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未引用 must_cite 中的 operation-newproduct-tempo，缺失对“上新”相关 KB 实质内容的追溯。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了“开场3分钟”、“150-200元”等具体时长、价位及执行步骤，具备直接可操作性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了话术和选品2个维度（≥ceil(3/2)），且均有具体建议，满足判据阈值。"
+            }
+          },
+          "score": 0.75,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_062",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造不存在的数字，价格与时长参数均符合商家画像与常识。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未召回且答案中完全缺失 must_cite 中 operation-newproduct-tempo（上新节奏）的核心内容。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了开场3分钟、主推150-200元、午晚场话术区分等具体参数与执行步骤。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了3个预期维度中的2个（达到ceil(N/2)要求），且话术结构与选品分配均有实质性具体建议。"
+            }
+          },
+          "score": 0.75,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3717,
+        "completion_tokens": 9414,
+        "total_tokens": 13131
+      }
+    },
+    {
+      "id": "q_046",
+      "query_type": "strategy",
+      "human": 1.0,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_046",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中未编造事实表中不存在的客观数据或虚假指标，所提建议参数合理。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体建议追溯到了 must_cite KB 的核心方法，如“备一场现货”、“连续两场加购不降才放量”等实质内容。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的时长（半小时内）、阈值条件（连续两场加购不降）和量化参数（追加两到三倍），具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了试卖验证流程、放量信号判断和数据观察维度三个预期策略维度，且每个维度均有实质性的具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_046",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答未编造事实表中不存在的客观数据或虚假指标数值。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "建议切实追溯到了 must_cite KB 中关于试卖备货、连续两场加购率不降及追加倍数等核心验证与放量决策方法。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了半小时内、连续两场、追加两到三倍等具体时长、频次和倍数阈值，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了试卖验证流程、放量信号判断和数据观察维度三个预期策略维度，且每个维度均给出了实质性的具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_046",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中未编造与事实表无关的历史数据或虚假转化率，提及的数字均为策略建议中的参数。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "回答具体提到了“连续两场加购率不降才放量”、“追加两到三倍”等，实质使用了 must_cite KB 中关于试卖验证与放量决策的核心结论。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议中包含了“半小时内”、“连续两场”、“追加两到三倍”等具体时长、频次和倍数阈值，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "完整覆盖了试卖验证流程、放量信号判断和数据观察维度三个预期策略维度，且每个维度均给出了实质性的具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3591,
+        "completion_tokens": 3735,
+        "total_tokens": 7326
+      }
+    },
+    {
+      "id": "q_011",
+      "query_type": "strategy",
+      "human": 0.5,
+      "judge_scores": [
+        0.5,
+        1.0,
+        0.75,
+        1.0,
+        0.5
+      ],
+      "judge_mode": null,
+      "samples": [
+        {
+          "id": "q_011",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中的客群画像占比和中端价格带数据均来源于商家画像，无编造事实。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "未召回且未使用 must_cite 的 operation-newproduct-tempo 文档，答案未体现上新节奏小批量试卖的核心方法。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议中包含了具体的时长（午场前15分钟）和价位参数（百元内、二百元），具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "未覆盖 expected 维度中的'上新节奏小批量试卖'，且大量篇幅偏题回答了午晚场排播，未充分展开选品节奏策略。"
+            }
+          },
+          "score": 0.5,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_011",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中的客群占比及价格带等数据均来源于商家画像，未编造不存在的数字。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确提到了“果断下播春装并启动夏装预热”，实质性用到了 must_cite KB 中 spring-window 的核心结论。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议中包含了“午场前15分钟”、“百元内”、“二百元”等具体的时长和价位参数，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了“选品-季节窗口”维度并给出了下播春装启动夏装预热的实质建议，满足覆盖≥ceil(N/2)个维度的要求。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_011",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群画像及价格带数据均与商家画像一致，无编造事实。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体建议讲到了 must_cite KB 中 spring-window 的核心结论（果断下播春装并启动夏装预热）。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含“午场前15分钟”、“百元内基础款”、“二百元质感款”等具体参数，可直接执行。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "未覆盖“上新节奏小批量试卖”维度，且大量篇幅偏题至排播策略，未对选品节奏进行充分展开。"
+            }
+          },
+          "score": 0.75,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_011",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造fact表不存在的业务数据指标，客群占比与价格带均基于商家画像合理拆解。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确追溯了spring-window的核心结论，给出了下播春装并启动夏装预热的实质建议。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含午场前15分钟、百元内与二百元等具体时长与价位参数，可直接执行。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了季节窗口维度并给出下播春装的实质建议，满足覆盖至少一半维度的要求。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_011",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造fact表中不存在的业务数据指标，引用的客群比例等数据均来源于商家画像。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "答案仅用到spring-window的下播春装结论，未体现must_cite中operation-newproduct-tempo的核心方法（小批量试卖），且大量篇幅偏题至排播。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了午场前15分钟、百元内基础款和二百元质感款等具体参数和可执行建议。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "未覆盖上新节奏小批量试卖维度，且大量篇幅回答排播问题，未充分展开选品节奏的实质建议。"
+            }
+          },
+          "score": 0.5,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3429,
+        "completion_tokens": 9615,
+        "total_tokens": 13044
+      },
+      "mode_status": "unresolved_after_five_samples"
+    },
+    {
+      "id": "q_013",
+      "query_type": "strategy",
+      "human": 0.75,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_013",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中引用的客群年龄、占比及价格带等数据均与商家画像一致，未编造无关的虚假数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "回答的具体建议切实运用了午晚场排播要点、学生与职场选品逻辑及话术节奏适配等召回KB的核心结论。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议中包含了具体的排播时长、价格带区间和单品讲解停留时间等可直接执行的参数。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了排播午场集中和话术促单节奏等至少两个预期维度，且均给出了实质性的具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_013",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造与query无关的虚假数据，提及的客群占比与价格带均符合商家画像设定。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "具体建议切实结合了召回KB中关于午晚场客群画像差异、学生与职场新人选品及话术节奏的核心结论。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议中包含了具体的价格带（100-180元、200-300元）、时长（15分钟、2-3分钟、4-5分钟）等可直接执行的参数。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了排播午场集中和话术促单节奏等至少两个预期维度，且均给出了结合学生客群特征的实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_013",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造与query无关的虚假数据，提及的客群占比与价格带均符合商家画像设定。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "具体建议实质性引用了午晚场排播要点、学生与职场新人选品差异及话术节奏等KB核心内容。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议中包含了具体的价位区间（100-180元、200-300元）和讲解时长（2-3分钟、4-5分钟）等可直接执行的参数。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了排播节奏和话术促单节奏等至少两个预期维度，且均给出了针对学生客群的具体执行建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3957,
+        "completion_tokens": 6093,
+        "total_tokens": 10050
+      }
+    },
+    {
+      "id": "q_014",
+      "query_type": "strategy",
+      "human": 0.5,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_014",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答未编造事实表中不存在的具体数据或指标，内容基于商家画像和排播节奏合理展开。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体建议追溯到了《付费投流的核心定位》和《放量决策的核心依据》等 must_cite KB 的核心方法，如自然承接、付费打样及新品试卖放量逻辑。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的执行步骤和时长参数，如“前十分钟做穿搭展示”、“午晚场分人群测试”及“确认供应链补货周期”，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "答案充分覆盖了投流与自然承接配比、新品定向收窄（分人群测试）及小批量试卖三个预期策略维度，且均给出了实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_014",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答未编造KB或画像中不存在的虚假数据或事实，内容均基于给定上下文合理推演。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体阐述了付费打样带动自然推荐、新品试卖验证后再放量等策略，实质性命中了 operation-paid-vs-organic 与 operation-newproduct-tempo 的核心方法。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了“前十分钟做穿搭展示”、“午场/晚场分人群测试”、“整理评价话术与确认补货周期”等具体时长、场次与执行步骤。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了投流与自然承接配比、新品定向收窄（分人群测试素材出价）及小批量试卖（自然验证后再放量）三个预期维度，且均有实质建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_014",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答未编造任何不存在的业务数据或指标数字，事实陈述准确。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案实质运用了付费与自然流量承接打法及新品试卖放量逻辑，符合忽略死字段后的KB命中要求。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了前十分钟的具体时长参数，以及午晚场人群定向、测试素材出价等可直接执行的具体步骤。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了投流与自然流量承接配比、上新小批量试卖等核心维度，且均包含实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3759,
+        "completion_tokens": 7411,
+        "total_tokens": 11170
+      }
+    },
+    {
+      "id": "q_071",
+      "query_type": "strategy",
+      "human": 0.75,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_071",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表不存在的数字或事实，引用的客群画像与话术策略均基于召回内容与商家画像。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确使用了 must_cite 文档《开场：3分钟内锁定人群》中的核心方法，如开场前3分钟锁定人群及前10分钟的节奏控制。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了具体的时间参数（前3分钟、前10分钟）和可直接使用的话术示例（学生党百元质感款、通勤三件套）。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了信任建立（穿搭展示与场景话术）、转化承接（锁定精准用户后切成交）和节奏控制（分时段调整语调与促销节奏）三个预期维度。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_071",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造不存在的数据或事实，结合Mem0提及防退款属于合理引用上下文信息。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体应用了must_cite文档《开场：3分钟内锁定人群》中的3分钟锁定与10分钟节奏控制等核心方法。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "提供了具体的时间参数（前3分钟、前10分钟）和可直接使用的话术示例（如“学生党百元质感款”）。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了信任建立、转化承接和节奏控制三个预期维度，且每个维度均有实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_071",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中提及的客群画像、时段策略及开场时间节奏均与召回的商家画像及KB内容一致，无编造事实。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案明确引用了《开场：3分钟内锁定人群》中的“前3分钟锁定人群”和“前10分钟建立信任”等核心节奏方法，实质用到了 must_cite KB 内容。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了“前3分钟”、“前10分钟”的具体时间参数，以及“学生党百元质感款”等具体话术示例和午晚场语调建议，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "完整覆盖了信任建立（穿搭展示）、转化承接（锁定精准用户后切成交）、节奏控制（前3分钟/前10分钟）三个预期维度，且均有具体展开。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3834,
+        "completion_tokens": 5878,
+        "total_tokens": 9712
+      }
+    },
+    {
+      "id": "q_074",
+      "query_type": "strategy",
+      "human": 0.75,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_074",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造不存在的业务数据或指标，提到的价格带和时间参数均符合商家画像与常规直播策略。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体建议追溯到了 must_cite KB 的核心方法，如“开场3分钟内锁定”和“引流款与利润款做视觉关联”，并正确结合了 follow-up 的退款止损建议。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的时长（3分钟内）、价位（150-200元、不过三百）和分时段（午场/晚场）的具体执行步骤，具备强可操作性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "覆盖了话术衔接、主推选品承接和收尾安排等核心维度，且每个维度都给出了结合客群画像的具体落地建议，充分展开。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_074",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表不存在的数字，提到的价格带和时间参数均符合商家画像与常规直播逻辑。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案具体建议追溯到了 must_cite KB 的核心方法，如开场3分钟内锁定人群和引流款与利润款关联。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "建议包含了具体的时长（3分钟内）、价位（150-200元）和分时段客群策略，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了话术衔接、主推选品和收尾安排三个预期维度，且每个维度都有结合画像的具体策略。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_074",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "回答中提及的时间、价格等参数均符合商家画像与常识，未编造不存在的业务数据。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "明确引用了 must_cite KB 的核心方法，如开场3分钟内锁定人群及引流款与利润款的视觉关联承接。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了具体的时长（3分钟内）、价格带（150-200元）及分时段话术策略，具备直接可执行性。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了话术衔接、主推选品承接及收尾安排三个预期维度，且每个维度均有实质性的具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 4044,
+        "completion_tokens": 5559,
+        "total_tokens": 9603
+      }
+    },
+    {
+      "id": "q_076",
+      "query_type": "strategy",
+      "human": 0.75,
+      "judge_scores": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "judge_mode": 1.0,
+      "samples": [
+        {
+          "id": "q_076",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造与本query无关的虚假数据或指标，回答中的价格与时长参数均符合业务逻辑与商家画像。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "建议实质追溯了召回KB内容，具体结合了午晚场排播要点、付费投流给自然打样定位及选品价格带结构进行展开。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了50-80元引流款、开场前15分钟、讲解控制在5分钟内等具体价位、时长与操作步骤，可直接落地执行。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分覆盖了投流定向、选品结构、排播时段三个预期维度，且每个维度均有结合客群画像的实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_076",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表中不存在的业务数据，给出的价格、时长等参数符合常识与商家画像。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案实质结合了召回的午晚场排播要点与付费投流定位等KB核心方法，并落地到具体客群与价格带。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了具体的引流款价位、讲解时长、款式数量及投流分批测试等可直接执行的具体参数与步骤。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了投流定向、选品结构和排播时段三个预期维度，且每个维度均有结合客群画像的实质性落地建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_076",
+          "query_type": "strategy",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 1,
+              "reason": "未编造事实表不存在的数字，引流款定价50-80元符合中端价格带以下的合理逻辑。"
+            },
+            "grounding_to_context": {
+              "score": 1,
+              "reason": "答案实质运用了午晚场排播要点及付费投流定位等KB核心方法，并结合了新品试卖的follow-up主题。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "给出了50-80元引流款、前15分钟、讲解5分钟内等具体价位、时长和步骤参数，可直接执行。"
+            },
+            "strategy_relevance": {
+              "score": 1,
+              "reason": "充分展开了投流定向、选品结构、排播时段三个维度，且每个维度均有结合客群画像的实质性具体建议。"
+            }
+          },
+          "score": 1.0,
+          "verdict": null,
+          "scoring_mode": "continuous",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 4182,
+        "completion_tokens": 6347,
+        "total_tokens": 10529
+      }
+    },
+    {
+      "id": "q_017",
+      "query_type": "cross_period",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_017",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是单日数据，未提供 4 月和 5 月的总 GMV 及差距，数字与真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨期 query 错误地默认解析为数据集最新单日（2026-05-17），未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "根据判据，actionability 维度默认给 1 分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行 4 月与 5 月的跨期对比，字段与时间段维度与 query 要求完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_017",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是 5月17日的单日 GMV，未提供 4月和5月的总 GMV 及差距，数据完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨期 query 默认解析为数据集最新单日（2026-05-17），未正确解析 4月和5月的多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给 1。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行 4月与 5月的跨期对比，而是将单日数据与基线对比，时间段维度完全偏离 query 要求。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_017",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent回答的是5月17日单日GMV，与4月和5月总GMV真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent将跨月对比query错误解析为单日（数据集最新日），未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给1。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent未进行4月和5月的跨期对比，时间段维度与query完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2874,
+        "completion_tokens": 2689,
+        "total_tokens": 5563
+      }
+    },
+    {
+      "id": "q_018",
+      "query_type": "cross_period",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_018",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的单日退款率，未提供3月和4月的真实退款率数据，与真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨月查询错误地默认解析为数据集最新单日（5月17日），未能正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给分，回答本身具备一定的话术结构，但未满足跨期分析要求。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行3月与4月的跨期对比，字段和时间段维度与 query 要求完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_018",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的单日退款率，未提供3月和4月的退款率真值，数据完全错误。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨月查询错误地默认解析为数据集最新单日（5月17日），未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给1分，回答本身具备一定的话术结构，但基于错误数据。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行3月与4月的跨期对比，字段和时间段维度与 query 完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_018",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的单日退款率，未提供3月和4月的真实退款率数据，与真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨期查询错误地默认解析为数据集最新单日（5月17日），未正确解析3月和4月的多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给1分，回答本身具备一定的话术结构，但未解决实际问题。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行3月与4月的跨期对比，字段和时间段维度与 query 要求完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2754,
+        "completion_tokens": 2654,
+        "total_tokens": 5408
+      }
+    },
+    {
+      "id": "q_066",
+      "query_type": "cross_period",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_066",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的GMV等指标，完全未提供3月和4月的订单数，数据事实错误。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 未能正确解析3月和4月的时间窗，错误地默认使用了数据集最新单日（5月17日）。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "根据判据默认给1分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行3月与4月的跨期对比，且分析的维度为GMV而非query要求的订单数。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_066",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的GMV等指标，未提供3月和4月的订单数，数据完全错误。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 未能解析3月和4月的时间窗，错误地默认使用了数据集最新日（5月17日）。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给1分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行3月与4月的跨期对比，且对比的维度是GMV而非query要求的订单数。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_066",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的GMV等指标，未提供3月和4月的订单数，数据完全错误。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 未能解析3月和4月的时间窗，错误地默认使用了数据集最新日（5月17日）。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给1分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行3月与4月的跨期对比，且查询维度为GMV而非订单数，字段与时间段均不对齐。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2445,
+        "completion_tokens": 2363,
+        "total_tokens": 4808
+      }
+    },
+    {
+      "id": "q_067",
+      "query_type": "cross_period",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_067",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent回答的是5月17日的单日数据，未提供3月上下半月的转化率与退款率，数据完全偏离。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent将跨期query默认到了数据集最新日（5月17日），未能正确解析3月上下半月的时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "依据评测判据，该维度默认给1分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent未进行3月上下半月的跨期对比，对比的时间段维度与query完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_067",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的单日数据，完全未提供3月上下半月的转化率与退款率对比，事实严重错误。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨期对比 query 错误地默认解析为数据集最新单日（5月17日），未正确解析3月上下半月的时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "依据判据默认给1，且Agent针对其提供的单日数据给出了具体的排查建议，具备形式上的可操作性。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行任何跨期对比，也未涉及转化率与退款率的走势变化，字段与维度完全偏离 query 要求。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_067",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "回答提供的是5月17日的单日数据，与查询要求的3月上下半月真实数据完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent将跨期查询错误默认解析为数据集最新单日（5月17日），未能正确解析3月上下半月的时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "根据判据默认给1，且回答中提供了具体的排查建议，具备一定可操作性。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "未进行3月上下半月的跨期对比，也未对比转化率和退款率走势，时间段与维度均不对齐。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3054,
+        "completion_tokens": 3328,
+        "total_tokens": 6382
+      }
+    },
+    {
+      "id": "q_068",
+      "query_type": "cross_period",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_068",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的单日数据，未提供2月和4月的GMV对比，数字与真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 忽略了 query 中明确指定的2月和4月时间窗，错误地默认使用了数据集最新日（5月17日）。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "根据判据规则默认给1分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行任何跨期对比，仅分析了单日数据，维度与 query 要求的跨月对比完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_068",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是5月17日的单日数据，未提供2月和4月的GMV对比，数字与真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨期对比 query 错误地默认解析为数据集最新单日（5月17日），未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "根据判据规则，actionability 维度默认给 1 分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 未进行2月与4月的跨期维度对比，分析的时间段与字段均与 query 要求不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_068",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent回答的是5月17日的单日数据，未提供2月和4月的GMV对比，数字与真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent将跨期query错误地默认解析为数据集最新单日（5月17日），未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "依据判据默认给1分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent未进行2月与4月的跨期对比，字段与时间段维度与query完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2850,
+        "completion_tokens": 2839,
+        "total_tokens": 5689
+      }
+    },
+    {
+      "id": "q_069",
+      "query_type": "cross_period",
+      "human": 0,
+      "judge_scores": [
+        0,
+        0,
+        0
+      ],
+      "judge_mode": 0,
+      "samples": [
+        {
+          "id": "q_069",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent未提供query要求的三个月份指标数据，而是给出了单日数据，答非所问。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent将跨期query默认到了数据集最新日（2026-05-17），未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给1分。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent对比的时间段（单日）与query要求的三个月份维度完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_069",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent 回答的是单日（5月17日）的数据，而问题要求的是三个月（3、4、5月）的汇总数据，提供的数据与问题所需的真值完全不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent 将跨期（三个月）的 query 错误地默认解析为数据集最新单日（2026-05-17），未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "默认给 1。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent 回答的时间段（单日）与 query 要求的三个月份完全不一致，未对齐跨期对比的时间维度。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        },
+        {
+          "id": "q_069",
+          "query_type": "cross_period",
+          "dimensions": {
+            "factual_accuracy": {
+              "score": 0,
+              "reason": "Agent仅提供了单日数据，未列出三个月份的GMV、UV和转化率，与真值不符。"
+            },
+            "grounding_to_context": {
+              "score": 0,
+              "reason": "Agent将跨期query错误默认到数据集最新单日，未正确解析多段时间窗。"
+            },
+            "actionability": {
+              "score": 1,
+              "reason": "根据判据默认给1。"
+            },
+            "strategy_relevance": {
+              "score": 0,
+              "reason": "Agent未进行各月份维度的跨期对比，时间段维度与query要求完全不一致。"
+            }
+          },
+          "score": 0,
+          "verdict": "fail",
+          "scoring_mode": "binary",
+          "judge_provider": "qwen_judge",
+          "judge_model": "qwen3.7-plus-2026-05-26"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 3105,
+        "completion_tokens": 2711,
+        "total_tokens": 5816
+      }
+    }
+  ],
+  "pairs": {
+    "binary": [
+      {
+        "id": "q_001",
+        "human": 1,
+        "judge": 1
+      },
+      {
+        "id": "q_021",
+        "human": 1,
+        "judge": 1
+      },
+      {
+        "id": "q_002",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_023",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_024",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_028",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_005",
+        "human": 1,
+        "judge": 1
+      },
+      {
+        "id": "q_007",
+        "human": 1,
+        "judge": 1
+      },
+      {
+        "id": "q_033",
+        "human": 1,
+        "judge": 1
+      },
+      {
+        "id": "q_008",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_030",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_031",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_017",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_018",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_066",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_067",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_068",
+        "human": 0,
+        "judge": 0
+      },
+      {
+        "id": "q_069",
+        "human": 0,
+        "judge": 0
+      }
+    ],
+    "strategy": [
+      {
+        "id": "q_009",
+        "human": 1.0,
+        "judge": 1.0
+      },
+      {
+        "id": "q_035",
+        "human": 0.75,
+        "judge": 1.0
+      },
+      {
+        "id": "q_043",
+        "human": 0.75,
+        "judge": 1.0
+      },
+      {
+        "id": "q_057",
+        "human": 1.0,
+        "judge": 1.0
+      },
+      {
+        "id": "q_062",
+        "human": 0.75,
+        "judge": 0.75
+      },
+      {
+        "id": "q_046",
+        "human": 1.0,
+        "judge": 1.0
+      },
+      {
+        "id": "q_013",
+        "human": 0.75,
+        "judge": 1.0
+      },
+      {
+        "id": "q_014",
+        "human": 0.5,
+        "judge": 1.0
+      },
+      {
+        "id": "q_071",
+        "human": 0.75,
+        "judge": 1.0
+      },
+      {
+        "id": "q_074",
+        "human": 0.75,
+        "judge": 1.0
+      },
+      {
+        "id": "q_076",
+        "human": 0.75,
+        "judge": 1.0
+      }
+    ]
+  },
+  "usage_total": {
+    "prompt_tokens": 98373,
+    "completion_tokens": 141517,
+    "total_tokens": 239890
+  },
+  "unresolved_ids": [
+    "q_011"
+  ]
+}
