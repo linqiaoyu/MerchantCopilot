@@ -14,3 +14,10 @@ def test_legacy_demo_script_is_explicitly_marked_as_v1_history():
     legacy_demo = Path("docs/demo_script.md").read_text(encoding="utf-8")
     assert "历史 v1 材料" in legacy_demo
     assert "v2_demo_script.md" in legacy_demo
+
+
+def test_stage_summary_does_not_claim_release_before_its_gates():
+    summary = Path("docs/v2_stage_summary.md").read_text(encoding="utf-8")
+    assert "尚未达到 `v2.0.0` Release 条件" in summary
+    assert "两位独立真人" in summary
+    assert "Cloud Run" in summary
