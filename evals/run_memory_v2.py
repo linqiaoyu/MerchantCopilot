@@ -9,16 +9,19 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import NAMESPACE_URL, uuid5
 
 import psycopg
 
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
 from app.memory.retriever import assemble_context
 from app.storage.memory_repository import fetch_active_memories
 
-ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "evals/datasets/v2.0/memory_sequences.json"
 
 
