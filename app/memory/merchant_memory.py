@@ -63,14 +63,9 @@ def _vector_store_config() -> dict:
     }
 
 
-def get_client():
-    """懒加载 Mem0 单例,沿用 stage 3 client / stage 4a embedder 单例范式。"""
-    global _client
-    if _client is not None:
-        return _client
-    from mem0 import Memory
-    register_shared_bge_provider()
-    config = {
+def _memory_config() -> dict:
+    """Mem0 config limited to fields accepted by BaseEmbedderConfig."""
+    return {
         "llm": {
             "provider": "deepseek",
             "config": {
@@ -79,17 +74,23 @@ def get_client():
             },
         },
         "embedder": {
-            # 2.0.2 config 白名单只接受 huggingface；factory 已被 shared_bge
-            # adapter 重定向，所以不会构造第二个 HuggingFaceEmbedding 模型。
-            "provider": "huggingface",
-            "config": {
-                "model": "BAAI/bge-m3",
-                "embedding_dims": 1024,
-            },
+            # Mem0 2.0.2 工厂按点路径加载该 adapter；它只委托 RAG 的 BGE-M3
+            # 单例，绝不构造第二个 HuggingFaceEmbedding。
+            "provider": "shared_bge",
+            "config": {"model": "BAAI/bge-m3", "embedding_dims": 1024},
         },
         "vector_store": _vector_store_config(),
     }
-    _client = Memory.from_config(config)
+
+
+def get_client():
+    """懒加载 Mem0 单例,沿用 stage 3 client / stage 4a embedder 单例范式。"""
+    global _client
+    if _client is not None:
+        return _client
+    from mem0 import Memory
+    register_shared_bge_provider()
+    _client = Memory.from_config(_memory_config())
     return _client
 
 
