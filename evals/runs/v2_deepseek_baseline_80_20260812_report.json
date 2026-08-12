@@ -1,0 +1,22 @@
+{
+  "dataset": "historical-v1.0-v1.1-80",
+  "model": "deepseek-v4-flash",
+  "n": 80,
+  "errors": {},
+  "by_query_type": {
+    "attribution": 10,
+    "cross_period": 8,
+    "data_query": 12,
+    "strategy": 50
+  },
+  "usage": {
+    "prompt_tokens": 134450,
+    "completion_tokens": 58064,
+    "total_tokens": 192514
+  },
+  "latency_ms": {
+    "p50": 22231.051,
+    "p95": 42603.81
+  },
+  "cost_usd": "not derivable from API responses; reconcile recorded tokens against provider billing"
+}

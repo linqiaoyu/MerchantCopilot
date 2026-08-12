@@ -6,6 +6,7 @@
 
 - PostgreSQL + pgvector：migration、1024 维向量、canonical event/fact、Policy Gate、补偿、幂等与 PostgresSaver 恢复。
 - Memory：Mem0 2.0.2 的 `shared_bge` adapter 复用 RAG BGE-M3；Strategy 只消费 graph 的 canonical pgvector recall，Mem0 不绕过 policy gate；60 组冻结序列及真实本地 60×6 canonical retrieval matrix 达到预注册结构化指标。T04 真人 temporal truth 签核单独保留为未完成。
+- 评测基线：DeepSeek V4 Flash 的 no-Memory 历史 80 条重跑为 80/80、0 errors，记录 192,514 tokens、p50 22,231.051ms、p95 42,603.81ms；未调用 Qwen，尚非 Judge 或完整组件消融结论。
 - Agent/API：有界 LangGraph（action≤3、replan≤1、120 秒）；Metric、Attribution、Strategy 无云端 Key 路径；Bearer/UUID 幂等、持久化 HTTP/SSE、重启读回。
 - 客户端核心：Flutter analyze 0 issues、23 条测试通过；Android Keystore AES-GCM token persistence 与 APK 密钥扫描器已实现并有源码/单元测试；debug/release APK 均已本机构建且扫描 clean，但 release 使用 debug 签名，尚无真机或 endpoint smoke。
 - 并发基础：Stub 50 并发 0 错误、p95 65.2ms；本地 pgvector 默认混合五并发 SSE 为 5/5 完成、无 run ID 重复或 thread 串线、p95 18,099.0ms（含冷启动）。数据库已验证 10 并发重复 event 仅一条、10 并发同语义写入仅一条 active fact；云端 Scale Profile 未完成。

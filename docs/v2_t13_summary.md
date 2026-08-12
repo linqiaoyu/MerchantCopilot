@@ -12,4 +12,6 @@
 
 已验证：`evals/render_v2_memory_bad_cases.py` 从完整矩阵确定性生成 [bad-case 清单](../evals/runs/v2_memory_ablation_local_20260812_bad_cases.md)，不省略失败样本。它逐配置列出相对 full 的 case、类别、期望/实际召回、禁止召回和 provenance；因此 raw_history 的 15 条与 no_temporal_policy 的 20 条失败可直接审阅，minus_memory/bare 的 60 条完整缺失也保留，minus_rag 的零差异则明确解释为指标边界。
 
-尚无 Qwen 3.7 Plus 与真人配对的 v2 校准结果、逐 case Agent/Judge 原始输出矩阵及其成本/延迟汇总或 bad-case 报告。真人标注不能由模型代填；后续 Agent/Judge runner 必须保留所有原始输出，而不能以本确定性矩阵替代。因此不得表述为 T13 已验收。
+已验证：`evals/run_v2_deepseek_baseline.py` 以固定 `deepseek-v4-flash`、no-Memory、禁用 candidate extraction 的契约，重跑历史 v1.0/v1.1 的全部 80 条 query；每条保留最终回答、node result、轨迹、provider token usage 与延迟，并立即 checkpoint。严格分析器确认 [原始输出](../evals/runs/v2_deepseek_baseline_80_20260812.json) 为 80/80、0 errors；[汇总](../evals/runs/v2_deepseek_baseline_80_20260812_report.json) 的分布为 data_query 12、attribution 10、cross_period 8、strategy 50，合计 192,514 tokens，p50 22,231.051ms、p95 42,603.81ms。API 响应不提供可计费单价，故报告只记录 token，并明确费用需按账户账单核对。此项不复用 v1 分数，也未调用 Qwen，不能据此陈述 Judge 质量或 v2 Agent/Mem0 的对照结论。
+
+尚无 Qwen 3.7 Plus 与真人配对的 v2 校准结果、full/Memory/RAG 各配置的逐 case Agent/Judge 原始输出矩阵及其 Judge bad-case 报告。真人标注不能由模型代填；后续 Agent/Judge runner 必须保留所有原始输出，而不能以 no-Memory 80 条基线或确定性 retrieval 矩阵替代。因此不得表述为 T13 已验收。
