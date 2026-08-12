@@ -103,3 +103,20 @@ def test_strategy_node_contract():
     # 如果未来 get_profile 不返回 recent_concerns key,简历演示故事就断,这条挡住回归
     assert "recent_concerns" in mp
     assert isinstance(mp["recent_concerns"], list)
+
+
+def test_strategy_local_stub_does_not_initialize_mem0(monkeypatch):
+    """No-key local mode must retain deterministic RAG fallback without Mem0."""
+    import app.agent.nodes.strategy as strategy_node
+    from app.llm.client import LocalStub
+
+    monkeypatch.setattr(strategy_node, "get_llm", lambda: LocalStub())
+    monkeypatch.setattr(strategy_node, "get_profile", lambda *_: (_ for _ in ()).throw(AssertionError("Mem0 must not initialize")))
+    monkeypatch.setattr(strategy_node, "update_recent_concerns", lambda *_: (_ for _ in ()).throw(AssertionError("Mem0 must not write")))
+    chunk = type("Chunk", (), {"metadata": {"heading": "投流节奏"}, "source_doc": "playbook", "content": "按转化率分时段调整预算。"})()
+    monkeypatch.setattr(strategy_node, "retrieve", lambda *_args, **_kwargs: [chunk])
+
+    result = strategy_node.strategy({"user_query": "给我一份下周直播投流策略"})["node_result"]
+    assert result["data"]["generation"] == "template_fallback_from_chunks"
+    assert result["data"]["profile_source"] == "unavailable"
+    assert result["data"]["merchant_profile"]["recent_concerns"] == []

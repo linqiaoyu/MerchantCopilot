@@ -65,7 +65,19 @@ def _fallback_recommendations(chunks: list) -> list[str]:
 @traceable(name="node_strategy", tags=["agent_node"])
 def strategy(state: AgentState) -> dict:
     query = state["user_query"]
-    profile = get_profile(MERCHANT_ID)  # 自动 seed-on-empty,~50ms
+    # Local Self-host allows an empty DeepSeek key with deterministic fallback.
+    # Mem0 2.0.2 still constructs its configured LLM during initialization, so
+    # touching it in that mode would import an unused provider and make a
+    # supposedly offline fallback depend on external SDK/network setup.
+    llm = get_llm()
+    profile = {"category": "", "audience": "", "style": "", "recent_concerns": []}
+    profile_source = "unavailable"
+    if not llm.is_stub:
+        try:
+            profile = get_profile(MERCHANT_ID)
+            profile_source = "mem0"
+        except Exception as exc:
+            print(f"[strategy] merchant profile unavailable: {type(exc).__name__}: {exc}")
 
     # ---- RAG:fail-safe 包裹 ----
     chunks: list = []
@@ -76,7 +88,6 @@ def strategy(state: AgentState) -> dict:
         rag_status = f"unavailable: {e.__class__.__name__}"
 
     # ---- LLM:fail-safe 包裹 ----
-    llm = get_llm()
     prompt = _get_prompt()
     recommendations: list[str] = []
     topic = ""
@@ -133,11 +144,12 @@ def strategy(state: AgentState) -> dict:
     # ---- A.5 写入:独立 try/except,绝不被上面任何 except 吞掉 ----
     # 注意作用域:这一段在所有业务逻辑之后、return 之前,
     # 与主流程的 try 完全平级,无嵌套(防止外层 except 提前 return 跳过这里)。
-    try:
-        update_recent_concerns(query, MERCHANT_ID)
-    except Exception as e:
-        print(f"[strategy] update_recent_concerns 失败(忽略不影响响应): "
-              f"{type(e).__name__}: {e}")
+    if profile_source == "mem0":
+        try:
+            update_recent_concerns(query, MERCHANT_ID)
+        except Exception as e:
+            print(f"[strategy] update_recent_concerns 失败(忽略不影响响应): "
+                  f"{type(e).__name__}: {e}")
 
     # ---- 组装 node_result(契约对齐)----
     headline = f"策略建议:{topic}"
@@ -151,7 +163,7 @@ def strategy(state: AgentState) -> dict:
             {"source_doc": c.source_doc, "heading": c.metadata.get("heading", "")}
             for c in chunks
         ],
-        "profile_source": "mem0",
+        "profile_source": profile_source,
         "generation": generation,
         "rag_status": rag_status,
     }
