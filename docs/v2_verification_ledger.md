@@ -21,16 +21,16 @@
 | T06 | Policy Gate ≥40 场景 | 已验证 | tests/test_memory_policy.py（53 passed） | 无 |
 | T06 | DB 并发幂等、supersede、1024 维 index 写入 | 已验证 | `tests/test_postgres_integration.py::test_concurrent_idempotency_supersession_and_vector_dimension` | 本地 Colima/pgvector（已就绪） |
 | T06 | 同一 run 10 次事件重试、LLM causal pending、无反馈 Strategy 不复用、source 唯一性、索引失败补偿 | 已验证 | `tests/test_postgres_integration.py::test_policy_statuses_idempotent_event_retries_and_index_compensation`；本地 DB/API repository 组合回归合计 62 passed（1.21s） | 本地 Colima/pgvector（已就绪） |
-| T07 | pgvector backend | 已实现未验证 | `DATABASE_URL` 时 merchant_memory.py 配置 Mem0 pgvector/HNSW/vector(1024)；tests/test_bge_adapter.py | S1 真实连接/写读 |
-| T07 | 进程 BGE-M3 实例数=1 | 已实现未验证 | app/memory/bge_adapter.py；tests/test_bge_adapter.py | 真实 Memory 初始化计数 |
-| T07 | 55/20/15/10 + 固定预算/provenance | 已实现未验证 | tests/test_memory_retriever.py；app/storage/memory_repository.py 的 active/stale 向量查询契约 | S1 真实检索 |
-| T07 | 60 组 Recall@5/时序/stale/注入/泄漏指标 | 已实现未验证 | evals/run_memory_v2.py；tests/test_memory_eval_runner.py（1 passed）；尚无真实 BGE/pgvector report | 本机 BGE 运行恢复 + T04 真人签核 |
+| T07 | pgvector backend | 已验证 | `DATABASE_URL=…:55432` 下 Mem0 以 HNSW/vector(1024) 初始化并完成 `get_all`；无 DSN 才 Chroma 回退 | 无 |
+| T07 | 进程 BGE-M3 实例数=1 | 已验证 | `shared_bge` adapter 只委托 `app.rag.indexer.get_embedder()`；真实同进程先加载 RAG BGE 后 Memory 初始化输出 `mem0_provider=shared_bge` | 无 |
+| T07 | 55/20/15/10 + 固定预算/provenance | 已验证 | tests/test_memory_retriever.py（含 topic-overlap guard）；真实评测报告的 canonical retrieval | 无 |
+| T07 | 60 组 Recall@5/时序/stale/注入/泄漏指标 | 已验证 | `evals/runs/v2_memory_local_20260812_py312_topic_gate.json`：60 cases，1.0/1.0/0/0/0/1.0；失败前报告 `…_py312.json` 保留 50% 注入 | T04 真人签核不影响计算复现，但仍未完成 |
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
-| T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 已实现未验证 | graph_v2.py 的 bounded executor、tests/test_graph_v2.py 新增路径用例；pytest 受本机 Python 文件读取阻塞未出结果 | 运行新增图路径测试 |
-| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；`.venv/bin/python -m pytest -q` = 118 passed, 2 skipped（pgvector DSN） | 仍需路径穷举验证 |
+| T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 已验证 | `.venv312/bin/python -m pytest -q tests/test_bge_adapter.py tests/test_graph_v2.py tests/test_planning.py`：17 passed（含 12 条图路径） | 无 |
+| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；历史 `.venv/bin/python -m pytest -q` = 118 passed, 2 skipped | 本轮全量回归、真实 MCP/PG 恢复 |
 | T09 | 固定 API/SSE、Bearer、DemoRuntime 幂等、断线恢复与错误分类 | 已验证 | `tests/test_api_health.py` 实际 16 passed（10.46s）；包含同 key 8 并发只执行一次 | 无 |
-| T09 | PostgresRuntime HTTP/SSE、PostgresSaver 恢复、真实 quota/数据库错误 | 已实现未验证 | app/api/main.py；Postgres API repository 回归 5 passed；Uvicorn 未完成首次导入并监听端口 | 持久化 HTTP/SSE 回归 |
+| T09 | PostgresRuntime HTTP/SSE、PostgresSaver 恢复、真实 quota/数据库错误 | 已实现未验证 | `tests/test_api_postgres_http_integration.py`：1 passed（本地 pgvector HTTP/SSE、幂等、读回、feedback）；PostgresSaver 恢复与真实 quota/DB 错误尚未测 | 其余集成路径 |
 | T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 | 全新环境与真实三类请求 |
 | T11 | Flutter 固定 SSE/HTTP client、Timeline 批准/拒绝、错误状态 | 已验证 | `cd mobile && flutter analyze && flutter test`（0 error；21 passed）；本地 HTTP server 验证 Bearer/UUID/SSE | 无 |
 | T11 | Android debug/release APK、Keystore token、两 endpoint smoke、APK 密钥扫描 | 未实现 | native Android 工程已生成；`flutter build apk --debug` 实测因 NDK 28.2.13676358 缺失失败 | 安装 NDK 28.2.13676358、command-line tools/许可；Cloud Run endpoint |

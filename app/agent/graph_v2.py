@@ -58,7 +58,7 @@ def _recall(state: dict) -> dict:
             )
             conn.commit()
             memories = fetch_active_memories(conn, merchant_id=state.get("merchant_id", "xiaozhang_women"), query_embedding=vector)
-        selected = assemble_context(memories, datetime.now(timezone.utc))
+        selected = assemble_context(memories, datetime.now(timezone.utc), state["user_query"])
         return {"recalled_memories": selected,
                 "steps": [{"node": "MemoryRecall", "summary": f"recalled={len(selected)}"}]}
     except Exception as exc:

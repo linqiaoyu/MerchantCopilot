@@ -89,8 +89,25 @@ def get_client():
     if _client is not None:
         return _client
     from mem0 import Memory
+    from mem0.configs.base import MemoryConfig
+    from mem0.embeddings.configs import EmbedderConfig
+
     register_shared_bge_provider()
-    _client = Memory.from_config(_memory_config())
+    # Mem0 2.0.2 exposes ``EmbedderFactory.provider_to_class`` as an extension
+    # point, but its Pydantic input validator has a static built-in-provider
+    # allow-list.  Build the ordinary config first, then replace only the
+    # already-validated embedder model with the registered provider.  The
+    # resulting runtime config still explicitly says ``shared_bge`` and
+    # EmbedderFactory performs the documented import-path dispatch.
+    raw_config = _memory_config()
+    validation_config = {
+        **raw_config,
+        "embedder": {**raw_config["embedder"], "provider": "huggingface"},
+    }
+    config = MemoryConfig(**validation_config).model_copy(
+        update={"embedder": EmbedderConfig.model_construct(**raw_config["embedder"])}
+    )
+    _client = Memory(config)
     return _client
 
 

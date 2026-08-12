@@ -110,7 +110,7 @@ def run_case(conn: psycopg.Connection, case: dict, embedder) -> dict:
     query_vector = embedder.encode(case["query"], normalize_embeddings=True).tolist()
     memories = fetch_active_memories(conn, merchant_id=case["merchant_id"], query_embedding=query_vector)
     now = datetime.now(timezone.utc)
-    context = assemble_context(memories, now)
+    context = assemble_context(memories, now, case["query"])
     recalled = [mapping[row["memory_id"]] for row in context]
     expected = set(case["expected_recall_ids"])
     forbidden = set(case["forbidden_memory_ids"])

@@ -3,7 +3,7 @@ from langgraph.checkpoint.memory import MemorySaver
 import time
 
 import app.agent.graph_v2 as graph_v2
-from app.agent.graph_v2 import _after_verify, _execute, _plan, _verify, build_graph_v2
+from app.agent.graph_v2 import _after_verify, _execute, _execute_action, _memory_candidate, _plan, _verify, build_graph_v2
 from app.agent.planning import Action, Plan
 
 
@@ -43,6 +43,27 @@ def test_cross_case_attribution_plan_has_two_bounded_actions():
     assert len(plan.actions) == 2
 
 
+def test_cross_case_attribution_plan_discards_a_third_date():
+    plan = _plan({
+        "intent": "attribution",
+        "user_query": "比较 2026-04-02、2026-04-17 和 2026-04-20 的 GMV",
+    })["plan"]
+    assert len(plan.actions) == 2
+    assert [action.arguments["anomaly_date"] for action in plan.actions] == ["2026-04-02", "2026-04-17"]
+
+
+def test_attribution_action_scopes_its_time_window(monkeypatch):
+    observed = {}
+
+    def fake_attribution(state):
+        observed.update(state["time_window"])
+        return {"node_result": {"evidence": ["ok"]}}
+
+    monkeypatch.setattr(graph_v2, "attribution", fake_attribution)
+    _execute_action({}, Action("attribution", {"anomaly_date": "2026-04-02"}))
+    assert observed == {"start": "2026-04-02", "end": "2026-04-02"}
+
+
 def test_executor_returns_distinguishable_tool_failure(monkeypatch):
     monkeypatch.setattr(graph_v2, "metric_query", lambda _: (_ for _ in ()).throw(RuntimeError("broken")))
     state = {"intent": "metric", "plan": _plan({"intent": "metric", "user_query": "GMV"})["plan"],
@@ -60,6 +81,7 @@ def test_executor_times_out_without_invoking_action(monkeypatch):
     result = _execute(state)
     assert invoked == []
     assert result["node_result"]["data"]["reason"] == "agent_timeout"
+    assert result["action_cursor"] == 1
 
 
 def test_executor_combines_two_attribution_results(monkeypatch):
@@ -75,3 +97,27 @@ def test_executor_combines_two_attribution_results(monkeypatch):
     result = _execute(state)
     assert result["node_result"]["task"] == "attribution_comparison"
     assert [item["date"] for item in result["node_result"]["data"]["comparisons"]] == ["2026-04-02", "2026-04-17"]
+
+
+def test_executor_rejects_an_action_without_evidence(monkeypatch):
+    monkeypatch.setattr(graph_v2, "metric_query", lambda _: {"node_result": {"task": "metric", "evidence": []}, "steps": []})
+    state = {"intent": "metric", "plan": Plan((Action("metric", {}),)),
+             "run_started_monotonic": time.monotonic(), "user_query": "GMV"}
+    result = _execute(state)
+    assert result["action_results"][0]["status"] == "error"
+    assert result["node_result"]["data"] == {"status": "evidence_insufficient", "reason": "empty_evidence"}
+
+
+def test_evidence_verifier_accepts_a_successful_action_without_replan():
+    verification = _verify({"plan": Plan((Action("metric", {}),)),
+                            "action_results": [{"status": "ok", "evidence": ["source"]}]})["verification"]
+    assert verification == {"sufficient": True, "replan_count": 0, "will_replan": False}
+    assert _after_verify({"verification": verification}) == "insight"
+
+
+def test_memory_candidate_records_policy_gate_result(monkeypatch):
+    candidate = type("Candidate", (), {"candidate_id": "candidate-1", "subject": "merchant", "predicate": "policy", "value": "x"})()
+    monkeypatch.setattr(graph_v2, "extract_candidates", lambda *_: [candidate])
+    monkeypatch.setattr(graph_v2, "gate_candidate", lambda _: "approved")
+    result = _memory_candidate({"final_answer": "结论"})
+    assert result["memory_candidates"] == [{"candidate_id": "candidate-1", "status": "approved", "subject": "merchant", "predicate": "policy", "value": "x"}]

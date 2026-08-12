@@ -12,7 +12,7 @@ v2 将 v1 单轮 Agent 升级为以 Memory 为核心、支持多轮和跨 thread
 
 ## 当前阶段
 
-**v2 / S0 审计完成；S2 的可复算与盲审材料已完成，待两位真人签核；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；T06 的真实 DB Policy/补偿专项已通过，T07 指标、T08/T09 收尾进行中；T11 Flutter 核心解析与状态测试已通过，Android APK 交付尚未验收。**
+**v2 / S0 审计完成；S2 的可复算与盲审材料已完成，待两位真人签核；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；T06 DB Policy/补偿、T07 真实 60 组检索、T08 有界路径、T09 本地持久化 HTTP/SSE 均已有验收记录，端到端恢复与云端项继续收尾；T11 Flutter 核心解析与状态测试已通过，Android APK 交付尚未验收。**
 
 v1 阶段 1–6 已完成，历史 release 是 stage-6；v1.0-baseline tag 固定 v2 开始前 main HEAD。历史实现、报告和数字保留为 v1 证据，不篡改历史。
 
@@ -84,7 +84,7 @@ canonical 表：run_records、memory_events、memory_facts、memory_links、usag
 | 多轮有界 LangGraph Agent | app/agent/ | 路径测试；action/replan 上限 |
 | 分层、时序、可追溯 Memory | app/memory/、migrations/ | 60 组预注册评测与 Policy Gate 测试 |
 | MCP OLAP 工具调用 | app/tools/server.py | 参数和证据契约测试 |
-| BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | adapter 工厂测试；真实进程单实例计数待验证 |
+| BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | adapter 工厂与真实同进程 Mem0 初始化；60 组本地检索报告 |
 | FastAPI/SSE 幂等服务 | app/api/ | OpenAPI、SSE、鉴权并发测试 |
 | Flutter 参考客户端 | mobile/ | flutter analyze、≥12 测试、APK 扫描 |
 | 评测、消融和 bad-case 回流 | evals/ | 校准、统计、成本/延迟报告 |

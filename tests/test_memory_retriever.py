@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-from app.memory.retriever import MIN_TOPIC_RELEVANCE, RetrievedMemory, assemble_context, select
+from app.memory.retriever import MIN_TOPIC_RELEVANCE, RetrievedMemory, assemble_context, select, topic_related
 
 
 NOW = datetime(2026, 7, 30, tzinfo=timezone.utc)
@@ -33,3 +33,11 @@ def test_topic_relevance_gate_blocks_low_semantic_memory_before_recency_sorting(
     relevant = _memory(2, "episodic", semantic=MIN_TOPIC_RELEVANCE,
                        importance=.1, confidence=.1)
     assert [memory.memory_id for memory in select([unrelated, relevant], "episodic", NOW)] == ["m2"]
+
+
+def test_topic_overlap_gate_blocks_cross_topic_episodic_injection():
+    target = _memory(1, "episodic", content="退款相关约束", semantic=.9)
+    noise = _memory(2, "episodic", content="无关投流话题", semantic=.99)
+    assert topic_related("请使用与退款问题直接相关的事实", target)
+    assert not topic_related("请使用与退款问题直接相关的事实", noise)
+    assert [memory.memory_id for memory in select([target, noise], "episodic", NOW, "退款问题")] == ["m1"]
