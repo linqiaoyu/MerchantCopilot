@@ -28,10 +28,10 @@
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
 | T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 已验证 | `.venv312/bin/python -m pytest -q tests/test_bge_adapter.py tests/test_graph_v2.py tests/test_planning.py`：17 passed（含 12 条图路径） | 无 |
-| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；离线 Python 3.12 回归（排除需 BGE-M3 冷启动的 `tests/test_rag.py`）= 141 passed, 6 skipped；Graph 的 Strategy 路由测试已改为受控节点，真实 RAG 另有专项职责 | `tests/test_rag.py` 真实模型完成记录、MCP/PG 恢复 |
+| T08 | 无终止路径与旧三任务回归 | 已验证 | 空 DeepSeek/Qwen key、关闭 LangSmith tracing 的 Python 3.12 全量回归：`145 passed, 6 skipped in 82.10s`；包含真实 BGE-M3 + reranker 的 `tests/test_rag.py`（4 passed，80.27s）以及 Graph、MCP、Postgres 恢复专项 | 无 |
 | T09 | 固定 API/SSE、Bearer、DemoRuntime 幂等、断线恢复与错误分类 | 已验证 | `tests/test_api_health.py` 实际 16 passed（10.46s）；包含同 key 8 并发只执行一次 | 无 |
 | T09 | PostgresRuntime HTTP/SSE、PostgresSaver 恢复、真实 quota/数据库错误 | 已验证 | `tests/test_api_postgres_http_integration.py`：3 passed（本地 pgvector HTTP/SSE、幂等、读回、feedback、quota 不执行 Agent、ConnectionError→database_unavailable）；PostgresSaver 重开恢复：62 passed 专项中的 `test_postgres_checkpointer_persists_and_isolates_threads` | 三界面一致性仍单列未验收 |
-| T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 62 passed；Uvicorn 在 8010 实测 `/healthz`、`/readyz` 均 200；关闭默认 LangSmith tracing 后，空云端变量的 Metric、Attribution CLI 均真实完成；Strategy cold start 未完成 | 全新环境、Strategy 真实冷启动、重启恢复 |
+| T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 62 passed；Uvicorn 实测 `/healthz`、`/readyz` 均 200；空 DeepSeek/Qwen/DB、关闭 LangSmith tracing 的 Metric、Attribution、Strategy CLI 均真实完成（Strategy 经 BGE-M3 + reranker 冷启动）；本地 pgvector HTTP/SSE Metric 已完成，重启 Uvicorn 后相同 `run_id` 成功读回 | 全新机器按五条命令从零启动 |
 | T11 | Flutter 固定 SSE/HTTP client、Timeline 批准/拒绝、错误状态 | 已验证 | `cd mobile && flutter analyze && flutter test`（0 error；21 passed）；本地 HTTP server 验证 Bearer/UUID/SSE | 无 |
 | T11 | Android debug/release APK、Keystore token、两 endpoint smoke、APK 密钥扫描 | 未实现 | native Android 工程已生成；SDK legacy manager 已接受许可，但无法识别/安装 `cmdline-tools;latest`，目标 NDK 28.2.13676358 仍缺失，`flutter build apk --debug` 未通过 | 安装新版 command-line tools 与 NDK 28.2.13676358；Cloud Run endpoint |
 | T12 | Demo Profile、secret、月度 cap、Cloud Run/Supabase smoke | 已实现未验证 | Dockerfile；deploy/cloudrun-demo.yaml；tests/test_deploy_config.py；cap repository 回归；本机 Docker legacy builder 两次均在依赖容器 exit 0 后卡于 layer commit、无目标镜像 | 修复本机 Docker builder；Supabase/GCP 部署权限与真人云端核验 |
