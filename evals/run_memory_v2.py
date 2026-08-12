@@ -19,7 +19,7 @@ import psycopg
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from app.memory.retriever import assemble_context
+from app.memory.retriever import MIN_TOPIC_RELEVANCE, assemble_context
 from app.storage.memory_repository import fetch_active_memories
 
 DATA = ROOT / "evals/datasets/v2.0/memory_sequences.json"
@@ -164,7 +164,12 @@ def main() -> int:
                 rows.append(run_case(conn, case, embedder))
             finally:
                 conn.rollback()
-    report = {"dataset_version": dataset["version"], "summary": summarize(rows), "cases": rows}
+    report = {
+        "dataset_version": dataset["version"],
+        "retrieval_contract": {"min_topic_relevance": MIN_TOPIC_RELEVANCE},
+        "summary": summarize(rows),
+        "cases": rows,
+    }
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(report["summary"], ensure_ascii=False))
     return 0

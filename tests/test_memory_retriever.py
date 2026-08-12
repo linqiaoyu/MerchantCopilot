@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-from app.memory.retriever import RetrievedMemory, assemble_context, select
+from app.memory.retriever import MIN_TOPIC_RELEVANCE, RetrievedMemory, assemble_context, select
 
 
 NOW = datetime(2026, 7, 30, tzinfo=timezone.utc)
@@ -25,3 +25,11 @@ def test_fixed_budgets_for_episodic_and_decision():
     memories = [_memory(i, "episodic") for i in range(20)] + [_memory(100 + i, "decision") for i in range(8)]
     assert len(select(memories, "episodic", NOW)) == 5
     assert len(select(memories, "decision", NOW)) == 3
+
+
+def test_topic_relevance_gate_blocks_low_semantic_memory_before_recency_sorting():
+    unrelated = _memory(1, "episodic", semantic=MIN_TOPIC_RELEVANCE - .01,
+                        importance=1.0, confidence=1.0, valid_from=NOW)
+    relevant = _memory(2, "episodic", semantic=MIN_TOPIC_RELEVANCE,
+                       importance=.1, confidence=.1)
+    assert [memory.memory_id for memory in select([unrelated, relevant], "episodic", NOW)] == ["m2"]

@@ -4,6 +4,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
+MIN_TOPIC_RELEVANCE = 0.30
+
 
 @dataclass(frozen=True)
 class RetrievedMemory:
@@ -26,7 +28,16 @@ def score(memory: RetrievedMemory, now: datetime) -> float:
 
 
 def select(memories: list[RetrievedMemory], kind: str, now: datetime) -> list[RetrievedMemory]:
-    active = [m for m in memories if m.kind == kind and m.status == "active" and m.valid_to is None]
+    # pgvector 的候选数量允许多主题历史混入；固定相关性门槛先阻断
+    # 低语义相关记忆，之后才应用 recency/importance/confidence 的排序。
+    # 此值是实现契约，不从冻结 RC1 的结果反调。
+    active = [
+        memory for memory in memories
+        if memory.kind == kind
+        and memory.status == "active"
+        and memory.valid_to is None
+        and memory.semantic >= MIN_TOPIC_RELEVANCE
+    ]
     limit = {"core": 8, "episodic": 5, "decision": 3, "outcome": 3}[kind]
     return sorted(active, key=lambda m: score(m, now), reverse=True)[:limit]
 
