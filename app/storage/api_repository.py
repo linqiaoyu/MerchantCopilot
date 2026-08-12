@@ -41,6 +41,13 @@ def finish_run(conn: psycopg.Connection, run_id: UUID, *, status: str, result: d
         )
 
 
+def claim_queued_run(conn: psycopg.Connection, run_id: str) -> bool:
+    """Atomically elect one concurrent SSE request to execute an idempotent run."""
+    with conn.cursor() as cur:
+        cur.execute("UPDATE run_records SET status = 'running' WHERE run_id = %s AND status = 'queued'", (run_id,))
+        return cur.rowcount == 1
+
+
 def get_run(conn: psycopg.Connection, run_id: str) -> dict[str, Any] | None:
     with conn.cursor() as cur:
         cur.execute(

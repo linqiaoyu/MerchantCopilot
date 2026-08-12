@@ -8,4 +8,6 @@
 
 CLI v2 smoke：`DEEPSEEK_API_KEY='' QWEN_API_KEY='' .venv/bin/python scripts/chat.py '2026-04-02 GMV 怎么样'` 实际走完 Router → Recall → Planner → MetricQuery → Verifier → Insight → MemoryPolicyGate，结构化结果与确定性答案均输出。
 
-未验证项：PostgresSaver 真实恢复、quota/数据库不可用的真实集成测试，以及三个界面同一 stub 输入的完整端到端渲染一致性。当前 runtime 是进程内演示实现，重启不会保留数据；不得表述为持久化服务已完成。
+已实现未验证：当存在 `DATABASE_URL` 时，API 选择 `PostgresRuntime`：thread/run/feedback/Memory approve/reject 从 Postgres 读取，SSE 通过 queued→running 原子 claim 确保同一 idempotency run 只由一个请求执行，Graph 以官方 PostgresSaver 构建。新增 `002_api_threads.sql` 与真实 repository 测试；该层命令实际 **5 passed**。
+
+未验证项：持久化 runtime 的 HTTP/SSE 回归在本机 Python 3.14 文件读取阻塞期间尚未获得结果；PostgresSaver 真实恢复、quota/数据库不可用的真实集成测试，以及三个界面同一 stub 输入的完整端到端渲染一致性仍待验证。不得表述为持久化服务已完成。

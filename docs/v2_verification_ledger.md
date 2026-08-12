@@ -29,3 +29,4 @@
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
 | T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 已实现未验证 | graph_v2.py 的 bounded executor、tests/test_graph_v2.py 新增路径用例；pytest 受本机 Python 文件读取阻塞未出结果 | 运行新增图路径测试 |
 | T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；`.venv/bin/python -m pytest -q` = 118 passed, 2 skipped（pgvector DSN） | 仍需路径穷举验证 |
+| T09 | 固定 API/SSE、Bearer、幂等、断线恢复与错误分类 | 已实现未验证 | app/api/main.py；tests/test_api_health.py；Postgres API repository 回归 5 passed；HTTP pytest 受本机 Python 文件读取阻塞 | 持久化 HTTP/SSE 回归 |
