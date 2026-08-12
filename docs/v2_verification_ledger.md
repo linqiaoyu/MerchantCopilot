@@ -28,7 +28,7 @@
 | T07 | Supabase 热态 p95≤800ms | 未实现 | 无云端测试 | Supabase |
 | T08 | action≤3、replan≤1 | 已验证 | tests/test_planning.py | 无 |
 | T08 | 12 路径、全部条件边、120s、双归因/失败路径 | 已验证 | `.venv312/bin/python -m pytest -q tests/test_bge_adapter.py tests/test_graph_v2.py tests/test_planning.py`：17 passed（含 12 条图路径） | 无 |
-| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；历史 `.venv/bin/python -m pytest -q` = 118 passed, 2 skipped | 本轮全量回归、真实 MCP/PG 恢复 |
+| T08 | 无终止路径与旧三任务回归 | 已实现未验证 | graph_v2.py；离线 Python 3.12 回归（排除需 BGE-M3 冷启动的 `tests/test_rag.py`）= 141 passed, 6 skipped；Graph 的 Strategy 路由测试已改为受控节点，真实 RAG 另有专项职责 | `tests/test_rag.py` 真实模型完成记录、MCP/PG 恢复 |
 | T09 | 固定 API/SSE、Bearer、DemoRuntime 幂等、断线恢复与错误分类 | 已验证 | `tests/test_api_health.py` 实际 16 passed（10.46s）；包含同 key 8 并发只执行一次 | 无 |
 | T09 | PostgresRuntime HTTP/SSE、PostgresSaver 恢复、真实 quota/数据库错误 | 已验证 | `tests/test_api_postgres_http_integration.py`：3 passed（本地 pgvector HTTP/SSE、幂等、读回、feedback、quota 不执行 Agent、ConnectionError→database_unavailable）；PostgresSaver 重开恢复：62 passed 专项中的 `test_postgres_checkpointer_persists_and_isolates_threads` | 三界面一致性仍单列未验收 |
 | T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 62 passed；Uvicorn 在 8010 实测 `/healthz`、`/readyz` 均 200；关闭默认 LangSmith tracing 后，空云端变量的 Metric、Attribution CLI 均真实完成；Strategy cold start 未完成 | 全新环境、Strategy 真实冷启动、重启恢复 |
