@@ -50,8 +50,10 @@ def test_active_fact_supersedes_before_inserting_new_value():
     conn = _Connection(None)
     fact = materialize_fact(conn, source_event_id=UUID(int=3), merchant_id="m1", candidate=candidate, content="new")
     assert fact.status == "active"
-    assert "UPDATE memory_facts SET status = 'superseded'" in conn.cursor_instance.calls[0][0]
-    assert "INSERT INTO memory_facts" in conn.cursor_instance.calls[1][0]
+    calls = conn.cursor_instance.calls
+    assert "pg_advisory_xact_lock" in calls[0][0]
+    assert "UPDATE memory_facts SET status = 'superseded'" in calls[1][0]
+    assert "INSERT INTO memory_facts" in calls[2][0]
 
 
 def test_recall_query_filters_stale_facts_and_uses_vector_distance():
