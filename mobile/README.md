@@ -1,8 +1,8 @@
 # MerchantCopilot v2 Android client
 
 Flutter Android-first reference client. The native Android shell is included for
-debug/release APK builds; build verification requires Android command-line tools
-and accepted SDK licenses.
+debug/release APK builds; build verification uses Android command-line tools and
+the local Android Studio JBR 17.
 
 ```bash
 flutter analyze
@@ -11,8 +11,10 @@ flutter build apk --debug
 python3 ../scripts/scan_apk_secrets.py build/app/outputs/flutter-apk/app-debug.apk
 ```
 
-对 release APK 使用同一扫描器。当前机器仍须先安装 Android command-line
-tools、NDK `28.2.13676358` 并接受 SDK licenses，才能实际构建和扫描。
+对 release APK 使用同一扫描器。2026-08-12 本机已安装 Android command-line
+tools、NDK `28.2.13676358`，且 `assembleDebug` / `assembleRelease` 均构建成功、
+扫描 clean；release 暂使用 debug signing config，只能作为本地验证产物，不能发布。
+SDK licenses 尚待接受，命令为 `sdkmanager --sdk_root="$HOME/Library/Android/sdk" --licenses`。
 
 Settings 中的 demo token 通过 Android `MethodChannel` 写入：原生端以 Android
 Keystore AES-GCM key 加密，再把密文保存到 app-private SharedPreferences。token
