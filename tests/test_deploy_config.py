@@ -18,3 +18,4 @@ def test_image_preloads_models_and_excludes_secrets():
     assert "python scripts/warm_models.py" in dockerfile
     assert "uvicorn app.api.main:app" in dockerfile
     assert ".env" in ignored
+    assert ".venv312" in ignored
