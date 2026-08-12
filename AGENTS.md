@@ -12,7 +12,7 @@ v2 将 v1 单轮 Agent 升级为以 Memory 为核心、支持多轮和跨 thread
 
 ## 当前阶段
 
-**v2 / S0 审计完成；S2 的可复算与盲审材料已完成，待两位真人签核；S1 本地 pgvector 验收待 Colima 就绪；T08/T09 的不依赖 Postgres 部分进行中。**
+**v2 / S0 审计完成；S2 的可复算与盲审材料已完成，待两位真人签核；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；T06 的真实 DB Policy/补偿专项、T07 指标与 T08/T09 收尾进行中。**
 
 v1 阶段 1–6 已完成，历史 release 是 stage-6；v1.0-baseline tag 固定 v2 开始前 main HEAD。历史实现、报告和数字保留为 v1 证据，不篡改历史。
 
