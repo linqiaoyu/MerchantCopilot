@@ -7,7 +7,7 @@
 - region: `asia-southeast1`
 - Cloud Run: 2 vCPU、8 GiB、`min=0`、`max=1`、`concurrency=1`、request timeout 300 秒
 - Agent run 上限：120 秒；月度 run cap：1000
-- `DATABASE_URL` 使用 Supabase transaction pooler；`DATABASE_DIRECT_URL` 使用直连，仅 migration 使用。
+- `DATABASE_URL` 使用 Supabase transaction pooler；direct DSN 只在部署前的 migration 命令中临时使用，不注入 Cloud Run 服务。
 
 ## 用户执行的部署步骤
 

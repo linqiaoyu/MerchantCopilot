@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: merchantcopilot-v2
   annotations:
-    run.googleapis.com/ingress: internal-and-cloud-load-balancing
+    # 手机真机演示直接访问；所有业务端点仍由 Bearer token 保护。
+    run.googleapis.com/ingress: all
 spec:
   template:
     metadata:
@@ -27,11 +28,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: merchantcopilot-database-url
-                  key: latest
-            - name: DATABASE_DIRECT_URL
-              valueFrom:
-                secretKeyRef:
-                  name: merchantcopilot-database-direct-url
                   key: latest
             - name: DEEPSEEK_API_KEY
               valueFrom:
