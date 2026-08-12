@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import os
+import re
+import time
 from datetime import datetime, timezone
 
 import psycopg
@@ -18,6 +20,8 @@ from app.memory.extractor import extract_candidates
 from app.memory.policy import gate_candidate
 from app.memory.retriever import assemble_context
 from app.storage.memory_repository import compensate_pending_indexes, fetch_active_memories
+
+MAX_RUN_SECONDS = 120
 
 
 def _recall(state: dict) -> dict:
@@ -48,18 +52,73 @@ def _recall(state: dict) -> dict:
 def _plan(state: dict) -> dict:
     intent = state["intent"]
     replan_count = state.get("verification", {}).get("replan_count", 0)
-    return {"plan": Plan((Action(intent, {}),), replan_count=replan_count), "action_cursor": 0,
+    dates = re.findall(r"\d{4}-\d{1,2}-\d{1,2}", state["user_query"])
+    # 跨 case 归因是唯一允许的多 action 产品路径；固定最多两次工具调用。
+    actions = (
+        tuple(Action("attribution", {"anomaly_date": date}) for date in dates[:2])
+        if intent == "attribution" and len(dates) >= 2
+        else (Action(intent, {}),)
+    )
+    return {"plan": Plan(actions, replan_count=replan_count), "action_cursor": 0,
             "steps": [{"node": "Planner", "summary": f"planned {intent}, replan={replan_count}"}]}
 
 
+def _execute_action(state: dict, action: Action) -> dict:
+    if action.name == "attribution" and action.arguments.get("anomaly_date"):
+        scoped = dict(state)
+        date = action.arguments["anomaly_date"]
+        scoped["time_window"] = {"start": date, "end": date}
+        return attribution(scoped)
+    return {"metric": metric_query, "attribution": attribution, "strategy": strategy}[action.name](state)
+
+
+def _insufficient_result(intent: str, reason: str) -> dict:
+    return {
+        "task": intent,
+        "headline": "证据不足，已停止继续尝试",
+        "data": {"status": "evidence_insufficient", "reason": reason},
+        "evidence": [reason],
+    }
+
+
 def _execute(state: dict) -> dict:
-    node = {"metric": metric_query, "attribution": attribution, "strategy": strategy}[state["intent"]]
-    return node(state)
+    """Run the immutable bounded plan and convert failures into visible evidence."""
+    started = state.get("run_started_monotonic", time.monotonic())
+    outcomes: list[dict] = []
+    step_rows: list[dict] = []
+    for cursor, action in enumerate(state["plan"].actions):
+        if time.monotonic() - started >= MAX_RUN_SECONDS:
+            outcomes.append({"status": "error", "evidence": [], "reason": "agent_timeout"})
+            step_rows.append({"node": "ActionExecutor", "summary": f"{action.name}: agent_timeout"})
+            break
+        try:
+            response = _execute_action(state, action)
+            result = response["node_result"]
+            outcomes.append({"status": "ok" if result.get("evidence") else "error", "evidence": result.get("evidence", []), "result": result})
+            step_rows.extend(response.get("steps", []))
+        except Exception as exc:
+            reason = f"tool_failure:{type(exc).__name__}"
+            outcomes.append({"status": "error", "evidence": [], "reason": reason})
+            step_rows.append({"node": "ActionExecutor", "summary": f"{action.name}: {reason}"})
+
+    successful = [item["result"] for item in outcomes if item["status"] == "ok"]
+    if len(successful) == 1 and len(outcomes) == 1:
+        result = successful[0]
+    elif successful and len(successful) == len(outcomes):
+        result = {
+            "task": "attribution_comparison",
+            "headline": f"跨 case 归因对比：{len(successful)} 个窗口",
+            "data": {"comparisons": [item["data"] for item in successful]},
+            "evidence": [evidence for item in successful for evidence in item["evidence"]],
+        }
+    else:
+        result = _insufficient_result(state["intent"], outcomes[-1].get("reason", "empty_evidence"))
+    return {"node_result": result, "action_results": outcomes, "action_cursor": len(outcomes), "steps": step_rows}
 
 
 def _verify(state: dict) -> dict:
-    result = state.get("node_result", {})
-    ok = verify_evidence([{"status": "ok" if result else "error", "evidence": result.get("evidence", [])}])
+    results = state.get("action_results") or []
+    ok = verify_evidence(results)
     follow_up = next_plan(state["plan"], ok)
     replan_count = follow_up.replan_count if follow_up else state["plan"].replan_count
     return {"verification": {"sufficient": ok, "replan_count": replan_count,

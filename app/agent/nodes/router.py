@@ -7,6 +7,7 @@ LLM 返回 {"intent","confidence"};confidence < 0.6、JSON 解析失败、
 from __future__ import annotations
 
 import re
+import time
 from datetime import date
 from pathlib import Path
 
@@ -100,4 +101,4 @@ def router(state: AgentState) -> dict:
         "confidence": conf,
         "time_window": time_window,
     }
-    return {"intent": intent, "time_window": time_window, "steps": [step]}
+    return {"intent": intent, "time_window": time_window, "run_started_monotonic": time.monotonic(), "steps": [step]}

@@ -74,7 +74,7 @@ def insight(state: AgentState) -> dict:
     if not nr:
         answer = "未获得任何分析结果,请重述问题或缩小范围。"
         method = "empty"
-    elif nr.get("task") in {"metric", "attribution"}:
+    elif nr.get("task") in {"metric", "attribution", "attribution_comparison"}:
         # 结构化业务事实由确定性渲染器独占，防止 Insight LLM 漏列/改写数字。
         answer, method = _render_structured_result(nr), "deterministic"
     else:

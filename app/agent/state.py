@@ -43,6 +43,12 @@ class AgentState(TypedDict, total=False):
     recalled_memories: list[dict[str, Any]]
     plan: Any
     action_cursor: int
+    action_results: list[dict[str, Any]]
+    """每个有界 action 的结果，用于 Evidence Verifier 与跨 case 比较。"""
+
+    run_started_monotonic: float
+    """仅进程内超时预算用；不可持久化，避免把单调时钟写入 checkpoint。"""
+
     verification: dict[str, Any]
 
     memory_candidates: list[dict[str, Any]]
