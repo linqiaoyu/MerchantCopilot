@@ -12,7 +12,7 @@ v2 将 v1 单轮 Agent 升级为以 Memory 为核心、支持多轮和跨 thread
 
 ## 当前阶段
 
-**v2 / S0 审计完成；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；S2 的可复算与盲审材料已完成，待两位真人签核。T06 DB Policy/补偿、T07 真实 60 组检索、T08 有界路径、T09 本地持久化 HTTP/SSE 已验证；T10 三类无云端变量 Agent 与重启读回已实测，仍待另一台/清空机器五步启动；T11 Flutter 核心解析与状态测试已通过，2026-08-12 debug APK 构建实测仍缺 NDK 28.2.13676358 与 command-line tools；T14 Stub、真实混合五并发 SSE 与 canonical 写入并发不变量已本地验证，云端 Scale Profile 压测待后续前置条件。**
+**v2 / S0 审计完成；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；S2 的可复算与盲审材料已完成，待两位真人签核。T06 DB Policy/补偿、T07 真实 60 组检索、T08 有界路径、T09 本地持久化 HTTP/SSE 已验证；T10 三类无云端变量 Agent 与重启读回已实测，仍待另一台/清空机器五步启动；T11 Flutter 核心、Keystore token persistence 与 APK 扫描器已实现，2026-08-12 debug APK 构建实测仍缺 NDK 28.2.13676358 与 command-line tools；T14 Stub、真实混合五并发 SSE 与 canonical 写入并发不变量已本地验证，云端 Scale Profile 压测待后续前置条件。**
 
 v1 阶段 1–6 已完成，历史 release 是 stage-6；v1.0-baseline tag 固定 v2 开始前 main HEAD。历史实现、报告和数字保留为 v1 证据，不篡改历史。
 

@@ -7,7 +7,7 @@
 - PostgreSQL + pgvector：migration、1024 维向量、canonical event/fact、Policy Gate、补偿、幂等与 PostgresSaver 恢复。
 - Memory：Mem0 2.0.2 的 `shared_bge` adapter 复用 RAG BGE-M3；60 组冻结序列的 local canonical retrieval 达到预注册结构化指标。T04 真人 temporal truth 签核单独保留为未完成。
 - Agent/API：有界 LangGraph（action≤3、replan≤1、120 秒）；Metric、Attribution、Strategy 无云端 Key 路径；Bearer/UUID 幂等、持久化 HTTP/SSE、重启读回。
-- 客户端核心：Flutter analyze 0 issues、21 条测试通过；尚无可验收 APK。
+- 客户端核心：Flutter analyze 0 issues、23 条测试通过；Android Keystore AES-GCM token persistence 与 APK 密钥扫描器已实现并有源码/单元测试；尚无可验收 APK 或真机验证。
 - 并发基础：Stub 50 并发 0 错误、p95 65.2ms；本地 pgvector 默认混合五并发 SSE 为 5/5 完成、无 run ID 重复或 thread 串线、p95 18,099.0ms（含冷启动）。数据库已验证 10 并发重复 event 仅一条、10 并发同语义写入仅一条 active fact；云端 Scale Profile 未完成。
 
 当前本地回归收集 `164 tests`。2026-08-12 在 Python 3.12、本地 pgvector、空 DeepSeek/Qwen key、关闭 LangSmith tracing 的环境完成三组覆盖全部测试文件的回归，三组均以 exit 0 结束；随后完整 `pytest -q` 再次以 exit 0 结束。执行通道未回传该长运行的最终 pytest 文本摘要，因此不虚构 passed/skipped 分拆。完整命令与前置条件见 [本地自托管指南](v2_local_self_host.md)。

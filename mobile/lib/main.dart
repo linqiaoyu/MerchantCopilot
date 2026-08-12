@@ -17,6 +17,12 @@ class _MerchantCopilotAppState extends State<MerchantCopilotApp> {
   int index = 0;
 
   @override
+  void initState() {
+    super.initState();
+    session.restoreAccessToken();
+  }
+
+  @override
   void dispose() {
     session.dispose();
     super.dispose();
@@ -169,11 +175,11 @@ class _SettingsPageState extends State<_SettingsPage> {
           TextField(controller: token, obscureText: true, decoration: const InputDecoration(labelText: 'Demo access token')),
           const SizedBox(height: 12),
           FilledButton(
-            onPressed: () => widget.session.updateSettings(url.text, token.text),
-            child: const Text('应用本次会话设置'),
+            onPressed: () async => widget.session.updateSettings(url.text, token.text),
+            child: const Text('应用并安全保存'),
           ),
           const SizedBox(height: 8),
-          const Text('Token 目前仅保留在进程内；Android Keystore 安全持久化仍是 T11 未完成项。'),
+          const Text('Android 会用 Keystore 加密保存 token；Base URL 不含凭据，仅保留在当前会话。'),
         ],
       );
 }

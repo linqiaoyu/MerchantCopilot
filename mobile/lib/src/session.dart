@@ -1,15 +1,19 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 import 'api_client.dart';
 import 'models.dart';
+import 'token_store.dart';
 
 class ClientSession extends ChangeNotifier {
-  ClientSession({ClientSettings? settings})
-      : settings = settings ?? ClientSettings(baseUrl: Uri.parse('http://10.0.2.2:8000'), accessToken: '');
+  ClientSession({ClientSettings? settings, TokenStore? tokenStore})
+      : settings = settings ?? ClientSettings(baseUrl: Uri.parse('http://10.0.2.2:8000'), accessToken: ''),
+        _tokenStore = tokenStore ?? AndroidKeystoreTokenStore();
 
   ClientSettings settings;
+  final TokenStore _tokenStore;
   String? threadId;
   String answer = '';
   String progress = '尚未发起请求';
@@ -19,7 +23,21 @@ class ClientSession extends ChangeNotifier {
   List<MemoryItem> memories = [];
   bool running = false;
 
-  void updateSettings(String baseUrl, String token) {
+  Future<void> restoreAccessToken() async {
+    try {
+      final token = await _tokenStore.read();
+      if (token != null && token.isNotEmpty) {
+        settings = ClientSettings(baseUrl: settings.baseUrl, accessToken: token);
+        notifyListeners();
+      }
+    } on PlatformException {
+      _setTokenPersistenceProblem();
+    } on MissingPluginException {
+      _setTokenPersistenceProblem();
+    }
+  }
+
+  Future<void> updateSettings(String baseUrl, String token) async {
     final uri = Uri.tryParse(baseUrl.trim());
     if (uri == null || !uri.hasScheme || !uri.hasAuthority) {
       problem = RequestProblem.network;
@@ -28,8 +46,24 @@ class ClientSession extends ChangeNotifier {
       settings = ClientSettings(baseUrl: uri, accessToken: token.trim());
       problem = null;
       problemMessage = null;
+      try {
+        if (settings.accessToken.isEmpty) {
+          await _tokenStore.clear();
+        } else {
+          await _tokenStore.write(settings.accessToken);
+        }
+      } on PlatformException {
+        _setTokenPersistenceProblem();
+      } on MissingPluginException {
+        _setTokenPersistenceProblem();
+      }
     }
     notifyListeners();
+  }
+
+  void _setTokenPersistenceProblem() {
+    problem = RequestProblem.server;
+    problemMessage = '设置已应用，但 Android Keystore 未可用，token 未持久化。';
   }
 
   Future<void> submit(String query) async {
