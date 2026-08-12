@@ -1,0 +1,100 @@
+{
+  "mode": "real_http_sse",
+  "concurrency": 5,
+  "completed": 5,
+  "failed": 0,
+  "duplicate_run_ids": false,
+  "thread_readback_mismatches": 0,
+  "elapsed_seconds": 18.713,
+  "throughput_rps": 0.267,
+  "latency_ms": {
+    "p50": 18657.9,
+    "p95": 18660.3
+  },
+  "samples": [
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "b4443af3-78a6-4043-b418-ff22c3a32034",
+      "run_id": "fc584e90-139a-4ae3-9757-079f20540723",
+      "status": "completed",
+      "latency_ms": 18645.118333000028,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "a77b557b-853c-4d95-bdc6-54b674330ab6",
+      "run_id": "4556b092-b240-46c9-b0ea-240961d6680a",
+      "status": "completed",
+      "latency_ms": 18662.225667000257,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "b12c85fe-f732-4757-880f-70dcc7bd9f5a",
+      "run_id": "72943dc4-2fea-482d-8a0a-31543c93a219",
+      "status": "completed",
+      "latency_ms": 18660.287499999868,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "279a6676-be49-4b8c-912b-31210a106e23",
+      "run_id": "814f8509-b846-4548-b06e-3236877371c3",
+      "status": "completed",
+      "latency_ms": 18657.92250000004,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "b0759db5-c4cc-444b-863c-a23913c68c3d",
+      "run_id": "a71f2bcf-0235-43ea-9980-d08a17adc2f9",
+      "status": "completed",
+      "latency_ms": 18658.413666999877,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    }
+  ],
+  "limitations": [
+    "API-level probe cannot count canonical memory duplicates or database optimistic conflicts.",
+    "Cloud Run resource curves, cold starts, and Scale Profile are reported separately."
+  ]
+}

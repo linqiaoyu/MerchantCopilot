@@ -374,7 +374,7 @@ def _get_or_404(rows: dict[str, dict[str, Any]], key: str, label: str) -> dict[s
 
 def _sse(event: str, payload: dict[str, Any]) -> str:
     assert event in SSE_EVENT_TYPES
-    return f"event: {event}\\ndata: {json.dumps(payload, ensure_ascii=False, default=str)}\\n\\n"
+    return f"event: {event}\ndata: {json.dumps(payload, ensure_ascii=False, default=str)}\n\n"
 
 
 def _classify_error(exc: Exception) -> dict[str, str]:

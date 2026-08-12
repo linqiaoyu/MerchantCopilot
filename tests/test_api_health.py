@@ -7,7 +7,14 @@ from uuid import uuid4
 import pytest
 from fastapi.testclient import TestClient
 
-from app.api.main import DemoRuntime, SSE_EVENT_TYPES, app, require_demo_token
+from app.api.main import DemoRuntime, SSE_EVENT_TYPES, _sse, app, require_demo_token
+
+
+def test_sse_frame_uses_protocol_newline_delimiters():
+    frame = _sse("meta", {"run_id": "r1"})
+
+    assert frame == 'event: meta\ndata: {"run_id": "r1"}\n\n'
+    assert "\\n" not in frame
 
 
 def test_health_and_ready_are_public():
