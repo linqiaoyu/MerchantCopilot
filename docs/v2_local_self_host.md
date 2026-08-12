@@ -18,4 +18,4 @@ docker-compose up -d postgres
 DATABASE_URL=postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot DATABASE_DIRECT_URL=postgresql://merchantcopilot:merchantcopilot@localhost:55432/merchantcopilot PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/python -m pytest -q tests/test_postgres_integration.py tests/test_api_repository_integration.py
 ```
 
-验证范围：migration、canonical Memory、Postgres checkpointer、API repository 已在本机 pgvector 实测；三类真实 Agent 请求、API 持久化 SSE 与重启后的 HTTP 恢复仍需按 T10 验收单补跑。安全边界：`.env` 不入库；本地 token 只用于 demo Bearer 校验；不要将 DSN 或 API key 写进截图、APK、报告或 git commit。
+验证范围：migration、canonical Memory、Postgres checkpointer、API repository 已在本机 pgvector 实测；`tests/test_api_postgres_http_integration.py` 已覆盖持久化 HTTP/SSE 的线程/run 幂等、读回与反馈；`.venv312/bin/uvicorn app.api.main:app --host 127.0.0.1 --port 8010` 也已实测启动并返回 `/healthz` 与 `/readyz` 200。三类真实 Agent 请求与重启后的 HTTP 恢复仍需按 T10 验收单补跑。安全边界：`.env` 不入库；本地 token 只用于 demo Bearer 校验；不要将 DSN 或 API key 写进截图、APK、报告或 git commit。

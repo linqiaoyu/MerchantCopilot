@@ -10,4 +10,6 @@ CLI v2 smoke：`DEEPSEEK_API_KEY='' QWEN_API_KEY='' .venv/bin/python scripts/cha
 
 已验证：当存在 `DATABASE_URL` 时，API 选择 `PostgresRuntime`：thread/run/feedback/Memory approve/reject 从 Postgres 读取，SSE 通过 queued→running 原子 claim 确保同一 idempotency run 只由一个请求执行。`PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv312/bin/python -m pytest -q tests/test_api_postgres_http_integration.py` 对本地 pgvector 实例实际 **1 passed（0.62s）**，覆盖 HTTP thread 幂等、SSE 生命周期、重复 run key 不重复执行、持久化读回与 feedback。`002_api_threads.sql` 的 repository 测试另有 5 passed 记录。
 
-未验证项：Graph 使用官方 PostgresSaver 的真实恢复、持久化 runtime 的 quota/数据库不可用集成测试，以及三个界面同一 stub 输入的完整端到端渲染一致性仍待验证。不得表述为持久化服务已完成。
+已验证：`DATABASE_URL=…:55432 DATABASE_DIRECT_URL=…:55432 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv312/bin/python -m pytest -q tests/test_postgres_integration.py tests/test_memory_repository.py tests/test_memory_policy.py tests/test_api_repository_integration.py` 实际 **62 passed（0.87s）**，其中 `test_postgres_checkpointer_persists_and_isolates_threads` 验证官方 PostgresSaver 重开后恢复同一 thread checkpoint、其他 thread 不可见。
+
+未验证项：持久化 runtime 的 quota/数据库不可用集成测试，以及三个界面同一 stub 输入的完整端到端渲染一致性仍待验证。不得表述为持久化服务已完成。
