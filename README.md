@@ -51,7 +51,7 @@ docker-compose up -d postgres
 .venv/bin/uvicorn app.api.main:app --host 127.0.0.1 --port 8000
 ```
 
-在 `.env` 填入 `DEEPSEEK_API_KEY` 与随机的 `DEMO_ACCESS_TOKEN`。示例的本地 DSN 使用 `localhost:55432`，以避开本机常见的 5432 占用。详细步骤、安全边界与当前验收范围见 [本地自托管指南](docs/v2_local_self_host.md)。
+在 `.env` 填入 `DEEPSEEK_API_KEY` 与随机的 `DEMO_ACCESS_TOKEN`（例如用密码管理器生成）；后者是所有业务 API 的 Bearer 值。示例的本地 DSN 使用 `localhost:55432`，以避开本机常见的 5432 占用。详细步骤、安全边界与当前验收范围见 [本地自托管指南](docs/v2_local_self_host.md)。
 
 验证本地 pgvector：
 

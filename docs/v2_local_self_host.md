@@ -6,7 +6,7 @@
 
 ```bash
 python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
-cp .env.example .env  # 填入自己的 DEEPSEEK_API_KEY 与 DEMO_ACCESS_TOKEN
+cp .env.example .env  # 填入自己的 DEEPSEEK_API_KEY，并生成随机 DEMO_ACCESS_TOKEN
 docker-compose up -d postgres
 .venv/bin/python scripts/migrate.py
 .venv/bin/uvicorn app.api.main:app --host 127.0.0.1 --port 8000
