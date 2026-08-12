@@ -32,8 +32,8 @@
 | T09 | 固定 API/SSE、Bearer、DemoRuntime 幂等、断线恢复与错误分类 | 已验证 | `tests/test_api_health.py` 实际 16 passed（10.46s）；包含同 key 8 并发只执行一次 | 无 |
 | T09 | PostgresRuntime HTTP/SSE、PostgresSaver 恢复、真实 quota/数据库错误 | 已实现未验证 | app/api/main.py；Postgres API repository 回归 5 passed；Uvicorn 未完成首次导入并监听端口 | 持久化 HTTP/SSE 回归 |
 | T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 | 全新环境与真实三类请求 |
-| T11 | Flutter 固定 SSE 解析、Timeline 批准/拒绝、错误状态 | 已验证 | `cd mobile && flutter analyze && flutter test`（0 error；18 passed） | 无 |
-| T11 | Android debug/release APK、设备安全存储、两 endpoint smoke、APK 密钥扫描 | 未实现 | native Android 工程已生成；`flutter build apk --debug` 实测因 NDK 28.2.13676358 缺失失败 | 安装 NDK 28.2.13676358、command-line tools/许可；Cloud Run endpoint |
+| T11 | Flutter 固定 SSE/HTTP client、Timeline 批准/拒绝、错误状态 | 已验证 | `cd mobile && flutter analyze && flutter test`（0 error；21 passed）；本地 HTTP server 验证 Bearer/UUID/SSE | 无 |
+| T11 | Android debug/release APK、Keystore token、两 endpoint smoke、APK 密钥扫描 | 未实现 | native Android 工程已生成；`flutter build apk --debug` 实测因 NDK 28.2.13676358 缺失失败 | 安装 NDK 28.2.13676358、command-line tools/许可；Cloud Run endpoint |
 | T12 | Demo Profile、secret、月度 cap、Cloud Run/Supabase smoke | 已实现未验证 | Dockerfile；deploy/cloudrun-demo.yaml；tests/test_deploy_config.py；cap repository 回归 | Supabase/GCP 部署权限与真人云端核验 |
 | T13 | 60×6 消融完整性、配对效应/检验、成本延迟/失败样本汇总 | 已验证 | `tests/test_v2_ablation_analysis.py`；evals/analyze_v2_ablation.py 拒绝缺失与重复样本 | 无 |
 | T13 | Qwen 校准、完整 60×6 原始运行、指标门槛与 bad-case 报告 | 未实现 | 无 v2 模型/Judge 运行产物 | Qwen/DeepSeek 凭据与完整评测运行 |

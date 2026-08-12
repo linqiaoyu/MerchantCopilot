@@ -28,4 +28,11 @@ void main() {
   test('joins multi-line data', () {
     expect(parseSseLines(['event: token', 'data: a', 'data: b', '']).single.data, 'a\nb');
   });
+
+  test('parses a streamed event boundary', () async {
+    final stream = Stream<String>.fromIterable(['event: final', 'data: {"answer":"ok"}', '']);
+    final events = await parseSseStream(stream).toList();
+    expect(events.single.type, SseEventType.finalAnswer);
+    expect(events.single.data, '{"answer":"ok"}');
+  });
 }

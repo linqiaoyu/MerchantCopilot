@@ -41,6 +41,11 @@ class ClientSettings {
   final String accessToken;
 
   bool get isConfigured => baseUrl.hasScheme && accessToken.isNotEmpty;
+
+  ClientSettings copyWith({Uri? baseUrl, String? accessToken}) => ClientSettings(
+        baseUrl: baseUrl ?? this.baseUrl,
+        accessToken: accessToken ?? this.accessToken,
+      );
 }
 
 enum RequestProblem { unauthorised, rateLimited, timeout, network, server }
@@ -54,4 +59,17 @@ class MemoryItem {
 
   MemoryItem withStatus(String value) =>
       MemoryItem(id: id, status: value, summary: summary);
+}
+
+class EvidenceItem {
+  const EvidenceItem(this.text);
+
+  final String text;
+}
+
+class ApiFailure implements Exception {
+  const ApiFailure(this.problem, this.message);
+
+  final RequestProblem problem;
+  final String message;
 }
