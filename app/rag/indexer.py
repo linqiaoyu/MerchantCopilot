@@ -13,11 +13,6 @@ import re
 import time
 from pathlib import Path
 
-from langchain_text_splitters import (
-    MarkdownHeaderTextSplitter,
-    RecursiveCharacterTextSplitter,
-)
-
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 KB_DIR = _REPO_ROOT / "data" / "knowledge_base"
 CHROMA_DIR = _REPO_ROOT / "data" / "chroma"
@@ -73,15 +68,27 @@ def _parse_front_matter(text: str) -> tuple[dict, str]:
 
 
 # --- 切块:按 ## 切 → 超 MAX_CHARS 时按段落/句号二级切 ---
-_HEADER_SPLITTER = MarkdownHeaderTextSplitter(
-    headers_to_split_on=[("##", "h2")],
-    strip_headers=True,
-)
-_SECONDARY_SPLITTER = RecursiveCharacterTextSplitter(
-    chunk_size=MAX_CHARS,
-    chunk_overlap=0,
-    separators=["\n\n", "。", "!", "?", ".", " ", ""],
-)
+_header_splitter = None
+_secondary_splitter = None
+
+
+def _get_splitters():
+    """Only index construction needs LangChain text splitters, never recall."""
+    global _header_splitter, _secondary_splitter
+    if _header_splitter is None or _secondary_splitter is None:
+        from langchain_text_splitters import (
+            MarkdownHeaderTextSplitter,
+            RecursiveCharacterTextSplitter,
+        )
+
+        _header_splitter = MarkdownHeaderTextSplitter(
+            headers_to_split_on=[("##", "h2")], strip_headers=True,
+        )
+        _secondary_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=MAX_CHARS, chunk_overlap=0,
+            separators=["\n\n", "。", "!", "?", ".", " ", ""],
+        )
+    return _header_splitter, _secondary_splitter
 
 
 def _split_doc(body: str) -> list[tuple[str, str]]:
@@ -90,7 +97,8 @@ def _split_doc(body: str) -> list[tuple[str, str]]:
     返回 [(heading, content), ...]。这样每篇严格产出 N 个 chunk(N = ## 数),
     导言信号融入 h2-0 的 embed_text,不再独立成极短 chunk。
     """
-    docs = _HEADER_SPLITTER.split_text(body)
+    header_splitter, _ = _get_splitters()
+    docs = header_splitter.split_text(body)
     intro_text = ""
     sections: list[tuple[str, str]] = []
     for d in docs:
@@ -109,7 +117,10 @@ def _split_doc(body: str) -> list[tuple[str, str]]:
 
 
 def _maybe_secondary(text: str) -> list[str]:
-    return [text] if len(text) <= MAX_CHARS else _SECONDARY_SPLITTER.split_text(text)
+    if len(text) <= MAX_CHARS:
+        return [text]
+    _, secondary_splitter = _get_splitters()
+    return secondary_splitter.split_text(text)
 
 
 def _count_hanzi(s: str) -> int:
