@@ -13,8 +13,8 @@ from app.agent.graph import build_graph
 GRAPH = build_graph()
 
 
-def _run(query: str) -> dict:
-    return GRAPH.invoke({"user_query": query})
+def _run(query: str, graph=GRAPH) -> dict:
+    return graph.invoke({"user_query": query})
 
 
 def test_metric_query_case():
@@ -48,9 +48,28 @@ def test_attribution_case1():
     assert st["final_answer"]
 
 
-def test_strategy_case():
-    """策略建议:付费投流转化低 → 命中投流优化模板。"""
-    st = _run("付费投流转化率低,有什么改善建议")
+def test_strategy_case(monkeypatch):
+    """策略路由会汇入 Insight；节点内容契约由 test_strategy.py 单独覆盖。"""
+    import app.agent.graph as graph_module
+
+    def controlled_strategy(_state):
+        return {
+            "node_result": {
+                "task": "strategy",
+                "headline": "策略建议:投流优化方案",
+                "data": {
+                    "topic": "投流转化优化方案",
+                    "recommendations": ["按时段拆分预算并复盘转化漏斗。", "优先保留高转化人群定向组合。"],
+                    "merchant_profile": {"category": "类目:女装", "audience": "客群:学生", "style": "基础款", "recent_concerns": []},
+                    "generation": "template_fallback_from_chunks",
+                },
+                "evidence": ["controlled strategy evidence"],
+            },
+            "steps": [{"node": "Strategy", "summary": "controlled"}],
+        }
+
+    monkeypatch.setattr(graph_module, "strategy", controlled_strategy)
+    st = _run("付费投流转化率低,有什么改善建议", graph_module.build_graph())
     assert st["intent"] == "strategy"
     nr = st["node_result"]
     assert nr["task"] == "strategy"
