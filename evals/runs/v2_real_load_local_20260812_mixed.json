@@ -1,0 +1,100 @@
+{
+  "mode": "real_http_sse",
+  "concurrency": 5,
+  "completed": 5,
+  "failed": 0,
+  "duplicate_run_ids": false,
+  "thread_readback_mismatches": 0,
+  "elapsed_seconds": 29.988,
+  "throughput_rps": 0.167,
+  "latency_ms": {
+    "p50": 18097.0,
+    "p95": 18099.0
+  },
+  "samples": [
+    {
+      "query": "2026-04-02 GMV 怎么样",
+      "thread_id": "d442c73f-8aa2-45e2-a50d-9ad13cc4bbf3",
+      "run_id": "2d85b4cb-d630-4558-842c-a8c76c3ee165",
+      "status": "completed",
+      "latency_ms": 18098.83545799994,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "2026-04-02 GMV 为什么下跌",
+      "thread_id": "9367f6e2-6405-4843-9a13-8d52ea9099cb",
+      "run_id": "0191d439-112e-44cd-bd82-7f70057a1e48",
+      "status": "completed",
+      "latency_ms": 18096.97004199961,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "给女装学生客群制定下周直播策略",
+      "thread_id": "0612aee4-57bc-4d11-97c2-fa59be461885",
+      "run_id": "c7b76607-f224-4a32-b958-123d91290d55",
+      "status": "completed",
+      "latency_ms": 29934.830665999925,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "2026-04-03 GMV 怎么样",
+      "thread_id": "2a93ef1b-a140-47db-b092-d81ff2f08009",
+      "run_id": "61e2ec57-70bd-4878-8410-b51ed34b3ee9",
+      "status": "completed",
+      "latency_ms": 18092.511332999948,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    },
+    {
+      "query": "退款率高应该怎么处理",
+      "thread_id": "69eac09b-b28d-488e-b641-1431422ffcaa",
+      "run_id": "1410ae35-efcf-4b9a-9dec-3dc7275d76c4",
+      "status": "completed",
+      "latency_ms": 18098.979124999914,
+      "error": null,
+      "event_types": [
+        "meta",
+        "node_started",
+        "node_completed",
+        "evidence",
+        "final",
+        "done"
+      ]
+    }
+  ],
+  "limitations": [
+    "API-level probe cannot count canonical memory duplicates or database optimistic conflicts.",
+    "Cloud Run resource curves, cold starts, and Scale Profile are reported separately."
+  ]
+}

@@ -8,7 +8,7 @@
 - Memory：Mem0 2.0.2 的 `shared_bge` adapter 复用 RAG BGE-M3；60 组冻结序列的 local canonical retrieval 达到预注册结构化指标。T04 真人 temporal truth 签核单独保留为未完成。
 - Agent/API：有界 LangGraph（action≤3、replan≤1、120 秒）；Metric、Attribution、Strategy 无云端 Key 路径；Bearer/UUID 幂等、持久化 HTTP/SSE、重启读回。
 - 客户端核心：Flutter analyze 0 issues、21 条测试通过；尚无可验收 APK。
-- 并发基础：Stub 50 并发 0 错误、p95 65.2ms；本地五个独立 Metric run 已持久化完成。完整混合 SSE 五并发与云端 Scale Profile 未完成。
+- 并发基础：Stub 50 并发 0 错误、p95 65.2ms；本地 pgvector 默认混合五并发 SSE 为 5/5 完成、无 run ID 重复或 thread 串线、p95 18,099.0ms（含冷启动）。数据库冲突审计与云端 Scale Profile 未完成。
 
 最新完整本地回归：`153 passed, 6 skipped in 63.95s`，运行于 Python 3.12、空 DeepSeek/Qwen key、关闭 LangSmith tracing 的环境。完整命令与前置条件见 [本地自托管指南](v2_local_self_host.md)。
 

@@ -10,4 +10,6 @@
 
 本地真实尝试与修复：首次五并发暴露共享 `PostgresSaver` 连接被关闭；随后改为每个 SSE run 独立的 checkpointer context。下一次冷启动暴露五个 worker 同时创建 BGE-M3；现已对创建和每次 encode 施加同一进程锁，使 RAG、Memory Recall 与 Mem0 adapter 共享且串行使用一个模型实例。随后发现 `_sse()` 输出的是字面量 `\\n` 而非协议换行，导致真实客户端无法分帧；已修复并增加帧语义测试。2026-08-12 修复后，以本地 pgvector 的五个独立 Metric thread 实测：`5/5` 完成、run ID 无重复、run→thread 回读无错、p50 `18,657.9ms`、p95 `18,660.3ms`（含 BGE 冷启动），报告为 `evals/runs/v2_real_load_local_20260812_sse_fixed.json`。这验证了同一路径的真实五并发 SSE，不代表完整混合路径或云端压测通过。
 
-未验证项：完整混合（Metric/Attribution/Strategy）真实端到端 5 并发 SSE、thread 串线/重复 canonical event/optimistic conflict、Cloud Run Scale Profile 与恢复 Demo Profile、云端资源曲线、冷启动与费用报告。API 脚本可验证 run/thread 回读与 run ID 唯一性，但不能替代数据库与云端层证据。不得将本结果表述为完整真实 Agent 或云端压测。
+混合路径本地实测：默认查询组覆盖 Metric、Attribution 与 Strategy，2026-08-12 本地 pgvector 运行 `5/5` 完成、无重复 run ID、无 run→thread 回读错配；每个 SSE 都是 `meta → node_started → node_completed → evidence → final → done`。报告为 `evals/runs/v2_real_load_local_20260812_mixed.json`，p50 `18,097.0ms`、p95 `18,099.0ms`（Strategy 单样本 `29,934.8ms`，总 wall time `29.988s`）。
+
+未验证项：canonical event 重复与 optimistic conflict 的并发数据库审计、Cloud Run Scale Profile 与恢复 Demo Profile、云端资源曲线、冷启动与费用报告。API 脚本可验证 run/thread 回读与 run ID 唯一性，但不能替代数据库与云端层证据。不得将本结果表述为云端压测。
