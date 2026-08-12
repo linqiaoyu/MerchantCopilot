@@ -8,4 +8,6 @@
 
 已实现：Flutter native Android 工程、`com.merchantcopilot.v2` application ID 与本地 release signing 配置占位均已加入仓库。
 
-未实现或未验证：真实 HTTP/SSE 客户端连接 smoke、Android Keystore 安全持久化（当前 token 仅进程内）、离线/服务唤醒 UI 的真机验证、debug/release APK、APK 密钥扫描、local 与 Cloud Run 三类任务 smoke。实际运行 `flutter build apk --debug` 在 93 秒后失败：Android NDK `28.2.13676358` 未安装，SDK manifest 下载也被拒绝；Android command-line tools 和许可同样尚不可用。因此不得表述为 T11 已验收。
+已实现：`scripts/scan_apk_secrets.py <apk>` 使用标准库扫描 APK ZIP 内的 API key、token、私钥与带密码 Postgres DSN；`tests/test_apk_secret_scan.py` 覆盖 clean/reject 场景。构建完成后，debug/release APK 都必须先通过该命令才可交付。
+
+未实现或未验证：真实 HTTP/SSE 客户端连接 smoke、Android Keystore 安全持久化（当前 token 仅进程内）、离线/服务唤醒 UI 的真机验证、debug/release APK 的实际构建和扫描、local 与 Cloud Run 三类任务 smoke。实际运行 `flutter build apk --debug` 在 Gradle 配置阶段失败：Android NDK `28.2.13676358` 未安装；Android command-line tools 和许可同样尚不可用。因此不得表述为 T11 已验收。
