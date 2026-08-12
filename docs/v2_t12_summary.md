@@ -6,4 +6,4 @@
 
 已验证：`tests/test_deploy_config.py` 与本地 API repository/cap 回归合计 4 passed；配置不包含 DSN，`.dockerignore` 排除 `.env`。
 
-未验证项：镜像 build、Supabase vector/migration、Artifact Registry、Secret Manager、Cloud Run deployment/rollback、三类云端 smoke、实际费用与 revision 重启持久化。不得表述为已部署。
+未验证项：镜像 build、Supabase vector/migration、Artifact Registry、Secret Manager、Cloud Run deployment/rollback、三类云端 smoke、实际费用与 revision 重启持久化。本机两次 `docker build -q -t merchantcopilot-v2:local .` 都完成了依赖容器（退出码 0），但 legacy Docker builder 卡在随后的层提交，未生成目标 image；这不能视为镜像构建通过。不得表述为已部署。

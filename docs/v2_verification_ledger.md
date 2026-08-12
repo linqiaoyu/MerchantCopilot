@@ -34,7 +34,7 @@
 | T10 | 五步自托管、三类端到端、重启保持、无云端变量 | 已实现未验证 | docs/v2_local_self_host.md；本地 migration/checkpointer/API repository 回归 | 全新环境与真实三类请求 |
 | T11 | Flutter 固定 SSE/HTTP client、Timeline 批准/拒绝、错误状态 | 已验证 | `cd mobile && flutter analyze && flutter test`（0 error；21 passed）；本地 HTTP server 验证 Bearer/UUID/SSE | 无 |
 | T11 | Android debug/release APK、Keystore token、两 endpoint smoke、APK 密钥扫描 | 未实现 | native Android 工程已生成；`flutter build apk --debug` 实测因 NDK 28.2.13676358 缺失失败 | 安装 NDK 28.2.13676358、command-line tools/许可；Cloud Run endpoint |
-| T12 | Demo Profile、secret、月度 cap、Cloud Run/Supabase smoke | 已实现未验证 | Dockerfile；deploy/cloudrun-demo.yaml；tests/test_deploy_config.py；cap repository 回归 | Supabase/GCP 部署权限与真人云端核验 |
+| T12 | Demo Profile、secret、月度 cap、Cloud Run/Supabase smoke | 已实现未验证 | Dockerfile；deploy/cloudrun-demo.yaml；tests/test_deploy_config.py；cap repository 回归；本机 Docker legacy builder 两次均在依赖容器 exit 0 后卡于 layer commit、无目标镜像 | 修复本机 Docker builder；Supabase/GCP 部署权限与真人云端核验 |
 | T13 | 60×6 消融完整性、配对效应/检验、成本延迟/失败样本汇总 | 已验证 | `tests/test_v2_ablation_analysis.py`；evals/analyze_v2_ablation.py 拒绝缺失与重复样本 | 无 |
 | T13 | Qwen 校准、完整 60×6 原始运行、指标门槛与 bad-case 报告 | 未实现 | 无 v2 模型/Judge 运行产物 | Qwen/DeepSeek 凭据与完整评测运行 |
 | T14 | Stub 50 并发、错误率<1%、无模型 API p95<300ms | 已验证 | `scripts/load_stub_api.py` 重跑：50/50、0 error、p50 65.1ms、p95 74.8ms；边界测试 1 passed | 无 |
