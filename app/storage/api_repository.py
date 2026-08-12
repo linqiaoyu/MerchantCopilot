@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from datetime import date
 from typing import Any
 from uuid import UUID, uuid4
 
@@ -46,6 +47,23 @@ def claim_queued_run(conn: psycopg.Connection, run_id: str) -> bool:
     with conn.cursor() as cur:
         cur.execute("UPDATE run_records SET status = 'running' WHERE run_id = %s AND status = 'queued'", (run_id,))
         return cur.rowcount == 1
+
+
+def claim_monthly_run(conn: psycopg.Connection, *, merchant_id: str, cap: int) -> bool:
+    """Atomically reserve one demo run without exceeding the configured cap."""
+    if cap <= 0:
+        return False
+    with conn.cursor() as cur:
+        cur.execute(
+            """INSERT INTO usage_counters (counter_month, merchant_id, run_count)
+                 VALUES (%s, %s, 1)
+                 ON CONFLICT (counter_month, merchant_id) DO UPDATE
+                    SET run_count = usage_counters.run_count + 1, updated_at = now()
+                  WHERE usage_counters.run_count < %s
+                 RETURNING run_count""",
+            (date.today().replace(day=1), merchant_id, cap),
+        )
+        return cur.fetchone() is not None
 
 
 def get_run(conn: psycopg.Connection, run_id: str) -> dict[str, Any] | None:

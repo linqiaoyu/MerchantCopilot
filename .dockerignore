@@ -1,0 +1,10 @@
+.git
+.venv
+.pytest_cache
+__pycache__
+*.pyc
+.env
+_drafts
+evals/runs/_anchoring_worksheet.md
+data/chroma
+data/mem0_chroma

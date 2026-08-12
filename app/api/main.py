@@ -131,6 +131,12 @@ def healthz() -> dict[str, str]:
 
 @app.get("/readyz")
 def readyz() -> dict[str, str]:
+    dsn = os.environ.get("DATABASE_URL", "").strip()
+    if dsn:
+        from app.storage.database import database_ready
+
+        if not database_ready(dsn):
+            raise HTTPException(status_code=503, detail={"code": "database_unavailable", "message": "database not ready"})
     return {"status": "ready"}
 
 
@@ -296,7 +302,7 @@ def _decide_postgres_memory(runtime: PostgresRuntime, memory_id: str, *, approve
 
 def _stream_postgres_run(runtime: PostgresRuntime, *, thread_id: str, query: str, key: str) -> StreamingResponse:
     """Persistent SSE execution: only the atomic queued→running claimant executes."""
-    from app.storage.api_repository import claim_queued_run, create_or_get_thread, finish_run, get_run as get_persisted_run, get_thread
+    from app.storage.api_repository import claim_monthly_run, claim_queued_run, finish_run, get_run as get_persisted_run, get_thread
     from app.storage.memory_repository import create_or_get_run
 
     with psycopg.connect(runtime.dsn) as conn:
@@ -314,21 +320,35 @@ def _stream_postgres_run(runtime: PostgresRuntime, *, thread_id: str, query: str
             conn.commit()
         if execute:
             yield _sse("node_started", {"run_id": run["run_id"], "node": "agent"})
-            try:
-                result = runtime.execute(query, thread_id)
-                persisted = {"final_answer": result.get("final_answer", ""), "node_result": result.get("node_result", {})}
-                with psycopg.connect(runtime.dsn) as conn:
-                    finish_run(conn, UUID(run["run_id"]), status="completed", result=persisted)
-                    conn.commit()
-                yield _sse("node_completed", {"run_id": run["run_id"], "node": "agent"})
-                yield _sse("evidence", {"run_id": run["run_id"], "items": persisted["node_result"].get("evidence", [])})
-                yield _sse("final", {"run_id": run["run_id"], "answer": persisted["final_answer"]})
-            except Exception as exc:
-                error = _classify_error(exc)
+            with psycopg.connect(runtime.dsn) as conn:
+                within_cap = claim_monthly_run(
+                    conn,
+                    merchant_id=thread["merchant_id"],
+                    cap=int(os.environ.get("DEMO_MONTHLY_RUN_CAP", "1000")),
+                )
+                conn.commit()
+            if not within_cap:
+                error = {"code": "quota", "message": "demo run cap reached"}
                 with psycopg.connect(runtime.dsn) as conn:
                     finish_run(conn, UUID(run["run_id"]), status="failed", error=error)
                     conn.commit()
                 yield _sse("error", error)
+            else:
+                try:
+                    result = runtime.execute(query, thread_id)
+                    persisted = {"final_answer": result.get("final_answer", ""), "node_result": result.get("node_result", {})}
+                    with psycopg.connect(runtime.dsn) as conn:
+                        finish_run(conn, UUID(run["run_id"]), status="completed", result=persisted)
+                        conn.commit()
+                    yield _sse("node_completed", {"run_id": run["run_id"], "node": "agent"})
+                    yield _sse("evidence", {"run_id": run["run_id"], "items": persisted["node_result"].get("evidence", [])})
+                    yield _sse("final", {"run_id": run["run_id"], "answer": persisted["final_answer"]})
+                except Exception as exc:
+                    error = _classify_error(exc)
+                    with psycopg.connect(runtime.dsn) as conn:
+                        finish_run(conn, UUID(run["run_id"]), status="failed", error=error)
+                        conn.commit()
+                    yield _sse("error", error)
         else:
             with psycopg.connect(runtime.dsn) as conn:
                 persisted = get_persisted_run(conn, run["run_id"])

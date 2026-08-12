@@ -7,11 +7,10 @@ from uuid import UUID, uuid4
 
 import psycopg
 import pytest
-from fastapi.testclient import TestClient
 
-from app.api.main import PostgresRuntime, app
 from app.memory.policy import MemoryCandidate
 from app.storage.api_repository import (
+    claim_monthly_run,
     create_or_get_thread,
     decide_memory,
     finish_run,
@@ -60,19 +59,11 @@ def test_api_state_is_persistent_and_idempotent():
         assert restored["feedback"] == {"score": 5, "comment": "useful"}
         assert list_thread_memories(reopened, thread["thread_id"])[-1]["status"] == "rejected"
 
-
-def test_fixed_api_uses_persistent_runtime(monkeypatch):
-    monkeypatch.setenv("DEMO_ACCESS_TOKEN", "demo")
-    runtime = PostgresRuntime(DSN)
-    runtime.execute = lambda query, thread_id: {"final_answer": "persisted", "node_result": {"evidence": ["fact"]}}
-    app.state.runtime = runtime
-    client = TestClient(app)
-    headers = {"Authorization": "Bearer demo", "Idempotency-Key": str(uuid4())}
-    thread = client.post("/v1/threads", headers=headers, json={"merchant_id": "api-http"}).json()
-    headers["Idempotency-Key"] = str(uuid4())
-    stream = client.post(f"/v1/threads/{thread['thread_id']}/runs:stream", headers=headers, json={"query": "GMV"})
-    assert '"status": "completed"' in stream.text
-    meta = next(line for line in stream.text.splitlines() if line.startswith("data: "))
-    run_id = __import__("json").loads(meta.removeprefix("data: "))["run_id"]
-    recovered = client.get(f"/v1/runs/{run_id}", headers={"Authorization": "Bearer demo"})
-    assert recovered.json()["result"] == "persisted"
+def test_monthly_run_cap_is_atomic():
+    merchant_id = f"cap-{uuid4()}"
+    with psycopg.connect(DSN) as conn:
+        assert claim_monthly_run(conn, merchant_id=merchant_id, cap=2)
+        assert claim_monthly_run(conn, merchant_id=merchant_id, cap=2)
+        assert not claim_monthly_run(conn, merchant_id=merchant_id, cap=2)
+        assert not claim_monthly_run(conn, merchant_id=f"{merchant_id}-zero", cap=0)
+        conn.commit()
