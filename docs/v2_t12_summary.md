@@ -6,4 +6,4 @@
 
 已验证：`tests/test_deploy_config.py` 与本地 API repository/cap 回归合计 4 passed；配置不包含 DSN，`.dockerignore` 排除 `.env`。
 
-未验证项：镜像 build、Supabase vector/migration、Artifact Registry、Secret Manager、Cloud Run deployment/rollback、三类云端 smoke、实际费用与 revision 重启持久化。本机两次 `docker build -q -t merchantcopilot-v2:local .` 都完成了依赖容器（退出码 0），但 legacy Docker builder 卡在随后的层提交，未生成目标 image；这不能视为镜像构建通过。不得表述为已部署。
+未验证项：镜像 build、Supabase vector/migration、Artifact Registry、Secret Manager、Cloud Run deployment/rollback、三类云端 smoke、实际费用与 revision 重启持久化。本机 Docker Engine 为 `29.5.2 linux/arm64`；2026-08-12 复核 `DOCKER_BUILDKIT=1 docker build` 明确报 BuildKit backend 可用但 `buildx` CLI plugin 缺失，故不能把 legacy builder 的层提交失败当成镜像成功。另一次依赖解析已显示 Linux ARM 的未锁定 torch 会拉取 CUDA 13 runtime 包，不符合 CPU Demo 边界。CPU-only torch 需要明确的 package source/constraint 策略，属于间接依赖版本锁定，当前不擅自改写锁定栈。不得表述为已部署。
