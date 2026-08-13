@@ -16,6 +16,9 @@ def test_image_preloads_models_and_excludes_secrets():
     dockerfile = Path("Dockerfile").read_text(encoding="utf-8")
     ignored = Path(".dockerignore").read_text(encoding="utf-8")
     assert "python scripts/warm_models.py" in dockerfile
+    assert "PYTHONPATH=/app" in dockerfile
+    assert "https://download.pytorch.org/whl/cpu torch==2.12.1" in dockerfile
+    assert "torch.version.cuda is None" in dockerfile
     assert "uvicorn app.api.main:app" in dockerfile
     assert "pip install --upgrade pip" not in dockerfile
     assert ".env" in ignored
