@@ -1,0 +1,219 @@
+{
+  "runtime": {
+    "dataset": "historical-v1.0-v1.1-80",
+    "model": "deepseek-v4-flash",
+    "configurations": [
+      "full",
+      "minus_memory",
+      "minus_rag",
+      "bare"
+    ],
+    "merchant_id": "eval-component-ablation",
+    "database": "provided evaluation DSN",
+    "seed_manifest_sha256": "585cc9da774c39a3cb05bfce026b7bc166f09cf470302f6c6ff6ffc5e2bef1c5",
+    "memory_candidate_extraction": "disabled",
+    "judge": "not-called; raw Agent outputs only"
+  },
+  "configurations": {
+    "full": {
+      "n": 80,
+      "hard_errors": [],
+      "strategy_degraded": [
+        {
+          "id": "q_012",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_038",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_039",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_049",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_079",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        }
+      ],
+      "recalled_total": 238,
+      "usage_total": {
+        "prompt_tokens": 147842,
+        "completion_tokens": 59294,
+        "total_tokens": 207136
+      },
+      "latency_ms": {
+        "p50": 23117.923,
+        "p95": 42228.407
+      },
+      "routing_drift": [
+        "q_013",
+        "q_014",
+        "q_015",
+        "q_016",
+        "q_019",
+        "q_041"
+      ]
+    },
+    "minus_memory": {
+      "n": 80,
+      "hard_errors": [],
+      "strategy_degraded": [
+        {
+          "id": "q_044",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_045",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_047",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_048",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        },
+        {
+          "id": "q_065",
+          "generation": "template_fallback_from_chunks",
+          "rag_status": "ok"
+        }
+      ],
+      "recalled_total": 0,
+      "usage_total": {
+        "prompt_tokens": 134820,
+        "completion_tokens": 65836,
+        "total_tokens": 200656
+      },
+      "latency_ms": {
+        "p50": 23363.85,
+        "p95": 38760.888
+      },
+      "routing_drift": [
+        "q_019",
+        "q_041"
+      ]
+    },
+    "minus_rag": {
+      "n": 80,
+      "hard_errors": [],
+      "strategy_degraded": [
+        {
+          "id": "q_051",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_055",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_056",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_061",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_070",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_072",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        }
+      ],
+      "recalled_total": 238,
+      "usage_total": {
+        "prompt_tokens": 116969,
+        "completion_tokens": 59583,
+        "total_tokens": 176552
+      },
+      "latency_ms": {
+        "p50": 12756.202,
+        "p95": 29211.76
+      },
+      "routing_drift": [
+        "q_019",
+        "q_041"
+      ]
+    },
+    "bare": {
+      "n": 80,
+      "hard_errors": [],
+      "strategy_degraded": [
+        {
+          "id": "q_011",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_016",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_048",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_050",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_058",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_063",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        },
+        {
+          "id": "q_080",
+          "generation": "unavailable",
+          "rag_status": "disabled_for_component_ablation"
+        }
+      ],
+      "recalled_total": 0,
+      "usage_total": {
+        "prompt_tokens": 80776,
+        "completion_tokens": 63262,
+        "total_tokens": 144038
+      },
+      "latency_ms": {
+        "p50": 13530.064,
+        "p95": 27316.263
+      },
+      "routing_drift": [
+        "q_019",
+        "q_041"
+      ]
+    }
+  },
+  "quality_metric": "not computed; raw output only"
+}

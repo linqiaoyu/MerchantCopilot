@@ -4,6 +4,7 @@ import time
 
 import app.agent.graph_v2 as graph_v2
 from app.agent.graph_v2 import _after_verify, _execute, _execute_action, _memory_candidate, _plan, _verify, build_graph_v2
+from app.agent.nodes.router import _rule_intent
 from app.agent.planning import Action, Plan
 
 
@@ -15,6 +16,13 @@ def test_v2_graph_runs_bounded_metric_path(monkeypatch):
     ]
     assert len(state["plan"].actions) == 1
     assert state["verification"]["sufficient"]
+
+
+def test_router_rule_covers_strategy_phrasings_when_llm_is_unavailable():
+    assert _rule_intent("午场和晚场的排播节奏要怎么差异化?") == "strategy"
+    assert _rule_intent("付费投流和自然流量在新品场上要怎么承接配比?") == "strategy"
+    assert _rule_intent("直播里的话术节奏,怎么排?") == "strategy"
+    assert _rule_intent("主推位选品上要避开哪些坑?") == "strategy"
 
 
 def test_v2_graph_accepts_in_memory_checkpointer(monkeypatch):
