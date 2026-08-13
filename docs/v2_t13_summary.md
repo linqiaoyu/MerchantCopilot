@@ -1,6 +1,6 @@
 # v2 T13：Judge 校准、Memory 评测与消融
 
-当前状态：评测契约、离线统计工具、两家模型的真实连通性、本地 canonical-retrieval 60×6 矩阵，以及历史独立人工标签上的 Qwen 重校准已验证；尚未产出 v2 完整 Agent/Judge 实测。
+当前状态：评测契约、离线统计工具、两家模型的真实连通性、本地 canonical-retrieval 60×6 矩阵，以及历史独立人工标签上的 Qwen 重校准已验证。v2 四臂完整 Agent 原始输出已实测；binary Qwen Judge 正在以可恢复工件逐条执行，Strategy Judge 仍只作 reference-only。
 
 已实现：冻结 60 组 Memory runner 只使用 canonical pgvector retrieval；`evals/analyze_v2_calibration.py` 以成对人类/Judge 标注计算固定门槛；`evals/analyze_v2_ablation.py` 只接受每个 preregistered 配置完整的 60 条原始结果，拒绝漏项/重复项，并输出 pass rate、p50/p95、成本、失败 case、配对效应与双侧精确 sign-test。
 
@@ -20,4 +20,8 @@
 
 已验证（smoke 范围）：冻结 seed 已用确定性 UUID 真实写入本地 pgvector，重复执行后仍为 3 个 event 和 3 条 active/indexed fact。以 q_009 执行四配置各一条 DeepSeek 真实 run，原始 [工件](../evals/runs/v2_component_ablation_smoke_q009_20260813.json) 为 4/4 无 error：full/`minus_rag` 各召回 3 条，`minus_memory`/bare 各为 0；RAG 状态分别为 `ok` 与 `disabled_for_component_ablation`。四条合计 17,427 provider tokens；latency 为 52,442.247 / 26,109.332 / 39,528.275 / 11,538.399ms。bare 有两条 recommendation 长度 warning，保留原始输出。此 smoke 只验证种子、开关和原始输出链路，不能替代 80×4 的完整消融或产生质量结论。
 
-尚无 full/Memory/RAG 各配置的逐 case v2 Agent/Judge 原始输出矩阵及其 Judge bad-case 报告。真人标注不能由模型代填；后续 Agent/Judge runner 必须保留所有原始输出，而不能以 no-Memory 80 条基线、历史校准语料或确定性 retrieval 矩阵替代。因此不得表述为 T13 已验收。
+已验证（Agent raw-output 范围）：2026-08-13 在隔离本地 pgvector seed 上以 DeepSeek V4 Flash 跑完冻结历史 80 条 × `full`/`minus_memory`/`minus_rag`/`bare` 四臂，得到 [原始工件](../evals/runs/v2_component_ablation_local_20260813.json)、[完整性/资源汇总](../evals/runs/v2_component_ablation_local_20260813_report.json) 与 [Strategy 降级清单](../evals/runs/v2_component_ablation_local_20260813_bad_cases.md)。四臂均 80/80、0 hard error；总计 728,382 provider tokens。full 与 `minus_rag` 各有 238 条 canonical recall，`minus_memory`/bare 均为 0；关闭 RAG 的 Strategy 步全部带 `disabled_for_component_ablation`。full/`minus_memory`/`minus_rag`/bare p50 分别为 23,117.923 / 23,363.850 / 12,756.202 / 13,530.064ms，p95 为 42,228.407 / 38,760.888 / 29,211.760 / 27,316.263ms。没有把这些延迟解释为质量或生产容量结论。
+
+原始运行还留住两个事实，而非事后清洗：Strategy 非 LLM 降级数为 5/5/6/7；冻结标签与 Router 三意图契约存在 q_019、q_041 两个稳定分歧。另有 full 的 q_013–q_016 因 Router LLM 不可用而走到过窄的规则兜底并误路由为 metric。随后已扩展通用策略问法的规则兜底并以单测覆盖；原始工件不改写，因而该次误路由仍可审阅，后续运行适用修复。
+
+`evals/run_v2_component_binary_judge.py` 只对已经通过历史独立人工标签校准的 30 条 binary 题执行每输出 3 次 Qwen 评分、逐条 checkpoint；其输入哈希、固定 Qwen 快照、四臂矩阵和样本数均写入工件，`analyze_v2_component_binary_judge.py` 只接受完整无错误矩阵并输出配对 McNemar 精确检验。Strategy 不进入该统计或显著性结论。真人标注不能由模型代填；因此在 binary 工件和失败样本完整前，T13 仍不得表述为已验收。
