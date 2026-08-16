@@ -1,26 +1,18 @@
-"""tests/test_strategy.py — 阶段 4b strategy 节点端到端断言测试。
+"""Strategy node contract tests with controlled RAG, canonical Memory, and LLM boundaries.
 
-断言全部基于 2026-05-21 真实 4 query dump 锁定(详见 docs/stage4b_summary.md
-「先 dump 再锁断言」章节)。延续阶段 4a「不锁脆字段」品味:
+The real CLI smoke is recorded separately.  These tests deliberately avoid
+personal `.env`, model APIs, and a mutable Mem0 store so the repository's test
+result is reproducible from a clean checkout.  They retain the public node
+contract and exercise both the LLM path and the no-key deterministic fallback.
+
+原断言由 2026-05-21 真实 4 query dump 演化而来（见 docs/stage4b_summary.md）。
+延续阶段 4a「不锁脆字段」品味:
   - ❌ 不锁 topic 字面值(LLM 实时生成,字面锁脆 —— test_graph:58 升级教训)
   - ❌ 不锁 recommendations 数量 == 3(prompt 软约束,改 5 条会脆)
   - ❌ 不锁 retrieved_chunks[0].source_doc(test_rag.py 已锁召回质量,职责重复)
   - ❌ 不锁 recent_concerns 数量/内容(A.5 跨测试累积有时序状态)
   - ❌ 不锁 set(d.keys()) 字段集合精确性(新增可观测字段必挂,违反对下游透明)
 
-query 选型:**单 query "退款率高怎么办" 跑 1 次**。
-  - 与 test_rag.py Q2 同款,隐式验证 4a 召回 → 4b strategy → LLM 改写链路
-  - dump 显示 Q2 D 约束零违例,输出最稳定
-  - Q2 topic=16 汉字刚好 [8,16] 上限,对 #2 长度断言形成边界压力测试
-  - test_strategy 端到端 ~17s/query,N=1 是延迟纪律的取舍
-
-降级路径(template_fallback_from_chunks / unavailable)由 generation 集合断言
-留位,不在 test 里 monkeypatch 触发(违反 AGENTS.md「保持简单」);
-真实触发由 5 路降级矩阵代码 review + 阶段 5 LangSmith trace 自然观察补齐。
-
-副作用说明:本测试触发 update_recent_concerns 写入 Mem0(累积 +1 条)。
-不加 cleanup:RECENT_N=5 上限保证不无限膨胀;加 cleanup 等于把测试与 Mem0
-内部实现耦合,违反"对下游透明"。
 """
 import sys
 from pathlib import Path
@@ -34,14 +26,31 @@ from app.agent.nodes.strategy import strategy  # noqa: E402
 _QUERY = "退款率高怎么办"
 
 
-def _run_strategy_once() -> dict:
-    """单次 strategy 节点端到端调用,返回完整 out 字典 {"node_result", "steps"}。"""
-    return strategy({"user_query": _QUERY})
+def _controlled_chunk():
+    return type("Chunk", (), {
+        "metadata": {"heading": "退款率治理"},
+        "source_doc": "playbook",
+        "content": "先按商品和场次拆分退款原因，再调整尺码说明与投流人群。",
+    })()
 
 
-def test_strategy_node_contract():
-    """4b strategy 节点 11 条契约断言(主路径 Q2)。"""
-    out = _run_strategy_once()
+def test_strategy_node_contract(monkeypatch):
+    """LLM 主路径只消费 graph 已召回的 canonical Memory。"""
+    import app.agent.nodes.strategy as strategy_node
+
+    client = type("Client", (), {
+        "is_stub": False,
+        "chat": lambda *_args, **_kwargs: '{"topic":"退款率治理优化方案","recommendations":["先按商品和场次拆分退款原因，再调整尺码说明、售后响应与投流人群，连续观察一周。"]}',
+    })()
+    monkeypatch.setattr(strategy_node, "get_llm", lambda: client)
+    monkeypatch.setattr(strategy_node, "retrieve", lambda *_args, **_kwargs: [_controlled_chunk()])
+    recalled = [
+        {"predicate": "category", "content": "类目:女装"},
+        {"predicate": "audience", "content": "客群:学生与职场新人"},
+        {"predicate": "style", "content": "风格:基础款"},
+        {"predicate": "recent_concern", "content": "退款率高怎么办"},
+    ]
+    out = strategy_node.strategy({"user_query": _QUERY, "recalled_memories": recalled})
     nr = out["node_result"]
     d = nr["data"]
 
@@ -65,14 +74,13 @@ def test_strategy_node_contract():
     # ── 4. recommendations 每条都是 str 且非空 ──
     assert all(isinstance(r, str) and r.strip() for r in d["recommendations"])
 
-    # ── 5. merchant_profile 包含简历硬契约三 key(子集锁,不锁集合等价)──
-    # 简历"基于 Mem0 构建商家画像长期记忆"的最小可观测契约,Mem0→Plan B 切换时透明
+    # ── 5. merchant_profile 包含 canonical profile 的三 key──
     mp = d["merchant_profile"]
     assert isinstance(mp, dict)
     assert {"category", "audience", "style"}.issubset(mp.keys())
 
     # ── 6. merchant_profile 三事实 key 都是非空 str ──
-    # seed_profile 必写非空,即便 Mem0 损坏 get_profile 会自动 seed 重建
+    # 已召回 canonical fact 必须透明投射到三字段
     for k in ("category", "audience", "style"):
         assert isinstance(mp[k], str) and mp[k].strip(), f"profile[{k!r}] 应非空 str"
 
@@ -98,8 +106,39 @@ def test_strategy_node_contract():
     assert len(steps) == 1
     assert steps[0]["node"] == "Strategy"
 
-    # ── 11. recent_concerns 字段存在 + 类型(简历"长期记忆"最小可观测契约)──
+    # ── 11. recent_concerns 字段存在 + 类型──
     # 不锁内容不锁数量(与反向清单 #5 不冲突,粒度更窄);
     # 如果未来 get_profile 不返回 recent_concerns key,简历演示故事就断,这条挡住回归
     assert "recent_concerns" in mp
     assert isinstance(mp["recent_concerns"], list)
+    assert d["generation"] == "llm"
+    assert d["profile_source"] == "canonical_pgvector"
+    assert mp["canonical_context"] == recalled
+
+
+def test_strategy_local_stub_does_not_bypass_canonical_memory(monkeypatch):
+    """No-key local mode retains deterministic RAG fallback without Mem0 access."""
+    import app.agent.nodes.strategy as strategy_node
+    from app.llm.client import LocalStub
+
+    monkeypatch.setattr(strategy_node, "get_llm", lambda: LocalStub())
+    chunk = type("Chunk", (), {"metadata": {"heading": "投流节奏"}, "source_doc": "playbook", "content": "按转化率分时段调整预算。"})()
+    monkeypatch.setattr(strategy_node, "retrieve", lambda *_args, **_kwargs: [chunk])
+
+    result = strategy_node.strategy({"user_query": "给我一份下周直播投流策略"})["node_result"]
+    assert result["data"]["generation"] == "template_fallback_from_chunks"
+    assert result["data"]["profile_source"] == "canonical_empty"
+    assert result["data"]["merchant_profile"]["recent_concerns"] == []
+
+
+def test_strategy_component_ablation_skips_rag_retrieval(monkeypatch):
+    """The -RAG arm must not invoke retrieval and must expose that fact."""
+    import app.agent.nodes.strategy as strategy_node
+    from app.llm.client import LocalStub
+
+    monkeypatch.setattr(strategy_node, "get_llm", lambda: LocalStub())
+    monkeypatch.setattr(strategy_node, "retrieve", lambda *_args, **_kwargs: (_ for _ in ()).throw(AssertionError("must not retrieve")))
+    result = strategy_node.strategy({"user_query": "给我一份下周直播投流策略", "disable_rag": True})["node_result"]
+    assert result["data"]["rag_status"] == "disabled_for_component_ablation"
+    assert result["data"]["retrieved_chunks"] == []
+    assert result["data"]["generation"] == "unavailable"

@@ -1,0 +1,13 @@
+{
+  "binary_alpha": 1.0,
+  "binary_mode": "eligible",
+  "strategy_spearman": 0.117,
+  "strategy_mode": "reference-only",
+  "binary_pairs": 18,
+  "strategy_pairs_resolved": 11,
+  "strategy_pairs_expected": 12,
+  "unresolved_ids": [
+    "q_011"
+  ],
+  "strategy_gate_reason": "unresolved Qwen samples prevent complete 12-pair calibration"
+}

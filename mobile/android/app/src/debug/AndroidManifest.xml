@@ -1,0 +1,4 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 仅 debug 允许模拟器通过 10.0.2.2 访问宿主机 HTTP API。 -->
+    <application android:usesCleartextTraffic="true" />
+</manifest>

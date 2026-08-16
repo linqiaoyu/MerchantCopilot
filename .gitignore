@@ -9,6 +9,7 @@ __pycache__/
 
 # --- virtualenv ---
 .venv/
+.venv312/
 venv/
 env/
 
@@ -46,3 +47,7 @@ data/chroma/
 
 # --- 阶段 4b:Mem0 商家画像 Chroma(seed_profile 自动重建)---
 data/mem0_chroma/
+
+# --- Flutter generated artifacts ---
+mobile/.dart_tool/
+mobile/build/

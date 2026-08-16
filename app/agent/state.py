@@ -10,6 +10,9 @@ from typing import Annotated, Any, TypedDict
 
 
 class AgentState(TypedDict, total=False):
+    merchant_id: str
+    """单一 demo 商家的标识；v2 canonical Memory 的查询隔离键。"""
+
     user_query: str
     """用户原始问题(入口写入,全程只读)。"""
 
@@ -36,3 +39,26 @@ class AgentState(TypedDict, total=False):
 
     CLI 可视化用,阶段 5 接 LangSmith 复用。
     """
+
+    recalled_memories: list[dict[str, Any]]
+    plan: Any
+    action_cursor: int
+    action_results: list[dict[str, Any]]
+    """每个有界 action 的结果，用于 Evidence Verifier 与跨 case 比较。"""
+
+    run_started_monotonic: float
+    """仅进程内超时预算用；不可持久化，避免把单调时钟写入 checkpoint。"""
+
+    verification: dict[str, Any]
+
+    memory_candidates: list[dict[str, Any]]
+    """候选长期记忆及其确定性 policy 状态；持久化由 S1 Postgres repository 负责。"""
+
+    disable_memory_candidates: bool
+    """Only offline no-Memory evaluations may skip candidate extraction entirely."""
+
+    disable_memory_recall: bool
+    """Offline component ablations may bypass canonical recall without changing runtime code."""
+
+    disable_rag: bool
+    """Offline component ablations may bypass KB retrieval without changing runtime code."""

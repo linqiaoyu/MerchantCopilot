@@ -1,0 +1,997 @@
+{
+  "dataset_version": "eval-dataset-v2.0-rc1",
+  "retrieval_contract": {
+    "min_topic_relevance": 0.3
+  },
+  "summary": {
+    "cases": 60,
+    "recall_at_5": 1.0,
+    "current_fact_accuracy": 1.0,
+    "stale_memory_rate": 0.0,
+    "irrelevant_memory_injection_rate": 0.0,
+    "cross_thread_short_term_leak_rate": 0.0,
+    "provenance_complete_rate": 1.0
+  },
+  "cases": [
+    {
+      "id": "mem-stable-01",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-01"
+      ],
+      "expected_ids": [
+        "fact-s-01"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-02",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-02"
+      ],
+      "expected_ids": [
+        "fact-s-02"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-03",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-03"
+      ],
+      "expected_ids": [
+        "fact-s-03"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-04",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-04"
+      ],
+      "expected_ids": [
+        "fact-s-04"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-05",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-05"
+      ],
+      "expected_ids": [
+        "fact-s-05"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-06",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-06"
+      ],
+      "expected_ids": [
+        "fact-s-06"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-07",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-07"
+      ],
+      "expected_ids": [
+        "fact-s-07"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-08",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-08"
+      ],
+      "expected_ids": [
+        "fact-s-08"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-09",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-09"
+      ],
+      "expected_ids": [
+        "fact-s-09"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-10",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-10"
+      ],
+      "expected_ids": [
+        "fact-s-10"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-11",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-11"
+      ],
+      "expected_ids": [
+        "fact-s-11"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-12",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-12"
+      ],
+      "expected_ids": [
+        "fact-s-12"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-13",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-13"
+      ],
+      "expected_ids": [
+        "fact-s-13"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-14",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-14"
+      ],
+      "expected_ids": [
+        "fact-s-14"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-15",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-15"
+      ],
+      "expected_ids": [
+        "fact-s-15"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-16",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-16"
+      ],
+      "expected_ids": [
+        "fact-s-16"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-17",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-17"
+      ],
+      "expected_ids": [
+        "fact-s-17"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-18",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-18"
+      ],
+      "expected_ids": [
+        "fact-s-18"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-19",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-19"
+      ],
+      "expected_ids": [
+        "fact-s-19"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-stable-20",
+      "category": "stable_profile",
+      "recalled_ids": [
+        "fact-s-20"
+      ],
+      "expected_ids": [
+        "fact-s-20"
+      ],
+      "forbidden_ids": [],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-01",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-01-new"
+      ],
+      "expected_ids": [
+        "fact-t-01-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-01-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-02",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-02-new"
+      ],
+      "expected_ids": [
+        "fact-t-02-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-02-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-03",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-03-new"
+      ],
+      "expected_ids": [
+        "fact-t-03-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-03-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-04",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-04-new"
+      ],
+      "expected_ids": [
+        "fact-t-04-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-04-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-05",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-05-new"
+      ],
+      "expected_ids": [
+        "fact-t-05-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-05-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-06",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-06-new"
+      ],
+      "expected_ids": [
+        "fact-t-06-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-06-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-07",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-07-new"
+      ],
+      "expected_ids": [
+        "fact-t-07-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-07-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-08",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-08-new"
+      ],
+      "expected_ids": [
+        "fact-t-08-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-08-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-09",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-09-new"
+      ],
+      "expected_ids": [
+        "fact-t-09-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-09-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-10",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-10-new"
+      ],
+      "expected_ids": [
+        "fact-t-10-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-10-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-11",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-11-new"
+      ],
+      "expected_ids": [
+        "fact-t-11-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-11-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-12",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-12-new"
+      ],
+      "expected_ids": [
+        "fact-t-12-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-12-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-13",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-13-new"
+      ],
+      "expected_ids": [
+        "fact-t-13-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-13-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-14",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-14-new"
+      ],
+      "expected_ids": [
+        "fact-t-14-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-14-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-temporal-15",
+      "category": "temporal_conflict",
+      "recalled_ids": [
+        "fact-t-15-new"
+      ],
+      "expected_ids": [
+        "fact-t-15-new"
+      ],
+      "forbidden_ids": [
+        "fact-t-15-old"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-01",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-01"
+      ],
+      "expected_ids": [
+        "fact-x-01"
+      ],
+      "forbidden_ids": [
+        "scratch-x-01"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-02",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-02"
+      ],
+      "expected_ids": [
+        "fact-x-02"
+      ],
+      "forbidden_ids": [
+        "scratch-x-02"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-03",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-03"
+      ],
+      "expected_ids": [
+        "fact-x-03"
+      ],
+      "forbidden_ids": [
+        "scratch-x-03"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-04",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-04"
+      ],
+      "expected_ids": [
+        "fact-x-04"
+      ],
+      "forbidden_ids": [
+        "scratch-x-04"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-05",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-05"
+      ],
+      "expected_ids": [
+        "fact-x-05"
+      ],
+      "forbidden_ids": [
+        "scratch-x-05"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-06",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-06"
+      ],
+      "expected_ids": [
+        "fact-x-06"
+      ],
+      "forbidden_ids": [
+        "scratch-x-06"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-07",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-07"
+      ],
+      "expected_ids": [
+        "fact-x-07"
+      ],
+      "forbidden_ids": [
+        "scratch-x-07"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-08",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-08"
+      ],
+      "expected_ids": [
+        "fact-x-08"
+      ],
+      "forbidden_ids": [
+        "scratch-x-08"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-09",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-09"
+      ],
+      "expected_ids": [
+        "fact-x-09"
+      ],
+      "forbidden_ids": [
+        "scratch-x-09"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-cross-thread-10",
+      "category": "cross_thread_recall",
+      "recalled_ids": [
+        "fact-x-10"
+      ],
+      "expected_ids": [
+        "fact-x-10"
+      ],
+      "forbidden_ids": [
+        "scratch-x-10"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-01",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-01-target"
+      ],
+      "expected_ids": [
+        "fact-n-01-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-01-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-02",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-02-target"
+      ],
+      "expected_ids": [
+        "fact-n-02-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-02-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-03",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-03-target"
+      ],
+      "expected_ids": [
+        "fact-n-03-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-03-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-04",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-04-target"
+      ],
+      "expected_ids": [
+        "fact-n-04-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-04-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-05",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-05-target"
+      ],
+      "expected_ids": [
+        "fact-n-05-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-05-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-06",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-06-target"
+      ],
+      "expected_ids": [
+        "fact-n-06-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-06-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-07",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-07-target"
+      ],
+      "expected_ids": [
+        "fact-n-07-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-07-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-08",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-08-target"
+      ],
+      "expected_ids": [
+        "fact-n-08-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-08-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-09",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-09-target"
+      ],
+      "expected_ids": [
+        "fact-n-09-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-09-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-noise-10",
+      "category": "irrelevant_memory",
+      "recalled_ids": [
+        "fact-n-10-target"
+      ],
+      "expected_ids": [
+        "fact-n-10-target"
+      ],
+      "forbidden_ids": [
+        "fact-n-10-noise"
+      ],
+      "hits": 1,
+      "expected_count": 1,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-decision-01",
+      "category": "strategy_feedback_outcome",
+      "recalled_ids": [
+        "fact-d-01-decision",
+        "fact-d-01-outcome"
+      ],
+      "expected_ids": [
+        "fact-d-01-decision",
+        "fact-d-01-outcome"
+      ],
+      "forbidden_ids": [],
+      "hits": 2,
+      "expected_count": 2,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-decision-02",
+      "category": "strategy_feedback_outcome",
+      "recalled_ids": [
+        "fact-d-02-decision",
+        "fact-d-02-outcome"
+      ],
+      "expected_ids": [
+        "fact-d-02-decision",
+        "fact-d-02-outcome"
+      ],
+      "forbidden_ids": [],
+      "hits": 2,
+      "expected_count": 2,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-decision-03",
+      "category": "strategy_feedback_outcome",
+      "recalled_ids": [
+        "fact-d-03-decision",
+        "fact-d-03-outcome"
+      ],
+      "expected_ids": [
+        "fact-d-03-decision",
+        "fact-d-03-outcome"
+      ],
+      "forbidden_ids": [],
+      "hits": 2,
+      "expected_count": 2,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-decision-04",
+      "category": "strategy_feedback_outcome",
+      "recalled_ids": [
+        "fact-d-04-decision",
+        "fact-d-04-outcome"
+      ],
+      "expected_ids": [
+        "fact-d-04-decision",
+        "fact-d-04-outcome"
+      ],
+      "forbidden_ids": [],
+      "hits": 2,
+      "expected_count": 2,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    },
+    {
+      "id": "mem-decision-05",
+      "category": "strategy_feedback_outcome",
+      "recalled_ids": [
+        "fact-d-05-decision",
+        "fact-d-05-outcome"
+      ],
+      "expected_ids": [
+        "fact-d-05-decision",
+        "fact-d-05-outcome"
+      ],
+      "forbidden_ids": [],
+      "hits": 2,
+      "expected_count": 2,
+      "forbidden_recalled": [],
+      "provenance_ok": true
+    }
+  ]
+}

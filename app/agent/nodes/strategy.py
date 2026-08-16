@@ -1,4 +1,4 @@
-"""Strategy 节点:RAG 召回 + Mem0 画像 → LLM 改写出可执行建议。
+"""Strategy 节点:RAG + canonical Memory → LLM 改写出可执行建议。
 
 阶段 4b 重写(对外契约不变,内部硬编码模板全删):
   - data["recommendations"] / data["merchant_profile"] / data["topic"] 三契约字段保留
@@ -11,8 +11,8 @@
   RAG ok + LLM 任一不可用       → "template_fallback_from_chunks"
   RAG fail + LLM 任一不可用     → "unavailable"(诚实说"暂不可用")
 
-A.5 写入(update_recent_concerns)放在所有业务逻辑之后、return 之前,
-单独 try/except 兜住 —— 写失败不影响本次响应,但只要 Mem0 健康每次都追加。
+Memory 只来自 graph 的 ``recalled_memories``：它们已经经过 Policy Gate 和
+pgvector 的时序/主题筛选。本节点不得直接读写 Mem0，避免绕过 policy gate。
 """
 from __future__ import annotations
 
@@ -23,11 +23,6 @@ from langsmith import traceable
 
 from app.agent.state import AgentState
 from app.llm.client import get_llm
-from app.memory.merchant_memory import (
-    MERCHANT_ID,
-    get_profile,
-    update_recent_concerns,
-)
 from app.rag.retriever import RAGNotAvailableError, retrieve
 
 # --- prompt 懒加载单例(沿用 app/rag/retriever:get_reranker 范式)---
@@ -62,21 +57,49 @@ def _fallback_recommendations(chunks: list) -> list[str]:
     return out
 
 
+def profile_from_recalled_memories(recalled_memories: list[dict]) -> dict[str, object]:
+    """Expose approved canonical facts to the Strategy prompt without a second store.
+
+    Only stable profile predicates become named profile fields.  The complete,
+    bounded context remains visible as provenance rather than being silently
+    collapsed into a mutable Mem0 profile.
+    """
+    profile: dict[str, object] = {
+        "category": "", "audience": "", "style": "", "recent_concerns": [],
+        "canonical_context": recalled_memories,
+    }
+    concerns: list[str] = []
+    for memory in recalled_memories:
+        predicate = str(memory.get("predicate", ""))
+        content = str(memory.get("content", ""))
+        if predicate in {"category", "audience", "style"} and not profile[predicate]:
+            profile[predicate] = content
+        elif predicate in {"recent_concern", "recent_concerns"} and content:
+            concerns.append(content)
+    profile["recent_concerns"] = concerns[:5]
+    return profile
+
+
 @traceable(name="node_strategy", tags=["agent_node"])
 def strategy(state: AgentState) -> dict:
     query = state["user_query"]
-    profile = get_profile(MERCHANT_ID)  # 自动 seed-on-empty,~50ms
+    llm = get_llm()
+    recalled = state.get("recalled_memories", [])
+    profile = profile_from_recalled_memories(recalled)
+    profile_source = "canonical_pgvector" if recalled else "canonical_empty"
 
     # ---- RAG:fail-safe 包裹 ----
     chunks: list = []
     rag_status = "ok"
-    try:
-        chunks = retrieve(query, top_k=5)
-    except RAGNotAvailableError as e:
-        rag_status = f"unavailable: {e.__class__.__name__}"
+    if state.get("disable_rag"):
+        rag_status = "disabled_for_component_ablation"
+    else:
+        try:
+            chunks = retrieve(query, top_k=5)
+        except RAGNotAvailableError as e:
+            rag_status = f"unavailable: {e.__class__.__name__}"
 
     # ---- LLM:fail-safe 包裹 ----
-    llm = get_llm()
     prompt = _get_prompt()
     recommendations: list[str] = []
     topic = ""
@@ -88,12 +111,14 @@ def strategy(state: AgentState) -> dict:
                 "user_query": query,
                 "profile": {k: profile.get(k, "") for k in ("category", "audience", "style")},
                 "recent_concerns": profile.get("recent_concerns", []),
+                "canonical_memory": profile["canonical_context"],
                 "kb_chunks": [
                     {"heading": c.metadata.get("heading", ""), "content": c.content}
                     for c in chunks
                 ],
             }, ensure_ascii=False)
-            raw = llm.chat(system=prompt, user=user_payload)
+            # Strategy needs synthesis across profile and KB, so retain thinking mode.
+            raw = llm.chat(system=prompt, user=user_payload, thinking=True)
             # 容错:LLM 可能给 ```json ... ``` 包裹(prompt L17 已禁,但兜底)
             raw_stripped = raw.strip()
             if raw_stripped.startswith("```"):
@@ -129,15 +154,6 @@ def strategy(state: AgentState) -> dict:
             print(f"[strategy] WARN: recommendation length out of [30,60]: "
                   f"{hanzi_count} chars, content: {rec[:30]}...")
 
-    # ---- A.5 写入:独立 try/except,绝不被上面任何 except 吞掉 ----
-    # 注意作用域:这一段在所有业务逻辑之后、return 之前,
-    # 与主流程的 try 完全平级,无嵌套(防止外层 except 提前 return 跳过这里)。
-    try:
-        update_recent_concerns(query, MERCHANT_ID)
-    except Exception as e:
-        print(f"[strategy] update_recent_concerns 失败(忽略不影响响应): "
-              f"{type(e).__name__}: {e}")
-
     # ---- 组装 node_result(契约对齐)----
     headline = f"策略建议:{topic}"
     data = {
@@ -150,7 +166,7 @@ def strategy(state: AgentState) -> dict:
             {"source_doc": c.source_doc, "heading": c.metadata.get("heading", "")}
             for c in chunks
         ],
-        "profile_source": "mem0",
+        "profile_source": profile_source,
         "generation": generation,
         "rag_status": rag_status,
     }

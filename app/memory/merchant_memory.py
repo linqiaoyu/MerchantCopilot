@@ -9,7 +9,7 @@ infer=False:全部走原文存储,不调 Mem0 的 LLM 抽取。
     单商家 + 信号弱场景下抽取不可控;A.5 保留 Mem0「按 user_id 隔离 + 时序记忆累积」
     的核心价值,丢弃噪音大的自动抽取。
 
-栈对齐:DeepSeek-V3 LLM + BGE-M3 embedder + Chroma vector store(独立 collection)。
+栈对齐:DeepSeek V4 Flash + 与 RAG 共享的 BGE-M3 + Chroma vector store(迁移 pgvector 前过渡)。
 init 必须配 LLM(Mem0 硬约束),infer=False 下实际不调,但对齐项目锁定栈。
 """
 from __future__ import annotations
@@ -21,6 +21,7 @@ from langsmith import traceable
 
 # 触发 app/llm/client.py 模块级 _load_dotenv(),保证 DEEPSEEK_API_KEY 在 env 中
 import app.llm.client  # noqa: F401
+from app.memory.bge_adapter import register_shared_bge_provider
 
 MERCHANT_ID = "xiaozhang_women"
 RECENT_N = 5
@@ -38,41 +39,75 @@ _COLLECTION = "merchant_profile"
 _client = None
 
 
+def _vector_store_config() -> dict:
+    """Prefer the v2 pgvector index whenever the runtime supplies a database DSN.
+
+    Chroma is retained only for the pre-S1 local demo path; it is not the v2
+    deployment backend.  This makes the transition explicit rather than
+    silently mixing canonical Postgres facts with a second production store.
+    """
+    dsn = os.environ.get("DATABASE_URL", "").strip()
+    if dsn:
+        return {
+            "provider": "pgvector",
+            "config": {
+                "collection_name": "mem0_merchant_profile",
+                "connection_string": dsn,
+                "embedding_model_dims": 1024,
+                "hnsw": True,
+            },
+        }
+    return {
+        "provider": "chroma",
+        "config": {"collection_name": _COLLECTION, "path": _CHROMA_PATH},
+    }
+
+
+def _memory_config() -> dict:
+    """Mem0 config limited to fields accepted by BaseEmbedderConfig."""
+    return {
+        "llm": {
+            "provider": "deepseek",
+            "config": {
+                "model": "deepseek-v4-flash",
+                "api_key": os.environ.get("DEEPSEEK_API_KEY", ""),
+            },
+        },
+        "embedder": {
+            # Mem0 2.0.2 工厂按点路径加载该 adapter；它只委托 RAG 的 BGE-M3
+            # 单例，绝不构造第二个 HuggingFaceEmbedding。
+            "provider": "shared_bge",
+            "config": {"model": "BAAI/bge-m3", "embedding_dims": 1024},
+        },
+        "vector_store": _vector_store_config(),
+    }
+
+
 def get_client():
     """懒加载 Mem0 单例,沿用 stage 3 client / stage 4a embedder 单例范式。"""
     global _client
     if _client is not None:
         return _client
     from mem0 import Memory
-    config = {
-        "llm": {
-            "provider": "deepseek",
-            "config": {
-                "model": "deepseek-chat",
-                "api_key": os.environ.get("DEEPSEEK_API_KEY", ""),
-            },
-        },
-        "embedder": {
-            "provider": "huggingface",
-            # device='cpu' 走 model_kwargs 间接传(Mem0 没有顶层 device 字段,
-            # 内部 HuggingFaceEmbedding 把 model_kwargs 直接 unpack 进 SentenceTransformer)。
-            # 强制 CPU:避免与 app/rag/indexer 的 BGE-M3 单例(MPS)在同一设备
-            # 共存触发 4a 已诊断过的 model co-residency / shape cache 双向 evict。
-            # A.5 模式下 Mem0 单次 embed ≤ 30 字、节点内仅 1 次,CPU 性能完全够用。
-            "config": {
-                "model": "BAAI/bge-m3",
-                "model_kwargs": {"device": "cpu"},
-            },
-        },
-        "vector_store": {
-            "provider": "chroma",
-            "config": {
-                "collection_name": _COLLECTION,
-                "path": _CHROMA_PATH,
-            },
-        },
+    from mem0.configs.base import MemoryConfig
+    from mem0.embeddings.configs import EmbedderConfig
+
+    register_shared_bge_provider()
+    # Mem0 2.0.2 exposes ``EmbedderFactory.provider_to_class`` as an extension
+    # point, but its Pydantic input validator has a static built-in-provider
+    # allow-list.  Build the ordinary config first, then replace only the
+    # already-validated embedder model with the registered provider.  The
+    # resulting runtime config still explicitly says ``shared_bge`` and
+    # EmbedderFactory performs the documented import-path dispatch.
+    raw_config = _memory_config()
+    validation_config = {
+        **raw_config,
+        "embedder": {**raw_config["embedder"], "provider": "huggingface"},
     }
-    _client = Memory.from_config(config)
+    config = MemoryConfig(**validation_config).model_copy(
+        update={"embedder": EmbedderConfig.model_construct(**raw_config["embedder"])}
+    )
+    _client = Memory(config)
     return _client
 
 

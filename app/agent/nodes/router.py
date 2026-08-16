@@ -6,8 +6,8 @@ LLM 返回 {"intent","confidence"};confidence < 0.6、JSON 解析失败、
 """
 from __future__ import annotations
 
-import json
 import re
+import time
 from datetime import date
 from pathlib import Path
 
@@ -21,13 +21,23 @@ _PROMPT = (Path(__file__).resolve().parents[1] / "prompts" / "router.txt").read_
 )
 _VALID = {"metric", "attribution", "strategy"}
 _CONFIDENCE_FLOOR = 0.6
+_ROUTER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "intent": {"type": "string", "enum": ["metric", "attribution", "strategy"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    },
+    "required": ["intent", "confidence"],
+    "additionalProperties": False,
+}
 
 # 关键词规则:按列表顺序匹配,先命中 attribution/strategy,默认落 metric
 _RULES: list[tuple[str, list[str]]] = [
     ("attribution", ["为什么", "为啥", "怎么回事", "咋回事", "异常", "暴跌", "猛涨",
                       "暴涨", "下滑", "掉了", "降了", "原因", "归因", "根因"]),
     ("strategy", ["建议", "怎么办", "策略", "如何提升", "怎么提升", "如何改善",
-                  "优化", "该不该", "要不要", "值不值得", "该怎么做"]),
+                  "优化", "该不该", "要不要", "值不值得", "该怎么做", "怎么差异化",
+                  "怎么承接", "怎么排", "避开哪些坑"]),
     ("metric", ["多少", "是多少", "查一下", "看一下", "怎么样", "数据", "走势",
                 "gmv", "转化率", "退款率", "uv", "客单价"]),
 ]
@@ -56,10 +66,10 @@ def _llm_classify(query: str) -> tuple[str | None, float]:
     if llm.is_stub:
         return None, 0.0
     try:
-        text = llm.chat(system=_PROMPT, user=query)
-        # 容忍 LLM 偶尔包 ```json 代码块
-        text = re.sub(r"^```(?:json)?|```$", "", text.strip()).strip()
-        obj = json.loads(text)
+        # Router is a low-latency structured classification task: non-thinking.
+        obj, _completion = llm.complete_json(
+            system=_PROMPT, user=query, thinking=False, json_schema=_ROUTER_SCHEMA
+        )
         intent = obj.get("intent")
         conf = float(obj.get("confidence", 0.0))
         if intent in _VALID:
@@ -92,4 +102,4 @@ def router(state: AgentState) -> dict:
         "confidence": conf,
         "time_window": time_window,
     }
-    return {"intent": intent, "time_window": time_window, "steps": [step]}
+    return {"intent": intent, "time_window": time_window, "run_started_monotonic": time.monotonic(), "steps": [step]}

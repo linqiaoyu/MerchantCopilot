@@ -1,7 +1,11 @@
-"""6.3 judge 跑批 — binary 三类(full + baseline),每条 3 次取众数(方法论 13)。
+"""历史 v1 6.3 judge 跑批 — binary 三类(full + baseline),每条 3 次取众数。
 
 只评 binary 三类(data_query/attribution/cross_period,judge α=0.856 可信);
 strategy 50 的画像锚定是 CC 人工判(做法 Y),不在此脚本。
+
+此脚本读取 v1.0/v1.1 数据和 ``ablation_6_3_*`` 历史产物，不是 v2 的
+60×6 评测入口；v2 只使用 ``analyze_v2_calibration.py`` 与
+``analyze_v2_ablation.py`` 的冻结输入协议。
 
 用法:python evals/judge_ablation.py
 输入:evals/runs/ablation_6_3_outputs.json(full + baseline 的 Agent 输出)
@@ -52,7 +56,7 @@ def judge_3x(rec, agent_output, cli):
 def main():
     by_id = load_dataset()
     out = json.loads(OUT.read_text(encoding="utf-8"))
-    cli = judge_client()  # Qwen-Max
+    cli = judge_client()  # 当前固定离线 Judge；历史输出不重写
     binary_types = ("data_query", "attribution", "cross_period")
     binary_ids = sorted([qid for qid, r in by_id.items() if r["query_type"] in binary_types])
     print(f"binary 三类 {len(binary_ids)} 条 × 2 配置(full/baseline)× {N_SAMPLE} 次 judge...")

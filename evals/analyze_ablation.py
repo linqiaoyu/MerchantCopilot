@@ -76,17 +76,26 @@ def main_line_2():
               f"discordant(b)条={[q for q,pf,pb in lst if pf==1 and pb==0]}")
 
 
+def anchoring_pairs(payload, criterion="mem0_exclusive_85"):
+    """Read the frozen per-question criterion, never infer a verdict from metadata."""
+    pairs = []
+    for qid, record in payload.items():
+        if qid.startswith("_") or not isinstance(record, dict):
+            continue
+        verdict = record.get(criterion)
+        if not isinstance(verdict, dict) or {"full", "minus_mem0"} - verdict.keys():
+            continue
+        pairs.append((int(verdict["full"]), int(verdict["minus_mem0"])))
+    return pairs
+
+
 def main_line_1():
     ap = ROOT / "evals/runs/ablation_6_3_anchoring.json"
     if not ap.exists():
         print("\n[主线1] 缺画像锚定人工判文件 ablation_6_3_anchoring.json,跳过"); return
     anc = json.loads(ap.read_text(encoding="utf-8"))
-    pairs = []
-    for qid, v in anc.items():
-        if qid.startswith("_"):
-            continue
-        pairs.append((int(v["full"]), int(v["minus_mem0"])))
-    print("\n=== 主线 1:full vs -Mem0 常驻画像锚定率(CC 人工判,n=50)===")
+    pairs = anchoring_pairs(anc)
+    print("\n=== 主线 1:full vs -Mem0 常驻画像锚定率（mem0_exclusive_85, CC 人工判）===")
     m = mcnemar(pairs)
     print(f"  n={m['n']}  full锚定率={m['p_A']}  -Mem0锚定率={m['p_B']}")
     print(f"  2x2: a(双锚定)={m['a']} b(full锚✓ -Mem0✗)={m['b']} c={m['c']} d={m['d']}")

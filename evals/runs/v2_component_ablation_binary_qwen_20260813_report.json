@@ -1,0 +1,124 @@
+{
+  "runtime": {
+    "source": "evals/runs/v2_component_ablation_local_20260813.json",
+    "source_sha256": "4e059d05a265550f13cd87bfebf6b6e2b8a9fb0d4d1bedf0c3999337073ff055",
+    "configurations": [
+      "full",
+      "minus_memory",
+      "minus_rag",
+      "bare"
+    ],
+    "query_scope": "30 frozen historical binary queries only; strategy excluded (reference-only)",
+    "judge_provider": "qwen_judge",
+    "judge_model": "qwen3.7-plus-2026-05-26",
+    "samples_per_output": 3,
+    "calibration": "binary alpha=1.0 on 18 independent historical labels; strategy is not scored"
+  },
+  "configurations": {
+    "full": {
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "by_query_type": {
+        "data_query": {
+          "n": 12,
+          "passed": 12,
+          "pass_rate": 1.0
+        },
+        "cross_period": {
+          "n": 8,
+          "passed": 6,
+          "pass_rate": 0.75
+        },
+        "attribution": {
+          "n": 10,
+          "passed": 6,
+          "pass_rate": 0.6
+        }
+      }
+    },
+    "minus_memory": {
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "by_query_type": {
+        "data_query": {
+          "n": 12,
+          "passed": 12,
+          "pass_rate": 1.0
+        },
+        "cross_period": {
+          "n": 8,
+          "passed": 6,
+          "pass_rate": 0.75
+        },
+        "attribution": {
+          "n": 10,
+          "passed": 6,
+          "pass_rate": 0.6
+        }
+      }
+    },
+    "minus_rag": {
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "by_query_type": {
+        "data_query": {
+          "n": 12,
+          "passed": 12,
+          "pass_rate": 1.0
+        },
+        "cross_period": {
+          "n": 8,
+          "passed": 6,
+          "pass_rate": 0.75
+        },
+        "attribution": {
+          "n": 10,
+          "passed": 6,
+          "pass_rate": 0.6
+        }
+      }
+    },
+    "bare": {
+      "n": 30,
+      "passed": 24,
+      "pass_rate": 0.8,
+      "by_query_type": {
+        "data_query": {
+          "n": 12,
+          "passed": 12,
+          "pass_rate": 1.0
+        },
+        "cross_period": {
+          "n": 8,
+          "passed": 6,
+          "pass_rate": 0.75
+        },
+        "attribution": {
+          "n": 10,
+          "passed": 6,
+          "pass_rate": 0.6
+        }
+      }
+    }
+  },
+  "paired_against_full": {
+    "minus_memory": {
+      "full_only_pass": 0,
+      "other_only_pass": 0,
+      "mcnemar_exact_two_sided_p": 1.0
+    },
+    "minus_rag": {
+      "full_only_pass": 0,
+      "other_only_pass": 0,
+      "mcnemar_exact_two_sided_p": 1.0
+    },
+    "bare": {
+      "full_only_pass": 0,
+      "other_only_pass": 0,
+      "mcnemar_exact_two_sided_p": 1.0
+    }
+  }
+}

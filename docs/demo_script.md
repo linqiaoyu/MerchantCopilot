@@ -1,6 +1,8 @@
-# MerchantCopilot 5 分钟面试演示流程
+# MerchantCopilot v1 历史 5 分钟面试演示流程
 
-> 配套:`docs/stage5_summary.md`(诊断链 + 故事候选) + `docs/architecture.md`(架构图)
+> 历史 v1 材料：其中的单轮架构、DeepSeek-V3/Qwen-Max、Streamlit、LangSmith 与 Mem0 数字不代表当前 v2 配置或验收状态。当前 v2 演示请使用 [v2_demo_script.md](v2_demo_script.md)。
+
+> 配套：`docs/stage5_summary.md`（诊断链 + 故事候选）+ 当前 [v2 架构图](../README.md#架构)。
 > 目标:5 分钟讲完项目定位 + 主路径演示 + 2-3 个故事 + 工程亮点收尾
 
 ---

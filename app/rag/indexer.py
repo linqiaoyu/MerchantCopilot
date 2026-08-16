@@ -12,11 +12,7 @@ from __future__ import annotations
 import re
 import time
 from pathlib import Path
-
-from langchain_text_splitters import (
-    MarkdownHeaderTextSplitter,
-    RecursiveCharacterTextSplitter,
-)
+from threading import RLock
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 KB_DIR = _REPO_ROOT / "data" / "knowledge_base"
@@ -28,26 +24,47 @@ MAX_CHARS = 400  # 单 chunk 字符上限,超过用 RecursiveCharacterTextSplitt
 # --- 懒加载单例:embedder / chroma client ---
 _embedder = None
 _chroma_client = None
+_embedder_lock = RLock()
+_chroma_client_lock = RLock()
 
 
 def get_embedder():
     """BGE-M3 模块级懒加载单例。首次:已缓存 ~5-15s / 冷下载 ~60-120s。"""
     global _embedder
     if _embedder is None:
-        from sentence_transformers import SentenceTransformer  # noqa: F401
-        t0 = time.time()
-        print(f"[indexer] 加载 embedder {EMBEDDING_MODEL} ...", flush=True)
-        _embedder = SentenceTransformer(EMBEDDING_MODEL)
-        print(f"[indexer] embedder 加载完成 ({time.time() - t0:.1f}s)")
+        # FastAPI can start several SSE workers together.  The second check is
+        # essential: BGE-M3 must remain one process-local instance, including
+        # during a cold concurrent start.
+        with _embedder_lock:
+            if _embedder is None:
+                from sentence_transformers import SentenceTransformer  # noqa: F401
+                t0 = time.time()
+                print(f"[indexer] 加载 embedder {EMBEDDING_MODEL} ...", flush=True)
+                _embedder = SentenceTransformer(EMBEDDING_MODEL)
+                print(f"[indexer] embedder 加载完成 ({time.time() - t0:.1f}s)")
     return _embedder
+
+
+def encode_with_shared_embedder(inputs, **kwargs):
+    """Serialize BGE inference because the MPS-backed model is not thread-safe.
+
+    The API may accept concurrent requests, but one process must own exactly one
+    BGE-M3 instance.  Serializing encode calls protects that instance from MPS
+    crashes while Postgres and HTTP work remain concurrent.
+    """
+    embedder = get_embedder()
+    with _embedder_lock:
+        return embedder.encode(inputs, **kwargs)
 
 
 def get_chroma_client():
     global _chroma_client
     if _chroma_client is None:
-        import chromadb  # noqa: F401
-        CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-        _chroma_client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+        with _chroma_client_lock:
+            if _chroma_client is None:
+                import chromadb  # noqa: F401
+                CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+                _chroma_client = chromadb.PersistentClient(path=str(CHROMA_DIR))
     return _chroma_client
 
 
@@ -73,15 +90,27 @@ def _parse_front_matter(text: str) -> tuple[dict, str]:
 
 
 # --- 切块:按 ## 切 → 超 MAX_CHARS 时按段落/句号二级切 ---
-_HEADER_SPLITTER = MarkdownHeaderTextSplitter(
-    headers_to_split_on=[("##", "h2")],
-    strip_headers=True,
-)
-_SECONDARY_SPLITTER = RecursiveCharacterTextSplitter(
-    chunk_size=MAX_CHARS,
-    chunk_overlap=0,
-    separators=["\n\n", "。", "!", "?", ".", " ", ""],
-)
+_header_splitter = None
+_secondary_splitter = None
+
+
+def _get_splitters():
+    """Only index construction needs LangChain text splitters, never recall."""
+    global _header_splitter, _secondary_splitter
+    if _header_splitter is None or _secondary_splitter is None:
+        from langchain_text_splitters import (
+            MarkdownHeaderTextSplitter,
+            RecursiveCharacterTextSplitter,
+        )
+
+        _header_splitter = MarkdownHeaderTextSplitter(
+            headers_to_split_on=[("##", "h2")], strip_headers=True,
+        )
+        _secondary_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=MAX_CHARS, chunk_overlap=0,
+            separators=["\n\n", "。", "!", "?", ".", " ", ""],
+        )
+    return _header_splitter, _secondary_splitter
 
 
 def _split_doc(body: str) -> list[tuple[str, str]]:
@@ -90,7 +119,8 @@ def _split_doc(body: str) -> list[tuple[str, str]]:
     返回 [(heading, content), ...]。这样每篇严格产出 N 个 chunk(N = ## 数),
     导言信号融入 h2-0 的 embed_text,不再独立成极短 chunk。
     """
-    docs = _HEADER_SPLITTER.split_text(body)
+    header_splitter, _ = _get_splitters()
+    docs = header_splitter.split_text(body)
     intro_text = ""
     sections: list[tuple[str, str]] = []
     for d in docs:
@@ -109,7 +139,10 @@ def _split_doc(body: str) -> list[tuple[str, str]]:
 
 
 def _maybe_secondary(text: str) -> list[str]:
-    return [text] if len(text) <= MAX_CHARS else _SECONDARY_SPLITTER.split_text(text)
+    if len(text) <= MAX_CHARS:
+        return [text]
+    _, secondary_splitter = _get_splitters()
+    return secondary_splitter.split_text(text)
 
 
 def _count_hanzi(s: str) -> int:
@@ -184,7 +217,7 @@ def build() -> dict:
     # 3. embed(一次性 batch,sentence-transformers 内部分批)
     embedder = get_embedder()
     t_embed_0 = time.time()
-    embeddings = embedder.encode(
+    embeddings = encode_with_shared_embedder(
         [c["embed_text"] for c in chunks],
         show_progress_bar=False,
         convert_to_numpy=True,

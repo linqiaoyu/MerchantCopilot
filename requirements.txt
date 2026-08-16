@@ -16,3 +16,9 @@ mem0ai[nlp]==2.0.2
 langsmith==0.8.5
 # 阶段 5 UI:Streamlit demo
 streamlit==1.57.0
+# v2 持久化：原生 SQL + psycopg3 + 官方 LangGraph Postgres checkpointer
+psycopg[binary,pool]==3.3.4
+langgraph-checkpoint-postgres==3.1.0
+# v2 HTTP 服务边界
+fastapi==0.141.1
+uvicorn==0.47.0
