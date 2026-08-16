@@ -15,7 +15,16 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterator
 
-from langsmith import traceable
+if os.getenv("MERCHANTCOPILOT_DISABLE_LANGSMITH") == "1":
+    # Offline evaluators have no consumer for remote traces.  Avoid importing
+    # the LangSmith client (and therefore avoid a second external network
+    # boundary) while preserving the decorated function's runtime behavior.
+    def traceable(*_args, **_kwargs):
+        def decorate(func):
+            return func
+        return decorate
+else:
+    from langsmith import traceable
 
 
 _usage_collector: ContextVar[list[dict[str, object]] | None] = ContextVar("llm_usage_collector", default=None)

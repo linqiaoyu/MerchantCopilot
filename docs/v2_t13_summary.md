@@ -1,6 +1,6 @@
 # v2 T13：Judge 校准、Memory 评测与消融
 
-当前状态：评测契约、离线统计工具、两家模型的真实连通性、本地 canonical-retrieval 60×6 矩阵，以及历史独立人工标签上的 Qwen 重校准已验证。v2 四臂完整 Agent 原始输出已实测；binary Qwen Judge 正在以可恢复工件逐条执行，Strategy Judge 仍只作 reference-only。
+当前状态：评测契约、离线统计工具、两家模型的真实连通性、本地 canonical-retrieval 60×6 矩阵，以及历史独立人工标签上的 Qwen 重校准已验证。v2 四臂完整 Agent 原始输出和 calibrated binary Qwen Judge 均已实测；Strategy Judge 仍只作 reference-only，因此不能把 binary 结果外推为 Strategy、Memory 或 RAG 的质量结论。
 
 已实现：冻结 60 组 Memory runner 只使用 canonical pgvector retrieval；`evals/analyze_v2_calibration.py` 以成对人类/Judge 标注计算固定门槛；`evals/analyze_v2_ablation.py` 只接受每个 preregistered 配置完整的 60 条原始结果，拒绝漏项/重复项，并输出 pass rate、p50/p95、成本、失败 case、配对效应与双侧精确 sign-test。
 
@@ -24,4 +24,4 @@
 
 原始运行还留住两个事实，而非事后清洗：Strategy 非 LLM 降级数为 5/5/6/7；冻结标签与 Router 三意图契约存在 q_019、q_041 两个稳定分歧。另有 full 的 q_013–q_016 因 Router LLM 不可用而走到过窄的规则兜底并误路由为 metric。随后已扩展通用策略问法的规则兜底并以单测覆盖；原始工件不改写，因而该次误路由仍可审阅，后续运行适用修复。
 
-`evals/run_v2_component_binary_judge.py` 只对已经通过历史独立人工标签校准的 30 条 binary 题执行每输出 3 次 Qwen 评分、逐条 checkpoint；其输入哈希、固定 Qwen 快照、四臂矩阵和样本数均写入工件，`analyze_v2_component_binary_judge.py` 只接受完整无错误矩阵并输出配对 McNemar 精确检验。Strategy 不进入该统计或显著性结论。真人标注不能由模型代填；因此在 binary 工件和失败样本完整前，T13 仍不得表述为已验收。
+已验证（calibrated binary Judge 范围）：`evals/run_v2_component_binary_judge.py` 对已通过历史独立人工标签校准的 30 条 binary 题、每个四臂输出 3 次固定 Qwen 评分，完成 120/120、无错误。输入哈希、Qwen 快照、四臂矩阵、逐条样本和 provider usage 均保留在 [原始工件](../evals/runs/v2_component_ablation_binary_qwen_20260813.json)；总 usage 为 prompt 649,464、completion 456,382、total 1,105,846 tokens。`analyze_v2_component_binary_judge.py` 的[统计](../evals/runs/v2_component_ablation_binary_qwen_20260813_report.json)显示四臂均为 24/30（80%）：data_query 12/12、cross_period 6/8、attribution 6/10；full 对每一消融臂的 paired discordance 均为 0，双侧精确 McNemar p=1.0。完整[失败样本](../evals/runs/v2_component_ablation_binary_qwen_20260813_bad_cases.md)逐臂保留 q_008、q_019、q_020、q_029、q_030、q_031。该相同结果符合此 binary 集主要测确定性 MCP/归因路径、而非 Memory/RAG 的边界，不能陈述「无组件效果」或「组件质量达标」。初次 q_024 因本机 CA 链超时/验证失败而保留 TLS 后用系统 CA 成功重试；未禁用 TLS。Strategy 不进入统计或显著性结论；新增独立真人标签并把 Spearman 重校准至门槛前，T13 不得作为完整质量验收。

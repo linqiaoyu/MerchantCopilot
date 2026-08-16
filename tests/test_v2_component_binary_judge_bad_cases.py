@@ -1,7 +1,7 @@
 import pytest
 
 from evals.render_v2_component_binary_judge_bad_cases import render
-from evals.run_v2_component_ablation import CONFIGURATIONS
+from evals.run_v2_component_binary_judge import CONFIGURATIONS
 
 
 def _payload():

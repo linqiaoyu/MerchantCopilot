@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 import evals.run_v2_component_binary_judge as runner
-from evals.run_v2_component_ablation import CONFIGURATIONS
+from evals.run_v2_component_binary_judge import CONFIGURATIONS
 
 
 def test_agent_output_preserves_evidence_and_node_data():
@@ -34,3 +34,7 @@ def test_contract_accepts_a_relative_source_path(tmp_path, monkeypatch):
         assert "four-arm" in str(exc)
     else:
         raise AssertionError("expected contract rejection")
+
+
+def test_offline_binary_judge_disables_remote_tracing():
+    assert runner.os.environ["MERCHANTCOPILOT_DISABLE_LANGSMITH"] == "1"

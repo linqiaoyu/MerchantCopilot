@@ -10,18 +10,22 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sys
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+# This runner is a checkpointed offline measurement; remote traces are neither
+# an input nor an output of its statistical contract.
+os.environ.setdefault("MERCHANTCOPILOT_DISABLE_LANGSMITH", "1")
 
 from app.llm.client import capture_usage  # noqa: E402
 from evals.judge import judge_client, judge_one  # noqa: E402
-from evals.run_v2_component_ablation import CONFIGURATIONS  # noqa: E402
 from evals.run_v2_deepseek_baseline import load_records  # noqa: E402
 
+CONFIGURATIONS = ("full", "minus_memory", "minus_rag", "bare")
 BINARY_TYPES = {"data_query", "cross_period", "attribution"}
 
 
@@ -78,7 +82,7 @@ def run(source: Path, checkpoint: Path, *, samples: int = 3) -> dict:
     for configuration in CONFIGURATIONS:
         rows = result["results"].setdefault(configuration, {})
         for index, qid in enumerate(sorted(records), 1):
-            if qid in rows:
+            if qid in rows and not rows[qid].get("error"):
                 print(f"[{configuration} {index}/30] {qid} checkpointed", flush=True)
                 continue
             raw = payload["runs"][configuration].get(qid)

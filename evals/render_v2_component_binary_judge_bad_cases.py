@@ -5,7 +5,7 @@ import argparse
 import json
 from pathlib import Path
 
-from evals.run_v2_component_ablation import CONFIGURATIONS
+from evals.run_v2_component_binary_judge import CONFIGURATIONS
 
 
 def render(payload: dict) -> str:

@@ -6,7 +6,7 @@ import json
 import math
 from pathlib import Path
 
-from evals.run_v2_component_ablation import CONFIGURATIONS
+from evals.run_v2_component_binary_judge import CONFIGURATIONS
 
 
 def _mcnemar_exact(discordant_full_only: int, discordant_other_only: int) -> float:

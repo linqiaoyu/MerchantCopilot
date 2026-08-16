@@ -1,7 +1,7 @@
 import pytest
 
 from evals.analyze_v2_component_binary_judge import _mcnemar_exact, analyze
-from evals.run_v2_component_ablation import CONFIGURATIONS
+from evals.run_v2_component_binary_judge import CONFIGURATIONS
 
 
 def _payload():
