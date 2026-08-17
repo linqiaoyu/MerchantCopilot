@@ -1,0 +1,368 @@
+{
+  "case_count": 30,
+  "dataset_hash": "8bab08e8d81eaaa7743c3b4aa5044e23ac15d3862027ca23b040fe2d8570c391",
+  "kind": "formal_deterministic_no_match_regression",
+  "rows": [
+    {
+      "case_id": "plain-gmv-00",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-00",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-00",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-01",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-01",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-01",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-02",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-02",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-02",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-03",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-03",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-03",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-04",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-04",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-04",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-05",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-05",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-05",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-06",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-06",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-06",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-07",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-07",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-07",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-08",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-08",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-08",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-09",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-09",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-09",
+      "registry": "static",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-00",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-00",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-00",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-01",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-01",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-01",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-02",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-02",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-02",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-03",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-03",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-03",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-04",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-04",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-04",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-05",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-05",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-05",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-06",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-06",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-06",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-07",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-07",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-07",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-08",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-08",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-08",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-gmv-09",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "plain-uv-09",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    },
+    {
+      "case_id": "generic-09",
+      "registry": "evolved",
+      "selected_skill_id": null,
+      "wrong_skill_injection": false
+    }
+  ],
+  "wrong_skill_injection_rate": 0.0
+}

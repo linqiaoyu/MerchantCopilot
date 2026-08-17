@@ -1,0 +1,33 @@
+id: outcome-driven-experiment
+version: 1.0.0
+description: 策略、建议、提升、优化、效果和实验；结合历史决策与结果设计单变量实验、观察窗口和成功阈值。
+task_types: [strategy]
+preconditions:
+  - path: recalled_memories
+    operator: exists
+required_memory_types: [user_fact, decision, outcome]
+steps:
+  - id: establish_baseline
+    action: metric
+    arguments: {}
+  - id: design_experiment
+    action: strategy
+    arguments: {}
+evidence_contract:
+  - step: establish_baseline
+    path: evidence
+    operator: exists
+  - step: design_experiment
+    path: data.decision.experiment_metric
+    operator: exists
+  - step: design_experiment
+    path: data.decision.success_threshold
+    operator: exists
+completion_criteria:
+  - path: evidence_verification.sufficient
+    operator: eq
+    value: true
+failure_policy: replan_once
+allowed_tools: [metric, strategy]
+parent_version: null
+source_trace_ids: []

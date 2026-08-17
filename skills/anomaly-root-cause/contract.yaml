@@ -1,0 +1,39 @@
+id: anomaly-root-cause
+version: 2.0.0
+description: 异常、暴跌、暴涨、下滑、为什么、原因、根因和归因分析；验证指标窗口并输出证据约束的根因分解。
+task_types: [attribution]
+preconditions:
+  - path: time_window.start
+    operator: exists
+required_memory_types: [observation, user_fact]
+steps:
+  - id: establish_anomaly_baseline
+    action: metric
+    arguments:
+      start: "${time_window.start}"
+      end: "${time_window.end}"
+  - id: decompose_anomaly
+    action: attribution
+    arguments:
+      anomaly_date: "${time_window.start}"
+evidence_contract:
+  - step: establish_anomaly_baseline
+    path: evidence
+    operator: exists
+  - step: establish_anomaly_baseline
+    path: data
+    operator: exists
+  - step: decompose_anomaly
+    path: evidence
+    operator: exists
+  - step: decompose_anomaly
+    path: data
+    operator: exists
+completion_criteria:
+  - path: evidence_verification.sufficient
+    operator: eq
+    value: true
+failure_policy: replan_once
+allowed_tools: [metric, attribution]
+parent_version: 1.0.0-e1
+source_trace_ids: []

@@ -1,0 +1,35 @@
+id: cross-period-comparison
+version: 1.0.0
+description: 对比、比较、环比、同比和多个周期变化；统一指标定义并显式标记不可比或不完整窗口。
+task_types: [metric, attribution]
+preconditions:
+  - path: query.dates
+    operator: gte
+    value: 2
+required_memory_types: [observation]
+steps:
+  - id: first_period
+    action: metric
+    arguments:
+      start: "${query.dates[0]}"
+      end: "${query.dates[0]}"
+  - id: second_period
+    action: metric
+    arguments:
+      start: "${query.dates[1]}"
+      end: "${query.dates[1]}"
+evidence_contract:
+  - step: first_period
+    path: evidence
+    operator: exists
+  - step: second_period
+    path: evidence
+    operator: exists
+completion_criteria:
+  - path: evidence_verification.sufficient
+    operator: eq
+    value: true
+failure_policy: stop
+allowed_tools: [metric]
+parent_version: null
+source_trace_ids: []

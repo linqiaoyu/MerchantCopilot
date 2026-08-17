@@ -10,6 +10,12 @@ from typing import Annotated, Any, TypedDict
 
 
 class AgentState(TypedDict, total=False):
+    run_id: str
+    thread_id: str
+    dataset_partition: str
+    evaluation_arm: str
+    budget_context: dict[str, Any]
+
     merchant_id: str
     """单一 demo 商家的标识；v2 canonical Memory 的查询隔离键。"""
 
@@ -41,9 +47,23 @@ class AgentState(TypedDict, total=False):
     """
 
     recalled_memories: list[dict[str, Any]]
+    memory_query_plan: dict[str, Any]
+    memory_usage_trace: dict[str, Any]
+    skill_candidates: list[dict[str, Any]]
+    selected_skill: dict[str, Any]
+    skill_selection_trace: dict[str, Any]
+    skill_version: str
+    compiled_skill_plan: Any
+    skill_execution_trace: list[dict[str, Any]]
+    skill_registry_mode: str
+    raw_history: list[dict[str, Any]]
+    memory_mode: str
+    evaluation_memory_context: list[dict[str, Any]]
+    evidence_verification: dict[str, Any]
     plan: Any
     action_cursor: int
     action_results: list[dict[str, Any]]
+    prior_action_results: list[dict[str, Any]]
     """每个有界 action 的结果，用于 Evidence Verifier 与跨 case 比较。"""
 
     run_started_monotonic: float
@@ -62,3 +82,6 @@ class AgentState(TypedDict, total=False):
 
     disable_rag: bool
     """Offline component ablations may bypass KB retrieval without changing runtime code."""
+
+    disable_skill: bool
+    """Offline ablations may bypass Skill retrieval while retaining the bounded planner."""

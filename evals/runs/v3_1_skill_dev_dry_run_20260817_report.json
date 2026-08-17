@@ -1,0 +1,1584 @@
+{
+  "aggregates": {
+    "bare": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.0,
+      "mean_latency_ms": 0.0034027053819348416,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.0,
+      "task_success": 0.3333333333333333,
+      "tool_call_accuracy": 0.3333333333333333,
+      "tool_calls": 1.0,
+      "wrong_skill_injection": 0.0
+    },
+    "canonical_memory_evolved_skill": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.6666666666666666,
+      "mean_latency_ms": 4.775000072550029,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.6666666666666666,
+      "task_success": 0.6666666666666666,
+      "tool_call_accuracy": 0.6666666666666666,
+      "tool_calls": 1.3333333333333333,
+      "wrong_skill_injection": 0.0
+    },
+    "canonical_memory_static_skill": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.6666666666666666,
+      "mean_latency_ms": 4.822816567805906,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.6666666666666666,
+      "task_success": 0.6666666666666666,
+      "tool_call_accuracy": 0.6666666666666666,
+      "tool_calls": 1.3333333333333333,
+      "wrong_skill_injection": 0.0
+    },
+    "memory_only": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.0,
+      "mean_latency_ms": 0.0026069600911190114,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.0,
+      "task_success": 0.3333333333333333,
+      "tool_call_accuracy": 0.3333333333333333,
+      "tool_calls": 1.0,
+      "wrong_skill_injection": 0.0
+    },
+    "raw_history_static_skill": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.6666666666666666,
+      "mean_latency_ms": 4.776069399667904,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.6666666666666666,
+      "task_success": 0.6666666666666666,
+      "tool_call_accuracy": 0.6666666666666666,
+      "tool_calls": 1.3333333333333333,
+      "wrong_skill_injection": 0.0
+    },
+    "static_skill_only": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.3333333333333333,
+      "mean_latency_ms": 4.919079132378101,
+      "nil_rate": 0.3333333333333333,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.3333333333333333,
+      "task_success": 0.3333333333333333,
+      "tool_call_accuracy": 0.3333333333333333,
+      "tool_calls": 0.6666666666666666,
+      "wrong_skill_injection": 0.0
+    }
+  },
+  "bad_cases": [
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-001",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-001",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-002",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-002",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-002",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-004",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-004",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-005",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-005",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-005",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-007",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-007",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-008",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-008",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-008",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-010",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-010",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-011",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-011",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-011",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-013",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-013",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-014",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-014",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-014",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-016",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-016",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-017",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-017",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-017",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-019",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-019",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-020",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-020",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-020",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-021",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-021",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-021",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-021",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-022",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-022",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-023",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-023",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-023",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-024",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-024",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-024",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-024",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-025",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-025",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-026",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-026",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-026",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-027",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-027",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-027",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-027",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-028",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-028",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-029",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-029",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-029",
+      "error": "ValueError: skill preconditions failed: recalled_memories",
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "nil"
+    }
+  ],
+  "claim_eligible": false,
+  "comparisons": {
+    "canonical_vs_raw_history": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "delta": 0.0,
+      "p_exact_mcnemar": 1.0,
+      "p_holm": 1.0,
+      "tool_calls": {
+        "ci_high": 0.0,
+        "ci_low": 0.0,
+        "delta": 0.0
+      }
+    },
+    "evolved_vs_static": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "delta": 0.0,
+      "p_exact_mcnemar": 1.0,
+      "p_holm": 1.0,
+      "tool_calls": {
+        "ci_high": 0.0,
+        "ci_low": 0.0,
+        "delta": 0.0
+      }
+    },
+    "full_evolved_vs_bare": {
+      "ci_high": 0.6666666666666666,
+      "ci_low": 0.0,
+      "delta": 0.3333333333333333,
+      "p_exact_mcnemar": 0.09873714670538902,
+      "p_holm": 0.29621144011616707,
+      "tool_calls": {
+        "ci_high": 0.6666666666666666,
+        "ci_low": 0.0,
+        "delta": 0.3333333333333333
+      }
+    },
+    "memory_plus_static_vs_static": {
+      "ci_high": 0.5,
+      "ci_low": 0.16666666666666666,
+      "delta": 0.3333333333333333,
+      "p_exact_mcnemar": 0.001953125,
+      "p_holm": 0.0078125,
+      "tool_calls": {
+        "ci_high": 1.0,
+        "ci_low": 0.3333333333333333,
+        "delta": 0.6666666666666666
+      }
+    }
+  },
+  "dataset_hash": "ca00deaa68541364e8c5bcd9ee028ed78f7df0680360d84e8c29f32edf4c5857",
+  "kind": "engineering_dry_run",
+  "partition": "dev"
+}

@@ -1,0 +1,25 @@
+{
+  "snapshot_date": "2026-08-17",
+  "currency": "CNY",
+  "usd_to_cny_guard_rate": 8.0,
+  "models": {
+    "deepseek-v4-flash": {
+      "input_per_million_cny": 3.52,
+      "output_per_million_cny": 10.56,
+      "pricing_basis": "peak cache-miss USD 0.44 input / USD 1.32 output, conservatively converted at 8 CNY/USD",
+      "source": "https://api-docs.deepseek.com/quick_start/pricing/"
+    },
+    "qwen3.7-plus-2026-05-26": {
+      "input_per_million_cny": 2.0,
+      "output_per_million_cny": 8.0,
+      "pricing_basis": "China Beijing, <=256K tokens, non-thinking input and output",
+      "source": "https://help.aliyun.com/en/model-studio/model-pricing"
+    }
+  },
+  "limits": {
+    "warning_cny": 80.0,
+    "hard_stop_cny": 100.0,
+    "qwen_max_share": 0.1,
+    "qwen_max_cases": 20
+  }
+}

@@ -1,0 +1,979 @@
+{
+  "case_count": 40,
+  "claim_eligible": false,
+  "kind": "mechanism_only_synthetic_ablation",
+  "rows": [
+    {
+      "case_id": "retrieval-00",
+      "correct": false,
+      "top1": "case-0-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-00",
+      "correct": false,
+      "top1": "case-0-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-00",
+      "correct": false,
+      "top1": "case-0-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-00",
+      "correct": true,
+      "top1": "case-0-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-01",
+      "correct": false,
+      "top1": "case-1-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-01",
+      "correct": false,
+      "top1": "case-1-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-01",
+      "correct": false,
+      "top1": "case-1-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-01",
+      "correct": true,
+      "top1": "case-1-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-02",
+      "correct": false,
+      "top1": "case-2-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-02",
+      "correct": false,
+      "top1": "case-2-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-02",
+      "correct": false,
+      "top1": "case-2-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-02",
+      "correct": true,
+      "top1": "case-2-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-03",
+      "correct": false,
+      "top1": "case-3-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-03",
+      "correct": false,
+      "top1": "case-3-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-03",
+      "correct": false,
+      "top1": "case-3-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-03",
+      "correct": true,
+      "top1": "case-3-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-04",
+      "correct": false,
+      "top1": "case-4-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-04",
+      "correct": false,
+      "top1": "case-4-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-04",
+      "correct": false,
+      "top1": "case-4-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-04",
+      "correct": true,
+      "top1": "case-4-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-05",
+      "correct": false,
+      "top1": "case-5-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-05",
+      "correct": false,
+      "top1": "case-5-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-05",
+      "correct": false,
+      "top1": "case-5-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-05",
+      "correct": true,
+      "top1": "case-5-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-06",
+      "correct": false,
+      "top1": "case-6-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-06",
+      "correct": false,
+      "top1": "case-6-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-06",
+      "correct": false,
+      "top1": "case-6-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-06",
+      "correct": true,
+      "top1": "case-6-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-07",
+      "correct": false,
+      "top1": "case-7-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-07",
+      "correct": false,
+      "top1": "case-7-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-07",
+      "correct": false,
+      "top1": "case-7-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-07",
+      "correct": true,
+      "top1": "case-7-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-08",
+      "correct": false,
+      "top1": "case-8-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-08",
+      "correct": false,
+      "top1": "case-8-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-08",
+      "correct": false,
+      "top1": "case-8-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-08",
+      "correct": true,
+      "top1": "case-8-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-09",
+      "correct": false,
+      "top1": "case-9-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-09",
+      "correct": false,
+      "top1": "case-9-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-09",
+      "correct": false,
+      "top1": "case-9-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-09",
+      "correct": true,
+      "top1": "case-9-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-10",
+      "correct": false,
+      "top1": "case-10-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-10",
+      "correct": false,
+      "top1": "case-10-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-10",
+      "correct": false,
+      "top1": "case-10-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-10",
+      "correct": true,
+      "top1": "case-10-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-11",
+      "correct": false,
+      "top1": "case-11-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-11",
+      "correct": false,
+      "top1": "case-11-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-11",
+      "correct": false,
+      "top1": "case-11-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-11",
+      "correct": true,
+      "top1": "case-11-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-12",
+      "correct": false,
+      "top1": "case-12-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-12",
+      "correct": false,
+      "top1": "case-12-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-12",
+      "correct": false,
+      "top1": "case-12-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-12",
+      "correct": true,
+      "top1": "case-12-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-13",
+      "correct": false,
+      "top1": "case-13-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-13",
+      "correct": false,
+      "top1": "case-13-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-13",
+      "correct": false,
+      "top1": "case-13-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-13",
+      "correct": true,
+      "top1": "case-13-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-14",
+      "correct": false,
+      "top1": "case-14-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-14",
+      "correct": false,
+      "top1": "case-14-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-14",
+      "correct": false,
+      "top1": "case-14-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-14",
+      "correct": true,
+      "top1": "case-14-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-15",
+      "correct": false,
+      "top1": "case-15-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-15",
+      "correct": false,
+      "top1": "case-15-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-15",
+      "correct": false,
+      "top1": "case-15-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-15",
+      "correct": true,
+      "top1": "case-15-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-16",
+      "correct": false,
+      "top1": "case-16-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-16",
+      "correct": false,
+      "top1": "case-16-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-16",
+      "correct": false,
+      "top1": "case-16-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-16",
+      "correct": true,
+      "top1": "case-16-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-17",
+      "correct": false,
+      "top1": "case-17-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-17",
+      "correct": false,
+      "top1": "case-17-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-17",
+      "correct": false,
+      "top1": "case-17-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-17",
+      "correct": true,
+      "top1": "case-17-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-18",
+      "correct": false,
+      "top1": "case-18-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-18",
+      "correct": false,
+      "top1": "case-18-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-18",
+      "correct": false,
+      "top1": "case-18-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-18",
+      "correct": true,
+      "top1": "case-18-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-19",
+      "correct": false,
+      "top1": "case-19-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-19",
+      "correct": false,
+      "top1": "case-19-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-19",
+      "correct": false,
+      "top1": "case-19-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-19",
+      "correct": true,
+      "top1": "case-19-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-20",
+      "correct": false,
+      "top1": "case-20-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-20",
+      "correct": false,
+      "top1": "case-20-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-20",
+      "correct": false,
+      "top1": "case-20-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-20",
+      "correct": true,
+      "top1": "case-20-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-21",
+      "correct": false,
+      "top1": "case-21-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-21",
+      "correct": false,
+      "top1": "case-21-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-21",
+      "correct": false,
+      "top1": "case-21-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-21",
+      "correct": true,
+      "top1": "case-21-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-22",
+      "correct": false,
+      "top1": "case-22-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-22",
+      "correct": false,
+      "top1": "case-22-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-22",
+      "correct": false,
+      "top1": "case-22-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-22",
+      "correct": true,
+      "top1": "case-22-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-23",
+      "correct": false,
+      "top1": "case-23-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-23",
+      "correct": false,
+      "top1": "case-23-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-23",
+      "correct": false,
+      "top1": "case-23-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-23",
+      "correct": true,
+      "top1": "case-23-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-24",
+      "correct": false,
+      "top1": "case-24-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-24",
+      "correct": false,
+      "top1": "case-24-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-24",
+      "correct": false,
+      "top1": "case-24-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-24",
+      "correct": true,
+      "top1": "case-24-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-25",
+      "correct": false,
+      "top1": "case-25-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-25",
+      "correct": false,
+      "top1": "case-25-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-25",
+      "correct": false,
+      "top1": "case-25-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-25",
+      "correct": true,
+      "top1": "case-25-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-26",
+      "correct": false,
+      "top1": "case-26-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-26",
+      "correct": false,
+      "top1": "case-26-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-26",
+      "correct": false,
+      "top1": "case-26-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-26",
+      "correct": true,
+      "top1": "case-26-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-27",
+      "correct": false,
+      "top1": "case-27-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-27",
+      "correct": false,
+      "top1": "case-27-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-27",
+      "correct": false,
+      "top1": "case-27-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-27",
+      "correct": true,
+      "top1": "case-27-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-28",
+      "correct": false,
+      "top1": "case-28-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-28",
+      "correct": false,
+      "top1": "case-28-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-28",
+      "correct": false,
+      "top1": "case-28-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-28",
+      "correct": true,
+      "top1": "case-28-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-29",
+      "correct": false,
+      "top1": "case-29-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-29",
+      "correct": false,
+      "top1": "case-29-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-29",
+      "correct": false,
+      "top1": "case-29-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-29",
+      "correct": true,
+      "top1": "case-29-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-30",
+      "correct": false,
+      "top1": "case-30-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-30",
+      "correct": false,
+      "top1": "case-30-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-30",
+      "correct": false,
+      "top1": "case-30-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-30",
+      "correct": true,
+      "top1": "case-30-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-31",
+      "correct": false,
+      "top1": "case-31-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-31",
+      "correct": false,
+      "top1": "case-31-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-31",
+      "correct": false,
+      "top1": "case-31-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-31",
+      "correct": true,
+      "top1": "case-31-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-32",
+      "correct": false,
+      "top1": "case-32-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-32",
+      "correct": false,
+      "top1": "case-32-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-32",
+      "correct": false,
+      "top1": "case-32-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-32",
+      "correct": true,
+      "top1": "case-32-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-33",
+      "correct": false,
+      "top1": "case-33-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-33",
+      "correct": false,
+      "top1": "case-33-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-33",
+      "correct": false,
+      "top1": "case-33-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-33",
+      "correct": true,
+      "top1": "case-33-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-34",
+      "correct": false,
+      "top1": "case-34-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-34",
+      "correct": false,
+      "top1": "case-34-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-34",
+      "correct": false,
+      "top1": "case-34-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-34",
+      "correct": true,
+      "top1": "case-34-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-35",
+      "correct": false,
+      "top1": "case-35-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-35",
+      "correct": false,
+      "top1": "case-35-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-35",
+      "correct": false,
+      "top1": "case-35-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-35",
+      "correct": true,
+      "top1": "case-35-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-36",
+      "correct": false,
+      "top1": "case-36-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-36",
+      "correct": false,
+      "top1": "case-36-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-36",
+      "correct": false,
+      "top1": "case-36-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-36",
+      "correct": true,
+      "top1": "case-36-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-37",
+      "correct": false,
+      "top1": "case-37-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-37",
+      "correct": false,
+      "top1": "case-37-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-37",
+      "correct": false,
+      "top1": "case-37-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-37",
+      "correct": true,
+      "top1": "case-37-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-38",
+      "correct": false,
+      "top1": "case-38-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-38",
+      "correct": false,
+      "top1": "case-38-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-38",
+      "correct": false,
+      "top1": "case-38-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-38",
+      "correct": true,
+      "top1": "case-38-current",
+      "variant": "type_aware"
+    },
+    {
+      "case_id": "retrieval-39",
+      "correct": false,
+      "top1": "case-39-stale",
+      "variant": "semantic_only"
+    },
+    {
+      "case_id": "retrieval-39",
+      "correct": false,
+      "top1": "case-39-wrong-type",
+      "variant": "temporal"
+    },
+    {
+      "case_id": "retrieval-39",
+      "correct": false,
+      "top1": "case-39-wrong-type",
+      "variant": "fixed_weight"
+    },
+    {
+      "case_id": "retrieval-39",
+      "correct": true,
+      "top1": "case-39-current",
+      "variant": "type_aware"
+    }
+  ],
+  "top1_accuracy": {
+    "fixed_weight": 0.0,
+    "semantic_only": 0.0,
+    "temporal": 0.0,
+    "type_aware": 1.0
+  },
+  "variants": [
+    "semantic_only",
+    "temporal",
+    "fixed_weight",
+    "type_aware"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "batch_id": "ssl-retry",
+  "dataset_hash": "ca00deaa68541364e8c5bcd9ee028ed78f7df0680360d84e8c29f32edf4c5857",
+  "kind": "formal_offline_skill_evolution",
+  "result": {
+    "active_version": "1.0.0",
+    "attempts": [
+      {
+        "decision": "generation",
+        "promote": false,
+        "reason": "ValueError: $ missing required keys: ['failure_cluster', 'rationale', 'patch']",
+        "round": 1,
+        "version": "1.0.0-e1"
+      },
+      {
+        "decision": "generation",
+        "promote": false,
+        "reason": "ValueError: $ missing required keys: ['failure_cluster', 'rationale', 'patch']",
+        "round": 2,
+        "version": "1.0.0-e2"
+      },
+      {
+        "decision": "generation",
+        "promote": false,
+        "reason": "ValueError: $ missing required keys: ['failure_cluster', 'rationale', 'patch']",
+        "round": 3,
+        "version": "1.0.0-e3"
+      }
+    ],
+    "status": "rejected"
+  },
+  "skill_id": "anomaly-root-cause",
+  "source_trace_ids": [
+    "s-train-000",
+    "s-train-003",
+    "s-train-006",
+    "s-train-009",
+    "s-train-012",
+    "s-train-015",
+    "s-train-018",
+    "s-train-021",
+    "s-train-024",
+    "s-train-027"
+  ],
+  "spent_cny": 0.26561568
+}

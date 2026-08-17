@@ -21,6 +21,7 @@ from pathlib import Path
 
 from langsmith import traceable
 
+from app.agent.decision import strategy_decision_from_payload
 from app.agent.state import AgentState
 from app.llm.client import get_llm
 from app.rag.retriever import RAGNotAvailableError, retrieve
@@ -30,6 +31,21 @@ from app.rag.retriever import RAGNotAvailableError, retrieve
 # test_graph 4/4 不挂(改造对下游透明的硬指标)。
 _LLM_PROMPT: str | None = None
 _PROMPT_PATH = Path(__file__).resolve().parents[1] / "prompts" / "strategy.txt"
+_STRATEGY_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "topic": {"type": "string"}, "diagnosis": {"type": "string"},
+        "recommendations": {"type": "array", "items": {"type": "string"}},
+        "experiment_metric": {"type": "string"},
+        "observation_window": {"type": "string"},
+        "success_threshold": {"type": "string"},
+        "assumptions": {"type": "array", "items": {"type": "string"}},
+        "limitations": {"type": "array", "items": {"type": "string"}},
+    },
+    "required": ["topic", "diagnosis", "recommendations", "experiment_metric",
+                 "observation_window", "success_threshold", "assumptions", "limitations"],
+    "additionalProperties": False,
+}
 
 
 def _get_prompt() -> str | None:
@@ -104,6 +120,7 @@ def strategy(state: AgentState) -> dict:
     recommendations: list[str] = []
     topic = ""
     generation = ""
+    provider_payload: dict = {}
 
     if not llm.is_stub and prompt is not None:
         try:
@@ -112,24 +129,38 @@ def strategy(state: AgentState) -> dict:
                 "profile": {k: profile.get(k, "") for k in ("category", "audience", "style")},
                 "recent_concerns": profile.get("recent_concerns", []),
                 "canonical_memory": profile["canonical_context"],
+                "baseline_result": (state.get("prior_action_results") or [None])[-1],
+                "selected_skill_id": (state.get("selected_skill") or {}).get("id"),
                 "kb_chunks": [
                     {"heading": c.metadata.get("heading", ""), "content": c.content}
                     for c in chunks
                 ],
             }, ensure_ascii=False)
-            # Strategy needs synthesis across profile and KB, so retain thinking mode.
-            raw = llm.chat(system=prompt, user=user_payload, thinking=True)
-            # 容错:LLM 可能给 ```json ... ``` 包裹(prompt L17 已禁,但兜底)
-            raw_stripped = raw.strip()
-            if raw_stripped.startswith("```"):
-                raw_stripped = raw_stripped.strip("`")
-                if raw_stripped.lower().startswith("json"):
-                    raw_stripped = raw_stripped[4:].lstrip()
-            parsed = json.loads(raw_stripped)
+            if hasattr(llm, "complete_json"):
+                # The decision is a bounded schema-filling task.  Non-thinking
+                # avoids 60s+ reasoning tails while the deterministic verifier,
+                # not hidden reasoning, decides whether the result is usable.
+                parsed, _completion = llm.complete_json(
+                    system=prompt, user=user_payload, json_schema=_STRATEGY_SCHEMA,
+                    thinking=False, timeout=30.0,
+                )
+            else:
+                # Compatibility seam for the historical injected test client.
+                raw = llm.chat(system=prompt, user=user_payload, thinking=False, timeout=30.0)
+                raw_stripped = raw.strip()
+                if raw_stripped.startswith("```"):
+                    raw_stripped = raw_stripped.strip("`")
+                    if raw_stripped.lower().startswith("json"):
+                        raw_stripped = raw_stripped[4:].lstrip()
+                parsed = json.loads(raw_stripped)
+            provider_payload = parsed
             topic = (parsed.get("topic") or "").strip()
             recommendations = [
                 str(r).strip() for r in parsed.get("recommendations", []) if str(r).strip()
             ][:5]
+            if (state.get("selected_skill") or {}).get("id") == "outcome-driven-experiment":
+                recommendations = recommendations[:1]
+            provider_payload = {**parsed, "recommendations": recommendations}
             if recommendations:
                 generation = "llm"
         except Exception as e:
@@ -156,6 +187,25 @@ def strategy(state: AgentState) -> dict:
 
     # ---- 组装 node_result(契约对齐)----
     headline = f"策略建议:{topic}"
+    memory_evidence = [
+        f"memory:{row['memory_id']}" for row in recalled if row.get("memory_id")
+    ]
+    tool_evidence = [
+        f"tool:prior:{action_index}:evidence:{evidence_index}"
+        for action_index, action_result in enumerate(state.get("prior_action_results", []))
+        for evidence_index, _ in enumerate(action_result.get("evidence", []))
+    ]
+    rag_evidence = [
+        f"rag:{c.source_doc}:{c.metadata.get('heading', '')}" for c in chunks
+    ]
+    evidence_refs = memory_evidence + tool_evidence + rag_evidence
+    if not evidence_refs:
+        evidence_refs = [f"runtime:{generation}"]
+    decision = strategy_decision_from_payload(
+        provider_payload,
+        evidence_refs=evidence_refs,
+        fallback_actions=recommendations,
+    )
     data = {
         # --- 契约必须保留(insight.py:24 兜底分支 + Insight LLM prompt 都会读)---
         "topic": topic,
@@ -169,6 +219,7 @@ def strategy(state: AgentState) -> dict:
         "profile_source": profile_source,
         "generation": generation,
         "rag_status": rag_status,
+        "decision": decision.to_dict(),
     }
     evidence = [
         f"商家画像:{profile.get('category', '')};{profile.get('audience', '')}",

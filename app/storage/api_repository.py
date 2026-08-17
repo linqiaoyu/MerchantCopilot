@@ -104,13 +104,16 @@ def list_thread_memories(conn: psycopg.Connection, thread_id: str) -> list[dict[
              "source_event_id": str(row[4])} for row in rows]
 
 
-def decide_memory(conn: psycopg.Connection, memory_id: str, *, approved: bool) -> dict[str, Any] | None:
+def decide_memory(
+    conn: psycopg.Connection, memory_id: str, *, approved: bool,
+    reason: str = "explicit_api_decision",
+) -> dict[str, Any] | None:
     status = "active" if approved else "rejected"
     with conn.cursor() as cur:
         cur.execute(
-            """UPDATE memory_facts SET status = %s WHERE memory_id = %s
+            """UPDATE memory_facts SET status = %s, approval_reason = %s WHERE memory_id = %s
                  RETURNING memory_id, status""",
-            (status, memory_id),
+            (status, reason, memory_id),
         )
         row = cur.fetchone()
     return {"memory_id": str(row[0]), "status": row[1]} if row else None

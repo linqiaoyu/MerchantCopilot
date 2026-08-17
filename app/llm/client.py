@@ -8,12 +8,15 @@ from __future__ import annotations
 
 import json
 import os
+import ssl
 import urllib.request
 from contextlib import contextmanager
 from contextvars import ContextVar
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterator
+
+import certifi
 
 if os.getenv("MERCHANTCOPILOT_DISABLE_LANGSMITH") == "1":
     # Offline evaluators have no consumer for remote traces.  Avoid importing
@@ -28,6 +31,18 @@ else:
 
 
 _usage_collector: ContextVar[list[dict[str, object]] | None] = ContextVar("llm_usage_collector", default=None)
+_trace_collector: ContextVar[list[dict[str, object]] | None] = ContextVar("llm_trace_collector", default=None)
+_TLS_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+
+
+def _urlopen(request: urllib.request.Request, timeout: float):
+    """Use the pinned CA bundle while retaining simple injected test doubles."""
+    try:
+        return urllib.request.urlopen(request, timeout=timeout, context=_TLS_CONTEXT)
+    except TypeError as exc:
+        if "unexpected keyword argument 'context'" not in str(exc):
+            raise
+        return urllib.request.urlopen(request, timeout=timeout)
 
 
 @contextmanager
@@ -43,6 +58,17 @@ def capture_usage() -> Iterator[list[dict[str, object]]]:
         yield rows
     finally:
         _usage_collector.reset(token)
+
+
+@contextmanager
+def capture_llm_trace() -> Iterator[list[dict[str, object]]]:
+    """Capture replayable model inputs/outputs without API keys or hidden reasoning."""
+    rows: list[dict[str, object]] = []
+    token = _trace_collector.set(rows)
+    try:
+        yield rows
+    finally:
+        _trace_collector.reset(token)
 
 
 def _record_usage(provider: str, model: str, usage: dict[str, int]) -> None:
@@ -174,17 +200,34 @@ class LLMClient:
     ) -> Completion:
         """Return text plus normalized token usage; provider failures are explicit."""
         payload = self._payload(system, user, temperature, thinking, json_schema, False)
-        with urllib.request.urlopen(self._request(payload, timeout), timeout=timeout) as resp:
-            body = json.loads(resp.read().decode("utf-8"))
+        trace = {
+            "provider": self.provider, "model": self.model, "system": system, "user": user,
+            "temperature": temperature, "thinking": thinking, "json_schema": json_schema,
+            "status": "requested",
+        }
+        traces = _trace_collector.get()
+        if traces is not None:
+            traces.append(trace)
+        try:
+            with _urlopen(self._request(payload, timeout), timeout) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+        except Exception as exc:
+            trace.update({"status": "failed", "error_type": type(exc).__name__})
+            raise
         message = body["choices"][0]["message"]
         text = (message.get("content") or "").strip()
         raw_usage = body.get("usage") or {}
+        if ("prompt_tokens" not in raw_usage or "completion_tokens" not in raw_usage) \
+                and _usage_collector.get() is not None:
+            trace.update({"status": "failed", "error_type": "MissingProviderUsage"})
+            raise ValueError("provider response is missing prompt/completion usage")
         usage = {
             key: int(raw_usage.get(key, 0) or 0)
             for key in ("prompt_tokens", "completion_tokens", "total_tokens")
         }
         self.last_usage = usage
         _record_usage(self.provider, self.model, usage)
+        trace.update({"status": "completed", "output": text, "usage": usage})
         return Completion(text=text, usage=usage, raw=body)
 
     @traceable(name="llm_chat", tags=["llm"])
@@ -200,8 +243,13 @@ class LLMClient:
                       temperature: float = 0.0, timeout: float = 20.0,
                       *, thinking: bool | None = None) -> tuple[dict, Completion]:
         """Request, parse and validate the small object schemas used by this project."""
+        schema_instruction = (
+            system + "\n\nThe response must conform exactly to this JSON Schema:\n"
+            + json.dumps(json_schema, ensure_ascii=False, sort_keys=True)
+        )
         completion = self.complete(
-            system, user, temperature, timeout, thinking=thinking, json_schema=json_schema
+            schema_instruction, user, temperature, timeout,
+            thinking=thinking, json_schema=json_schema
         )
         try:
             value = json.loads(completion.text)
@@ -216,7 +264,7 @@ class LLMClient:
                json_schema: dict | None = None) -> Iterator[str]:
         """Yield content deltas from an OpenAI-compatible SSE response."""
         payload = self._payload(system, user, temperature, thinking, json_schema, True)
-        with urllib.request.urlopen(self._request(payload, timeout), timeout=timeout) as resp:
+        with _urlopen(self._request(payload, timeout), timeout) as resp:
             for raw_line in resp:
                 line = raw_line.decode("utf-8").strip()
                 if not line.startswith("data:"):

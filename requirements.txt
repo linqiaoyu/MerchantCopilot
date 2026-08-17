@@ -22,3 +22,6 @@ langgraph-checkpoint-postgres==3.1.0
 # v2 HTTP 服务边界
 fastapi==0.141.1
 uvicorn==0.47.0
+# v3 声明式 Skill DSL；safe_load 只解析数据，不构造可执行对象
+PyYAML==6.0.3
+certifi==2026.7.22

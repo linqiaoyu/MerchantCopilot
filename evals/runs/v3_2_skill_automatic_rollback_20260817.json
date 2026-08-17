@@ -1,0 +1,92 @@
+{
+  "engine_result": {
+    "active_version": "1.0.0",
+    "attempts": [
+      {
+        "decision": "quality",
+        "metrics": {
+          "mcnemar_p": 0.001953125,
+          "replans_reduction": 0.0,
+          "success_ci_high": 0.5049070722700375,
+          "success_ci_low": 0.16175959439662918,
+          "success_delta": 0.3333333333333333,
+          "tokens_reduction": 0.0,
+          "tool_calls_reduction": 0.0
+        },
+        "promote": true,
+        "rolled_back": true,
+        "round": 1,
+        "version": "1.0.0-e1"
+      }
+    ],
+    "status": "rejected"
+  },
+  "events": [
+    {
+      "event_type": "generated",
+      "payload": {
+        "generation": {
+          "source": "controlled regression injection"
+        },
+        "patch": [
+          {
+            "op": "replace",
+            "path": "/description",
+            "value": "regressing candidate"
+          }
+        ],
+        "round": 1,
+        "source_trace_ids": [
+          "rollback-train-1"
+        ]
+      },
+      "version": "1.0.0-e1"
+    },
+    {
+      "event_type": "promoted",
+      "payload": {
+        "metrics": {
+          "dev": {
+            "mcnemar_p": 0.001953125,
+            "replans_reduction": 0.0,
+            "success_ci_high": 0.5049070722700375,
+            "success_ci_low": 0.16175959439662918,
+            "success_delta": 0.3333333333333333,
+            "tokens_reduction": 0.0,
+            "tool_calls_reduction": 0.0
+          },
+          "regression": {
+            "mcnemar_p": 1.9073486328125e-06,
+            "replans_reduction": 0.0,
+            "success_ci_high": -1.0,
+            "success_ci_low": -1.0,
+            "success_delta": -1.0,
+            "tokens_reduction": 0.0,
+            "tool_calls_reduction": 0.0
+          }
+        }
+      },
+      "version": "1.0.0-e1"
+    },
+    {
+      "event_type": "rolled_back",
+      "payload": {
+        "parent_version": "1.0.0",
+        "reason": "automatic regression gate"
+      },
+      "version": "1.0.0-e1"
+    }
+  ],
+  "kind": "automatic_rollback_demo",
+  "skill_id": "rollback-demo-20260817",
+  "statuses_before_demo_archive": [
+    {
+      "status": "active",
+      "version": "1.0.0"
+    },
+    {
+      "status": "rolled_back",
+      "version": "1.0.0-e1"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 """Fail closed on common credential patterns without printing matched values."""
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -9,7 +10,10 @@ ROOT = Path(__file__).resolve().parents[1]
 # Local interpreter environments are generated, ignored, and can contain many
 # third-party source files.  They are not repository deliverables and scanning
 # them both delays the guard and obscures the source-tree result.
-EXCLUDED_PARTS = {".git", ".venv", ".venv312", ".pytest_cache", "_drafts", "__pycache__"}
+EXCLUDED_PARTS = {
+    ".git", ".venv", ".venv-v3", ".venv312", ".pytest_cache",
+    ".dart_tool", ".gradle", "chroma", "mem0_chroma", "_drafts", "__pycache__",
+}
 PATTERNS = {
     "private_key": re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
     "api_key_assignment": re.compile(r"(?i)(api[_-]?key|access[_-]?token|secret)\s*[=:]\s*['\"](?!['\"])[^'\"\s]{12,}"),
@@ -23,22 +27,32 @@ LOCAL_DEMO_DSNS = (
 
 def scan(root: Path = ROOT) -> list[str]:
     findings: list[str] = []
-    for path in root.rglob("*"):
-        if not path.is_file() or EXCLUDED_PARTS.intersection(path.parts) or path.name == ".env":
-            continue
-        try:
-            text = path.read_text(encoding="utf-8")
-        except UnicodeDecodeError:
-            continue
-        for name, pattern in PATTERNS.items():
-            # 该字面值是 Compose 中的受控本地演示账号，不是外部凭证；其余 DSN
-            # （包括写在文档或 README 中的真实连接串）仍应被拦截。
-            candidate = text
-            if name == "postgres_dsn_with_password":
-                for local_dsn in LOCAL_DEMO_DSNS:
-                    candidate = candidate.replace(local_dsn, "")
-            if pattern.search(candidate):
-                findings.append(f"{path.relative_to(root)}: {name}")
+    # Prune ignored/generated trees before walking them.  Besides being faster,
+    # this avoids blocking on local CloudDocs placeholders inside old Flutter
+    # caches after Colima or build artifacts have been removed.
+    for current, directories, filenames in os.walk(root):
+        current_path = Path(current)
+        directories[:] = [
+            name for name in directories
+            if name not in EXCLUDED_PARTS
+            and not (current_path == root / "mobile" and name == "build")
+        ]
+        for filename in filenames:
+            path = current_path / filename
+            if filename == ".env":
+                continue
+            try:
+                text = path.read_text(encoding="utf-8")
+            except (UnicodeDecodeError, OSError):
+                continue
+            for name, pattern in PATTERNS.items():
+                # 该字面值是受控本地演示账号，不是外部凭证；其余 DSN 仍拦截。
+                candidate = text
+                if name == "postgres_dsn_with_password":
+                    for local_dsn in LOCAL_DEMO_DSNS:
+                        candidate = candidate.replace(local_dsn, "")
+                if pattern.search(candidate):
+                    findings.append(f"{path.relative_to(root)}: {name}")
     return findings
 
 

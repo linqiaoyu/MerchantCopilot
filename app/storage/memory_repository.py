@@ -14,7 +14,7 @@ from uuid import UUID, uuid4
 
 import psycopg
 
-from app.memory.policy import CanonicalFact, MemoryCandidate, gate_candidate
+from app.memory.policy import CanonicalFact, MemoryCandidate, gate_candidate, resolved_fact_type
 from app.memory.retriever import RetrievedMemory
 
 
@@ -45,12 +45,15 @@ def append_event(
     with conn.cursor() as cur:
         cur.execute(
             """INSERT INTO memory_events
-                 (event_id, run_id, merchant_id, event_kind, subject, predicate, value_json, source_type, source_ref)
-               VALUES (%s, %s, %s, %s, %s, %s, %s::jsonb, %s, %s)
+                 (event_id, run_id, merchant_id, event_kind, subject, predicate, value_json, source_type, source_ref,
+                  thread_id, occurred_at, evidence_refs, schema_version, effective_from, effective_to)
+               VALUES (%s, %s, %s, %s, %s, %s, %s::jsonb, %s, %s, %s, COALESCE(%s, now()), %s::jsonb, %s, %s, %s)
                ON CONFLICT (run_id, source_ref) DO UPDATE SET source_ref = EXCLUDED.source_ref
                RETURNING event_id""",
             (event_id, run_id, merchant_id, candidate.kind, candidate.subject, candidate.predicate,
-             json.dumps(candidate.value), candidate.source_type, source_ref),
+             json.dumps(candidate.value), candidate.source_type, source_ref, candidate.thread_id,
+             candidate.observed_at, json.dumps(list(candidate.evidence_refs), ensure_ascii=False), candidate.schema_version,
+             candidate.effective_from, candidate.effective_to),
         )
         return cur.fetchone()[0]
 
@@ -67,21 +70,65 @@ def materialize_fact(
         if status == "active":
             # 行锁无法覆盖“首条事实尚不存在”的竞态；以语义键序列化同一
             # merchant/subject/predicate 的替换，再由 003 的部分唯一索引兜底。
-            semantic_key = f"{merchant_id}\x1f{candidate.subject}\x1f{candidate.predicate}"
-            cur.execute("SELECT pg_advisory_xact_lock(hashtextextended(%s, 0))", (semantic_key,))
-            cur.execute(
-                """UPDATE memory_facts SET status = 'superseded', valid_to = %s
-                   WHERE merchant_id = %s AND subject = %s AND predicate = %s
-                     AND status = 'active' AND valid_to IS NULL""",
-                (now, merchant_id, candidate.subject, candidate.predicate),
+            semantic_key = (
+                f"{merchant_id}\x1f{candidate.subject}\x1f{candidate.predicate}\x1f"
+                f"{candidate.effective_from}\x1f{candidate.effective_to}"
             )
+            cur.execute("SELECT pg_advisory_xact_lock(hashtextextended(%s, 0))", (semantic_key,))
+            if candidate.effective_from is None:
+                cur.execute(
+                    """UPDATE memory_facts SET status = 'superseded', valid_to = %s
+                       WHERE merchant_id = %s AND subject = %s AND predicate = %s
+                         AND status = 'active' AND valid_to IS NULL
+                         AND effective_from IS NULL AND effective_to IS NULL""",
+                    (now, merchant_id, candidate.subject, candidate.predicate),
+                )
+            else:
+                cur.execute(
+                    """UPDATE memory_facts SET status = 'superseded', valid_to = %s
+                       WHERE merchant_id = %s AND subject = %s AND predicate = %s
+                         AND status = 'active' AND valid_to IS NULL
+                         AND effective_from IS NOT NULL AND effective_to IS NOT NULL
+                         AND tstzrange(effective_from, effective_to, '[)')
+                             && tstzrange(%s, %s, '[)')""",
+                    (now, merchant_id, candidate.subject, candidate.predicate,
+                     candidate.effective_from, candidate.effective_to),
+                )
+        fact_type = resolved_fact_type(candidate)
+        decision_ids: list[str] = []
+        if fact_type == "outcome":
+            if not isinstance(candidate.value, dict):
+                raise ValueError("outcome value must contain decision_memory_ids")
+            decision_ids = [str(item) for item in candidate.value.get("decision_memory_ids", [])]
+            if not decision_ids:
+                raise ValueError("outcome must link at least one executed decision")
+            cur.execute(
+                """SELECT memory_id FROM memory_facts
+                    WHERE memory_id = ANY(%s::uuid[]) AND fact_type = 'decision' AND status = 'active'
+                      AND value_json->>'execution_status' = 'executed'""",
+                (decision_ids,),
+            )
+            if {str(row[0]) for row in cur.fetchall()} != set(decision_ids):
+                raise ValueError("outcome cannot claim an unexecuted decision")
         cur.execute(
             """INSERT INTO memory_facts
-                 (memory_id, source_event_id, merchant_id, memory_kind, subject, predicate, value_json, content, status, valid_from)
-               VALUES (%s, %s, %s, %s, %s, %s, %s::jsonb, %s, %s, %s)""",
+                 (memory_id, source_event_id, merchant_id, memory_kind, subject, predicate, value_json, content,
+                  status, valid_from, fact_type, scope_type, scope_id, observed_at, truth_confidence,
+                  utility_score, contradiction_group_id, approval_reason, effective_from, effective_to)
+               VALUES (%s, %s, %s, %s, %s, %s, %s::jsonb, %s, %s, %s, %s, %s, %s, COALESCE(%s, %s), %s, %s, %s, %s, %s, %s)""",
             (memory_id, source_event_id, merchant_id, candidate.kind, candidate.subject, candidate.predicate,
-             json.dumps(candidate.value), content, status, now),
+             json.dumps(candidate.value), content, status, now, fact_type, candidate.scope_type,
+             candidate.scope_id or merchant_id, candidate.observed_at, now, candidate.truth_confidence,
+             candidate.utility_score, candidate.contradiction_group_id, candidate.approval_reason,
+             candidate.effective_from, candidate.effective_to),
         )
+        for decision_id in decision_ids:
+            cur.execute(
+                """INSERT INTO memory_links (link_id, from_memory_id, to_memory_id, relation)
+                   VALUES (%s, %s, %s, 'decision_outcome')
+                   ON CONFLICT (from_memory_id, to_memory_id, relation) DO NOTHING""",
+                (uuid4(), UUID(decision_id), memory_id),
+            )
     return CanonicalFact(memory_id=str(memory_id), subject=candidate.subject, predicate=candidate.predicate,
                          value=candidate.value, status=status, source_event_id=str(source_event_id))
 
@@ -141,24 +188,63 @@ def compensate_pending_indexes(
 
 def fetch_active_memories(
     conn: psycopg.Connection, *, merchant_id: str, query_embedding: list[float], candidate_limit: int = 20,
+    fact_types: list[str] | None = None, thread_id: str | None = None,
+    effective_from: datetime | None = None, effective_to: datetime | None = None,
 ) -> list[RetrievedMemory]:
     """Fetch only current canonical facts; caller applies the fixed context budgets."""
     vector = "[" + ",".join(str(value) for value in query_embedding) + "]"
     with conn.cursor() as cur:
         cur.execute(
             """SELECT memory_id, source_event_id, memory_kind, content, subject, predicate,
-                      1 - (embedding <=> %s::vector) AS semantic, importance, confidence, valid_from, valid_to, status
+                      1 - (embedding <=> %s::vector) AS semantic, importance, confidence, valid_from, valid_to, status,
+                      fact_type, scope_type, scope_id, truth_confidence, utility_score, observed_at,
+                      effective_from, effective_to
                  FROM memory_facts
                 WHERE merchant_id = %s AND status = 'active' AND valid_to IS NULL AND embedding IS NOT NULL
+                  AND (%s::text[] IS NULL OR fact_type = ANY(%s::text[]))
+                  AND (scope_type = 'merchant' OR (scope_type = 'thread' AND scope_id = %s))
+                  AND (%s::timestamptz IS NULL OR effective_from IS NULL
+                       OR tstzrange(effective_from, effective_to, '[)')
+                          && tstzrange(%s::timestamptz, %s::timestamptz, '[)'))
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s""",
-            (vector, merchant_id, vector, candidate_limit),
+            (vector, merchant_id, fact_types, fact_types, thread_id,
+             effective_from, effective_from, effective_to, vector, candidate_limit),
         )
         rows = cur.fetchall()
-    return [
-        RetrievedMemory(memory_id=str(row[0]), source_event_id=str(row[1]), kind=row[2], content=row[3],
-                         subject=row[4], predicate=row[5], semantic=float(row[6]),
-                         importance=float(row[7]), confidence=float(row[8]),
-                         valid_from=row[9], valid_to=row[10], status=row[11])
-        for row in rows
-    ]
+    memories = []
+    for row in rows:
+        memories.append(RetrievedMemory(
+            memory_id=str(row[0]), source_event_id=str(row[1]), kind=row[2], content=row[3],
+            subject=row[4], predicate=row[5], semantic=float(row[6]),
+            importance=float(row[7]), confidence=float(row[8]),
+            valid_from=row[9], valid_to=row[10], status=row[11],
+            fact_type=row[12] if len(row) > 12 else "observation",
+            scope_type=row[13] if len(row) > 13 else "merchant",
+            scope_id=(row[14] or "") if len(row) > 14 else merchant_id,
+            truth_confidence=float(row[15]) if len(row) > 15 else float(row[8]),
+            utility_score=float(row[16]) if len(row) > 16 else 0.0,
+            observed_at=row[17] if len(row) > 17 else row[9],
+            effective_from=row[18] if len(row) > 18 else None,
+            effective_to=row[19] if len(row) > 19 else None,
+        ))
+    return memories
+
+
+def link_memories(
+    conn: psycopg.Connection, *, from_memory_id: UUID, to_memory_id: UUID,
+    relation: str, link_id: UUID | None = None,
+) -> UUID:
+    if relation not in {"supersedes", "contradicts", "derived_from", "decision_outcome"}:
+        raise ValueError("unsupported memory relation")
+    link_id = link_id or uuid4()
+    with conn.cursor() as cur:
+        cur.execute(
+            """INSERT INTO memory_links (link_id, from_memory_id, to_memory_id, relation)
+               VALUES (%s, %s, %s, %s)
+               ON CONFLICT (from_memory_id, to_memory_id, relation)
+               DO UPDATE SET relation = EXCLUDED.relation
+               RETURNING link_id""",
+            (link_id, from_memory_id, to_memory_id, relation),
+        )
+        return cur.fetchone()[0]

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import re
 
 MIN_TOPIC_RELEVANCE = 0.30
@@ -22,12 +22,68 @@ class RetrievedMemory:
     status: str = "active"
     subject: str = ""
     predicate: str = ""
+    fact_type: str = "observation"
+    scope_type: str = "merchant"
+    scope_id: str = ""
+    truth_confidence: float = 1.0
+    utility_score: float = 0.0
+    observed_at: datetime | None = None
+    effective_from: datetime | None = None
+    effective_to: datetime | None = None
+
+
+def build_query_plan(query: str, intent: str = "") -> dict:
+    """Create deterministic hard filters before vector retrieval."""
+    lower = query.lower()
+    requested_types: list[str] = []
+    if any(term in lower for term in ("效果", "结果", "复盘", "outcome")):
+        requested_types.extend(["decision", "outcome"])
+    if any(term in lower for term in ("偏好", "客群", "类目", "画像")):
+        requested_types.extend(["user_fact", "observation"])
+    if intent == "strategy" or any(term in lower for term in ("建议", "策略", "怎么", "实验")):
+        requested_types.extend(["user_fact", "observation", "decision", "outcome"])
+    raw_dates = re.findall(r"\d{4}-\d{1,2}-\d{1,2}", query)
+    parsed_dates = sorted(datetime.fromisoformat(item).replace(tzinfo=timezone.utc) for item in raw_dates)
+    effective_window = None
+    if parsed_dates:
+        effective_window = {
+            "start": parsed_dates[0].isoformat(),
+            "end": (parsed_dates[-1] + timedelta(days=1)).isoformat(),
+        }
+    return {
+        "fact_types": list(dict.fromkeys(requested_types)),
+        "scope_types": ["merchant", "thread"],
+        "requires_temporal_validity": True,
+        "effective_window": effective_window,
+    }
+
+
+def score_variant(memory: RetrievedMemory, now: datetime, variant: str = "type_aware",
+                  requested_types: set[str] | None = None) -> float:
+    age_days = max((now - memory.valid_from).total_seconds() / 86400, 0)
+    recency = max(0.0, 1.0 - age_days / 90)
+    confidence = memory.truth_confidence if memory.truth_confidence is not None else memory.confidence
+    if variant == "semantic_only":
+        return memory.semantic
+    if variant == "temporal":
+        return .70 * memory.semantic + .30 * recency
+    if variant == "fixed_weight":
+        return .55 * memory.semantic + .20 * recency + .15 * memory.importance + .10 * confidence
+    if variant == "type_aware":
+        type_match = 1.0 if requested_types and memory.fact_type in requested_types else 0.0
+        return (.47 * memory.semantic + .18 * recency + .12 * memory.importance
+                + .10 * confidence + .08 * memory.utility_score + .05 * type_match)
+    raise ValueError(f"unknown retrieval variant: {variant}")
 
 
 def score(memory: RetrievedMemory, now: datetime) -> float:
-    age_days = max((now - memory.valid_from).total_seconds() / 86400, 0)
-    recency = max(0.0, 1.0 - age_days / 90)
-    return .55 * memory.semantic + .20 * recency + .15 * memory.importance + .10 * memory.confidence
+    return score_variant(memory, now)
+
+
+def rank_ablation(memories: list[RetrievedMemory], now: datetime, *, variant: str,
+                  requested_types: set[str] | None = None) -> list[RetrievedMemory]:
+    eligible = [item for item in memories if item.status == "active" and item.valid_to is None]
+    return sorted(eligible, key=lambda item: score_variant(item, now, variant, requested_types), reverse=True)
 
 
 def _topic_tokens(text: str) -> set[str]:
@@ -79,5 +135,9 @@ def assemble_context(memories: list[RetrievedMemory], now: datetime, query: str 
             content = memory.content
         rows.append({"memory_id": memory.memory_id, "source_event_id": memory.source_event_id,
                      "kind": memory.kind, "subject": memory.subject,
-                     "predicate": memory.predicate, "content": content})
+                     "predicate": memory.predicate, "fact_type": memory.fact_type,
+                     "scope_type": memory.scope_type, "scope_id": memory.scope_id,
+                     "effective_from": memory.effective_from.isoformat() if memory.effective_from else None,
+                     "effective_to": memory.effective_to.isoformat() if memory.effective_to else None,
+                     "content": content})
     return rows

@@ -1,0 +1,5875 @@
+{
+  "arms": [
+    "bare",
+    "memory_only",
+    "static_skill_only",
+    "canonical_memory_static_skill",
+    "canonical_memory_evolved_skill",
+    "raw_history_static_skill"
+  ],
+  "dataset_hash": "518a3e05ecc6aedb1e117a135a462529beed0229ef042c0950ad3587785b5619",
+  "kind": "engineering_dry_run",
+  "partition": "dev",
+  "rows": [
+    {
+      "arm": "bare",
+      "case_id": "s-dev-000",
+      "error": null,
+      "latency_ms": 0.004250032361596823,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-000",
+      "error": null,
+      "latency_ms": 0.003999972250312567,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-000",
+      "error": null,
+      "latency_ms": 5.709500052034855,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-000",
+      "error": null,
+      "latency_ms": 4.150249995291233,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-000",
+      "error": null,
+      "latency_ms": 18.998707993887365,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-000",
+      "error": null,
+      "latency_ms": 5.153957987204194,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-001",
+      "error": null,
+      "latency_ms": 0.0034589902497828007,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-001",
+      "error": null,
+      "latency_ms": 0.002500019036233425,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-001",
+      "error": null,
+      "latency_ms": 6.418333039619029,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-001",
+      "error": null,
+      "latency_ms": 5.94012497458607,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-001",
+      "error": null,
+      "latency_ms": 8.22445802623406,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-001",
+      "error": null,
+      "latency_ms": 6.287999975029379,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-002",
+      "error": null,
+      "latency_ms": 0.00400003045797348,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-002",
+      "error": null,
+      "latency_ms": 0.0026659690774977207,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-002",
+      "error": null,
+      "latency_ms": 6.250875012483448,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-002",
+      "error": null,
+      "latency_ms": 5.669499980285764,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-002",
+      "error": null,
+      "latency_ms": 8.670666022226214,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-002",
+      "error": null,
+      "latency_ms": 6.40104099875316,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-003",
+      "error": null,
+      "latency_ms": 0.004250032361596823,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-003",
+      "error": null,
+      "latency_ms": 0.002458051312714815,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-003",
+      "error": null,
+      "latency_ms": 4.661125014536083,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-003",
+      "error": null,
+      "latency_ms": 4.31241694604978,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-003",
+      "error": null,
+      "latency_ms": 8.262124960310757,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-003",
+      "error": null,
+      "latency_ms": 4.9172500148415565,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-004",
+      "error": null,
+      "latency_ms": 0.003125052899122238,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-004",
+      "error": null,
+      "latency_ms": 0.0022909953258931637,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-004",
+      "error": null,
+      "latency_ms": 6.153333000838757,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-004",
+      "error": null,
+      "latency_ms": 5.631166975945234,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-004",
+      "error": null,
+      "latency_ms": 8.111124974675477,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-004",
+      "error": null,
+      "latency_ms": 6.251665996387601,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-005",
+      "error": null,
+      "latency_ms": 0.003334018401801586,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-005",
+      "error": null,
+      "latency_ms": 0.0024170149117708206,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-005",
+      "error": null,
+      "latency_ms": 6.483208038844168,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-005",
+      "error": null,
+      "latency_ms": 5.647458019666374,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-005",
+      "error": null,
+      "latency_ms": 8.320000022649765,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-005",
+      "error": null,
+      "latency_ms": 6.133000017143786,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-006",
+      "error": null,
+      "latency_ms": 0.003167020622640848,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-006",
+      "error": null,
+      "latency_ms": 0.002167013008147478,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-006",
+      "error": null,
+      "latency_ms": 4.524999996647239,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-006",
+      "error": null,
+      "latency_ms": 4.278999986127019,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-006",
+      "error": null,
+      "latency_ms": 8.376125013455749,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-006",
+      "error": null,
+      "latency_ms": 4.876999999396503,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-007",
+      "error": null,
+      "latency_ms": 0.00300002284348011,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-007",
+      "error": null,
+      "latency_ms": 0.002292043063789606,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-007",
+      "error": null,
+      "latency_ms": 6.173959001898766,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-007",
+      "error": null,
+      "latency_ms": 5.698541994206607,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-007",
+      "error": null,
+      "latency_ms": 10.210291016846895,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-007",
+      "error": null,
+      "latency_ms": 6.550165999215096,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-008",
+      "error": null,
+      "latency_ms": 0.003334018401801586,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-008",
+      "error": null,
+      "latency_ms": 0.002374988980591297,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-008",
+      "error": null,
+      "latency_ms": 6.226375000551343,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-008",
+      "error": null,
+      "latency_ms": 5.680291971657425,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-008",
+      "error": null,
+      "latency_ms": 112.06383298849687,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-008",
+      "error": null,
+      "latency_ms": 7.868540997151285,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-009",
+      "error": null,
+      "latency_ms": 0.004500034265220165,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-009",
+      "error": null,
+      "latency_ms": 0.003249966539442539,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-009",
+      "error": null,
+      "latency_ms": 5.056582973338664,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-009",
+      "error": null,
+      "latency_ms": 4.779457987751812,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-009",
+      "error": null,
+      "latency_ms": 73.6884999787435,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-009",
+      "error": null,
+      "latency_ms": 6.024250003974885,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-010",
+      "error": null,
+      "latency_ms": 0.004875008016824722,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-010",
+      "error": null,
+      "latency_ms": 0.0029579969123005867,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-010",
+      "error": null,
+      "latency_ms": 6.876708008348942,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-010",
+      "error": null,
+      "latency_ms": 6.393082963768393,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-010",
+      "error": null,
+      "latency_ms": 78.24549998622388,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-010",
+      "error": null,
+      "latency_ms": 7.99212499987334,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-011",
+      "error": null,
+      "latency_ms": 0.004416040610522032,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-011",
+      "error": null,
+      "latency_ms": 0.0030830269679427147,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-011",
+      "error": null,
+      "latency_ms": 6.694832991342992,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-011",
+      "error": null,
+      "latency_ms": 6.191125023178756,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-011",
+      "error": null,
+      "latency_ms": 13.086625025607646,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-011",
+      "error": null,
+      "latency_ms": 6.656874960754067,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-012",
+      "error": null,
+      "latency_ms": 0.003708992153406143,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-012",
+      "error": null,
+      "latency_ms": 0.004832982085645199,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-012",
+      "error": null,
+      "latency_ms": 4.789250029716641,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-012",
+      "error": null,
+      "latency_ms": 4.36041597276926,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-012",
+      "error": null,
+      "latency_ms": 14.001665986143053,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-012",
+      "error": null,
+      "latency_ms": 5.165999988093972,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-013",
+      "error": null,
+      "latency_ms": 0.0031249946914613247,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-013",
+      "error": null,
+      "latency_ms": 0.0025840126909315586,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-013",
+      "error": null,
+      "latency_ms": 6.1840409762226045,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-013",
+      "error": null,
+      "latency_ms": 5.7475840440019965,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-013",
+      "error": null,
+      "latency_ms": 8.643750043120235,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-013",
+      "error": null,
+      "latency_ms": 6.17395801236853,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-014",
+      "error": null,
+      "latency_ms": 0.0035829725675284863,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-014",
+      "error": null,
+      "latency_ms": 0.002707995008677244,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-014",
+      "error": null,
+      "latency_ms": 5.873457994312048,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-014",
+      "error": null,
+      "latency_ms": 5.635500012431294,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-014",
+      "error": null,
+      "latency_ms": 8.554458967410028,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-014",
+      "error": null,
+      "latency_ms": 6.138416996691376,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-015",
+      "error": null,
+      "latency_ms": 0.003374996595084667,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-015",
+      "error": null,
+      "latency_ms": 0.0024170149117708206,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-015",
+      "error": null,
+      "latency_ms": 4.309208015911281,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-015",
+      "error": null,
+      "latency_ms": 4.290790995582938,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-015",
+      "error": null,
+      "latency_ms": 8.426417014561594,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-015",
+      "error": null,
+      "latency_ms": 4.729540960397571,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-016",
+      "error": null,
+      "latency_ms": 0.0030420487746596336,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-016",
+      "error": null,
+      "latency_ms": 0.0022500171326100826,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-016",
+      "error": null,
+      "latency_ms": 5.668250028975308,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-016",
+      "error": null,
+      "latency_ms": 5.60275005409494,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-016",
+      "error": null,
+      "latency_ms": 8.870749967172742,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-016",
+      "error": null,
+      "latency_ms": 6.168583000544459,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-017",
+      "error": null,
+      "latency_ms": 0.0035420525819063187,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-017",
+      "error": null,
+      "latency_ms": 0.002249958924949169,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-017",
+      "error": null,
+      "latency_ms": 5.738458014093339,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-017",
+      "error": null,
+      "latency_ms": 5.580833007115871,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-017",
+      "error": null,
+      "latency_ms": 9.229749965015799,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-017",
+      "error": null,
+      "latency_ms": 6.192667002324015,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-018",
+      "error": null,
+      "latency_ms": 0.005375011824071407,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-018",
+      "error": null,
+      "latency_ms": 0.003374996595084667,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-018",
+      "error": null,
+      "latency_ms": 4.509041027631611,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-018",
+      "error": null,
+      "latency_ms": 4.315208992920816,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-018",
+      "error": null,
+      "latency_ms": 8.678624988533556,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-018",
+      "error": null,
+      "latency_ms": 4.796041990630329,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-019",
+      "error": null,
+      "latency_ms": 0.0031249946914613247,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-019",
+      "error": null,
+      "latency_ms": 0.0026249908842146397,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-019",
+      "error": null,
+      "latency_ms": 5.654084030538797,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-019",
+      "error": null,
+      "latency_ms": 5.616625014226884,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-019",
+      "error": null,
+      "latency_ms": 8.195417001843452,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-019",
+      "error": null,
+      "latency_ms": 6.150291010271758,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-020",
+      "error": null,
+      "latency_ms": 0.004125002305954695,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-020",
+      "error": null,
+      "latency_ms": 0.002874992787837982,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-020",
+      "error": null,
+      "latency_ms": 5.784583976492286,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-020",
+      "error": null,
+      "latency_ms": 5.630958010442555,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-020",
+      "error": null,
+      "latency_ms": 8.142874983604997,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-020",
+      "error": null,
+      "latency_ms": 6.106499989982694,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-021",
+      "error": null,
+      "latency_ms": 0.0032910029403865337,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-021",
+      "error": null,
+      "latency_ms": 0.0022919848561286926,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-021",
+      "error": null,
+      "latency_ms": 4.3239580118097365,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-021",
+      "error": null,
+      "latency_ms": 4.244750016368926,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-021",
+      "error": null,
+      "latency_ms": 8.358624996617436,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-021",
+      "error": null,
+      "latency_ms": 4.7440420021303,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-022",
+      "error": null,
+      "latency_ms": 0.0031249946914613247,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-022",
+      "error": null,
+      "latency_ms": 0.002167013008147478,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-022",
+      "error": null,
+      "latency_ms": 5.659667018335313,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-022",
+      "error": null,
+      "latency_ms": 5.534166004508734,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-022",
+      "error": null,
+      "latency_ms": 9.638791030738503,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-022",
+      "error": null,
+      "latency_ms": 6.210957944858819,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-023",
+      "error": null,
+      "latency_ms": 0.003500026650726795,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-023",
+      "error": null,
+      "latency_ms": 0.002249958924949169,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-023",
+      "error": null,
+      "latency_ms": 5.817333003506064,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-023",
+      "error": null,
+      "latency_ms": 5.744166963268071,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-023",
+      "error": null,
+      "latency_ms": 8.832416962832212,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-023",
+      "error": null,
+      "latency_ms": 6.258707959204912,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-024",
+      "error": null,
+      "latency_ms": 0.004082976374775171,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-024",
+      "error": null,
+      "latency_ms": 0.002749962732195854,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-024",
+      "error": null,
+      "latency_ms": 4.6196249895729125,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-024",
+      "error": null,
+      "latency_ms": 4.465875041205436,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-024",
+      "error": null,
+      "latency_ms": 8.962374995462596,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-024",
+      "error": null,
+      "latency_ms": 4.871917015407234,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-025",
+      "error": null,
+      "latency_ms": 0.0034589902497828007,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-025",
+      "error": null,
+      "latency_ms": 0.0024170149117708206,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-025",
+      "error": null,
+      "latency_ms": 5.719167005736381,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-025",
+      "error": null,
+      "latency_ms": 5.584458005614579,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-025",
+      "error": null,
+      "latency_ms": 8.71045800158754,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-025",
+      "error": null,
+      "latency_ms": 6.210791994817555,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-026",
+      "error": null,
+      "latency_ms": 0.0035410048440098763,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-026",
+      "error": null,
+      "latency_ms": 0.002459040842950344,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-026",
+      "error": null,
+      "latency_ms": 5.763083987403661,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-026",
+      "error": null,
+      "latency_ms": 5.517167039215565,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-026",
+      "error": null,
+      "latency_ms": 9.119959024246782,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-026",
+      "error": null,
+      "latency_ms": 6.1497080023400486,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-027",
+      "error": null,
+      "latency_ms": 0.0036249984987080097,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-027",
+      "error": null,
+      "latency_ms": 0.0022500171326100826,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-027",
+      "error": null,
+      "latency_ms": 4.383040999528021,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-027",
+      "error": null,
+      "latency_ms": 4.200583032798022,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-027",
+      "error": null,
+      "latency_ms": 11.371291999239475,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-027",
+      "error": null,
+      "latency_ms": 4.900333005934954,
+      "result": {
+        "action_sequence": [],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": false,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-028",
+      "error": null,
+      "latency_ms": 0.003207998815923929,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-028",
+      "error": null,
+      "latency_ms": 0.0024170149117708206,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-028",
+      "error": null,
+      "latency_ms": 5.753709003329277,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-028",
+      "error": null,
+      "latency_ms": 5.590291984844953,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-028",
+      "error": null,
+      "latency_ms": 8.45420901896432,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-028",
+      "error": null,
+      "latency_ms": 6.199290975928307,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-029",
+      "error": null,
+      "latency_ms": 0.003834022209048271,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-029",
+      "error": null,
+      "latency_ms": 0.002582964953035116,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-dev-029",
+      "error": null,
+      "latency_ms": 5.7884170091710985,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-dev-029",
+      "error": null,
+      "latency_ms": 5.467292037792504,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-dev-029",
+      "error": null,
+      "latency_ms": 9.242207976058125,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-dev-029",
+      "error": null,
+      "latency_ms": 6.13562494982034,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0"
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "total_tokens": 0
+      }
+    }
+  ]
+}

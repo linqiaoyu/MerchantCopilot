@@ -1,107 +1,105 @@
-# MerchantCopilot v2
+# MerchantCopilot v3
 
-> 面向直播电商中小商家的多轮经营分析 Agent。这是面试与简历展示项目：以可验证工程能力、可复现实验和清晰边界为第一目标，不描述为生产 SaaS。
+> 面向直播电商中小商家的多轮经营分析 Agent。项目只使用受控合成数据，目标是以可复现实验展示 Memory、Skill、工具使用和评测工程能力；不描述为生产 SaaS。
 
-## 项目定位与决策纪律
+## 当前目标
 
-决策优先级：1) 简历对齐（能力必须有实现与证据）；2) 可运行（本地和个人云端可演示）；3) 可讲清（重要取舍可在 2–3 分钟解释）；4) 可读（关键代码、SQL、测试和报告可直接审阅）。
+v3 将已完成的 v2 工程基线升级为 **Memory–Skill Learning Harness**：
 
-v2 将 v1 单轮 Agent 升级为以 Memory 为核心、支持多轮和跨 thread 分析、可自托管、具备经压测验证的水平扩展设计的系统。它不承诺免费实例可承载生产级高并发。
+1. Postgres canonical ledger 管理 observation、user fact、inference、decision、outcome。
+2. 声明式 Skill 在运行时按需发现、选择并编译为有界计划。
+3. 离线演化从 train trace 生成受限 patch，经 dev/regression 确定性评测后自动晋升或回滚。
+4. 最终结论只来自冻结合成 ground truth、确定性 verifier 和配对统计。
 
-业务数据始终使用受控合成数据：它避免真实商家数据的资质与合规依赖，并为归因和 Memory 评测提供可核验 ground truth。
+v2 基线 commit、数据集与工件哈希固定在 `docs/v3_baseline.md`；历史结果不覆盖、不重算成 v3 结果。v3 唯一权威进度见 `docs/v3_verification_ledger.md`。
 
-## 当前阶段
+## 决策优先级
 
-**v2 / S0 审计完成；S1 本地 pgvector 验收已通过，Supabase 同套测试待云端 DSN；S2 的可复算与盲审材料已完成，待两位真人签核。T06 DB Policy/补偿、T07 真实 60 组检索、T08 有界路径、T09 本地持久化 HTTP/SSE 已验证；Strategy 已改为只消费 graph 的 canonical pgvector recall，Mem0 不再绕过 policy gate；T10 三类无云端变量 Agent 与重启读回已实测，仍待另一台/清空机器五步启动；T11 Flutter 核心、Keystore token persistence 与 APK 扫描器已实现，2026-08-13 debug/release APK 已离线重建且通过密钥扫描（release 仍为 debug 签名，真机与两 endpoint smoke 未验证）；T12 的 linux/amd64 Docker-only CPU 镜像（torch 2.12.1+cpu、BGE-M3/reranker 预热/运行时导入、无 CUDA/NVIDIA runtime）和 Buildx/gcloud CLI 已本地验证，云端仍待项目权限；T13 的真实本地 canonical-retrieval 60×6 矩阵、四臂 DeepSeek Agent raw 80×4（0 hard error、728,382 tokens）与历史独立人工标签上的 Qwen 重校准已完成（binary α=1.000；strategy ρ=0.117 且 1 条未收敛，故仅 reference-only）；30×4×3 calibrated binary Qwen Judge 已完成 120/120、1,105,846 tokens，四臂均 24/30、paired McNemar 均 p=1.0，故仅确认该 binary/MCP 路径未显示组件差异，不能外推为 Memory/RAG/Strategy 质量；T14 Stub、真实混合五并发 SSE 与 canonical 写入并发不变量已本地验证，云端 Scale Profile 压测待后续前置条件；T15 发布前门禁已成文，`v2.0.0` 仍受 T04/Strategy 真人复核、云端、真机和专属签名门禁约束。**
+1. 简历结论必须有代码、冻结数据、原始工件和复算脚本。
+2. Memory/Skill 的边际贡献必须由匹配组件的数据集证明。
+3. 运行时保持有界、可重放、可回滚。
+4. 保持小核心，不为未来消费者预建抽象。
 
-v1 阶段 1–6 已完成，历史 release 是 stage-6；v1.0-baseline tag 固定 v2 开始前 main HEAD。历史实现、报告和数字保留为 v1 证据，不篡改历史。
+`AGENTS.md` 是活文档，允许在实现中更新；但门槛、冻结 test、历史失败和已发布结果不能为追求好看数字而事后修改。
 
-T01–T04 已有冻结与代码交付；T05–T08 均存在“已实现未验证/未实现”项，唯一权威状态见 `docs/v2_verification_ledger.md`。v2 依赖顺序：
+## 当前状态
 
-1. T01 基线与章程
-2. T02 模型迁移；T03 Insight 忠实度修复；T04 Memory 评测预注册
-3. T05 Postgres/pgvector；T06 Memory 写入与 Policy Gate；T07 Memory 检索与 Topic Drift 控制
-4. T08 有界 LangGraph v2；T09 FastAPI/SSE；T10 Local Self-host
-5. T11 Flutter Android-first；T12 Cloud Run + Supabase 个人演示
-6. T13 Judge 校准与消融；T14 并发压测；T15 文档与 v2.0.0 release
+| 里程碑 | 状态 | 权威证据 |
+|---|---|---|
+| v2 基线冻结 | 已验证 | `docs/v3_baseline.md` |
+| T17 Harness events / native pgvector | 已验证 | `docs/v3_verification_ledger.md` |
+| T18–T19 Typed Memory / Outcome | 已验证 | 同上 |
+| T20–T21 Skill DSL / static skills | 已验证 | 同上 |
+| T22 离线演化与回滚 | 已验证 | 同上 |
+| T23–T24 冻结评测与正式结果 | 已验证 | `docs/v3_evaluation_report.md` |
+| T25 文档与简历证据 | 已验证 | `docs/v3_resume_evidence.md` |
 
-每完成一个任务，在 docs/ 留简洁总结、更新本节和简历映射。未达到验收标准，不进入下一阶段的对外陈述。
+Cloud Run、Supabase 云端验收、Flutter 联调和应用商店发布均为 **deferred**，不阻塞 v3。APK 只保留为历史展示产物。
 
 ## 锁定技术栈
 
 | 层 | 选择 | 约束 |
 |---|---|---|
-| Agent 编排 | LangGraph + StateGraph | 每 run 最多 3 actions、最多 1 次 replan、120 秒超时 |
-| Agent 主模型 | deepseek-v4-flash | Router/参数生成 non-thinking；归因/策略初始 thinking |
-| 离线 Judge | qwen3.7-plus-2026-05-26 | 仅评测，不作运行时备用模型 |
-| Embedding | BGE-M3 | RAG 与 Memory 共享一个实例 |
-| Rerank | bge-reranker-v2-m3 | 仅 RAG 使用 |
-| Memory | Postgres canonical ledger + Mem0/pgvector 检索索引 | Mem0 不可绕过 policy gate |
-| 数据库 | Supabase Postgres + pgvector；本地 PostgreSQL + pgvector | DuckDB 仍是只读 OLAP 数据源 |
-| 工具协议 | 官方 Python MCP SDK | 保持现有两个 MCP 工具 |
-| 服务端 | FastAPI + SSE | 固定 /v1 API 与事件契约 |
-| 客户端 | Flutter，Android 优先 | Streamlit 保留为本地调试界面 |
-| 部署 | Google Cloud Run | 仅本人演示；min=0,max=1,concurrency=1 |
-| 测试评测 | pytest + 自建 eval pipeline | Judge 与 deterministic metrics 分离 |
+| Agent | LangGraph `StateGraph` | 每 run ≤3 actions、≤1 replan、≤120 秒 |
+| 运行模型 | `deepseek-v4-flash` | Router/提取/结构化综合 non-thinking；离线候选生成 thinking |
+| 定性审计 | `qwen3.7-plus-2026-05-26` | 非主指标；最多 20 条且 ≤总预算 10% |
+| Embedding | BGE-M3 | RAG 与 Memory 共享进程单例；Skill metadata 使用确定性检索 |
+| RAG rerank | bge-reranker-v2-m3 | 只服务知识库 RAG |
+| Canonical state | PostgreSQL 15 + pgvector | 本地 Homebrew；不恢复 Colima，不依赖云端 |
+| 工具 | 官方 Python MCP SDK | 保持现有工具白名单 |
+| API | FastAPI + SSE | 保持 `/v1` 路由和既有事件兼容 |
+| 测试评测 | pytest + 自建 eval harness | deterministic 主指标；Judge 与主结论分离 |
 
-## 允许范围与明确不做
+## 架构不变量
 
-允许：多轮 thread、Memory 生命周期与审批、FastAPI/SSE、Docker Compose（仅 PostgreSQL + pgvector）、Cloud Run、Supabase、Flutter Android APK、幂等与并发压测。
+运行路径：
 
-不做：用户登录注册、商业多租户、真实电商 API 或商家数据、K8s、消息队列、Redis、自动经营操作、支付、推送、应用商店发布、独立 Dart SDK、图数据库、Letta/Graphiti/LlamaIndex/Haystack/CrewAI/AutoGen、开放式无限 ReAct 循环。
+`RunContext → Memory Plan/Recall → Skill Discover/Select/Load → Bounded Plan → Tools → Evidence Verifier → Structured Decision/Renderer → Typed Candidates → Canonical Commit → Run Events`
 
-不预建无消费方的未来抽象；不引入锁定表外依赖而未先讨论；不把临时 Scale Profile 表述为免费 Demo 的常驻配置。
+离线演化：
 
-## v2 架构与公共契约
+`Train traces → constrained JSON patch → schema/policy validation → dev paired eval → regression → atomic promote/reject → rollback on regression`
 
-Request Ingest → Memory Recall → Bounded Planner → Action Executor → Evidence Verifier → (Synthesize | Replan once) → Memory Candidate Extractor → Memory Policy Gate → Event / Checkpoint Commit → SSE Final Response
+- `memory_events` 与 `run_events` append-only；模型可见输入必须能从 run event 重建。
+- Memory 是事实/经历，Skill 是程序，RAG 是通用领域知识，Tool 是原子能力。
+- 向量索引不是事实源；索引失败不得丢失 canonical event/fact。
+- LLM inference 默认 pending；decision 默认 proposed；outcome 必须绑定工具证据或显式确认。
+- Skill 只允许声明式 DSL 调用现有 action；不得生成或执行新 Python/Shell。
+- Skill test 集不得参与候选生成、选择、晋升或回滚判断。
+- Active Skill 切换必须事务化，且保留父版本和完整 promotion/rollback event。
 
-Memory 分层：Working（LangGraph state/checkpoint）、Core（稳定画像/约束）、Episodic（历史问题和工具事实）、Decision/Outcome（建议、反馈和结果）。
+## 首批 Skill 与公共边界
 
-canonical 表：run_records、memory_events、memory_facts、memory_links、usage_counters，以及 LangGraph checkpointer 表。事件 append-only；同 subject/predicate 新值 supersede 旧值；LLM 推断默认 pending，仅政策和反馈允许后可复用。
+首批仅实现：`anomaly-root-cause`、`cross-period-comparison`、`outcome-driven-experiment`。
 
-所有业务接口要求 Authorization: Bearer <DEMO_ACCESS_TOKEN> 和 Idempotency-Key: <UUID>。
+Skill 每次最多选择 1 个主 Skill；完整内容只在 metadata 选择后加载。允许 action：`metric`、`attribution`、`strategy`；允许证据操作符：`exists`、`eq`、`contains`、`gte`；失败策略仅 `stop` 或一次 `replan`。
 
-固定 API：POST /v1/threads；POST /v1/threads/{thread_id}/runs:stream；GET /v1/runs/{run_id}；GET /v1/threads/{thread_id}/memories；POST /v1/memories/{memory_id}/approve；POST /v1/memories/{memory_id}/reject；POST /v1/runs/{run_id}/feedback；GET /healthz；GET /readyz。
+既有 `/v1` API 与 SSE 词汇保持兼容。新增内部字段必须是向后兼容的可选字段，客户端不是 v3 验收消费者。
 
-固定 SSE 事件：meta、node_started、node_completed、tool_call、evidence、memory_recalled、memory_candidate、token、final、error、done。
+## 评测与预算纪律
 
-## 验收纪律
+- 现有 v2 60 组只称 `deterministically re-derived synthetic ground truth`，不称真人 gold set。
+- v3 新增 `Memory-E2E-80` 与 `Skill-Eval-140`；冻结 test 的 hash 先于正式运行生成。
+- 主指标：task success、Memory temporal correctness、stale/irrelevant/leak、answer provenance、Skill selection、evidence contract、tool/replan/token efficiency。
+- 自然语言风格、主观可执行性和策略偏好不作强结论。
+- 正式评测按 case/config 唯一键 checkpoint；缺失、重复、错 arm 或 test 污染直接失败。
+- 总 API 费用硬上限人民币 100 元；80 元预警，100 元停止并保留已完成工件。
+- 未达到门槛时保留 nil/bad cases，只能在 train/dev 修复；不得改已运行 test 或删除失败结果。
 
-- T04 必须在 Memory 实现前冻结 eval-dataset-v2.0-rc1：恰好 60 组，记录事件顺序、真值、有效期、禁止召回项与 provenance，并由至少两人独立复核 temporal ground truth。
-- 检索预算：Core ≤8 条/800 汉字；Episodic 候选 20、最终 5；Decision/Outcome 最终 3。综合评分 semantic 55%、recency 20%、importance 15%、confidence 10%。
-- Memory 门槛：Recall@5 ≥85%，当前有效事实准确率 ≥90%，stale-memory ≤5%，无关注入 ≤5%，跨 thread 短期状态泄漏为 0，重复 canonical event 为 0。未达标必须记录失败并诚实降级。
-- Judge 重新校准：binary Krippendorff α ≥0.80，strategy Spearman ≥0.60；未达标维度仅 reference-only。
-- Metric/Attribution 的结构化数字由确定性渲染器输出，须和 node_result.data 一致；LLM 只写导语与解释。
-- API 需要 Bearer 和幂等键；同 key 并发只执行一次；SSE 正常为 meta → node_started → node_completed → evidence → final → done，失败为 meta → error → done。
-- Local Self-host 不依赖本人的 Cloud Run、Supabase 或 API Key；仓库和 APK 不含真实 Key、DSN、token。
-- 压测分别报告 Demo 与临时 Scale Profile；Stub 50 并发错误率 <1%、无模型 API p95 <300ms、真实 5 并发 thread 全部完成且无串线；之后恢复 min=0,max=1。
+已关闭简历门禁：在冻结的受控合成基准上，Full evolved 相对 bare task success `+100pp`（95% bootstrap CI `[100,100]pp`，Holm 校正 `p=6.94e-18`）；canonical Memory 相对 raw history 的时序准确率 `+60pp`（CI `[48.75,70]pp`）；evolved 相对 canonical+static `+16.67pp`（CI `[8.33,26.67]pp`，Holm `p=0.00391`）。这些数字只描述 exact-contract 合成任务，不外推主观策略质量或生产效果。
 
-## 简历对应映射
+## 明确不做
 
-| 能力陈述 | 代码位置 | 验证证据 |
-|---|---|---|
-| 多轮有界 LangGraph Agent | app/agent/ | 路径测试；action/replan 上限 |
-| 分层、时序、可追溯 Memory | app/memory/、migrations/、app/agent/nodes/strategy.py | 60 组与本地 60×6 检索报告、Policy Gate 与 PostgreSQL 并发不变量测试 |
-| MCP OLAP 工具调用 | app/tools/server.py | 参数和证据契约测试 |
-| BGE-M3 RAG 与共享嵌入 | app/rag/、app/memory/bge_adapter.py | adapter 工厂与真实同进程 Mem0 初始化；60 组本地检索报告 |
-| FastAPI/SSE 幂等服务 | app/api/ | 固定路由、SSE、鉴权、真实五并发与数据库不变量测试 |
-| Flutter 参考客户端 | mobile/ | flutter analyze、23 测试、debug/release APK 构建与扫描、Keystore/scanner 契约（真机与 endpoint smoke 待验收） |
-| 评测、消融和 bad-case 回流 | evals/ | 校准、统计、成本/延迟报告 |
-| Cloud Run 扩展设计 | deploy/ | 部署记录和压测对照 |
+不做：商业多租户、真实商家数据、电商写操作、K8s、队列、Redis、图数据库、开放式无限 ReAct、多 Agent 编排、在线即时自修改、自动生成可执行代码、模型微调、未校准 Judge 质量结论、生产 SLA。
 
-## 目录约定
+不引入 Letta/Graphiti/LlamaIndex/Haystack/CrewAI/AutoGen；不把 Pi、Hermes 或 DeepSeek Harness 作为依赖。只借鉴其小核心、progressive disclosure、变更门禁、append-only replay 和 benchmark isolation 思想。
 
-app/agent/ 编排与节点；app/tools/ MCP；app/rag/ 检索；app/memory/ Memory；app/llm/ Provider；app/api/ FastAPI（T09 起）；data/ 受控数据和 DuckDB；migrations/ 原生 SQL（T05 起）；evals/ 评测；mobile/ Flutter（T11 起）；ui/ Streamlit；tests/ 测试；docs/ 总结和演示材料。
+## 目录与协作
 
-## 协作方式
+`app/agent/` 运行图；`app/memory/` Memory；`app/skills/` Skill runtime/evolution；`skills/` 可审阅 Skill bundle；`app/storage/` canonical repositories；`migrations/` 原生 SQL；`evals/datasets/v3.2/` 当前冻结数据；`evals/` runner/analyzer；`docs/` 证据与总结。v3.0/v3.1 失败与修订历史永久保留。
 
-- 默认自主连续推进 S0→S10；仅在触及“不做”、需要本机安装/账号、修改锁定技术栈或验收标准、或需要真人复核时报告所需动作，并继续不依赖该动作的工作。
-- 不静默扩范围；触及“不做”项必须停止并询问。
-- 保持简单，不写无消费方抽象；变量英文，关键业务注释中文。
-- 不触碰或提交 _drafts/ 和其他用户未跟踪文件，除非用户明确要求。
-- 每次改动后按风险比例测试，并报告实际通过和未验证项。
-
-## v1 历史参考
-
-v1 架构、数据和话术见 docs/stage1_summary.md 至 docs/stage6_4_results.md、docs/demo_script.md、data/README.md、app/tools/README.md。其中 DeepSeek-V3/Qwen-Max、单轮图和阶段数字均为历史 v1 陈述，不是 v2 当前配置。
+- 变量英文，关键业务注释中文。
+- 每个任务完成后更新 `docs/v3_verification_ledger.md`、本节状态和简历映射。
+- 不触碰或提交 `_drafts/`、`evals/runs/_anchoring_worksheet.md`、`evals/runs/v2_real_load_local_20260812_retry.json` 等用户未跟踪文件。
+- 不覆盖 v1/v2 文档、数据和工件；新增行为必须复跑相应 v1/v2 回归。
+- 修改数据库、公共类型或评测规则时，先写迁移/验证器和失败测试，再接运行路径。

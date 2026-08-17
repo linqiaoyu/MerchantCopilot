@@ -1,0 +1,5344 @@
+{
+  "arms": [
+    "bare",
+    "memory_only",
+    "static_skill_only",
+    "canonical_memory_static_skill",
+    "canonical_memory_evolved_skill",
+    "raw_history_static_skill"
+  ],
+  "dataset_hash": "518a3e05ecc6aedb1e117a135a462529beed0229ef042c0950ad3587785b5619",
+  "kind": "formal_api",
+  "partition": "regression",
+  "rows": [
+    {
+      "arm": "bare",
+      "case_id": "s-regression-000",
+      "error": null,
+      "latency_ms": 2775.5318750278093,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-000",
+      "error": null,
+      "latency_ms": 25825.35129104508,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-000",
+      "error": null,
+      "latency_ms": 1179.9051250563934,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-000",
+      "error": null,
+      "latency_ms": 1069.9340000282973,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-000",
+      "error": null,
+      "latency_ms": 1079.1248329915106,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-000",
+      "error": null,
+      "latency_ms": 1313.4048749925569,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-001",
+      "error": null,
+      "latency_ms": 1013.4350830339827,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-001",
+      "error": null,
+      "latency_ms": 3259.5164160011336,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-001",
+      "error": null,
+      "latency_ms": 1110.0235839840025,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-001",
+      "error": null,
+      "latency_ms": 1074.4968749932013,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-001",
+      "error": null,
+      "latency_ms": 984.67645898927,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-001",
+      "error": null,
+      "latency_ms": 749.4705409626476,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-002",
+      "error": null,
+      "latency_ms": 3462.882084015291,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体数据，无法量化阈值",
+            "单变量实验可能忽略交互效应"
+          ],
+          "observation_window": "2026-05-03 至 2026-05-10",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个因素，如主推款或价格策略，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 207,
+        "prompt_tokens": 1424,
+        "total_tokens": 1631
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-002",
+      "error": null,
+      "latency_ms": 5695.155791006982,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体数据，无法设定精确阈值",
+            "单变量实验可能忽略交互效应"
+          ],
+          "observation_window": "一周",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个因素，如主推款价格或主播话术，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 196,
+        "prompt_tokens": 1424,
+        "total_tokens": 1620
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-002",
+      "error": null,
+      "latency_ms": 3891.861832991708,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体历史数据，无法设定精确阈值",
+            "单日实验可能受偶然因素影响"
+          ],
+          "observation_window": "2026-05-03 至 2026-05-10",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个变量，如主推款价格或主播话术，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 212,
+        "prompt_tokens": 1424,
+        "total_tokens": 1636
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-002",
+      "error": null,
+      "latency_ms": 4617.866999993566,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定",
+            "基线数据可代表正常水平"
+          ],
+          "diagnosis": "基于2026-05-03的基线数据，当日毛GMV为¥43,767，显著高于基线日均¥34,412，但转化率4.25%和退款率7.2%需关注。当前无历史决策细节，需设计单变量实验以验证改进效果。",
+          "evidence_refs": [
+            "memory:s-regression-002:memory:0",
+            "memory:s-regression-002:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除外部因素干扰",
+            "观察窗口较短，可能受季节性影响",
+            "未考虑退款率变化对净GMV的影响"
+          ],
+          "observation_window": "2026-05-04至2026-05-10（共7天）",
+          "recommended_actions": [
+            "将主推位商品调整为¥100-300主力价格带，观察对转化率的影响，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线4.25%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 282,
+        "prompt_tokens": 1841,
+        "total_tokens": 2123
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-002",
+      "error": null,
+      "latency_ms": 4937.712665996514,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定",
+            "基线数据可代表正常水平"
+          ],
+          "diagnosis": "基于2026-05-03的基线数据，当日毛GMV为¥43,767，显著高于基线日均¥34,412，但转化率4.25%和退款率7.2%需关注。当前无历史决策细节，需设计单变量实验以验证改进效果。",
+          "evidence_refs": [
+            "memory:s-regression-002:memory:0",
+            "memory:s-regression-002:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除外部因素干扰",
+            "观察窗口较短，可能受季节性影响",
+            "未考虑退款率变化对净GMV的影响"
+          ],
+          "observation_window": "2026-05-04至2026-05-10（共7天）",
+          "recommended_actions": [
+            "将主推位商品调整为¥100-300主力价格带，观察对转化率的影响，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线4.25%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 282,
+        "prompt_tokens": 1841,
+        "total_tokens": 2123
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-002",
+      "error": null,
+      "latency_ms": 3616.9492499902844,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定"
+          ],
+          "diagnosis": "基于2026-05-03的基线数据，当日GMV显著高于历史基线，但转化率和退款率需关注。当前需要设计一个单变量实验来验证某个假设，以优化关键指标。",
+          "evidence_refs": [
+            "memory:raw-0",
+            "memory:raw-1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法完全排除外部干扰",
+            "观察窗口较短，可能不足以捕捉长期趋势"
+          ],
+          "observation_window": "2026-05-04至2026-05-10",
+          "recommended_actions": [
+            "将主推位商品调整为¥100-300主力价格带，观察对转化率的影响，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线值4.25%"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 232,
+        "prompt_tokens": 1818,
+        "total_tokens": 2050
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-003",
+      "error": null,
+      "latency_ms": 1108.7784169940278,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-003",
+      "error": null,
+      "latency_ms": 18002.854500024114,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-003",
+      "error": null,
+      "latency_ms": 1455.4068750003353,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-003",
+      "error": null,
+      "latency_ms": 1073.3571670134552,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-003",
+      "error": null,
+      "latency_ms": 1274.7009169543162,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-003",
+      "error": null,
+      "latency_ms": 1378.513915988151,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-004",
+      "error": null,
+      "latency_ms": 920.922374993097,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-004",
+      "error": null,
+      "latency_ms": 1772.1251670154743,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-004",
+      "error": null,
+      "latency_ms": 1274.2432089871727,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-004",
+      "error": null,
+      "latency_ms": 1248.8420419977047,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-004",
+      "error": null,
+      "latency_ms": 1257.8952920157462,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-004",
+      "error": null,
+      "latency_ms": 1099.3513750145212,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-005",
+      "error": null,
+      "latency_ms": 4669.791167019866,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部因素（如平台流量）无重大变化",
+            "单一变量改变可被准确测量"
+          ],
+          "diagnosis": "当前信息不足，无法基于历史决策和结果设计具体实验。需先明确实验目标（如提升转化、降低退货等）和可操作的单变量。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率（相对历史基线）",
+          "limitations": [
+            "缺乏历史决策和结果数据，无法确定具体变量",
+            "未提供基线数据，无法设定具体数值阈值",
+            "实验周期较短，可能受偶然因素影响"
+          ],
+          "observation_window": "一周（2026-05-06至2026-05-12）",
+          "recommended_actions": [
+            "先明确实验目标，例如提升午场转化或降低退货率，并确定单一变量（如主推款价格带、主播话术或上架时段）。",
+            "基于现有客群（18-24学生与25-30职场新人合计85%）和价格带（¥100-300），选择与目标相关的变量，如主推款价格带或主播推荐方式。",
+            "设计实验时，确保仅改变一个变量，其他条件保持不变，并设定观察窗口和成功阈值，例如观察一周内转化率是否显著高于历史基线。"
+          ],
+          "success_threshold": "转化率显著高于历史基线（相对提升）"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 320,
+        "prompt_tokens": 1424,
+        "total_tokens": 1744
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-005",
+      "error": null,
+      "latency_ms": 7928.0227909912355,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且能作为基线。",
+            "实验期间外部环境（如平台流量、竞争）相对稳定。",
+            "单变量操作可被准确执行并记录。"
+          ],
+          "diagnosis": "当前信息不足，无法基于历史决策和结果设计具体实验。需先明确实验目标（如提升转化、降低退货等）和可操作的单变量。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定，需根据实验目标选择，如转化率或退货率，但当前无基线数据，建议先收集历史数据。",
+          "limitations": [
+            "缺乏历史决策和结果数据，无法设定具体阈值。",
+            "未提供实验目标，导致指标和成功条件无法明确。",
+            "客群细分可能增加实验复杂度，需确保样本量足够。"
+          ],
+          "observation_window": "建议观察一周，覆盖工作日与周末，以捕捉不同时段流量特征。",
+          "recommended_actions": [
+            "先明确实验目标，例如聚焦于提升某价格带商品的转化率或降低某类目退货率，确保目标单一可衡量。",
+            "选择单一变量，如主推商品的价格带、主播话术或直播时段，确保其他因素保持不变，以便归因。",
+            "基于现有客群（18-24学生与25-30职场新人）设计实验，例如测试不同价格带商品对两类客群的吸引力差异。"
+          ],
+          "success_threshold": "需与历史基线对比，若实验组指标显著优于对照组（如转化率明显提升或退货率明显下降）则视为成功，具体阈值待定。"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 357,
+        "prompt_tokens": 1424,
+        "total_tokens": 1781
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-005",
+      "error": null,
+      "latency_ms": 4871.317834011279,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "假设直播流量稳定，无重大外部事件影响。",
+            "假设主播表现一致，无个人因素干扰。",
+            "假设商品库存充足，无缺货影响。"
+          ],
+          "diagnosis": "当前信息不足，无法基于历史决策和结果设计具体实验。需先明确实验目标、变量和基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定，需根据实验目标选择，如转化率或客单价",
+          "limitations": [
+            "缺乏历史数据，无法设定具体阈值。",
+            "未提供具体实验变量，建议先明确。",
+            "未提供客群细分，可能影响实验效果评估。"
+          ],
+          "observation_window": "建议观察一周，以覆盖工作日和周末的流量差异",
+          "recommended_actions": [
+            "先明确实验目标，例如提升转化率或客单价，并确定单一变量（如主推款价格带或直播时段）。",
+            "收集近两周的直播数据，包括观看人数、互动率、转化率等，作为实验基线。",
+            "设计实验时，仅改变一个变量，其他因素保持不变，确保结果可归因。"
+          ],
+          "success_threshold": "待定，需根据基线数据设定，例如转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 284,
+        "prompt_tokens": 1424,
+        "total_tokens": 1708
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-005",
+      "error": null,
+      "latency_ms": 3995.4359579714946,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定"
+          ],
+          "diagnosis": "基于2026-05-06的基线数据，当日GMV高于基线日均，但转化率4.27%和退款率5.5%需关注。当前无历史决策结果可参考，需设计单变量实验以验证改进效果。",
+          "evidence_refs": [
+            "memory:s-regression-005:memory:0",
+            "memory:s-regression-005:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除外部因素干扰",
+            "观察窗口较短，可能不足以捕捉长期趋势"
+          ],
+          "observation_window": "2026-05-07至2026-05-13",
+          "recommended_actions": [
+            "将主推位商品调整为¥100-300主力价格带，观察转化率变化，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线4.27%"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 239,
+        "prompt_tokens": 1841,
+        "total_tokens": 2080
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-005",
+      "error": null,
+      "latency_ms": 4351.14354203688,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播、时段）在实验期间保持稳定",
+            "历史决策结果失败可能源于主推款与客群不匹配"
+          ],
+          "diagnosis": "基于2026-05-06的基线数据，当日毛GMV为¥39,059，高于基线日均¥34,412，但转化率4.27%和退款率5.5%需关注。历史决策执行成功但结果未达预期，需通过单变量实验优化关键指标。",
+          "evidence_refs": [
+            "memory:s-regression-005:memory:0",
+            "memory:s-regression-005:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除其他潜在影响因素",
+            "观察窗口较短，可能受短期波动影响",
+            "未考虑季节性因素和市场竞争变化"
+          ],
+          "observation_window": "2026-05-07至2026-05-13，共7天",
+          "recommended_actions": [
+            "将主推款调整为¥100-300价格带内的高转化单品，替换当前主推款，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线4.27%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 293,
+        "prompt_tokens": 1841,
+        "total_tokens": 2134
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-005",
+      "error": null,
+      "latency_ms": 4166.665165976156,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定",
+            "7天窗口足以捕捉转化率变化"
+          ],
+          "diagnosis": "基于2026-05-06的基线数据，毛GMV为¥39,059，高于基线日均¥34,412，但转化率4.27%和退款率5.5%需关注。当前无历史决策记录，需设计单变量实验以验证改进措施。",
+          "evidence_refs": [
+            "memory:raw-0",
+            "memory:raw-1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除外部因素干扰",
+            "样本量可能不足以检测微小变化",
+            "未考虑季节性因素"
+          ],
+          "observation_window": "2026-05-07至2026-05-13，共7天",
+          "recommended_actions": [
+            "将主推位商品调整为¥100-300主力价格带，观察对转化率的影响，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线4.27%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 274,
+        "prompt_tokens": 1818,
+        "total_tokens": 2092
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-006",
+      "error": null,
+      "latency_ms": 949.5735410018824,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-006",
+      "error": null,
+      "latency_ms": 2647.38620899152,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-006",
+      "error": null,
+      "latency_ms": 921.4013749733567,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-006",
+      "error": null,
+      "latency_ms": 971.3202500133775,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-006",
+      "error": null,
+      "latency_ms": 1295.821417006664,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-006",
+      "error": null,
+      "latency_ms": 1128.2897500204854,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-007",
+      "error": null,
+      "latency_ms": 848.5672079841606,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-007",
+      "error": null,
+      "latency_ms": 2597.644917026628,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-007",
+      "error": null,
+      "latency_ms": 1146.868915995583,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-007",
+      "error": null,
+      "latency_ms": 1182.5462079723366,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-007",
+      "error": null,
+      "latency_ms": 1077.4969999911264,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-007",
+      "error": null,
+      "latency_ms": 903.7197910365649,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-008",
+      "error": null,
+      "latency_ms": 4581.39420801308,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法基于历史决策和结果设计具体实验。需先明确实验目标（如提升转化、降低退货等）和可操作的单变量。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定，需根据实验目标选择，如转化率或退货率",
+          "limitations": [
+            "缺乏历史决策和结果数据，无法精确设计",
+            "单变量实验可能受未控制因素干扰"
+          ],
+          "observation_window": "建议观察一周，以覆盖完整流量周期",
+          "recommended_actions": [
+            "先明确实验目标，例如聚焦于提升某价格带商品的转化率或降低某类目退货率，确保目标可衡量。",
+            "选择单一变量，如主推商品的价格带、主播话术或直播时段，保持其他因素不变，以便归因。",
+            "设定观察窗口和成功阈值，例如观察一周内目标指标的变化，并与历史基线对比，确保结果可判定。"
+          ],
+          "success_threshold": "目标指标需显著优于历史基线，具体数值待定"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 263,
+        "prompt_tokens": 1424,
+        "total_tokens": 1687
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-008",
+      "error": null,
+      "latency_ms": 6232.5849999906495,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且质量可靠",
+            "实验期间外部环境（如平台流量、竞品活动）相对稳定",
+            "单一变量调整能被严格执行"
+          ],
+          "diagnosis": "当前信息不足，无法基于历史决策和结果设计具体实验。需先明确实验目标（如提升转化、降低退货等）和可用的历史数据基线。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定，需根据实验目标选择单一核心指标",
+          "limitations": [
+            "缺乏历史决策和结果数据，无法给出具体实验参数",
+            "未提供当前直播运营细节，实验设计可能不贴合实际",
+            "成功阈值需基于历史基线确定，当前无法量化"
+          ],
+          "observation_window": "建议观察 7 天，覆盖至少 3 个直播场次",
+          "recommended_actions": [
+            "先明确本次实验的核心目标变量，例如转化率、客单价或退货率，并确保该指标可被稳定观测。",
+            "从历史直播记录中提取最近一次同类实验的基线数据，作为本次实验的对照基准。",
+            "设计单一变量调整，例如主推价格带、主播话术或上架时段，并保持其他运营动作不变。"
+          ],
+          "success_threshold": "实验组指标需显著优于对照组，且差异具有业务可操作性"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 298,
+        "prompt_tokens": 1424,
+        "total_tokens": 1722
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-008",
+      "error": null,
+      "latency_ms": 5469.312417029869,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且可靠。",
+            "实验期间外部环境（如平台流量）稳定。",
+            "客群行为在观察期内具有代表性。"
+          ],
+          "diagnosis": "当前信息不足，无法基于历史决策和结果设计具体实验。需先明确实验目标（如提升转化、降低退款等）和可操作的单变量。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定，需根据实验目标选择如转化率、退款率或客单价等单一指标。",
+          "limitations": [
+            "缺乏历史决策和结果数据，无法精确设定阈值。",
+            "单变量实验可能忽略变量间的交互作用。",
+            "观察期较短可能受偶然因素影响。"
+          ],
+          "observation_window": "建议观察一周，覆盖工作日与周末，以获取稳定数据。",
+          "recommended_actions": [
+            "先明确实验目标，例如聚焦于提升某价格带商品的转化率或降低某类目退款率，确保目标可量化。",
+            "选择单一变量，如主推商品的价格带、主播话术或直播时段，避免同时调整多个因素。",
+            "基于现有客群（18-24学生与25-30职场新人）设计实验，例如测试不同价格带商品对两类客群的吸引力。"
+          ],
+          "success_threshold": "需设定相对基线，如转化率显著高于历史基线或退款率明显低于历史基线，具体数值待定。"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 320,
+        "prompt_tokens": 1424,
+        "total_tokens": 1744
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-008",
+      "error": null,
+      "latency_ms": 3883.71362502221,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定"
+          ],
+          "diagnosis": "基于2026-05-09的基线数据，当日GMV显著高于历史基线，但转化率和退款率需关注。当前无明确实验方向，需设计单变量实验以验证假设。",
+          "evidence_refs": [
+            "memory:s-regression-008:memory:0",
+            "memory:s-regression-008:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除外部因素干扰",
+            "观察窗口较短，可能受季节性影响"
+          ],
+          "observation_window": "2026-05-10至2026-05-16",
+          "recommended_actions": [
+            "将主推款调整为¥100-300价格带内的高转化单品，保持其他变量不变，观察转化率变化。"
+          ],
+          "success_threshold": "转化率显著高于基线值4.27%"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 230,
+        "prompt_tokens": 1841,
+        "total_tokens": 2071
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-008",
+      "error": null,
+      "latency_ms": 8098.510499985423,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定"
+          ],
+          "diagnosis": "基于2026-05-09的基线数据，当日GMV显著高于历史日均，但转化率和退款率需关注。当前无明确实验方向，需设计一个单变量实验以验证假设。",
+          "evidence_refs": [
+            "memory:s-regression-008:memory:0",
+            "memory:s-regression-008:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除外部干扰",
+            "观察窗口较短，可能不足以捕捉长期趋势"
+          ],
+          "observation_window": "2026-05-10至2026-05-16",
+          "recommended_actions": [
+            "将主推款调整为价格带¥100-300内的单品，观察对转化率的影响，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线值4.27%"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 230,
+        "prompt_tokens": 1841,
+        "total_tokens": 2071
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-008",
+      "error": null,
+      "latency_ms": 3993.413334013894,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "假设当前流量结构稳定，无重大外部事件影响",
+            "假设价格带调整是影响转化率的主要变量"
+          ],
+          "diagnosis": "基于2026-05-09的基线数据，当日GMV显著高于历史基线，但转化率和退款率需关注。当前需要设计一个单变量实验来验证某个具体改动对业务的影响。",
+          "evidence_refs": [
+            "memory:raw-0",
+            "memory:raw-1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法完全排除其他因素干扰",
+            "观察窗口较短，可能无法捕捉长期趋势"
+          ],
+          "observation_window": "2026-05-10至2026-05-16（共7天）",
+          "recommended_actions": [
+            "将主推位商品调整为¥100-300主力价格带内的单品，保持其他因素不变，观察对转化率和GMV的影响。"
+          ],
+          "success_threshold": "转化率显著高于基线值4.27%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 246,
+        "prompt_tokens": 1818,
+        "total_tokens": 2064
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-009",
+      "error": null,
+      "latency_ms": 1188.2672919891775,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-009",
+      "error": null,
+      "latency_ms": 19470.771291002166,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-009",
+      "error": null,
+      "latency_ms": 1219.4905410287902,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-009",
+      "error": null,
+      "latency_ms": 1109.5606249873526,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-009",
+      "error": null,
+      "latency_ms": 980.147082998883,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-009",
+      "error": null,
+      "latency_ms": 1106.1142919934355,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-010",
+      "error": null,
+      "latency_ms": 955.8558329590596,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-010",
+      "error": null,
+      "latency_ms": 2801.2811670196243,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-010",
+      "error": null,
+      "latency_ms": 868.3100420166738,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-010",
+      "error": null,
+      "latency_ms": 1028.1793749891222,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-010",
+      "error": null,
+      "latency_ms": 981.7392089753412,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-010",
+      "error": null,
+      "latency_ms": 1069.1024590050802,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-011",
+      "error": null,
+      "latency_ms": 3800.85695796879,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体数据，无法量化阈值",
+            "单变量实验可能忽略交互效应"
+          ],
+          "observation_window": "2026-05-12 至 2026-05-18",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个因素，如主推款或价格策略，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 207,
+        "prompt_tokens": 1424,
+        "total_tokens": 1631
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-011",
+      "error": null,
+      "latency_ms": 7479.69083301723,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体历史数据，无法设定精确阈值",
+            "单变量实验可能受其他因素干扰"
+          ],
+          "observation_window": "2026-05-12 至 2026-05-18",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个变量，如主推款价格带或主播话术，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 213,
+        "prompt_tokens": 1424,
+        "total_tokens": 1637
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-011",
+      "error": null,
+      "latency_ms": 3828.153249982279,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体历史数据，无法设定精确阈值",
+            "单变量实验可能受其他因素干扰"
+          ],
+          "observation_window": "2026-05-12 至 2026-05-18",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个变量，如主推款价格带或主播话术，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 213,
+        "prompt_tokens": 1424,
+        "total_tokens": 1637
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-011",
+      "error": null,
+      "latency_ms": 4537.6512500224635,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "当前转化率 4.27% 为基线水平",
+            "价格带调整是影响转化率的主要变量",
+            "其他因素（如流量、主播）在实验期间保持稳定"
+          ],
+          "diagnosis": "2026-05-12 毛GMV ¥24,468 显著低于基线日均 ¥34,412，转化率 4.27% 与客单价 ¥212.77 均处于中端女装正常区间，但退款率 8.7% 偏高，可能影响净GMV。当前缺乏历史决策与结果的详细记录，需基于现有数据设计单变量实验。",
+          "evidence_refs": [
+            "memory:s-regression-011:memory:0",
+            "memory:s-regression-011:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏历史决策与结果的详细记录，无法进行多变量分析",
+            "实验周期较短，可能受季节性波动影响",
+            "未考虑外部因素（如平台活动、竞品动态）"
+          ],
+          "observation_window": "2026-05-13 至 2026-05-19（7天）",
+          "recommended_actions": [
+            "将直播主推位锚定 ¥100-300 主力价格带，高客单单品不占当日唯一主推位，以提升转化率。"
+          ],
+          "success_threshold": "转化率显著高于基线 4.27%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 328,
+        "prompt_tokens": 1841,
+        "total_tokens": 2169
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-011",
+      "error": null,
+      "latency_ms": 3872.0828340156004,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（流量、主播、时段）在实验期间保持稳定",
+            "2026-05-12 的数据可作为有效基线"
+          ],
+          "diagnosis": "2026-05-12 毛GMV ¥24,468 显著低于基线日均 ¥34,412，转化率 4.27% 与退款率 8.7% 均需关注。当前信息不足以定位根因，需通过单变量实验验证。",
+          "evidence_refs": [
+            "memory:s-regression-011:memory:0",
+            "memory:s-regression-011:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单日数据波动可能影响结论",
+            "未考虑退款率等其他指标",
+            "实验周期短，可能不足以捕捉长期效应"
+          ],
+          "observation_window": "2026-05-13 至 2026-05-15",
+          "recommended_actions": [
+            "将当日主推款调整为 ¥100-300 主力价格带单品，保持其他运营动作不变，观察转化率变化。"
+          ],
+          "success_threshold": "转化率显著高于 2026-05-12 的 4.27%"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 282,
+        "prompt_tokens": 1841,
+        "total_tokens": 2123
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-011",
+      "error": null,
+      "latency_ms": 4607.095625018701,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "当前转化率 4.27% 为历史基线，可作对比基准",
+            "主力客群 18-24 学生与 25-30 职场新人合计占比 85%，价格敏感度较高",
+            "单变量实验期间其他运营动作保持不变"
+          ],
+          "diagnosis": "2026-05-12 毛GMV ¥24,468 显著低于基线日均 ¥34,412，转化率 4.27% 与客单价 ¥212.77 均处于中端女装正常区间，但退款率 8.7% 偏高，可能侵蚀净GMV。当前缺乏明确归因，需通过单变量实验验证关键假设。",
+          "evidence_refs": [
+            "memory:raw-0",
+            "memory:raw-1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "实验周期仅 7 天，可能受节假日或突发流量影响",
+            "未控制主播差异（小张 vs 小李）可能引入干扰",
+            "退款率 8.7% 未纳入实验指标，可能影响净GMV判断"
+          ],
+          "observation_window": "2026-05-13 至 2026-05-19",
+          "recommended_actions": [
+            "将直播主推位锚定在 ¥100-300 主力价格带，连续 7 天观察转化率与客单价变化，验证价格带匹配度。"
+          ],
+          "success_threshold": "转化率显著高于历史基线 4.27%，且客单价保持在 ¥100-300 区间内"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 360,
+        "prompt_tokens": 1818,
+        "total_tokens": 2178
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-012",
+      "error": null,
+      "latency_ms": 940.0807499769144,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-012",
+      "error": null,
+      "latency_ms": 4278.570999973454,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-012",
+      "error": null,
+      "latency_ms": 1092.7439169608988,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-012",
+      "error": null,
+      "latency_ms": 1196.5184999862686,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-012",
+      "error": null,
+      "latency_ms": 1409.2594999819994,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-012",
+      "error": null,
+      "latency_ms": 1134.2257500509731,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-013",
+      "error": null,
+      "latency_ms": 1103.7579579860903,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-013",
+      "error": null,
+      "latency_ms": 4170.904750004411,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-013",
+      "error": null,
+      "latency_ms": 1265.2966669993475,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-013",
+      "error": null,
+      "latency_ms": 973.1920839985833,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-013",
+      "error": null,
+      "latency_ms": 1134.5527499797754,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-013",
+      "error": null,
+      "latency_ms": 1302.7639579959214,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-014",
+      "error": null,
+      "latency_ms": 3837.282291962765,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体数据，无法量化阈值",
+            "单变量实验可能忽略交互效应"
+          ],
+          "observation_window": "实验期间一周",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个变量，如主推款价格或主播话术，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 198,
+        "prompt_tokens": 1424,
+        "total_tokens": 1622
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-014",
+      "error": null,
+      "latency_ms": 8575.919541006442,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "假设当前流量结构稳定，无重大外部影响。",
+            "假设主播表现一致，无显著波动。"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定，需根据实验目标选择，如转化率或客单价。",
+          "limitations": [
+            "缺乏历史数据，无法设定具体阈值。",
+            "实验周期短，可能受偶然因素影响。"
+          ],
+          "observation_window": "建议观察一周，以覆盖完整流量周期。",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的流量、转化、退款等基线数据，作为对比依据。",
+            "设计实验时，仅改变一个因素，如主推款或价格带，其他保持不变。"
+          ],
+          "success_threshold": "需根据基线数据设定，如转化率显著高于历史基线。"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 234,
+        "prompt_tokens": 1424,
+        "total_tokens": 1658
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-014",
+      "error": null,
+      "latency_ms": 3872.68791598035,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史数据可获取且稳定",
+            "实验期间外部环境无重大变化"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "缺乏具体数据，无法设定精确阈值",
+            "单变量实验可能忽略交互效应"
+          ],
+          "observation_window": "实验期间一周",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "设计实验时，仅改变一个变量，如主推款价格或主播话术，其他保持不变。"
+          ],
+          "success_threshold": "转化率显著高于历史基线"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 199,
+        "prompt_tokens": 1424,
+        "total_tokens": 1623
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-014",
+      "error": null,
+      "latency_ms": 4745.176500000525,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "直播流量结构稳定，无重大外部活动干扰",
+            "主推款式的更换是唯一变量，其他运营动作保持一致",
+            "客群偏好对主推款式敏感，价格带¥100-300符合主力客群"
+          ],
+          "diagnosis": "基于2026-05-15的基线数据，当日毛GMV ¥43,992，转化率4.28%，退款率10.0%，客单价¥219.96，均处于正常波动范围。当前无明确问题，需通过单变量实验验证一个假设，以优化关键指标。",
+          "evidence_refs": [
+            "memory:s-regression-014:memory:0",
+            "memory:s-regression-014:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "实验周期短，可能受偶然因素影响",
+            "未考虑主播表现、时段差异等潜在干扰",
+            "仅基于单日基线，历史数据有限"
+          ],
+          "observation_window": "2026-05-16至2026-05-18，共3天",
+          "recommended_actions": [
+            "将直播主推位从当前款式切换为另一款价格带¥100-300的款式，保持其他变量不变，观察转化率变化。"
+          ],
+          "success_threshold": "实验期间转化率显著高于基线4.28%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 306,
+        "prompt_tokens": 1841,
+        "total_tokens": 2147
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-014",
+      "error": null,
+      "latency_ms": 4596.75133303972,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "直播流量结构稳定，无重大外部活动干扰",
+            "主播表现和话术保持一致",
+            "价格带¥100-300为当前主力，符合客群偏好"
+          ],
+          "diagnosis": "基于2026-05-15的基线数据，当日毛GMV ¥43,992，转化率4.28%，退款率10.0%，客单价¥219.96，均处于正常波动范围。当前无明确问题，需通过单变量实验验证一个假设，以优化关键指标。",
+          "evidence_refs": [
+            "memory:s-regression-014:memory:0",
+            "memory:s-regression-014:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验仅改变主推款式，可能受其他因素影响",
+            "观察窗口较短，可能无法捕捉长期趋势",
+            "未考虑季节性因素和竞品动态"
+          ],
+          "observation_window": "2026-05-16至2026-05-18（3天）",
+          "recommended_actions": [
+            "将直播主推位从当前款式切换为另一款价格带¥100-300的款式，保持其他变量不变，观察转化率变化。"
+          ],
+          "success_threshold": "实验期间转化率显著高于基线4.28%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 297,
+        "prompt_tokens": 1841,
+        "total_tokens": 2138
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-014",
+      "error": null,
+      "latency_ms": 4081.0871249996126,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "价格带调整是影响转化率的关键变量",
+            "其他因素（如流量、主播）在实验期间保持稳定",
+            "7天窗口足以捕捉转化率变化"
+          ],
+          "diagnosis": "基于2026-05-15的基线数据，当日毛GMV为¥43,992，显著高于基线日均¥34,412，但转化率4.28%和退款率10%需关注。当前无历史决策记录，需设计单变量实验以验证改进效果。",
+          "evidence_refs": [
+            "memory:raw-0",
+            "memory:raw-1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "转化率",
+          "limitations": [
+            "单变量实验无法排除外部因素干扰",
+            "样本量可能不足以检测微小变化",
+            "退款率变化可能滞后，需延长观察"
+          ],
+          "observation_window": "2026-05-16至2026-05-22，共7天",
+          "recommended_actions": [
+            "将主推位商品调整为¥100-300主力价格带，观察对转化率的影响，保持其他变量不变。"
+          ],
+          "success_threshold": "转化率显著高于基线4.28%，且退款率不显著上升"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 279,
+        "prompt_tokens": 1818,
+        "total_tokens": 2097
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-015",
+      "error": null,
+      "latency_ms": 1472.5518749910407,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-015",
+      "error": null,
+      "latency_ms": 8423.585417040158,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-015",
+      "error": null,
+      "latency_ms": 1429.399624990765,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-015",
+      "error": null,
+      "latency_ms": 1008.6337499669753,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-015",
+      "error": null,
+      "latency_ms": 1121.760833018925,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-015",
+      "error": null,
+      "latency_ms": 920.2402499504387,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 380,
+        "total_tokens": 396
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-016",
+      "error": null,
+      "latency_ms": 1222.3186250193976,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-016",
+      "error": null,
+      "latency_ms": 2367.472333018668,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-016",
+      "error": null,
+      "latency_ms": 1096.5082080219872,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-016",
+      "error": null,
+      "latency_ms": 1064.5844590035267,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-016",
+      "error": null,
+      "latency_ms": 1165.9393329755403,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-016",
+      "error": null,
+      "latency_ms": 1207.1147090173326,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-017",
+      "error": null,
+      "latency_ms": 4485.345624969341,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "店主能提供近30天直播数据",
+            "存在可对比的对照组时段或商品",
+            "质量反馈记录可获取"
+          ],
+          "diagnosis": "当前输入缺少商家画像、历史决策记录和知识库片段，无法定位具体问题，需先补齐信息再设计实验。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "单变量实验的转化率相对变化",
+          "limitations": [
+            "缺少历史基线数据，无法设定具体数值阈值",
+            "未明确单变量实验的具体变量",
+            "当前信息不足以支撑实验设计"
+          ],
+          "observation_window": "实验开始后连续7个直播日",
+          "recommended_actions": [
+            "先排查近30天直播时段流量结构，对比午场与晚场的观众来源和停留时长差异",
+            "核实主力客群18-24学生与25-30职场新人在不同时段的购买偏好，确认人货匹配现状",
+            "检查近期单品质量反馈记录，筛选是否存在集中差评或退货的款式"
+          ],
+          "success_threshold": "实验组转化率显著高于对照组且无质量投诉新增"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 247,
+        "prompt_tokens": 1424,
+        "total_tokens": 1671
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-017",
+      "error": null,
+      "latency_ms": 4616.758416988887,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "假设已有历史数据可供分析。",
+            "假设实验期间外部环境稳定。"
+          ],
+          "diagnosis": "当前信息不足，无法直接设计具体实验，需先明确实验目标与基线数据。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定",
+          "limitations": [
+            "信息不足，无法给出具体实验设计。",
+            "需补充更多数据后才能确定实验参数。"
+          ],
+          "observation_window": "待定",
+          "recommended_actions": [
+            "先明确实验目标，如提升转化率或客单价，并确定单一变量。",
+            "收集近一周的直播数据，包括观看人数、互动率、转化率等作为基线。",
+            "基于基线数据，选择最可能影响目标的单一变量进行测试。"
+          ],
+          "success_threshold": "待定"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 189,
+        "prompt_tokens": 1424,
+        "total_tokens": 1613
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-017",
+      "error": null,
+      "latency_ms": 4744.882041995879,
+      "result": {
+        "action_sequence": [
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "假设历史决策记录可获取且包含关键变量与结果。",
+            "假设知识库中存在关于流量结构或单品质量的基线数据。",
+            "假设实验期间外部环境（如平台政策、季节）无重大变化。"
+          ],
+          "diagnosis": "当前输入缺少商家画像、历史决策记录和知识库片段，无法基于事实设计单变量实验。需先补齐关键信息。",
+          "evidence_refs": [
+            "runtime:llm"
+          ],
+          "experiment_metric": "待定",
+          "limitations": [
+            "当前信息不足，无法给出具体实验设计。",
+            "未提供历史数据，无法设定可判定的成功阈值。",
+            "建议先补齐信息后再设计实验。"
+          ],
+          "observation_window": "待定",
+          "recommended_actions": [
+            "先排查历史决策记录，明确2026-05-18之前已执行过的实验变量及结果，避免重复测试。",
+            "核实主力客群（18-24学生与25-30职场新人）在午场与晚场的流量结构差异，确定实验聚焦的时段与人群。",
+            "确认当前主推单品价格带是否落在¥100-300区间，并检查是否存在人货错配或质量投诉记录。"
+          ],
+          "success_threshold": "待定"
+        },
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 278,
+        "prompt_tokens": 1424,
+        "total_tokens": 1702
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-017",
+      "error": null,
+      "latency_ms": 4280.649083026219,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史决策失败可能与流量或选品相关",
+            "当日零数据可能为异常，需排除技术或运营中断因素"
+          ],
+          "diagnosis": "当前基线数据显示 2026-05-18 无任何订单和流量，但历史决策与结果记录显示该日曾执行过决策且结果为失败。由于缺乏具体实验变量和结果细节，无法直接设计有效实验，需先核实历史决策的具体内容和失败原因。",
+          "evidence_refs": [
+            "memory:s-regression-017:memory:0",
+            "memory:s-regression-017:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "当日毛GMV",
+          "limitations": [
+            "缺乏历史决策的具体变量和结果细节",
+            "无法确定失败的具体原因，实验设计需基于核实后的信息"
+          ],
+          "observation_window": "2026-05-18 全天",
+          "recommended_actions": [
+            "先排查 2026-05-18 当日直播排期、主推款和价格策略，确认是否因停播或技术故障导致零流量。"
+          ],
+          "success_threshold": "毛GMV显著高于基线日均水平"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 256,
+        "prompt_tokens": 1830,
+        "total_tokens": 2086
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-017",
+      "error": null,
+      "latency_ms": 3807.2075419477187,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "历史决策记录完整且可追溯",
+            "基线日均毛GMV ¥34,412 为正常运营水平"
+          ],
+          "diagnosis": "当前基线数据显示 2026-05-18 无任何订单和流量，但历史决策与结果记录显示该日曾执行过决策且结果为失败。由于缺乏具体实验变量和结果细节，无法直接设计有效实验，需先核实历史决策内容及失败原因。",
+          "evidence_refs": [
+            "memory:s-regression-017:memory:0",
+            "memory:s-regression-017:memory:1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "当日毛GMV",
+          "limitations": [
+            "缺乏历史决策具体内容，无法确定实验变量",
+            "零数据可能由外部因素导致，非实验可控"
+          ],
+          "observation_window": "2026-05-18 全天",
+          "recommended_actions": [
+            "先排查 2026-05-18 当日直播是否正常开播，确认是否存在技术故障或运营遗漏导致零流量。"
+          ],
+          "success_threshold": "毛GMV显著高于基线日均水平"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 248,
+        "prompt_tokens": 1830,
+        "total_tokens": 2078
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-017",
+      "error": null,
+      "latency_ms": 4316.278624988627,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "strategy"
+        ],
+        "decision": {
+          "assumptions": [
+            "2026-05-18 数据缺失为异常，后续数据可正常采集。",
+            "基线日均 GMV ¥34,411.53 为有效历史参照。"
+          ],
+          "diagnosis": "2026-05-18 无任何订单和流量数据，基线日均 GMV 为 ¥34,412，但当日数据全为零，可能为数据缺失或异常，而非真实经营结果。因此无法基于历史决策设计有效实验，需先核实数据。",
+          "evidence_refs": [
+            "memory:raw-0",
+            "memory:raw-1",
+            "tool:prior:0:evidence:0",
+            "tool:prior:0:evidence:1",
+            "tool:prior:0:evidence:2"
+          ],
+          "experiment_metric": "日均毛GMV",
+          "limitations": [
+            "当前数据不足以支撑单变量实验设计，需先补充数据。",
+            "无法确定缺失原因，实验结论可能受数据质量问题影响。"
+          ],
+          "observation_window": "2026-05-18 至 2026-05-24",
+          "recommended_actions": [
+            "先排查 2026-05-18 数据缺失原因，确认是否因系统故障、停播或数据同步问题导致，再决定实验设计。"
+          ],
+          "success_threshold": "日均毛GMV显著高于基线日均 ¥34,411.53"
+        },
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": "llm",
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "outcome-driven-experiment",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": true
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 283,
+        "prompt_tokens": 1807,
+        "total_tokens": 2090
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-018",
+      "error": null,
+      "latency_ms": 971.3761669700034,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-018",
+      "error": null,
+      "latency_ms": 2426.5941249905154,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-018",
+      "error": null,
+      "latency_ms": 1067.6404170226306,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-018",
+      "error": null,
+      "latency_ms": 973.5988749889657,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-018",
+      "error": null,
+      "latency_ms": 1071.8237920082174,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "anomaly-root-cause",
+        "skill_version": "2.0.0-e1",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-018",
+      "error": null,
+      "latency_ms": 1302.5002090143971,
+      "result": {
+        "action_sequence": [
+          "attribution"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 16,
+        "prompt_tokens": 382,
+        "total_tokens": 398
+      }
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-019",
+      "error": null,
+      "latency_ms": 929.9960419884883,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-019",
+      "error": null,
+      "latency_ms": 3769.0543339704163,
+      "result": {
+        "action_sequence": [
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": false,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": null,
+        "skill_version": null,
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-019",
+      "error": null,
+      "latency_ms": 1126.6345420153812,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-019",
+      "error": null,
+      "latency_ms": 1398.267999989912,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "canonical_memory_evolved_skill",
+      "case_id": "s-regression-019",
+      "error": null,
+      "latency_ms": 1436.2709579872899,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-019",
+      "error": null,
+      "latency_ms": 1311.6494999849238,
+      "result": {
+        "action_sequence": [
+          "metric",
+          "metric"
+        ],
+        "decision": {},
+        "evidence_contract_pass": true,
+        "evidence_sufficient": true,
+        "generation": null,
+        "policy_violations": 0,
+        "replan": false,
+        "selected_skill_id": "cross-period-comparison",
+        "skill_version": "1.0.0",
+        "structured_experiment_pass": false
+      },
+      "scores": {
+        "evidence_contract_pass": true,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": true,
+        "structured_contract_pass": true,
+        "task_success": true,
+        "tool_call_accuracy": true,
+        "tool_calls": 2,
+        "wrong_skill_injection": false
+      },
+      "status": "completed",
+      "usage": {
+        "completion_tokens": 15,
+        "prompt_tokens": 386,
+        "total_tokens": 401
+      }
+    }
+  ],
+  "run_id": "regression-contract-v2"
+}

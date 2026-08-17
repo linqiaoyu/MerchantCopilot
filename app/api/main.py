@@ -1,4 +1,4 @@
-"""Small, authenticated HTTP boundary for the v2 demo.
+"""Small authenticated HTTP boundary; the v3 internals retain the v1 API contract.
 
 Persistence is deliberately injected here: before S1's Postgres acceptance the
 default runtime is process-local, which keeps the HTTP contract testable without
@@ -7,6 +7,7 @@ claiming that threads or approvals already survive a restart.
 from __future__ import annotations
 
 import json
+import inspect
 import os
 from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
@@ -21,6 +22,8 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
+
+from app.agent.context import RunContext
 
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
@@ -49,14 +52,14 @@ class DemoRuntime:
     graph: Any = None
     lock: RLock = field(default_factory=RLock)
 
-    def execute(self, query: str, thread_id: str) -> dict[str, Any]:
+    def execute(self, query: str, thread_id: str, run_context: RunContext | None = None) -> dict[str, Any]:
         from langgraph.checkpoint.memory import MemorySaver
         from app.agent.runtime import run_query
 
         if self.graph is None:
             from app.agent.graph_v2 import build_graph_v2
             self.graph = build_graph_v2(checkpointer=MemorySaver())
-        return run_query(query, graph=self.graph, thread_id=thread_id)
+        return run_query(query, graph=self.graph, thread_id=thread_id, run_context=run_context)
 
 
 @dataclass
@@ -70,7 +73,7 @@ class PostgresRuntime:
 
     dsn: str
 
-    def execute(self, query: str, thread_id: str) -> dict[str, Any]:
+    def execute(self, query: str, thread_id: str, run_context: RunContext | None = None) -> dict[str, Any]:
         from app.agent.runtime import run_query
         from app.agent.graph_v2 import build_graph_v2
         from app.storage.database import checkpointer_context
@@ -78,9 +81,118 @@ class PostgresRuntime:
         # Do not share a PostgresSaver connection across concurrent SSE runs.
         # Graph construction is negligible next to model/tool execution and
         # preserves a separate durable checkpointer session per request.
-        with checkpointer_context(self.dsn) as checkpointer:
-            graph = build_graph_v2(checkpointer=checkpointer)
-            return run_query(query, graph=graph, thread_id=thread_id)
+        context = run_context or RunContext(thread_id=thread_id)
+        if run_context is not None:
+            from app.storage.run_event_repository import append_run_event
+
+            with psycopg.connect(self.dsn) as conn:
+                append_run_event(
+                    conn, run_id=UUID(context.run_id), event_type="query_ingested",
+                    payload={"query": query, "thread_id": thread_id, "merchant_id": context.merchant_id},
+                    model_visible=True,
+                )
+                conn.commit()
+        from app.llm.client import capture_llm_trace
+
+        with capture_llm_trace() as model_traces:
+            with checkpointer_context(self.dsn) as checkpointer:
+                graph = build_graph_v2(checkpointer=checkpointer)
+                if run_context is None:
+                    result = run_query(query, graph=graph, thread_id=thread_id)
+                else:
+                    result = run_query(query, graph=graph, thread_id=thread_id, run_context=context)
+        if run_context is not None:
+            self._persist_learning(context, result, model_traces=model_traces)
+        return result
+
+    def _persist_learning(
+        self, context: RunContext, result: dict[str, Any], *,
+        model_traces: list[dict[str, object]] | None = None,
+    ) -> None:
+        """Commit graph candidates and replay events before the HTTP final event."""
+        from app.memory.policy import candidate_from_dict
+        from app.storage.memory_repository import append_event, mark_index_result, materialize_fact
+        from app.storage.run_event_repository import append_run_event
+
+        run_id = UUID(context.run_id)
+        with psycopg.connect(self.dsn) as conn:
+            for trace in model_traces or []:
+                append_run_event(
+                    conn, run_id=run_id, event_type="model_interaction",
+                    payload=trace, model_visible=True,
+                )
+            recalled = result.get("recalled_memories", [])
+            append_run_event(
+                conn, run_id=run_id, event_type="memory_context",
+                payload={"items": recalled, "usage": result.get("memory_usage_trace", {})},
+                model_visible=True,
+            )
+            selected_skill = result.get("selected_skill", {})
+            append_run_event(
+                conn, run_id=run_id, event_type="skill_selection",
+                payload={
+                    "selected": {
+                        key: selected_skill.get(key)
+                        for key in ("id", "version", "content_hash") if selected_skill.get(key)
+                    },
+                    "trace": result.get("skill_selection_trace", {}),
+                },
+            )
+            append_run_event(
+                conn, run_id=run_id, event_type="compiled_plan",
+                payload={"actions": result.get("action_sequence", [])},
+            )
+            for index, action_result in enumerate(result.get("action_results", [])):
+                append_run_event(
+                    conn, run_id=run_id, event_type="tool_execution",
+                    payload={"action_index": index, **action_result},
+                )
+            append_run_event(
+                conn, run_id=run_id, event_type="evidence_verified",
+                payload={"verification": result.get("evidence_verification", {}),
+                         "evidence": result.get("node_result", {}).get("evidence", [])},
+            )
+            decision = result.get("node_result", {}).get("data", {}).get("decision")
+            if decision:
+                append_run_event(
+                    conn, run_id=run_id, event_type="structured_decision",
+                    payload=decision,
+                )
+            for payload in result.get("memory_candidates", []):
+                try:
+                    candidate = candidate_from_dict(payload)
+                    event_id = append_event(
+                        conn, run_id=run_id, merchant_id=context.merchant_id,
+                        candidate=candidate, source_ref=candidate.candidate_id,
+                    )
+                    content = candidate.value if isinstance(candidate.value, str) else json.dumps(candidate.value, ensure_ascii=False)
+                    fact = materialize_fact(
+                        conn, source_event_id=event_id, merchant_id=context.merchant_id,
+                        candidate=candidate, content=content,
+                    )
+                    if fact.status == "active":
+                        try:
+                            from app.rag.indexer import encode_with_shared_embedder
+
+                            embedding = encode_with_shared_embedder(content, normalize_embeddings=True).tolist()
+                        except Exception:
+                            embedding = None
+                        mark_index_result(conn, event_id, UUID(fact.memory_id), embedding)
+                    append_run_event(
+                        conn, run_id=run_id, event_type="memory_candidate_committed",
+                        payload={"candidate_id": candidate.candidate_id, "memory_id": fact.memory_id,
+                                 "status": fact.status},
+                    )
+                except (KeyError, TypeError, ValueError) as exc:
+                    append_run_event(
+                        conn, run_id=run_id, event_type="memory_candidate_rejected",
+                        payload={"candidate_id": payload.get("candidate_id"), "reason": type(exc).__name__},
+                    )
+            append_run_event(
+                conn, run_id=run_id, event_type="final",
+                payload={"answer": result.get("final_answer", ""), "node_result": result.get("node_result", {})},
+            )
+            conn.commit()
 
     def close(self) -> None:
         """Per-execution checkpointer contexts are already closed."""
@@ -99,7 +211,7 @@ async def _lifespan(application: FastAPI):
 
 
 app = FastAPI(
-    title="MerchantCopilot v2", version="2.0.0", lifespan=_lifespan,
+    title="MerchantCopilot v3", version="3.0.0", lifespan=_lifespan,
     docs_url=None, redoc_url=None, openapi_url=None,
 )
 
@@ -338,8 +450,22 @@ def _stream_postgres_run(runtime: PostgresRuntime, *, thread_id: str, query: str
                 yield _sse("error", error)
             else:
                 try:
-                    result = runtime.execute(query, thread_id)
-                    persisted = {"final_answer": result.get("final_answer", ""), "node_result": result.get("node_result", {})}
+                    context = RunContext(
+                        run_id=run["run_id"], thread_id=thread_id, merchant_id=thread["merchant_id"],
+                    )
+                    parameters = inspect.signature(runtime.execute).parameters
+                    if "run_context" in parameters:
+                        result = runtime.execute(query, thread_id, run_context=context)
+                    else:
+                        # Compatibility seam for injected v2 runtimes used by
+                        # callers/tests; the production runtime always accepts
+                        # and persists the explicit v3 RunContext.
+                        result = runtime.execute(query, thread_id)
+                    persisted = {
+                        "final_answer": result.get("final_answer", ""),
+                        "node_result": result.get("node_result", {}),
+                        "selected_skill": result.get("selected_skill", {}),
+                    }
                     with psycopg.connect(runtime.dsn) as conn:
                         finish_run(conn, UUID(run["run_id"]), status="completed", result=persisted)
                         conn.commit()

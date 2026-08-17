@@ -1,0 +1,1136 @@
+{
+  "aggregates": {
+    "bare": {
+      "completion_tokens": 1659,
+      "evidence_contract_pass": 0.0,
+      "mean_latency_ms": 2061.9282687432133,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 13914,
+      "replan": 0.0,
+      "skill_top1": 0.0,
+      "structured_contract_pass": 1.0,
+      "task_success": 0.0,
+      "tool_call_accuracy": 0.0,
+      "tool_calls": 1.0,
+      "wrong_skill_injection": 0.0
+    },
+    "canonical_memory_evolved_skill": {
+      "completion_tokens": 1849,
+      "evidence_contract_pass": 1.0,
+      "mean_latency_ms": 2296.730889644823,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 16405,
+      "replan": 0.0,
+      "skill_top1": 1.0,
+      "structured_contract_pass": 1.0,
+      "task_success": 1.0,
+      "tool_call_accuracy": 1.0,
+      "tool_calls": 2.0,
+      "wrong_skill_injection": 0.0
+    },
+    "canonical_memory_static_skill": {
+      "completion_tokens": 1858,
+      "evidence_contract_pass": 0.8,
+      "mean_latency_ms": 2071.676281298278,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 16405,
+      "replan": 0.0,
+      "skill_top1": 0.8,
+      "structured_contract_pass": 1.0,
+      "task_success": 0.8,
+      "tool_call_accuracy": 0.8,
+      "tool_calls": 1.8,
+      "wrong_skill_injection": 0.0
+    },
+    "memory_only": {
+      "completion_tokens": 1704,
+      "evidence_contract_pass": 0.0,
+      "mean_latency_ms": 7117.062264506239,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 13914,
+      "replan": 0.0,
+      "skill_top1": 0.0,
+      "structured_contract_pass": 1.0,
+      "task_success": 0.0,
+      "tool_call_accuracy": 0.0,
+      "tool_calls": 1.0,
+      "wrong_skill_injection": 0.0
+    },
+    "raw_history_static_skill": {
+      "completion_tokens": 1891,
+      "evidence_contract_pass": 0.8,
+      "mean_latency_ms": 2035.3975250007352,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 16267,
+      "replan": 0.0,
+      "skill_top1": 0.8,
+      "structured_contract_pass": 1.0,
+      "task_success": 0.8,
+      "tool_call_accuracy": 0.8,
+      "tool_calls": 1.8,
+      "wrong_skill_injection": 0.0
+    },
+    "static_skill_only": {
+      "completion_tokens": 1723,
+      "evidence_contract_pass": 0.5,
+      "mean_latency_ms": 2146.604416752234,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 13914,
+      "replan": 0.0,
+      "skill_top1": 0.5,
+      "structured_contract_pass": 1.0,
+      "task_success": 0.5,
+      "tool_call_accuracy": 0.5,
+      "tool_calls": 1.5,
+      "wrong_skill_injection": 0.0
+    }
+  },
+  "bad_cases": [
+    {
+      "arm": "bare",
+      "case_id": "s-regression-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-001",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-001",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-002",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-002",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-002",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-004",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-004",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-005",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-005",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-005",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-007",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-007",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-008",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-008",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-008",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-010",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-010",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-011",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-011",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-011",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-013",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-013",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-014",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-014",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-014",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-016",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-016",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-017",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-017",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-017",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "static_skill_only",
+      "case_id": "s-regression-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "canonical_memory_static_skill",
+      "case_id": "s-regression-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "raw_history_static_skill",
+      "case_id": "s-regression-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-regression-019",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-regression-019",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "structured_contract_pass": true,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 1,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    }
+  ],
+  "claim_eligible": false,
+  "comparisons": {
+    "canonical_vs_raw_history": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "delta": 0.0,
+      "p_exact_mcnemar": 1.0,
+      "p_holm": 1.0,
+      "tool_calls": {
+        "ci_high": 0.0,
+        "ci_low": 0.0,
+        "delta": 0.0
+      }
+    },
+    "evolved_vs_static": {
+      "ci_high": 0.4,
+      "ci_low": 0.05,
+      "delta": 0.2,
+      "p_exact_mcnemar": 0.125,
+      "p_holm": 0.25,
+      "tool_calls": {
+        "ci_high": 0.4,
+        "ci_low": 0.05,
+        "delta": 0.2
+      }
+    },
+    "full_evolved_vs_bare": {
+      "ci_high": 1.0,
+      "ci_low": 1.0,
+      "delta": 1.0,
+      "p_exact_mcnemar": 1.9073486328125e-06,
+      "p_holm": 7.62939453125e-06,
+      "tool_calls": {
+        "ci_high": 1.0,
+        "ci_low": 1.0,
+        "delta": 1.0
+      }
+    },
+    "memory_plus_static_vs_static": {
+      "ci_high": 0.5,
+      "ci_low": 0.1,
+      "delta": 0.3,
+      "p_exact_mcnemar": 0.03125,
+      "p_holm": 0.09375,
+      "tool_calls": {
+        "ci_high": 0.5,
+        "ci_low": 0.1,
+        "delta": 0.3
+      }
+    }
+  },
+  "dataset_hash": "518a3e05ecc6aedb1e117a135a462529beed0229ef042c0950ad3587785b5619",
+  "kind": "formal_api",
+  "partition": "regression"
+}

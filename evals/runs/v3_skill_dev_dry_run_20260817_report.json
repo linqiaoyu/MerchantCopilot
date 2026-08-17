@@ -1,0 +1,1104 @@
+{
+  "aggregates": {
+    "bare": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.0,
+      "mean_latency_ms": 0.0033082653923581042,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.0,
+      "task_success": 0.0,
+      "tool_call_accuracy": 0.0,
+      "tool_calls": 0.0,
+      "wrong_skill_injection": 0.0
+    },
+    "canonical_memory_evolved_skill": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 1.0,
+      "mean_latency_ms": 5.179037468042225,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 1.0,
+      "task_success": 1.0,
+      "tool_call_accuracy": 1.0,
+      "tool_calls": 1.6666666666666667,
+      "wrong_skill_injection": 0.0
+    },
+    "canonical_memory_static_skill": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 1.0,
+      "mean_latency_ms": 5.249916599132121,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 1.0,
+      "task_success": 1.0,
+      "tool_call_accuracy": 1.0,
+      "tool_calls": 1.6666666666666667,
+      "wrong_skill_injection": 0.0
+    },
+    "memory_only": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 0.0,
+      "mean_latency_ms": 0.0024096302998562655,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 0.0,
+      "task_success": 0.0,
+      "tool_call_accuracy": 0.0,
+      "tool_calls": 0.0,
+      "wrong_skill_injection": 0.0
+    },
+    "raw_history_static_skill": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 1.0,
+      "mean_latency_ms": 5.277201426603521,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 1.0,
+      "task_success": 1.0,
+      "tool_call_accuracy": 1.0,
+      "tool_calls": 1.6666666666666667,
+      "wrong_skill_injection": 0.0
+    },
+    "static_skill_only": {
+      "completion_tokens": 0,
+      "evidence_contract_pass": 1.0,
+      "mean_latency_ms": 5.350034637376666,
+      "nil_rate": 0.0,
+      "policy_violations": 0.0,
+      "prompt_tokens": 0,
+      "replan": 0.0,
+      "skill_top1": 1.0,
+      "task_success": 1.0,
+      "tool_call_accuracy": 1.0,
+      "tool_calls": 1.6666666666666667,
+      "wrong_skill_injection": 0.0
+    }
+  },
+  "bad_cases": [
+    {
+      "arm": "bare",
+      "case_id": "s-dev-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-000",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-001",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-001",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-002",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-002",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-003",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-004",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-004",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-005",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-005",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-006",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-007",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-007",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-008",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-008",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-009",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-010",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-010",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-011",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-011",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-012",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-013",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-013",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-014",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-014",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-015",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-016",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-016",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-017",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-017",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-018",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-019",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-019",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-020",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-020",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-021",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-021",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-022",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-022",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-023",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-023",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-024",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-024",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-025",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-025",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-026",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-026",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-027",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-027",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-028",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-028",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "bare",
+      "case_id": "s-dev-029",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    },
+    {
+      "arm": "memory_only",
+      "case_id": "s-dev-029",
+      "error": null,
+      "scores": {
+        "evidence_contract_pass": false,
+        "policy_violations": 0,
+        "replan": false,
+        "skill_top1": false,
+        "task_success": false,
+        "tool_call_accuracy": false,
+        "tool_calls": 0,
+        "wrong_skill_injection": false
+      },
+      "status": "completed"
+    }
+  ],
+  "claim_eligible": false,
+  "comparisons": {
+    "canonical_vs_raw_history": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "delta": 0.0,
+      "p_exact_mcnemar": 1.0,
+      "p_holm": 1.0,
+      "tool_calls": {
+        "ci_high": 0.0,
+        "ci_low": 0.0,
+        "delta": 0.0
+      }
+    },
+    "evolved_vs_static": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "delta": 0.0,
+      "p_exact_mcnemar": 1.0,
+      "p_holm": 1.0,
+      "tool_calls": {
+        "ci_high": 0.0,
+        "ci_low": 0.0,
+        "delta": 0.0
+      }
+    },
+    "full_evolved_vs_bare": {
+      "ci_high": 1.0,
+      "ci_low": 1.0,
+      "delta": 1.0,
+      "p_exact_mcnemar": 1.862645149230957e-09,
+      "p_holm": 7.450580596923828e-09,
+      "tool_calls": {
+        "ci_high": 1.8333333333333333,
+        "ci_low": 1.5,
+        "delta": 1.6666666666666667
+      }
+    },
+    "memory_plus_static_vs_static": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "delta": 0.0,
+      "p_exact_mcnemar": 1.0,
+      "p_holm": 1.0,
+      "tool_calls": {
+        "ci_high": 0.0,
+        "ci_low": 0.0,
+        "delta": 0.0
+      }
+    }
+  },
+  "dataset_hash": "2af9146f910201449e1bd11289aa68229b81fe855600d304ba51bcfba707a743",
+  "kind": "engineering_dry_run",
+  "partition": "dev"
+}

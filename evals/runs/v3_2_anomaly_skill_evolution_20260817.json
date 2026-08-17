@@ -1,0 +1,49 @@
+{
+  "batch_id": "v3-2-static",
+  "dataset_hash": "518a3e05ecc6aedb1e117a135a462529beed0229ef042c0950ad3587785b5619",
+  "kind": "formal_offline_skill_evolution",
+  "result": {
+    "active_version": "2.0.0-e1",
+    "attempts": [
+      {
+        "decision": "quality",
+        "metrics": {
+          "mcnemar_p": 0.001953125,
+          "replans_reduction": 0.0,
+          "success_ci_high": 0.5049070722700375,
+          "success_ci_low": 0.16175959439662918,
+          "success_delta": 0.3333333333333333,
+          "tokens_reduction": 0.0,
+          "tool_calls_reduction": -0.5
+        },
+        "promote": true,
+        "regression": {
+          "mcnemar_p": 0.125,
+          "replans_reduction": 0.0,
+          "success_ci_high": 0.37986193535452045,
+          "success_ci_low": 0.02013806464547957,
+          "success_delta": 0.2,
+          "tokens_reduction": 0.0,
+          "tool_calls_reduction": -0.25
+        },
+        "round": 1,
+        "version": "2.0.0-e1"
+      }
+    ],
+    "status": "promoted"
+  },
+  "skill_id": "anomaly-root-cause",
+  "source_trace_ids": [
+    "s-train-000",
+    "s-train-003",
+    "s-train-006",
+    "s-train-009",
+    "s-train-012",
+    "s-train-015",
+    "s-train-018",
+    "s-train-021",
+    "s-train-024",
+    "s-train-027"
+  ],
+  "spent_cny": 0.3144416
+}

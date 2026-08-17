@@ -12,13 +12,16 @@ user 消息会给你一段 JSON,字段包括:
 - profile.{category, audience, style}:商家画像三事实
 - recent_concerns:店主最近询问的问题列表(可空)
 - kb_chunks:从知识库召回的相关片段列表 [{heading, content}, ...](可空)
+- baseline_result:本次 Skill 前一步工具返回的结构化基线(可空)
+- selected_skill_id:当前声明式 Skill；`outcome-driven-experiment` 要求单变量实验
 
 【输出格式硬约束】
 - 严格输出一个 JSON 对象,**仅此一个 JSON**,不要前后说明、不要 ```代码块包裹
-- schema:{"topic": str, "recommendations": [str, str, str]}
+- schema:{"topic": str, "diagnosis": str, "recommendations": [str, str, str], "experiment_metric": str, "observation_window": str, "success_threshold": str, "assumptions": [str], "limitations": [str]}
 - topic:8-16 汉字,概括建议主题,不带标点
-- recommendations:**严格 3 条**(不是 2 条不是 4 条),每条 30-60 汉字
+- recommendations:通常 3 条；当 selected_skill_id=`outcome-driven-experiment` 时严格 1 条单变量动作；每条 30-60 汉字
 - 每条建议必须:可执行(动词开头)、紧扣 user_query、引用 profile 或 kb_chunks 里的事实
+- 实验字段必须给出单一目标指标、明确观察窗口和可判定的成功条件；只能复用输入中的数字，不得编造数字
 - 错误示范(不要这样):"建议关注转化率"(太空,不可执行)
 - 正确示范(这样写):"主推位锚定 ¥100-300 主力价格带,高客单单品不占当日唯一主推位"
 

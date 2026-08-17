@@ -1,0 +1,68 @@
+{
+  "aggregates": {
+    "canonical_memory": {
+      "answer_provenance": 1.0,
+      "cross_thread_leaks": 0.0,
+      "decision_outcome_link_accuracy": 1.0,
+      "extraction_f1": 1.0,
+      "extraction_precision": 1.0,
+      "extraction_recall": 1.0,
+      "irrelevant_injection": 0.0,
+      "stale_memory": 0.0,
+      "task_success": 1.0,
+      "temporal_fact_accuracy": 1.0
+    },
+    "no_memory": {
+      "answer_provenance": 0.0,
+      "cross_thread_leaks": 0.0,
+      "decision_outcome_link_accuracy": 0.8,
+      "extraction_f1": 0.0,
+      "extraction_precision": 0.0,
+      "extraction_recall": 0.0,
+      "irrelevant_injection": 0.0,
+      "stale_memory": 0.0,
+      "task_success": 0.0,
+      "temporal_fact_accuracy": 0.0
+    },
+    "raw_history": {
+      "answer_provenance": 1.0,
+      "cross_thread_leaks": 0.0,
+      "decision_outcome_link_accuracy": 1.0,
+      "extraction_f1": 0.8,
+      "extraction_precision": 0.7,
+      "extraction_recall": 1.0,
+      "irrelevant_injection": 0.2,
+      "stale_memory": 0.1,
+      "task_success": 0.4,
+      "temporal_fact_accuracy": 0.4
+    }
+  },
+  "bad_cases": [],
+  "claim_eligible": true,
+  "comparisons": {
+    "canonical_vs_no_memory": {
+      "ci_high": 1.0,
+      "ci_low": 1.0,
+      "delta": 1.0,
+      "p_exact_mcnemar": 1.6543612251060553e-24,
+      "temporal_accuracy_delta": {
+        "ci_high": 1.0,
+        "ci_low": 1.0,
+        "delta": 1.0
+      }
+    },
+    "canonical_vs_raw_history": {
+      "ci_high": 0.7,
+      "ci_low": 0.4875,
+      "delta": 0.6,
+      "p_exact_mcnemar": 7.105427357601002e-15,
+      "temporal_accuracy_delta": {
+        "ci_high": 0.7,
+        "ci_low": 0.4875,
+        "delta": 0.6
+      }
+    }
+  },
+  "dataset_hash": "e794d0d26b8a36953cf57f3237c68e53f3d9b582ae97f66025367baac55e12bd",
+  "kind": "formal_deterministic_postgres"
+}
