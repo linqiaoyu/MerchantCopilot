@@ -6,11 +6,22 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app.agent.graph import build_graph
 
 GRAPH = build_graph()
+
+
+@pytest.fixture(autouse=True)
+def _force_local_stub(monkeypatch):
+    """旧图回归始终使用本地回退，不能从开发者.env意外继承收费模型配置。"""
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "")
+    monkeypatch.setenv("QWEN_API_KEY", "")
+    monkeypatch.setenv("LANGSMITH_TRACING", "false")
+    monkeypatch.setenv("LANGCHAIN_TRACING_V2", "false")
 
 
 def _run(query: str, graph=GRAPH) -> dict:

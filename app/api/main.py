@@ -19,11 +19,12 @@ from uuid import UUID, uuid4
 import psycopg
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, JSONResponse
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 from app.agent.context import RunContext
+from app.api.delivery_contracts import RunCreate, MemoryDecision
 
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
@@ -32,8 +33,8 @@ class ThreadRequest(BaseModel):
     merchant_id: str = Field(min_length=1)
 
 
-class RunRequest(BaseModel):
-    query: str = Field(min_length=1)
+class RunRequest(RunCreate):
+    pass
 
 
 class FeedbackRequest(BaseModel):
@@ -72,6 +73,7 @@ class PostgresRuntime:
     """
 
     dsn: str
+    delivery: Any = None
 
     def execute(self, query: str, thread_id: str, run_context: RunContext | None = None) -> dict[str, Any]:
         from app.agent.runtime import run_query
@@ -196,6 +198,9 @@ class PostgresRuntime:
 
     def close(self) -> None:
         """Per-execution checkpointer contexts are already closed."""
+        if self.delivery is not None:
+            self.delivery.close()
+            self.delivery = None
 
 
 @asynccontextmanager
@@ -203,6 +208,10 @@ async def _lifespan(application: FastAPI):
     dsn = os.environ.get("DATABASE_URL", "").strip()
     runtime: DemoRuntime | PostgresRuntime = PostgresRuntime(dsn) if dsn else DemoRuntime()
     application.state.runtime = runtime
+    if isinstance(runtime, PostgresRuntime) and os.getenv("MERCHANTCOPILOT_DELIVERY_ENABLED", "1") == "1":
+        from app.api.delivery_service import DeliveryService
+        runtime.delivery = DeliveryService(dsn, merchant_id=os.getenv("DEMO_MERCHANT_ID", "xiaozhang_women"))
+        runtime.delivery.start()
     try:
         yield
     finally:
@@ -245,13 +254,17 @@ def healthz() -> dict[str, str]:
 
 
 @app.get("/readyz")
-def readyz() -> dict[str, str]:
+def readyz(request: Request) -> dict[str, str]:
     dsn = os.environ.get("DATABASE_URL", "").strip()
     if dsn:
         from app.storage.database import database_ready
 
         if not database_ready(dsn):
             raise HTTPException(status_code=503, detail={"code": "database_unavailable", "message": "database not ready"})
+    runtime = getattr(request.app.state, "runtime", None)
+    service = getattr(runtime, "delivery", None)
+    if service is not None and not service.ready:
+        raise HTTPException(status_code=503, detail={"code": "initializing", "message": "analysis worker is initializing"})
     return {"status": "ready"}
 
 
@@ -261,6 +274,8 @@ def create_thread(
     key: str = Depends(require_idempotency_key),
     runtime: DemoRuntime | PostgresRuntime = Depends(_runtime),
 ) -> dict[str, Any]:
+    if getattr(runtime, "delivery", None) is not None:
+        return runtime.delivery.repo.create_thread(idempotency_key=key, merchant_id=body.merchant_id)
     if isinstance(runtime, PostgresRuntime):
         from app.storage.api_repository import create_or_get_thread
 
@@ -285,6 +300,12 @@ def stream_run(
     key: str = Depends(require_idempotency_key),
     runtime: DemoRuntime | PostgresRuntime = Depends(_runtime),
 ) -> StreamingResponse:
+    if getattr(runtime, "delivery", None) is not None:
+        service = runtime.delivery
+        run, created = service.create_run(thread_id, body, key)
+        return StreamingResponse(service.event_stream(run["run_id"], after=0,
+                                 legacy_replay=not created and run["status"] in {"completed", "failed"}),
+                                 media_type="text/event-stream", headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
     if isinstance(runtime, PostgresRuntime):
         return _stream_postgres_run(runtime, thread_id=thread_id, query=body.query, key=key)
     scoped_key = (f"run:{thread_id}", key)
@@ -331,6 +352,8 @@ def stream_run(
 
 @app.get("/v1/runs/{run_id}", dependencies=[Depends(require_demo_token)])
 def get_run(run_id: str, runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if getattr(runtime, "delivery", None) is not None:
+        return runtime.delivery.repo.get_run(run_id)
     if isinstance(runtime, PostgresRuntime):
         from app.storage.api_repository import get_run as get_persisted_run
 
@@ -343,7 +366,21 @@ def get_run(run_id: str, runtime: DemoRuntime | PostgresRuntime = Depends(_runti
 
 
 @app.get("/v1/threads/{thread_id}/memories", dependencies=[Depends(require_demo_token)])
-def get_memories(thread_id: str, runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+def get_memories(thread_id: str, limit: int | None = None, cursor: str | None = None,
+                 status: str | None = None, runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if getattr(runtime, "delivery", None) is not None:
+        repo = runtime.delivery.repo
+        repo.get_thread(thread_id)
+        if limit is not None or cursor is not None or status is not None:
+            return repo.list_memories(thread_id=thread_id, status=status, limit=50 if limit is None else limit, cursor=cursor)
+        # 旧客户端无分页参数时仍读取全部；显式参数才启用新增分页契约。
+        items, next_cursor = [], None
+        while True:
+            page = repo.list_memories(thread_id=thread_id, limit=100, cursor=next_cursor)
+            items.extend(page["items"])
+            next_cursor = page["next_cursor"]
+            if next_cursor is None:
+                return {"items": items}
     if isinstance(runtime, PostgresRuntime):
         from app.storage.api_repository import get_thread, list_thread_memories
 
@@ -356,7 +393,10 @@ def get_memories(thread_id: str, runtime: DemoRuntime | PostgresRuntime = Depend
 
 
 @app.post("/v1/memories/{memory_id}/approve", dependencies=[Depends(require_demo_token)])
-def approve_memory(memory_id: str, key: str = Depends(require_idempotency_key), runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+def approve_memory(memory_id: str, body: MemoryDecision | None = None, key: str = Depends(require_idempotency_key), runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if getattr(runtime, "delivery", None) is not None:
+        return runtime.delivery.repo.decide_memory(memory_id, approved=True, idempotency_key=key,
+                                                   expected_version=body.expected_version if body else None)
     if isinstance(runtime, PostgresRuntime):
         return _decide_postgres_memory(runtime, memory_id, approved=True)
     scoped_key = (f"approve:{memory_id}", key)
@@ -370,7 +410,10 @@ def approve_memory(memory_id: str, key: str = Depends(require_idempotency_key), 
 
 
 @app.post("/v1/memories/{memory_id}/reject", dependencies=[Depends(require_demo_token)])
-def reject_memory(memory_id: str, key: str = Depends(require_idempotency_key), runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+def reject_memory(memory_id: str, body: MemoryDecision | None = None, key: str = Depends(require_idempotency_key), runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if getattr(runtime, "delivery", None) is not None:
+        return runtime.delivery.repo.decide_memory(memory_id, approved=False, idempotency_key=key,
+                                                   expected_version=body.expected_version if body else None)
     if isinstance(runtime, PostgresRuntime):
         return _decide_postgres_memory(runtime, memory_id, approved=False)
     scoped_key = (f"reject:{memory_id}", key)
@@ -385,6 +428,8 @@ def reject_memory(memory_id: str, key: str = Depends(require_idempotency_key), r
 
 @app.post("/v1/runs/{run_id}/feedback", dependencies=[Depends(require_demo_token)])
 def record_feedback(run_id: str, body: FeedbackRequest, key: str = Depends(require_idempotency_key), runtime: DemoRuntime | PostgresRuntime = Depends(_runtime)) -> dict[str, Any]:
+    if getattr(runtime, "delivery", None) is not None:
+        return runtime.delivery.repo.record_feedback(run_id, feedback=body.model_dump(), idempotency_key=key)
     if isinstance(runtime, PostgresRuntime):
         from app.storage.api_repository import record_feedback as persist_feedback
 
@@ -509,3 +554,15 @@ def _classify_error(exc: Exception) -> dict[str, str]:
     if isinstance(exc, ConnectionError):
         return {"code": "database_unavailable", "message": "database unavailable"}
     return {"code": "agent_failure", "message": str(exc)}
+
+
+from app.api.delivery_routes import build_router
+from app.storage.delivery_repository import DeliveryRepositoryError
+
+
+@app.exception_handler(DeliveryRepositoryError)
+async def delivery_error_handler(_request: Request, exc: DeliveryRepositoryError):
+    return JSONResponse(status_code=exc.status_code, content={"detail": {"code": exc.code, "message": exc.message}})
+
+
+app.include_router(build_router(_runtime, require_demo_token, require_idempotency_key))

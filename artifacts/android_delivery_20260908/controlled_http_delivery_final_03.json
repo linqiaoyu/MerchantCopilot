@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "stub": true,
+  "paid_model_calls": 0,
+  "scope": "real loopback HTTP, native PostgreSQL, Uvicorn and spawn lifecycle; controlled worker only",
+  "started_at_unix": 1788804148.090559,
+  "passed": [
+    "first_response_discarded_same_key_recovers_same_run",
+    "same_key_changed_body_is_409",
+    "live_sse_disconnect_reconnect_replays_all_committed_events",
+    "private_trace_is_durable_but_absent_from_public_sse",
+    "one_execution_and_one_final_after_response_and_stream_loss",
+    "deadline_fails_run_and_reaps_worker_and_detached_tool",
+    "timeout_rejects_late_result_and_canonical_memory",
+    "sigkill_api_recovers_prior_run_as_failed_without_reexecution",
+    "api_parent_death_leaves_no_live_worker_or_detached_tool",
+    "restart_rejects_old_owner_and_failed_context_and_accepts_next_run",
+    "sequential_http_measurements_are_successful_and_use_no_model",
+    "verification_shutdown_leaves_no_live_owned_processes"
+  ],
+  "checks": [
+    {
+      "name": "first_response_discarded_same_key_recovers_same_run",
+      "passed": true
+    },
+    {
+      "name": "same_key_changed_body_is_409",
+      "passed": true
+    },
+    {
+      "name": "live_sse_disconnect_reconnect_replays_all_committed_events",
+      "passed": true,
+      "details": {
+        "public_event_count": 7
+      }
+    },
+    {
+      "name": "private_trace_is_durable_but_absent_from_public_sse",
+      "passed": true
+    },
+    {
+      "name": "one_execution_and_one_final_after_response_and_stream_loss",
+      "passed": true
+    },
+    {
+      "name": "deadline_fails_run_and_reaps_worker_and_detached_tool",
+      "passed": true,
+      "details": {
+        "configured_deadline_seconds": 2.0
+      }
+    },
+    {
+      "name": "timeout_rejects_late_result_and_canonical_memory",
+      "passed": true
+    },
+    {
+      "name": "sigkill_api_recovers_prior_run_as_failed_without_reexecution",
+      "passed": true
+    },
+    {
+      "name": "api_parent_death_leaves_no_live_worker_or_detached_tool",
+      "passed": true
+    },
+    {
+      "name": "restart_rejects_old_owner_and_failed_context_and_accepts_next_run",
+      "passed": true
+    },
+    {
+      "name": "sequential_http_measurements_are_successful_and_use_no_model",
+      "passed": true,
+      "details": {
+        "samples_per_endpoint": 100
+      }
+    },
+    {
+      "name": "verification_shutdown_leaves_no_live_owned_processes",
+      "passed": true,
+      "details": {
+        "checked_processes": 5
+      }
+    }
+  ],
+  "environment": {
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "architecture": "arm64",
+      "logical_cpus": 8
+    },
+    "versions": {
+      "python": "3.12.10",
+      "fastapi": "0.141.1",
+      "uvicorn": "0.47.0",
+      "psycopg": "3.3.4",
+      "httpx": "0.28.1",
+      "duckdb": "1.5.2",
+      "postgresql": "PostgreSQL 15.18 (Homebrew) on aarch64-apple-darwin25.6.0, compiled by Apple clang version 21.0.0 (clang-2100.1.1.101), 64-bit"
+    },
+    "git_base_revision": "e83a7ce6a293daf8f79fb90d5b603cc3d252e89b",
+    "working_tree_changes_included": true,
+    "source_sha256": {
+      "scripts/verify_android_delivery.py": "6b94b76a804024bd67e581bb861195de4e41fd05e019000b1335a7932ed11081",
+      "app/api/main.py": "bc6891c533c13899d7fb673e803a9a282d5184f8e397ec35ea39130b39ed4b98",
+      "app/api/delivery_service.py": "740bb5b0d48d009b5384855e48899af2c77f0609aa4fdeeee159a77186f4dc86",
+      "app/api/delivery_routes.py": "f1e7fedc448af47a620a68b0b97365f57f7ed96fd38885e2922a46b302dae5b8",
+      "app/api/delivery_presentation.py": "30e1b544950104ea0907d8ecbafa9deefdede0f9b3cd7bd7fe783d85cc90a8d4",
+      "app/api/delivery_contracts.py": "7f9692e13f50f010716c1b06ff64e6554b847da0e5f0d1d1c1a5191c759e47ab",
+      "app/delivery/executor.py": "9ad6407a8be63284fa1a557fe09566f2952471557fa23743532a84f6b43d7312",
+      "app/storage/delivery_repository.py": "c8c2eb6ed8b20ef236fb2bfd1d43caeef9e22a7472eef3d2de7b2bb6f1bbe185",
+      "migrations/006_android_delivery.sql": "c59f1fd353f526f9896c4c97ed71259cfd7d144bfbcdd0f8012571dad2b54a96"
+    },
+    "synthetic_dataset": {
+      "path": "data/merchant.duckdb",
+      "sha256": "dd9b73cb70282ec13fb35b81a7adc2931112bbdf4fdd57f46e3fd60017d87ef9",
+      "bytes": 1585152
+    }
+  },
+  "database": {
+    "name": "delivery_verify_416d7b1f142943b7828abdf26c2cd762",
+    "isolated": true,
+    "kept": false
+  },
+  "fault_evidence": {
+    "timeout": {
+      "run_id": "8e97b111-8ed8-4d1e-a75f-0226177fe33b",
+      "worker_pid": 40939,
+      "query": "CONTROLLED:timeout",
+      "completed_context": [
+        {
+          "run_id": "a9d32cb9-5772-4a96-9b4b-195b1c32641d",
+          "status": "completed",
+          "query": "CONTROLLED:recovery",
+          "result": "controlled deterministic result"
+        }
+      ],
+      "started": true,
+      "child_pid": 41005
+    },
+    "restart": {
+      "run_id": "1023e65f-edd8-42a8-9681-b98db7f9e057",
+      "worker_pid": 41065,
+      "query": "CONTROLLED:restart",
+      "completed_context": [
+        {
+          "run_id": "a9d32cb9-5772-4a96-9b4b-195b1c32641d",
+          "status": "completed",
+          "query": "CONTROLLED:recovery",
+          "result": "controlled deterministic result"
+        }
+      ],
+      "started": true,
+      "child_pid": 41085
+    }
+  },
+  "measurement_progress": {
+    "stage": "complete",
+    "samples_per_endpoint": 100
+  },
+  "measurements": {
+    "mode": "sequential_loopback_controlled_worker",
+    "overview_warmups": 3,
+    "percentile_method": "nearest_rank",
+    "includes_model_latency": false,
+    "overview": {
+      "samples": 100,
+      "unit": "milliseconds",
+      "p50": 12.302457995247096,
+      "p95": 14.646499999798834,
+      "max": 28.167499986011535,
+      "mean": 12.693202488590032,
+      "raw": [
+        11.22437504818663,
+        11.470708006527275,
+        10.953166987746954,
+        11.989250022452325,
+        11.627917003352195,
+        13.152249972335994,
+        11.580792022868991,
+        11.878542019985616,
+        11.49241701932624,
+        11.963333003222942,
+        13.880792015697807,
+        17.21954101230949,
+        17.194332962390035,
+        12.646042043343186,
+        14.18050000211224,
+        12.878666981123388,
+        13.86287499917671,
+        13.078957970719784,
+        12.500750017352402,
+        11.523500026669353,
+        12.39858299959451,
+        13.360374956391752,
+        11.511457967571914,
+        12.094917008653283,
+        12.77145801577717,
+        12.78808299684897,
+        12.694750039372593,
+        10.716292017605156,
+        12.488625012338161,
+        13.210666016675532,
+        11.703957978170365,
+        12.99949997337535,
+        12.438083998858929,
+        12.28920795256272,
+        13.449749967548996,
+        12.132709030993283,
+        12.554707995150238,
+        12.679042003583163,
+        13.148041965905577,
+        12.283833988476545,
+        12.030583980958909,
+        12.95879203826189,
+        11.736833024770021,
+        13.028332963585854,
+        28.167499986011535,
+        11.792415985837579,
+        11.44475000910461,
+        17.850458971224725,
+        12.060666980687529,
+        12.070833006873727,
+        11.766125040594488,
+        12.601167021784931,
+        11.71337504638359,
+        12.838041002396494,
+        14.646499999798834,
+        12.500707991421223,
+        11.438791989348829,
+        12.502000026870519,
+        11.642375029623508,
+        12.038665998261422,
+        12.302457995247096,
+        12.745207990519702,
+        12.650125019717962,
+        12.32774998061359,
+        11.378499970305711,
+        12.033082952257246,
+        11.504458962008357,
+        14.038750028703362,
+        20.899833005387336,
+        12.555291992612183,
+        12.809332984033972,
+        11.26975001534447,
+        13.900791993364692,
+        12.554958986584097,
+        12.074667029082775,
+        12.548916973173618,
+        12.395791010931134,
+        11.9028749759309,
+        12.500083015765995,
+        12.292333005461842,
+        11.842540989164263,
+        11.54954097000882,
+        13.15733400406316,
+        10.689624992664903,
+        11.554582975804806,
+        11.70004199957475,
+        12.734625022858381,
+        12.015709013212472,
+        11.443082999903709,
+        12.125208973884583,
+        12.483917002100497,
+        12.777708005160093,
+        12.202832964248955,
+        12.33762496849522,
+        11.924416990950704,
+        11.257749982178211,
+        12.72491697454825,
+        12.164416024461389,
+        11.4076659665443,
+        11.700083035975695
+      ]
+    },
+    "accept": {
+      "samples": 100,
+      "unit": "milliseconds",
+      "p50": 28.781166998669505,
+      "p95": 37.58291597478092,
+      "max": 81.05762500781566,
+      "mean": 29.338604205986485,
+      "raw": [
+        26.666457997635007,
+        26.545792003162205,
+        22.840166988316923,
+        29.691124975215644,
+        27.17987500363961,
+        26.343624980654567,
+        29.58841697545722,
+        20.884750003460795,
+        36.964917031582445,
+        28.973042033612728,
+        25.158166012261063,
+        47.12483403272927,
+        26.30820800550282,
+        26.99041599407792,
+        30.022374994587153,
+        32.556749996729195,
+        32.051125017460436,
+        29.269499995280057,
+        26.393957959953696,
+        28.725332987960428,
+        28.114540968090296,
+        25.613916979636997,
+        31.544832978397608,
+        23.118667013477534,
+        27.325292001478374,
+        26.582749967928976,
+        29.188000014983118,
+        30.92695801751688,
+        27.913208992686123,
+        29.653250006958842,
+        26.737458014395088,
+        31.86425002058968,
+        81.05762500781566,
+        20.759332983288914,
+        31.81899996707216,
+        28.802125016227365,
+        29.799041978549212,
+        37.58291597478092,
+        27.28545799618587,
+        22.174083977006376,
+        28.207583993207663,
+        27.420250000432134,
+        29.29795900126919,
+        25.11691697873175,
+        33.67970895487815,
+        35.068375000264496,
+        28.38616701774299,
+        31.6376659902744,
+        28.719874972011894,
+        30.019459023606032,
+        29.197041993029416,
+        29.491082997992635,
+        32.42416598368436,
+        17.648749984800816,
+        35.006374993827194,
+        41.573583032004535,
+        25.724541977979243,
+        36.996500042732805,
+        21.900542022194713,
+        20.516499993391335,
+        21.39295800589025,
+        28.058625000994653,
+        29.45149998413399,
+        27.143457962665707,
+        29.343125002924353,
+        30.481417023111135,
+        29.825709003489465,
+        24.498542014043778,
+        35.88287497404963,
+        27.16108300955966,
+        21.79000002797693,
+        21.90533303655684,
+        34.1725840116851,
+        46.83245799969882,
+        23.48874998278916,
+        28.501749970018864,
+        31.650374992750585,
+        27.864707983098924,
+        28.781166998669505,
+        32.0350420079194,
+        30.63433396164328,
+        24.02087498921901,
+        32.6850829878822,
+        30.35712498240173,
+        31.445874948985875,
+        21.6411660076119,
+        33.11133396346122,
+        22.922208008822054,
+        31.647666997741908,
+        37.872167013119906,
+        28.642166987992823,
+        32.444999960716814,
+        22.966416960116476,
+        30.691874970216304,
+        29.56487500341609,
+        28.070084052160382,
+        31.93737502442673,
+        21.321709034964442,
+        22.806332970503718,
+        22.640707960817963
+      ]
+    }
+  },
+  "controlled_budget": {
+    "schema_version": 1,
+    "price_snapshot": "price_snapshot_2026-08-17.json",
+    "historical_spent_cny": 3.39182976,
+    "calls": {},
+    "total_cny": 3.39182976,
+    "warning": false,
+    "hard_stop": false
+  },
+  "elapsed_seconds": 27.271575374994427
+}

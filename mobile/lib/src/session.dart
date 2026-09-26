@@ -9,8 +9,13 @@ import 'token_store.dart';
 
 class ClientSession extends ChangeNotifier {
   ClientSession({ClientSettings? settings, TokenStore? tokenStore})
-      : settings = settings ?? ClientSettings(baseUrl: Uri.parse('http://10.0.2.2:8000'), accessToken: ''),
-        _tokenStore = tokenStore ?? AndroidKeystoreTokenStore();
+    : settings =
+          settings ??
+          ClientSettings(
+            baseUrl: Uri.parse('http://10.0.2.2:8000'),
+            accessToken: '',
+          ),
+      _tokenStore = tokenStore ?? AndroidKeystoreTokenStore();
 
   ClientSettings settings;
   final TokenStore _tokenStore;
@@ -27,7 +32,10 @@ class ClientSession extends ChangeNotifier {
     try {
       final token = await _tokenStore.read();
       if (token != null && token.isNotEmpty) {
-        settings = ClientSettings(baseUrl: settings.baseUrl, accessToken: token);
+        settings = ClientSettings(
+          baseUrl: settings.baseUrl,
+          accessToken: token,
+        );
         notifyListeners();
       }
     } on PlatformException {
@@ -95,7 +103,9 @@ class ClientSession extends ChangeNotifier {
   Future<void> refreshMemories([MerchantApi? suppliedApi]) async {
     if (threadId == null) return;
     try {
-      memories = await (suppliedApi ?? MerchantApi(settings)).getMemories(threadId!);
+      memories = await (suppliedApi ?? MerchantApi(settings)).getMemories(
+        threadId!,
+      );
       notifyListeners();
     } on ApiFailure catch (failure) {
       problem = failure.problem;
@@ -106,9 +116,15 @@ class ClientSession extends ChangeNotifier {
 
   Future<void> decide(String memoryId, bool approved) async {
     try {
-      final result = await MerchantApi(settings).decideMemory(memoryId, approved);
+      final result = await MerchantApi(
+        settings,
+      ).decideMemory(memoryId, approved);
       memories = memories
-          .map((memory) => memory.id == memoryId ? memory.withStatus(result.status) : memory)
+          .map(
+            (memory) => memory.id == memoryId
+                ? memory.withStatus(result.status)
+                : memory,
+          )
           .toList();
     } on ApiFailure catch (failure) {
       problem = failure.problem;

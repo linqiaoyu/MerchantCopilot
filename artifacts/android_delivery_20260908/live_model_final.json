@@ -1,0 +1,1285 @@
+{
+  "schema_version": 1,
+  "mode": "real_deepseek_with_explicit_synthetic_memory_fixture",
+  "dataset_sha256": "dd9b73cb70282ec13fb35b81a7adc2931112bbdf4fdd57f46e3fd60017d87ef9",
+  "cases": [
+    {
+      "name": "metric",
+      "request": {
+        "query": "查询这一天的GMV是多少",
+        "context": {
+          "metric": "gmv",
+          "start_date": "2026-04-02",
+          "end_date": "2026-04-02"
+        }
+      },
+      "idempotency_key": "2710223c-4b7b-4c62-add1-958f85dc1fd9",
+      "phase": "finished",
+      "run": {
+        "run_id": "c7cd63e0-eaf4-4458-9cda-819e78498f73",
+        "thread_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+        "merchant_id": "xiaozhang_women",
+        "status": "completed",
+        "query": "查询这一天的GMV是多少",
+        "request": {
+          "query": "查询这一天的GMV是多少",
+          "context": {
+            "metric": "gmv",
+            "end_date": "2026-04-02",
+            "start_date": "2026-04-02"
+          }
+        },
+        "created_at": "2026-09-07T17:54:22.415350+01:00",
+        "started_at": "2026-09-07T17:54:22.422135+01:00",
+        "completed_at": "2026-09-07T17:54:43.445980+01:00",
+        "deadline_at": "2026-09-07T17:56:22.422135+01:00",
+        "owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "execution_owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "last_event_id": 45,
+        "result": "2026-04-02:毛GMV ¥11,358\n\n结构化明细（工具原始结果）:\n\n```json\n{\"aov\": 315.5, \"baseline_daily_gmv\": 34411.53, \"conversion_pct\": 1.12, \"days\": 1, \"gmv\": 11358.17, \"net_gmv\": 10952.17, \"orders\": 36, \"refund_rate_pct\": 2.8, \"uv\": 3221, \"window\": {\"end\": \"2026-04-02\", \"start\": \"2026-04-02\"}}\n```",
+        "node_result": {
+          "data": {
+            "uv": 3221,
+            "aov": 315.5,
+            "gmv": 11358.17,
+            "days": 1,
+            "orders": 36,
+            "window": {
+              "end": "2026-04-02",
+              "start": "2026-04-02"
+            },
+            "net_gmv": 10952.17,
+            "conversion_pct": 1.12,
+            "refund_rate_pct": 2.8,
+            "baseline_daily_gmv": 34411.53
+          },
+          "task": "metric",
+          "evidence": [
+            "窗口 2026-04-02 共 36 笔订单,毛GMV ¥11,358.17,净GMV ¥10,952.17",
+            "UV 3,221,转化率 1.12%,退款率 2.8%,客单价 ¥315.50",
+            "对比:基线日均毛GMV ¥34,412(剔除已知异常日)"
+          ],
+          "headline": "2026-04-02:毛GMV ¥11,358"
+        },
+        "structured_result": {
+          "kind": "metric",
+          "summary": "2026-04-02:毛GMV ¥11,358",
+          "diagnosis": "",
+          "schema_version": 1,
+          "recommended_actions": [],
+          "evidence_refs": [],
+          "limitations": [],
+          "assumptions": [],
+          "memory_refs": [],
+          "metrics": [
+            {
+              "key": "gmv",
+              "label": "毛GMV",
+              "value": 11358.17,
+              "unit": "元"
+            },
+            {
+              "key": "uv",
+              "label": "访客数",
+              "value": 3221,
+              "unit": "人"
+            },
+            {
+              "key": "conversion",
+              "label": "转化率",
+              "value": 1.12,
+              "unit": "%"
+            },
+            {
+              "key": "refund_rate",
+              "label": "退款率",
+              "value": 2.8,
+              "unit": "%"
+            },
+            {
+              "key": "aov",
+              "label": "客单价",
+              "value": 315.5,
+              "unit": "元"
+            }
+          ],
+          "evidence": [
+            {
+              "text": "窗口 2026-04-02 共 36 笔订单,毛GMV ¥11,358.17,净GMV ¥10,952.17",
+              "id": "c7cd63e0-eaf4-4458-9cda-819e78498f73:evidence:0"
+            },
+            {
+              "text": "UV 3,221,转化率 1.12%,退款率 2.8%,客单价 ¥315.50",
+              "id": "c7cd63e0-eaf4-4458-9cda-819e78498f73:evidence:1"
+            },
+            {
+              "text": "对比:基线日均毛GMV ¥34,412(剔除已知异常日)",
+              "id": "c7cd63e0-eaf4-4458-9cda-819e78498f73:evidence:2"
+            },
+            {
+              "text": "窗口 2026-04-02 共 36 笔订单,毛GMV ¥11,358.17,净GMV ¥10,952.17",
+              "id": "tool:prior:0:evidence:0"
+            },
+            {
+              "text": "UV 3,221,转化率 1.12%,退款率 2.8%,客单价 ¥315.50",
+              "id": "tool:prior:0:evidence:1"
+            },
+            {
+              "text": "对比:基线日均毛GMV ¥34,412(剔除已知异常日)",
+              "id": "tool:prior:0:evidence:2"
+            },
+            {
+              "text": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+              "id": "memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488"
+            }
+          ],
+          "experiment": {}
+        }
+      },
+      "elapsed_seconds": 21.205,
+      "sse": "id: 2\nevent: meta\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"status\": \"running\", \"thread_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\"}\n\nid: 4\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"router\"}\n\nid: 7\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"router\"}\n\nid: 8\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"recall\"}\n\nid: 10\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"recall\"}\n\nid: 11\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"skill_discovery\"}\n\nid: 12\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"skill_discovery\"}\n\nid: 13\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"skill_selection\"}\n\nid: 15\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"skill_selection\"}\n\nid: 16\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"planner\"}\n\nid: 18\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"planner\"}\n\nid: 19\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"executor\"}\n\nid: 20\nevent: tool_call\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"tool\": \"metric\"}\n\nid: 22\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"executor\"}\n\nid: 23\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"verifier\"}\n\nid: 25\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"verifier\"}\n\nid: 26\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"insight\"}\n\nid: 27\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"insight\"}\n\nid: 28\nevent: node_started\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"memory_candidate\"}\n\nid: 31\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"memory_candidate\"}\n\nid: 40\nevent: memory_candidate\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"status\": \"active\", \"content\": \"{\\\"aov\\\":315.5,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"days\\\":1,\\\"gmv\\\":11358.17,\\\"net_gmv\\\":10952.17,\\\"orders\\\":36,\\\"refund_rate_pct\\\":2.8,\\\"uv\\\":3221,\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"fact_type\": \"observation\", \"memory_id\": \"992fffc2-a89a-471b-9706-57e4d8304575\", \"candidate_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73:tool-observation\"}\n\nid: 42\nevent: node_completed\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"node\": \"agent\"}\n\nid: 43\nevent: evidence\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"items\": [\"窗口 2026-04-02 共 36 笔订单,毛GMV ¥11,358.17,净GMV ¥10,952.17\", \"UV 3,221,转化率 1.12%,退款率 2.8%,客单价 ¥315.50\", \"对比:基线日均毛GMV ¥34,412(剔除已知异常日)\"]}\n\nid: 44\nevent: final\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"answer\": \"2026-04-02:毛GMV ¥11,358\\n\\n结构化明细（工具原始结果）:\\n\\n```json\\n{\\\"aov\\\": 315.5, \\\"baseline_daily_gmv\\\": 34411.53, \\\"conversion_pct\\\": 1.12, \\\"days\\\": 1, \\\"gmv\\\": 11358.17, \\\"net_gmv\\\": 10952.17, \\\"orders\\\": 36, \\\"refund_rate_pct\\\": 2.8, \\\"uv\\\": 3221, \\\"window\\\": {\\\"end\\\": \\\"2026-04-02\\\", \\\"start\\\": \\\"2026-04-02\\\"}}\\n```\", \"node_result\": {\"data\": {\"uv\": 3221, \"aov\": 315.5, \"gmv\": 11358.17, \"days\": 1, \"orders\": 36, \"window\": {\"end\": \"2026-04-02\", \"start\": \"2026-04-02\"}, \"net_gmv\": 10952.17, \"conversion_pct\": 1.12, \"refund_rate_pct\": 2.8, \"baseline_daily_gmv\": 34411.53}, \"task\": \"metric\", \"evidence\": [\"窗口 2026-04-02 共 36 笔订单,毛GMV ¥11,358.17,净GMV ¥10,952.17\", \"UV 3,221,转化率 1.12%,退款率 2.8%,客单价 ¥315.50\", \"对比:基线日均毛GMV ¥34,412(剔除已知异常日)\"], \"headline\": \"2026-04-02:毛GMV ¥11,358\"}, \"structured_result\": {\"kind\": \"metric\", \"summary\": \"2026-04-02:毛GMV ¥11,358\", \"diagnosis\": \"\", \"schema_version\": 1, \"recommended_actions\": [], \"evidence_refs\": [], \"limitations\": [], \"assumptions\": [], \"memory_refs\": [], \"metrics\": [{\"key\": \"gmv\", \"label\": \"毛GMV\", \"value\": 11358.17, \"unit\": \"元\"}, {\"key\": \"uv\", \"label\": \"访客数\", \"value\": 3221, \"unit\": \"人\"}, {\"key\": \"conversion\", \"label\": \"转化率\", \"value\": 1.12, \"unit\": \"%\"}, {\"key\": \"refund_rate\", \"label\": \"退款率\", \"value\": 2.8, \"unit\": \"%\"}, {\"key\": \"aov\", \"label\": \"客单价\", \"value\": 315.5, \"unit\": \"元\"}], \"evidence\": [{\"text\": \"窗口 2026-04-02 共 36 笔订单,毛GMV ¥11,358.17,净GMV ¥10,952.17\", \"id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73:evidence:0\"}, {\"text\": \"UV 3,221,转化率 1.12%,退款率 2.8%,客单价 ¥315.50\", \"id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73:evidence:1\"}, {\"text\": \"对比:基线日均毛GMV ¥34,412(剔除已知异常日)\", \"id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73:evidence:2\"}, {\"text\": \"窗口 2026-04-02 共 36 笔订单,毛GMV ¥11,358.17,净GMV ¥10,952.17\", \"id\": \"tool:prior:0:evidence:0\"}, {\"text\": \"UV 3,221,转化率 1.12%,退款率 2.8%,客单价 ¥315.50\", \"id\": \"tool:prior:0:evidence:1\"}, {\"text\": \"对比:基线日均毛GMV ¥34,412(剔除已知异常日)\", \"id\": \"tool:prior:0:evidence:2\"}, {\"text\": \"未来经营优化不增加投放预算，优先调整现有直播安排。\", \"id\": \"memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488\"}], \"experiment\": {}}}\n\nid: 45\nevent: done\ndata: {\"run_id\": \"c7cd63e0-eaf4-4458-9cda-819e78498f73\", \"status\": \"completed\"}\n\n"
+    },
+    {
+      "name": "attribution",
+      "request": {
+        "query": "这一天GMV异常下滑，分析原因",
+        "context": {
+          "metric": "gmv",
+          "start_date": "2026-04-02",
+          "end_date": "2026-04-02"
+        }
+      },
+      "idempotency_key": "571f0a37-a7ef-4aba-a20b-24feb369368c",
+      "phase": "finished",
+      "run": {
+        "run_id": "15d3128b-e32c-4e49-b038-37a4c038a9ff",
+        "thread_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+        "merchant_id": "xiaozhang_women",
+        "status": "completed",
+        "query": "这一天GMV异常下滑，分析原因",
+        "request": {
+          "query": "这一天GMV异常下滑，分析原因",
+          "context": {
+            "metric": "gmv",
+            "end_date": "2026-04-02",
+            "start_date": "2026-04-02"
+          }
+        },
+        "created_at": "2026-09-07T17:54:43.603301+01:00",
+        "started_at": "2026-09-07T17:54:43.621203+01:00",
+        "completed_at": "2026-09-07T17:54:48.680691+01:00",
+        "deadline_at": "2026-09-07T17:56:43.621202+01:00",
+        "owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "execution_owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "last_event_id": 45,
+        "result": "GMV ¥11,358(基线日均 ¥34,412)暴跌,根因:人货错配——单品「高端真丝醋酸连衣裙」(price_band=high/mature)当日订单份额 11.1%(日常仅 0.78%),与店铺主力客群(student+young_pro 86%)错配\n\n结构化明细（工具原始结果）:\n\n```json\n{\"anomaly_type\": \"gmv\", \"buyer_student_youngpro_pct\": 86.0, \"step1_split\": {\"baseline_conversion_pct\": 4.2, \"baseline_daily_gmv\": 34411.53, \"conversion_pct\": 1.12, \"gmv\": 11358.17, \"orders\": 36, \"uv\": 3221}, \"step2_product_drill\": [{\"baseline_share_pct\": 0.78, \"name\": \"高端真丝醋酸连衣裙\", \"order_share_pct\": 11.1, \"orders\": 4, \"price_band\": \"high\", \"product_id\": \"P_C1\", \"target_audience\": \"mature\"}, {\"baseline_share_pct\": 0.51, \"name\": \"西装直筒裤032\", \"order_share_pct\": 5.6, \"orders\": 2, \"price_band\": \"low\", \"product_id\": \"P032\", \"target_audience\": \"student\"}, {\"baseline_share_pct\": 0.5, \"name\": \"蕾丝拼接上衣018\", \"order_share_pct\": 2.8, \"orders\": 1, \"price_band\": \"low\", \"product_id\": \"P018\", \"target_audience\": \"young_pro\"}], \"window\": {\"end\": \"2026-04-02\", \"start\": \"2026-04-02\"}}\n```",
+        "node_result": {
+          "data": {
+            "window": {
+              "end": "2026-04-02",
+              "start": "2026-04-02"
+            },
+            "step1_split": {
+              "uv": 3221,
+              "gmv": 11358.17,
+              "orders": 36,
+              "conversion_pct": 1.12,
+              "baseline_daily_gmv": 34411.53,
+              "baseline_conversion_pct": 4.2
+            },
+            "anomaly_type": "gmv",
+            "step2_product_drill": [
+              {
+                "name": "高端真丝醋酸连衣裙",
+                "orders": 4,
+                "price_band": "high",
+                "product_id": "P_C1",
+                "order_share_pct": 11.1,
+                "target_audience": "mature",
+                "baseline_share_pct": 0.78
+              },
+              {
+                "name": "西装直筒裤032",
+                "orders": 2,
+                "price_band": "low",
+                "product_id": "P032",
+                "order_share_pct": 5.6,
+                "target_audience": "student",
+                "baseline_share_pct": 0.51
+              },
+              {
+                "name": "蕾丝拼接上衣018",
+                "orders": 1,
+                "price_band": "low",
+                "product_id": "P018",
+                "order_share_pct": 2.8,
+                "target_audience": "young_pro",
+                "baseline_share_pct": 0.5
+              }
+            ],
+            "buyer_student_youngpro_pct": 86.0
+          },
+          "task": "attribution",
+          "evidence": [
+            "步骤1 拆解:UV 3,221 正常,但转化率崩到 1.12%(基线 4.2%)→ 不是流量问题",
+            "步骤2 按product下钻:高端真丝醋酸连衣裙(P_C1)当日份额 11.1% vs 日常 0.78%,份额异常飙升,是当日最突出的单品",
+            "join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配"
+          ],
+          "headline": "GMV ¥11,358(基线日均 ¥34,412)暴跌,根因:人货错配——单品「高端真丝醋酸连衣裙」(price_band=high/mature)当日订单份额 11.1%(日常仅 0.78%),与店铺主力客群(student+young_pro 86%)错配"
+        },
+        "structured_result": {
+          "kind": "attribution",
+          "summary": "GMV ¥11,358(基线日均 ¥34,412)暴跌,根因:人货错配——单品「高端真丝醋酸连衣裙」(price_band=high/mature)当日订单份额 11.1%(日常仅 0.78%),与店铺主力客群(student+young_pro 86%)错配",
+          "diagnosis": "",
+          "schema_version": 1,
+          "recommended_actions": [],
+          "evidence_refs": [],
+          "limitations": [],
+          "assumptions": [],
+          "memory_refs": [],
+          "metrics": [],
+          "evidence": [
+            {
+              "text": "步骤1 拆解:UV 3,221 正常,但转化率崩到 1.12%(基线 4.2%)→ 不是流量问题",
+              "id": "15d3128b-e32c-4e49-b038-37a4c038a9ff:evidence:0"
+            },
+            {
+              "text": "步骤2 按product下钻:高端真丝醋酸连衣裙(P_C1)当日份额 11.1% vs 日常 0.78%,份额异常飙升,是当日最突出的单品",
+              "id": "15d3128b-e32c-4e49-b038-37a4c038a9ff:evidence:1"
+            },
+            {
+              "text": "join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配",
+              "id": "15d3128b-e32c-4e49-b038-37a4c038a9ff:evidence:2"
+            },
+            {
+              "text": "步骤1 拆解:UV 3,221 正常,但转化率崩到 1.12%(基线 4.2%)→ 不是流量问题",
+              "id": "tool:prior:0:evidence:0"
+            },
+            {
+              "text": "步骤2 按product下钻:高端真丝醋酸连衣裙(P_C1)当日份额 11.1% vs 日常 0.78%,份额异常飙升,是当日最突出的单品",
+              "id": "tool:prior:0:evidence:1"
+            },
+            {
+              "text": "join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配",
+              "id": "tool:prior:0:evidence:2"
+            },
+            {
+              "text": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+              "id": "memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488"
+            },
+            {
+              "text": "{\"aov\":315.5,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"days\":1,\"gmv\":11358.17,\"net_gmv\":10952.17,\"orders\":36,\"refund_rate_pct\":2.8,\"uv\":3221,\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+              "id": "memory:992fffc2-a89a-471b-9706-57e4d8304575"
+            }
+          ],
+          "experiment": {}
+        }
+      },
+      "elapsed_seconds": 5.352,
+      "sse": "id: 2\nevent: meta\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"status\": \"running\", \"thread_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\"}\n\nid: 4\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"router\"}\n\nid: 7\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"router\"}\n\nid: 8\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"recall\"}\n\nid: 10\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"recall\"}\n\nid: 11\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"skill_discovery\"}\n\nid: 12\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"skill_discovery\"}\n\nid: 13\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"skill_selection\"}\n\nid: 15\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"skill_selection\"}\n\nid: 16\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"planner\"}\n\nid: 18\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"planner\"}\n\nid: 19\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"executor\"}\n\nid: 20\nevent: tool_call\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"tool\": \"attribution\"}\n\nid: 22\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"executor\"}\n\nid: 23\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"verifier\"}\n\nid: 25\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"verifier\"}\n\nid: 26\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"insight\"}\n\nid: 27\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"insight\"}\n\nid: 28\nevent: node_started\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"memory_candidate\"}\n\nid: 31\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"memory_candidate\"}\n\nid: 40\nevent: memory_candidate\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"status\": \"active\", \"content\": \"{\\\"anomaly_type\\\":\\\"gmv\\\",\\\"buyer_student_youngpro_pct\\\":86.0,\\\"step1_split\\\":{\\\"baseline_conversion_pct\\\":4.2,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"gmv\\\":11358.17,\\\"orders\\\":36,\\\"uv\\\":3221},\\\"step2_product_drill\\\":[{\\\"baseline_share_pct\\\":0.78,\\\"name\\\":\\\"高端真丝醋酸连衣裙\\\",\\\"order_share_pct\\\":11.1,\\\"orders\\\":4,\\\"price_band\\\":\\\"high\\\",\\\"product_id\\\":\\\"P_C1\\\",\\\"target_audience\\\":\\\"mature\\\"},{\\\"baseline_share_pct\\\":0.51,\\\"name\\\":\\\"西装直筒裤032\\\",\\\"order_share_pct\\\":5.6,\\\"orders\\\":2,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P032\\\",\\\"target_audience\\\":\\\"student\\\"},{\\\"baseline_share_pct\\\":0.5,\\\"name\\\":\\\"蕾丝拼接上衣018\\\",\\\"order_share_pct\\\":2.8,\\\"orders\\\":1,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P018\\\",\\\"target_audience\\\":\\\"young_pro\\\"}],\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"fact_type\": \"observation\", \"memory_id\": \"b5eef826-e2f9-4fdf-9b28-0ed05ce69983\", \"candidate_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff:tool-observation\"}\n\nid: 42\nevent: node_completed\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"node\": \"agent\"}\n\nid: 43\nevent: evidence\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"items\": [\"步骤1 拆解:UV 3,221 正常,但转化率崩到 1.12%(基线 4.2%)→ 不是流量问题\", \"步骤2 按product下钻:高端真丝醋酸连衣裙(P_C1)当日份额 11.1% vs 日常 0.78%,份额异常飙升,是当日最突出的单品\", \"join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配\"]}\n\nid: 44\nevent: final\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"answer\": \"GMV ¥11,358(基线日均 ¥34,412)暴跌,根因:人货错配——单品「高端真丝醋酸连衣裙」(price_band=high/mature)当日订单份额 11.1%(日常仅 0.78%),与店铺主力客群(student+young_pro 86%)错配\\n\\n结构化明细（工具原始结果）:\\n\\n```json\\n{\\\"anomaly_type\\\": \\\"gmv\\\", \\\"buyer_student_youngpro_pct\\\": 86.0, \\\"step1_split\\\": {\\\"baseline_conversion_pct\\\": 4.2, \\\"baseline_daily_gmv\\\": 34411.53, \\\"conversion_pct\\\": 1.12, \\\"gmv\\\": 11358.17, \\\"orders\\\": 36, \\\"uv\\\": 3221}, \\\"step2_product_drill\\\": [{\\\"baseline_share_pct\\\": 0.78, \\\"name\\\": \\\"高端真丝醋酸连衣裙\\\", \\\"order_share_pct\\\": 11.1, \\\"orders\\\": 4, \\\"price_band\\\": \\\"high\\\", \\\"product_id\\\": \\\"P_C1\\\", \\\"target_audience\\\": \\\"mature\\\"}, {\\\"baseline_share_pct\\\": 0.51, \\\"name\\\": \\\"西装直筒裤032\\\", \\\"order_share_pct\\\": 5.6, \\\"orders\\\": 2, \\\"price_band\\\": \\\"low\\\", \\\"product_id\\\": \\\"P032\\\", \\\"target_audience\\\": \\\"student\\\"}, {\\\"baseline_share_pct\\\": 0.5, \\\"name\\\": \\\"蕾丝拼接上衣018\\\", \\\"order_share_pct\\\": 2.8, \\\"orders\\\": 1, \\\"price_band\\\": \\\"low\\\", \\\"product_id\\\": \\\"P018\\\", \\\"target_audience\\\": \\\"young_pro\\\"}], \\\"window\\\": {\\\"end\\\": \\\"2026-04-02\\\", \\\"start\\\": \\\"2026-04-02\\\"}}\\n```\", \"node_result\": {\"data\": {\"window\": {\"end\": \"2026-04-02\", \"start\": \"2026-04-02\"}, \"step1_split\": {\"uv\": 3221, \"gmv\": 11358.17, \"orders\": 36, \"conversion_pct\": 1.12, \"baseline_daily_gmv\": 34411.53, \"baseline_conversion_pct\": 4.2}, \"anomaly_type\": \"gmv\", \"step2_product_drill\": [{\"name\": \"高端真丝醋酸连衣裙\", \"orders\": 4, \"price_band\": \"high\", \"product_id\": \"P_C1\", \"order_share_pct\": 11.1, \"target_audience\": \"mature\", \"baseline_share_pct\": 0.78}, {\"name\": \"西装直筒裤032\", \"orders\": 2, \"price_band\": \"low\", \"product_id\": \"P032\", \"order_share_pct\": 5.6, \"target_audience\": \"student\", \"baseline_share_pct\": 0.51}, {\"name\": \"蕾丝拼接上衣018\", \"orders\": 1, \"price_band\": \"low\", \"product_id\": \"P018\", \"order_share_pct\": 2.8, \"target_audience\": \"young_pro\", \"baseline_share_pct\": 0.5}], \"buyer_student_youngpro_pct\": 86.0}, \"task\": \"attribution\", \"evidence\": [\"步骤1 拆解:UV 3,221 正常,但转化率崩到 1.12%(基线 4.2%)→ 不是流量问题\", \"步骤2 按product下钻:高端真丝醋酸连衣裙(P_C1)当日份额 11.1% vs 日常 0.78%,份额异常飙升,是当日最突出的单品\", \"join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配\"], \"headline\": \"GMV ¥11,358(基线日均 ¥34,412)暴跌,根因:人货错配——单品「高端真丝醋酸连衣裙」(price_band=high/mature)当日订单份额 11.1%(日常仅 0.78%),与店铺主力客群(student+young_pro 86%)错配\"}, \"structured_result\": {\"kind\": \"attribution\", \"summary\": \"GMV ¥11,358(基线日均 ¥34,412)暴跌,根因:人货错配——单品「高端真丝醋酸连衣裙」(price_band=high/mature)当日订单份额 11.1%(日常仅 0.78%),与店铺主力客群(student+young_pro 86%)错配\", \"diagnosis\": \"\", \"schema_version\": 1, \"recommended_actions\": [], \"evidence_refs\": [], \"limitations\": [], \"assumptions\": [], \"memory_refs\": [], \"metrics\": [], \"evidence\": [{\"text\": \"步骤1 拆解:UV 3,221 正常,但转化率崩到 1.12%(基线 4.2%)→ 不是流量问题\", \"id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff:evidence:0\"}, {\"text\": \"步骤2 按product下钻:高端真丝醋酸连衣裙(P_C1)当日份额 11.1% vs 日常 0.78%,份额异常飙升,是当日最突出的单品\", \"id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff:evidence:1\"}, {\"text\": \"join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配\", \"id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff:evidence:2\"}, {\"text\": \"步骤1 拆解:UV 3,221 正常,但转化率崩到 1.12%(基线 4.2%)→ 不是流量问题\", \"id\": \"tool:prior:0:evidence:0\"}, {\"text\": \"步骤2 按product下钻:高端真丝醋酸连衣裙(P_C1)当日份额 11.1% vs 日常 0.78%,份额异常飙升,是当日最突出的单品\", \"id\": \"tool:prior:0:evidence:1\"}, {\"text\": \"join dim_product:该 SKU price_band=high、target_audience=mature,而当日 86% 买家是 student/young_pro → 高端/成熟定位与主力客群错配\", \"id\": \"tool:prior:0:evidence:2\"}, {\"text\": \"未来经营优化不增加投放预算，优先调整现有直播安排。\", \"id\": \"memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488\"}, {\"text\": \"{\\\"aov\\\":315.5,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"days\\\":1,\\\"gmv\\\":11358.17,\\\"net_gmv\\\":10952.17,\\\"orders\\\":36,\\\"refund_rate_pct\\\":2.8,\\\"uv\\\":3221,\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"id\": \"memory:992fffc2-a89a-471b-9706-57e4d8304575\"}], \"experiment\": {}}}\n\nid: 45\nevent: done\ndata: {\"run_id\": \"15d3128b-e32c-4e49-b038-37a4c038a9ff\", \"status\": \"completed\"}\n\n"
+    },
+    {
+      "name": "strategy_before_confirmation",
+      "request": {
+        "query": "请给出经营优化建议，并说明当前有哪些已确认的预算约束",
+        "context": {
+          "metric": "gmv",
+          "start_date": "2026-04-02",
+          "end_date": "2026-04-02"
+        }
+      },
+      "idempotency_key": "9b577b78-a4a3-49dc-b43c-44b8c0f1060a",
+      "phase": "finished",
+      "run": {
+        "run_id": "9146b64c-511c-4339-965a-6b8cfa35e11a",
+        "thread_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+        "merchant_id": "xiaozhang_women",
+        "status": "completed",
+        "query": "请给出经营优化建议，并说明当前有哪些已确认的预算约束",
+        "request": {
+          "query": "请给出经营优化建议，并说明当前有哪些已确认的预算约束",
+          "context": {
+            "metric": "gmv",
+            "end_date": "2026-04-02",
+            "start_date": "2026-04-02"
+          }
+        },
+        "created_at": "2026-09-07T17:54:48.953256+01:00",
+        "started_at": "2026-09-07T17:54:48.992990+01:00",
+        "completed_at": "2026-09-07T17:55:15.186480+01:00",
+        "deadline_at": "2026-09-07T17:56:48.992990+01:00",
+        "owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "execution_owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "last_event_id": 49,
+        "result": "诊断：2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。同时，已确认预算约束为不增加投放预算，需优先调整现有直播安排。\n\n建议：\n1. 将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\n2. 调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\n3. 在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\n\n实验契约：\n- 目标指标：转化率\n- 观察窗口：未来连续3场直播\n- 成功阈值：转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\n\n证据：memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488、memory:992fffc2-a89a-471b-9706-57e4d8304575、memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983、rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整、rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”、rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断、rag:operation-hook-vs-profit.md:引流款的选品与投放节奏、rag:operation-paid-vs-organic.md:付费投流的核心定位\n\n假设：\n- 预算约束为不增加投放预算，仅调整现有直播安排。\n- 主力客群为学生与职场新人，占比86%。\n- 当前流量结构异常源于泛流量引入，非自然流量减少。\n\n边界：\n- 未提供具体投放预算数字，无法量化调整空间。\n- 未提供历史转化率基线之外的详细数据，如各时段流量结构。\n- 实验观察期较短，可能受季节性因素干扰。",
+        "node_result": {
+          "data": {
+            "topic": "人货错配调整与预算约束优化",
+            "decision": {
+              "diagnosis": "2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。同时，已确认预算约束为不增加投放预算，需优先调整现有直播安排。",
+              "assumptions": [
+                "预算约束为不增加投放预算，仅调整现有直播安排。",
+                "主力客群为学生与职场新人，占比86%。",
+                "当前流量结构异常源于泛流量引入，非自然流量减少。"
+              ],
+              "limitations": [
+                "未提供具体投放预算数字，无法量化调整空间。",
+                "未提供历史转化率基线之外的详细数据，如各时段流量结构。",
+                "实验观察期较短，可能受季节性因素干扰。"
+              ],
+              "evidence_refs": [
+                "memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488",
+                "memory:992fffc2-a89a-471b-9706-57e4d8304575",
+                "memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983",
+                "rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整",
+                "rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”",
+                "rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断",
+                "rag:operation-hook-vs-profit.md:引流款的选品与投放节奏",
+                "rag:operation-paid-vs-organic.md:付费投流的核心定位"
+              ],
+              "experiment_metric": "转化率",
+              "success_threshold": "转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位",
+              "observation_window": "未来连续3场直播",
+              "recommended_actions": [
+                "将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。",
+                "调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。",
+                "在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。"
+              ]
+            },
+            "generation": "llm",
+            "rag_status": "ok",
+            "profile_source": "canonical_pgvector",
+            "recommendations": [
+              "将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。",
+              "调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。",
+              "在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。"
+            ],
+            "merchant_profile": {
+              "style": "",
+              "audience": "",
+              "category": "",
+              "recent_concerns": [],
+              "canonical_context": [
+                {
+                  "kind": "core",
+                  "content": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+                  "subject": "merchant",
+                  "scope_id": "xiaozhang_women",
+                  "fact_type": "user_fact",
+                  "memory_id": "cd14fe5b-0858-4ec5-8e37-f481af0e8488",
+                  "predicate": "budget_constraint",
+                  "scope_type": "merchant",
+                  "effective_to": null,
+                  "effective_from": null,
+                  "source_event_id": "524b3406-6e54-457c-84ba-4929ed82bd13"
+                },
+                {
+                  "kind": "episodic",
+                  "content": "{\"aov\":315.5,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"days\":1,\"gmv\":11358.17,\"net_gmv\":10952.17,\"orders\":36,\"refund_rate_pct\":2.8,\"uv\":3221,\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+                  "subject": "merchant",
+                  "scope_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+                  "fact_type": "observation",
+                  "memory_id": "992fffc2-a89a-471b-9706-57e4d8304575",
+                  "predicate": "metric_result",
+                  "scope_type": "thread",
+                  "effective_to": null,
+                  "effective_from": null,
+                  "source_event_id": "1f6ec7e8-84e8-4c85-99d1-82b99c6a58a6"
+                },
+                {
+                  "kind": "episodic",
+                  "content": "{\"anomaly_type\":\"gmv\",\"buyer_student_youngpro_pct\":86.0,\"step1_split\":{\"baseline_conversion_pct\":4.2,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"gmv\":11358.17,\"orders\":36,\"uv\":3221},\"step2_product_drill\":[{\"baseline_share_pct\":0.78,\"name\":\"高端真丝醋酸连衣裙\",\"order_share_pct\":11.1,\"orders\":4,\"price_band\":\"high\",\"product_id\":\"P_C1\",\"target_audience\":\"mature\"},{\"baseline_share_pct\":0.51,\"name\":\"西装直筒裤032\",\"order_share_pct\":5.6,\"orders\":2,\"price_band\":\"low\",\"product_id\":\"P032\",\"target_audience\":\"student\"},{\"baseline_share_pct\":0.5,\"name\":\"蕾丝拼接上衣018\",\"order_share_pct\":2.8,\"orders\":1,\"price_band\":\"low\",\"product_id\":\"P018\",\"target_audience\":\"young_pro\"}],\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+                  "subject": "merchant",
+                  "scope_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+                  "fact_type": "observation",
+                  "memory_id": "b5eef826-e2f9-4fdf-9b28-0ed05ce69983",
+                  "predicate": "attribution_result",
+                  "scope_type": "thread",
+                  "effective_to": null,
+                  "effective_from": null,
+                  "source_event_id": "283b9965-0fd0-48e9-9a3d-a35fe8bb0f3b"
+                }
+              ]
+            },
+            "retrieved_chunks": [
+              {
+                "heading": "人群质量与货盘匹配的调整",
+                "source_doc": "attribution-uv-up-gmv-flat.md"
+              },
+              {
+                "heading": "流量层排查：先确认“人没来”还是“来了不买”",
+                "source_doc": "attribution-gmv-drop-drilldown.md"
+              },
+              {
+                "heading": "流量结构异常的核心判断",
+                "source_doc": "attribution-uv-up-gmv-flat.md"
+              },
+              {
+                "heading": "引流款的选品与投放节奏",
+                "source_doc": "operation-hook-vs-profit.md"
+              },
+              {
+                "heading": "付费投流的核心定位",
+                "source_doc": "operation-paid-vs-organic.md"
+              }
+            ]
+          },
+          "task": "strategy",
+          "evidence": [
+            "商家画像:;",
+            "KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)",
+            "生成方式:llm"
+          ],
+          "headline": "策略建议:人货错配调整与预算约束优化"
+        },
+        "structured_result": {
+          "kind": "strategy",
+          "summary": "策略建议:人货错配调整与预算约束优化",
+          "diagnosis": "2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。同时，已确认预算约束为不增加投放预算，需优先调整现有直播安排。",
+          "schema_version": 1,
+          "recommended_actions": [
+            "将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。",
+            "调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。",
+            "在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。"
+          ],
+          "evidence_refs": [
+            "memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488",
+            "memory:992fffc2-a89a-471b-9706-57e4d8304575",
+            "memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983",
+            "rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整",
+            "rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”",
+            "rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断",
+            "rag:operation-hook-vs-profit.md:引流款的选品与投放节奏",
+            "rag:operation-paid-vs-organic.md:付费投流的核心定位"
+          ],
+          "limitations": [
+            "未提供具体投放预算数字，无法量化调整空间。",
+            "未提供历史转化率基线之外的详细数据，如各时段流量结构。",
+            "实验观察期较短，可能受季节性因素干扰。"
+          ],
+          "assumptions": [
+            "预算约束为不增加投放预算，仅调整现有直播安排。",
+            "主力客群为学生与职场新人，占比86%。",
+            "当前流量结构异常源于泛流量引入，非自然流量减少。"
+          ],
+          "memory_refs": [
+            "cd14fe5b-0858-4ec5-8e37-f481af0e8488",
+            "992fffc2-a89a-471b-9706-57e4d8304575",
+            "b5eef826-e2f9-4fdf-9b28-0ed05ce69983"
+          ],
+          "metrics": [],
+          "evidence": [
+            {
+              "text": "商家画像:;",
+              "id": "9146b64c-511c-4339-965a-6b8cfa35e11a:evidence:0"
+            },
+            {
+              "text": "KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)",
+              "id": "9146b64c-511c-4339-965a-6b8cfa35e11a:evidence:1"
+            },
+            {
+              "text": "生成方式:llm",
+              "id": "9146b64c-511c-4339-965a-6b8cfa35e11a:evidence:2"
+            },
+            {
+              "text": "商家画像:;",
+              "id": "tool:prior:0:evidence:0"
+            },
+            {
+              "text": "KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)",
+              "id": "tool:prior:0:evidence:1"
+            },
+            {
+              "text": "生成方式:llm",
+              "id": "tool:prior:0:evidence:2"
+            },
+            {
+              "text": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+              "id": "memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488"
+            },
+            {
+              "text": "{\"aov\":315.5,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"days\":1,\"gmv\":11358.17,\"net_gmv\":10952.17,\"orders\":36,\"refund_rate_pct\":2.8,\"uv\":3221,\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+              "id": "memory:992fffc2-a89a-471b-9706-57e4d8304575"
+            },
+            {
+              "text": "{\"anomaly_type\":\"gmv\",\"buyer_student_youngpro_pct\":86.0,\"step1_split\":{\"baseline_conversion_pct\":4.2,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"gmv\":11358.17,\"orders\":36,\"uv\":3221},\"step2_product_drill\":[{\"baseline_share_pct\":0.78,\"name\":\"高端真丝醋酸连衣裙\",\"order_share_pct\":11.1,\"orders\":4,\"price_band\":\"high\",\"product_id\":\"P_C1\",\"target_audience\":\"mature\"},{\"baseline_share_pct\":0.51,\"name\":\"西装直筒裤032\",\"order_share_pct\":5.6,\"orders\":2,\"price_band\":\"low\",\"product_id\":\"P032\",\"target_audience\":\"student\"},{\"baseline_share_pct\":0.5,\"name\":\"蕾丝拼接上衣018\",\"order_share_pct\":2.8,\"orders\":1,\"price_band\":\"low\",\"product_id\":\"P018\",\"target_audience\":\"young_pro\"}],\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+              "id": "memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983"
+            },
+            {
+              "text": "attribution-uv-up-gmv-flat.md · 人群质量与货盘匹配的调整",
+              "id": "rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整"
+            },
+            {
+              "text": "attribution-gmv-drop-drilldown.md · 流量层排查：先确认“人没来”还是“来了不买”",
+              "id": "rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”"
+            },
+            {
+              "text": "attribution-uv-up-gmv-flat.md · 流量结构异常的核心判断",
+              "id": "rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断"
+            },
+            {
+              "text": "operation-hook-vs-profit.md · 引流款的选品与投放节奏",
+              "id": "rag:operation-hook-vs-profit.md:引流款的选品与投放节奏"
+            },
+            {
+              "text": "operation-paid-vs-organic.md · 付费投流的核心定位",
+              "id": "rag:operation-paid-vs-organic.md:付费投流的核心定位"
+            }
+          ],
+          "experiment": {
+            "experiment_metric": "转化率",
+            "success_threshold": "转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位",
+            "observation_window": "未来连续3场直播"
+          }
+        }
+      },
+      "elapsed_seconds": 26.559,
+      "sse": "id: 2\nevent: meta\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"status\": \"running\", \"thread_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\"}\n\nid: 4\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"router\"}\n\nid: 7\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"router\"}\n\nid: 8\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"recall\"}\n\nid: 10\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"recall\"}\n\nid: 11\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"skill_discovery\"}\n\nid: 12\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"skill_discovery\"}\n\nid: 13\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"skill_selection\"}\n\nid: 15\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"skill_selection\"}\n\nid: 16\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"planner\"}\n\nid: 18\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"planner\"}\n\nid: 19\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"executor\"}\n\nid: 20\nevent: tool_call\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"tool\": \"strategy\"}\n\nid: 24\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"executor\"}\n\nid: 25\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"verifier\"}\n\nid: 27\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"verifier\"}\n\nid: 28\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"insight\"}\n\nid: 29\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"insight\"}\n\nid: 30\nevent: node_started\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"memory_candidate\"}\n\nid: 33\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"memory_candidate\"}\n\nid: 44\nevent: memory_candidate\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"status\": \"proposed_decision\", \"content\": \"{\\\"assumptions\\\":[\\\"预算约束为不增加投放预算，仅调整现有直播安排。\\\",\\\"主力客群为学生与职场新人，占比86%。\\\",\\\"当前流量结构异常源于泛流量引入，非自然流量减少。\\\"],\\\"diagnosis\\\":\\\"2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。同时，已确认预算约束为不增加投放预算，需优先调整现有直播安排。\\\",\\\"evidence_refs\\\":[\\\"memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488\\\",\\\"memory:992fffc2-a89a-471b-9706-57e4d8304575\\\",\\\"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\\\",\\\"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\\\",\\\"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\\\",\\\"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\\\",\\\"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\\\",\\\"rag:operation-paid-vs-organic.md:付费投流的核心定位\\\"],\\\"experiment_metric\\\":\\\"转化率\\\",\\\"limitations\\\":[\\\"未提供具体投放预算数字，无法量化调整空间。\\\",\\\"未提供历史转化率基线之外的详细数据，如各时段流量结构。\\\",\\\"实验观察期较短，可能受季节性因素干扰。\\\"],\\\"observation_window\\\":\\\"未来连续3场直播\\\",\\\"recommended_actions\\\":[\\\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\\\",\\\"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\\\",\\\"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\\\"],\\\"success_threshold\\\":\\\"转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\\\"}\", \"fact_type\": \"decision\", \"memory_id\": \"60a70572-667f-4567-b06c-529b28355418\", \"candidate_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a:decision\"}\n\nid: 46\nevent: node_completed\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"node\": \"agent\"}\n\nid: 47\nevent: evidence\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"items\": [\"商家画像:;\", \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"生成方式:llm\"]}\n\nid: 48\nevent: final\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"answer\": \"诊断：2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。同时，已确认预算约束为不增加投放预算，需优先调整现有直播安排。\\n\\n建议：\\n1. 将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\\n2. 调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\\n3. 在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\\n\\n实验契约：\\n- 目标指标：转化率\\n- 观察窗口：未来连续3场直播\\n- 成功阈值：转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\\n\\n证据：memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488、memory:992fffc2-a89a-471b-9706-57e4d8304575、memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983、rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整、rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”、rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断、rag:operation-hook-vs-profit.md:引流款的选品与投放节奏、rag:operation-paid-vs-organic.md:付费投流的核心定位\\n\\n假设：\\n- 预算约束为不增加投放预算，仅调整现有直播安排。\\n- 主力客群为学生与职场新人，占比86%。\\n- 当前流量结构异常源于泛流量引入，非自然流量减少。\\n\\n边界：\\n- 未提供具体投放预算数字，无法量化调整空间。\\n- 未提供历史转化率基线之外的详细数据，如各时段流量结构。\\n- 实验观察期较短，可能受季节性因素干扰。\", \"node_result\": {\"data\": {\"topic\": \"人货错配调整与预算约束优化\", \"decision\": {\"diagnosis\": \"2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。同时，已确认预算约束为不增加投放预算，需优先调整现有直播安排。\", \"assumptions\": [\"预算约束为不增加投放预算，仅调整现有直播安排。\", \"主力客群为学生与职场新人，占比86%。\", \"当前流量结构异常源于泛流量引入，非自然流量减少。\"], \"limitations\": [\"未提供具体投放预算数字，无法量化调整空间。\", \"未提供历史转化率基线之外的详细数据，如各时段流量结构。\", \"实验观察期较短，可能受季节性因素干扰。\"], \"evidence_refs\": [\"memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488\", \"memory:992fffc2-a89a-471b-9706-57e4d8304575\", \"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\", \"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\", \"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\", \"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\", \"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\", \"rag:operation-paid-vs-organic.md:付费投流的核心定位\"], \"experiment_metric\": \"转化率\", \"success_threshold\": \"转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\", \"observation_window\": \"未来连续3场直播\", \"recommended_actions\": [\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\", \"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\", \"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\"]}, \"generation\": \"llm\", \"rag_status\": \"ok\", \"profile_source\": \"canonical_pgvector\", \"recommendations\": [\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\", \"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\", \"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\"], \"merchant_profile\": {\"style\": \"\", \"audience\": \"\", \"category\": \"\", \"recent_concerns\": [], \"canonical_context\": [{\"kind\": \"core\", \"content\": \"未来经营优化不增加投放预算，优先调整现有直播安排。\", \"subject\": \"merchant\", \"scope_id\": \"xiaozhang_women\", \"fact_type\": \"user_fact\", \"memory_id\": \"cd14fe5b-0858-4ec5-8e37-f481af0e8488\", \"predicate\": \"budget_constraint\", \"scope_type\": \"merchant\", \"effective_to\": null, \"effective_from\": null, \"source_event_id\": \"524b3406-6e54-457c-84ba-4929ed82bd13\"}, {\"kind\": \"episodic\", \"content\": \"{\\\"aov\\\":315.5,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"days\\\":1,\\\"gmv\\\":11358.17,\\\"net_gmv\\\":10952.17,\\\"orders\\\":36,\\\"refund_rate_pct\\\":2.8,\\\"uv\\\":3221,\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"subject\": \"merchant\", \"scope_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\", \"fact_type\": \"observation\", \"memory_id\": \"992fffc2-a89a-471b-9706-57e4d8304575\", \"predicate\": \"metric_result\", \"scope_type\": \"thread\", \"effective_to\": null, \"effective_from\": null, \"source_event_id\": \"1f6ec7e8-84e8-4c85-99d1-82b99c6a58a6\"}, {\"kind\": \"episodic\", \"content\": \"{\\\"anomaly_type\\\":\\\"gmv\\\",\\\"buyer_student_youngpro_pct\\\":86.0,\\\"step1_split\\\":{\\\"baseline_conversion_pct\\\":4.2,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"gmv\\\":11358.17,\\\"orders\\\":36,\\\"uv\\\":3221},\\\"step2_product_drill\\\":[{\\\"baseline_share_pct\\\":0.78,\\\"name\\\":\\\"高端真丝醋酸连衣裙\\\",\\\"order_share_pct\\\":11.1,\\\"orders\\\":4,\\\"price_band\\\":\\\"high\\\",\\\"product_id\\\":\\\"P_C1\\\",\\\"target_audience\\\":\\\"mature\\\"},{\\\"baseline_share_pct\\\":0.51,\\\"name\\\":\\\"西装直筒裤032\\\",\\\"order_share_pct\\\":5.6,\\\"orders\\\":2,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P032\\\",\\\"target_audience\\\":\\\"student\\\"},{\\\"baseline_share_pct\\\":0.5,\\\"name\\\":\\\"蕾丝拼接上衣018\\\",\\\"order_share_pct\\\":2.8,\\\"orders\\\":1,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P018\\\",\\\"target_audience\\\":\\\"young_pro\\\"}],\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"subject\": \"merchant\", \"scope_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\", \"fact_type\": \"observation\", \"memory_id\": \"b5eef826-e2f9-4fdf-9b28-0ed05ce69983\", \"predicate\": \"attribution_result\", \"scope_type\": \"thread\", \"effective_to\": null, \"effective_from\": null, \"source_event_id\": \"283b9965-0fd0-48e9-9a3d-a35fe8bb0f3b\"}]}, \"retrieved_chunks\": [{\"heading\": \"人群质量与货盘匹配的调整\", \"source_doc\": \"attribution-uv-up-gmv-flat.md\"}, {\"heading\": \"流量层排查：先确认“人没来”还是“来了不买”\", \"source_doc\": \"attribution-gmv-drop-drilldown.md\"}, {\"heading\": \"流量结构异常的核心判断\", \"source_doc\": \"attribution-uv-up-gmv-flat.md\"}, {\"heading\": \"引流款的选品与投放节奏\", \"source_doc\": \"operation-hook-vs-profit.md\"}, {\"heading\": \"付费投流的核心定位\", \"source_doc\": \"operation-paid-vs-organic.md\"}]}, \"task\": \"strategy\", \"evidence\": [\"商家画像:;\", \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"生成方式:llm\"], \"headline\": \"策略建议:人货错配调整与预算约束优化\"}, \"structured_result\": {\"kind\": \"strategy\", \"summary\": \"策略建议:人货错配调整与预算约束优化\", \"diagnosis\": \"2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。同时，已确认预算约束为不增加投放预算，需优先调整现有直播安排。\", \"schema_version\": 1, \"recommended_actions\": [\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\", \"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\", \"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\"], \"evidence_refs\": [\"memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488\", \"memory:992fffc2-a89a-471b-9706-57e4d8304575\", \"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\", \"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\", \"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\", \"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\", \"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\", \"rag:operation-paid-vs-organic.md:付费投流的核心定位\"], \"limitations\": [\"未提供具体投放预算数字，无法量化调整空间。\", \"未提供历史转化率基线之外的详细数据，如各时段流量结构。\", \"实验观察期较短，可能受季节性因素干扰。\"], \"assumptions\": [\"预算约束为不增加投放预算，仅调整现有直播安排。\", \"主力客群为学生与职场新人，占比86%。\", \"当前流量结构异常源于泛流量引入，非自然流量减少。\"], \"memory_refs\": [\"cd14fe5b-0858-4ec5-8e37-f481af0e8488\", \"992fffc2-a89a-471b-9706-57e4d8304575\", \"b5eef826-e2f9-4fdf-9b28-0ed05ce69983\"], \"metrics\": [], \"evidence\": [{\"text\": \"商家画像:;\", \"id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a:evidence:0\"}, {\"text\": \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a:evidence:1\"}, {\"text\": \"生成方式:llm\", \"id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a:evidence:2\"}, {\"text\": \"商家画像:;\", \"id\": \"tool:prior:0:evidence:0\"}, {\"text\": \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"id\": \"tool:prior:0:evidence:1\"}, {\"text\": \"生成方式:llm\", \"id\": \"tool:prior:0:evidence:2\"}, {\"text\": \"未来经营优化不增加投放预算，优先调整现有直播安排。\", \"id\": \"memory:cd14fe5b-0858-4ec5-8e37-f481af0e8488\"}, {\"text\": \"{\\\"aov\\\":315.5,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"days\\\":1,\\\"gmv\\\":11358.17,\\\"net_gmv\\\":10952.17,\\\"orders\\\":36,\\\"refund_rate_pct\\\":2.8,\\\"uv\\\":3221,\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"id\": \"memory:992fffc2-a89a-471b-9706-57e4d8304575\"}, {\"text\": \"{\\\"anomaly_type\\\":\\\"gmv\\\",\\\"buyer_student_youngpro_pct\\\":86.0,\\\"step1_split\\\":{\\\"baseline_conversion_pct\\\":4.2,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"gmv\\\":11358.17,\\\"orders\\\":36,\\\"uv\\\":3221},\\\"step2_product_drill\\\":[{\\\"baseline_share_pct\\\":0.78,\\\"name\\\":\\\"高端真丝醋酸连衣裙\\\",\\\"order_share_pct\\\":11.1,\\\"orders\\\":4,\\\"price_band\\\":\\\"high\\\",\\\"product_id\\\":\\\"P_C1\\\",\\\"target_audience\\\":\\\"mature\\\"},{\\\"baseline_share_pct\\\":0.51,\\\"name\\\":\\\"西装直筒裤032\\\",\\\"order_share_pct\\\":5.6,\\\"orders\\\":2,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P032\\\",\\\"target_audience\\\":\\\"student\\\"},{\\\"baseline_share_pct\\\":0.5,\\\"name\\\":\\\"蕾丝拼接上衣018\\\",\\\"order_share_pct\\\":2.8,\\\"orders\\\":1,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P018\\\",\\\"target_audience\\\":\\\"young_pro\\\"}],\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"id\": \"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\"}, {\"text\": \"attribution-uv-up-gmv-flat.md · 人群质量与货盘匹配的调整\", \"id\": \"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\"}, {\"text\": \"attribution-gmv-drop-drilldown.md · 流量层排查：先确认“人没来”还是“来了不买”\", \"id\": \"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\"}, {\"text\": \"attribution-uv-up-gmv-flat.md · 流量结构异常的核心判断\", \"id\": \"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\"}, {\"text\": \"operation-hook-vs-profit.md · 引流款的选品与投放节奏\", \"id\": \"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\"}, {\"text\": \"operation-paid-vs-organic.md · 付费投流的核心定位\", \"id\": \"rag:operation-paid-vs-organic.md:付费投流的核心定位\"}], \"experiment\": {\"experiment_metric\": \"转化率\", \"success_threshold\": \"转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\", \"observation_window\": \"未来连续3场直播\"}}}\n\nid: 49\nevent: done\ndata: {\"run_id\": \"9146b64c-511c-4339-965a-6b8cfa35e11a\", \"status\": \"completed\"}\n\n"
+    },
+    {
+      "name": "strategy_after_confirmation",
+      "request": {
+        "query": "请基于已确认的预算约束给出经营优化建议，并引用依据",
+        "context": {
+          "metric": "gmv",
+          "start_date": "2026-04-02",
+          "end_date": "2026-04-02"
+        }
+      },
+      "idempotency_key": "32159a5e-4ab4-4a9b-8383-18f088ef2366",
+      "phase": "finished",
+      "run": {
+        "run_id": "20283586-a097-4920-b903-3c310c6e92c0",
+        "thread_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+        "merchant_id": "xiaozhang_women",
+        "status": "completed",
+        "query": "请基于已确认的预算约束给出经营优化建议，并引用依据",
+        "request": {
+          "query": "请基于已确认的预算约束给出经营优化建议，并引用依据",
+          "context": {
+            "metric": "gmv",
+            "end_date": "2026-04-02",
+            "start_date": "2026-04-02"
+          }
+        },
+        "created_at": "2026-09-07T17:55:15.695527+01:00",
+        "started_at": "2026-09-07T17:55:15.702013+01:00",
+        "completed_at": "2026-09-07T17:55:37.073403+01:00",
+        "deadline_at": "2026-09-07T17:57:15.702013+01:00",
+        "owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "execution_owner": "b35daf58-ab49-4015-bec8-841900743100",
+        "last_event_id": 49,
+        "result": "诊断：2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。已确认预算约束为不增加投放预算，需优先调整现有直播安排。\n\n建议：\n1. 将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\n2. 调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\n3. 在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\n\n实验契约：\n- 目标指标：转化率\n- 观察窗口：未来连续3场直播\n- 成功阈值：转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\n\n证据：memory:ff278806-cea8-4f65-902b-a0d9ecff58e8、memory:992fffc2-a89a-471b-9706-57e4d8304575、memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983、rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整、rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”、rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断、rag:operation-hook-vs-profit.md:引流款的选品与投放节奏、rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层\n\n假设：\n- 预算约束为不增加投放预算，仅调整现有直播安排。\n- 主力客群为学生与职场新人，占比86%。\n- 当前流量结构异常源于泛流量引入，非自然流量减少。\n\n边界：\n- 未提供具体投放预算数字，无法量化调整空间。\n- 未提供历史转化率基线之外的详细数据，如各时段流量结构。\n- 实验观察期较短，可能受季节性因素干扰。",
+        "node_result": {
+          "data": {
+            "topic": "预算约束下优化直播货盘与话术",
+            "decision": {
+              "diagnosis": "2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。已确认预算约束为不增加投放预算，需优先调整现有直播安排。",
+              "assumptions": [
+                "预算约束为不增加投放预算，仅调整现有直播安排。",
+                "主力客群为学生与职场新人，占比86%。",
+                "当前流量结构异常源于泛流量引入，非自然流量减少。"
+              ],
+              "limitations": [
+                "未提供具体投放预算数字，无法量化调整空间。",
+                "未提供历史转化率基线之外的详细数据，如各时段流量结构。",
+                "实验观察期较短，可能受季节性因素干扰。"
+              ],
+              "evidence_refs": [
+                "memory:ff278806-cea8-4f65-902b-a0d9ecff58e8",
+                "memory:992fffc2-a89a-471b-9706-57e4d8304575",
+                "memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983",
+                "rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整",
+                "rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”",
+                "rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断",
+                "rag:operation-hook-vs-profit.md:引流款的选品与投放节奏",
+                "rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层"
+              ],
+              "experiment_metric": "转化率",
+              "success_threshold": "转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位",
+              "observation_window": "未来连续3场直播",
+              "recommended_actions": [
+                "将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。",
+                "调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。",
+                "在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。"
+              ]
+            },
+            "generation": "llm",
+            "rag_status": "ok",
+            "profile_source": "canonical_pgvector",
+            "recommendations": [
+              "将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。",
+              "调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。",
+              "在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。"
+            ],
+            "merchant_profile": {
+              "style": "",
+              "audience": "",
+              "category": "",
+              "recent_concerns": [],
+              "canonical_context": [
+                {
+                  "kind": "core",
+                  "content": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+                  "subject": "merchant",
+                  "scope_id": "xiaozhang_women",
+                  "fact_type": "user_fact",
+                  "memory_id": "ff278806-cea8-4f65-902b-a0d9ecff58e8",
+                  "predicate": "budget_constraint",
+                  "scope_type": "merchant",
+                  "effective_to": null,
+                  "effective_from": null,
+                  "source_event_id": "74509400-9eaf-4386-b9e9-a23059d1607f"
+                },
+                {
+                  "kind": "episodic",
+                  "content": "{\"aov\":315.5,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"days\":1,\"gmv\":11358.17,\"net_gmv\":10952.17,\"orders\":36,\"refund_rate_pct\":2.8,\"uv\":3221,\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+                  "subject": "merchant",
+                  "scope_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+                  "fact_type": "observation",
+                  "memory_id": "992fffc2-a89a-471b-9706-57e4d8304575",
+                  "predicate": "metric_result",
+                  "scope_type": "thread",
+                  "effective_to": null,
+                  "effective_from": null,
+                  "source_event_id": "1f6ec7e8-84e8-4c85-99d1-82b99c6a58a6"
+                },
+                {
+                  "kind": "episodic",
+                  "content": "{\"anomaly_type\":\"gmv\",\"buyer_student_youngpro_pct\":86.0,\"step1_split\":{\"baseline_conversion_pct\":4.2,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"gmv\":11358.17,\"orders\":36,\"uv\":3221},\"step2_product_drill\":[{\"baseline_share_pct\":0.78,\"name\":\"高端真丝醋酸连衣裙\",\"order_share_pct\":11.1,\"orders\":4,\"price_band\":\"high\",\"product_id\":\"P_C1\",\"target_audience\":\"mature\"},{\"baseline_share_pct\":0.51,\"name\":\"西装直筒裤032\",\"order_share_pct\":5.6,\"orders\":2,\"price_band\":\"low\",\"product_id\":\"P032\",\"target_audience\":\"student\"},{\"baseline_share_pct\":0.5,\"name\":\"蕾丝拼接上衣018\",\"order_share_pct\":2.8,\"orders\":1,\"price_band\":\"low\",\"product_id\":\"P018\",\"target_audience\":\"young_pro\"}],\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+                  "subject": "merchant",
+                  "scope_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+                  "fact_type": "observation",
+                  "memory_id": "b5eef826-e2f9-4fdf-9b28-0ed05ce69983",
+                  "predicate": "attribution_result",
+                  "scope_type": "thread",
+                  "effective_to": null,
+                  "effective_from": null,
+                  "source_event_id": "283b9965-0fd0-48e9-9a3d-a35fe8bb0f3b"
+                }
+              ]
+            },
+            "retrieved_chunks": [
+              {
+                "heading": "人群质量与货盘匹配的调整",
+                "source_doc": "attribution-uv-up-gmv-flat.md"
+              },
+              {
+                "heading": "流量层排查：先确认“人没来”还是“来了不买”",
+                "source_doc": "attribution-gmv-drop-drilldown.md"
+              },
+              {
+                "heading": "流量结构异常的核心判断",
+                "source_doc": "attribution-uv-up-gmv-flat.md"
+              },
+              {
+                "heading": "引流款的选品与投放节奏",
+                "source_doc": "operation-hook-vs-profit.md"
+              },
+              {
+                "heading": "从客户声音锁定问题层",
+                "source_doc": "attribution-sku-anomaly-rootcause.md"
+              }
+            ]
+          },
+          "task": "strategy",
+          "evidence": [
+            "商家画像:;",
+            "KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)",
+            "生成方式:llm"
+          ],
+          "headline": "策略建议:预算约束下优化直播货盘与话术"
+        },
+        "structured_result": {
+          "kind": "strategy",
+          "summary": "策略建议:预算约束下优化直播货盘与话术",
+          "diagnosis": "2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。已确认预算约束为不增加投放预算，需优先调整现有直播安排。",
+          "schema_version": 1,
+          "recommended_actions": [
+            "将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。",
+            "调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。",
+            "在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。"
+          ],
+          "evidence_refs": [
+            "memory:ff278806-cea8-4f65-902b-a0d9ecff58e8",
+            "memory:992fffc2-a89a-471b-9706-57e4d8304575",
+            "memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983",
+            "rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整",
+            "rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”",
+            "rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断",
+            "rag:operation-hook-vs-profit.md:引流款的选品与投放节奏",
+            "rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层"
+          ],
+          "limitations": [
+            "未提供具体投放预算数字，无法量化调整空间。",
+            "未提供历史转化率基线之外的详细数据，如各时段流量结构。",
+            "实验观察期较短，可能受季节性因素干扰。"
+          ],
+          "assumptions": [
+            "预算约束为不增加投放预算，仅调整现有直播安排。",
+            "主力客群为学生与职场新人，占比86%。",
+            "当前流量结构异常源于泛流量引入，非自然流量减少。"
+          ],
+          "memory_refs": [
+            "ff278806-cea8-4f65-902b-a0d9ecff58e8",
+            "992fffc2-a89a-471b-9706-57e4d8304575",
+            "b5eef826-e2f9-4fdf-9b28-0ed05ce69983"
+          ],
+          "metrics": [],
+          "evidence": [
+            {
+              "text": "商家画像:;",
+              "id": "20283586-a097-4920-b903-3c310c6e92c0:evidence:0"
+            },
+            {
+              "text": "KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)",
+              "id": "20283586-a097-4920-b903-3c310c6e92c0:evidence:1"
+            },
+            {
+              "text": "生成方式:llm",
+              "id": "20283586-a097-4920-b903-3c310c6e92c0:evidence:2"
+            },
+            {
+              "text": "商家画像:;",
+              "id": "tool:prior:0:evidence:0"
+            },
+            {
+              "text": "KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)",
+              "id": "tool:prior:0:evidence:1"
+            },
+            {
+              "text": "生成方式:llm",
+              "id": "tool:prior:0:evidence:2"
+            },
+            {
+              "text": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+              "id": "memory:ff278806-cea8-4f65-902b-a0d9ecff58e8"
+            },
+            {
+              "text": "{\"aov\":315.5,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"days\":1,\"gmv\":11358.17,\"net_gmv\":10952.17,\"orders\":36,\"refund_rate_pct\":2.8,\"uv\":3221,\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+              "id": "memory:992fffc2-a89a-471b-9706-57e4d8304575"
+            },
+            {
+              "text": "{\"anomaly_type\":\"gmv\",\"buyer_student_youngpro_pct\":86.0,\"step1_split\":{\"baseline_conversion_pct\":4.2,\"baseline_daily_gmv\":34411.53,\"conversion_pct\":1.12,\"gmv\":11358.17,\"orders\":36,\"uv\":3221},\"step2_product_drill\":[{\"baseline_share_pct\":0.78,\"name\":\"高端真丝醋酸连衣裙\",\"order_share_pct\":11.1,\"orders\":4,\"price_band\":\"high\",\"product_id\":\"P_C1\",\"target_audience\":\"mature\"},{\"baseline_share_pct\":0.51,\"name\":\"西装直筒裤032\",\"order_share_pct\":5.6,\"orders\":2,\"price_band\":\"low\",\"product_id\":\"P032\",\"target_audience\":\"student\"},{\"baseline_share_pct\":0.5,\"name\":\"蕾丝拼接上衣018\",\"order_share_pct\":2.8,\"orders\":1,\"price_band\":\"low\",\"product_id\":\"P018\",\"target_audience\":\"young_pro\"}],\"window\":{\"end\":\"2026-04-02\",\"start\":\"2026-04-02\"}}",
+              "id": "memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983"
+            },
+            {
+              "text": "attribution-uv-up-gmv-flat.md · 人群质量与货盘匹配的调整",
+              "id": "rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整"
+            },
+            {
+              "text": "attribution-gmv-drop-drilldown.md · 流量层排查：先确认“人没来”还是“来了不买”",
+              "id": "rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”"
+            },
+            {
+              "text": "attribution-uv-up-gmv-flat.md · 流量结构异常的核心判断",
+              "id": "rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断"
+            },
+            {
+              "text": "operation-hook-vs-profit.md · 引流款的选品与投放节奏",
+              "id": "rag:operation-hook-vs-profit.md:引流款的选品与投放节奏"
+            },
+            {
+              "text": "attribution-sku-anomaly-rootcause.md · 从客户声音锁定问题层",
+              "id": "rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层"
+            }
+          ],
+          "experiment": {
+            "experiment_metric": "转化率",
+            "success_threshold": "转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位",
+            "observation_window": "未来连续3场直播"
+          }
+        }
+      },
+      "elapsed_seconds": 21.548,
+      "sse": "id: 2\nevent: meta\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"status\": \"running\", \"thread_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\"}\n\nid: 4\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"router\"}\n\nid: 7\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"router\"}\n\nid: 8\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"recall\"}\n\nid: 10\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"recall\"}\n\nid: 11\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"skill_discovery\"}\n\nid: 12\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"skill_discovery\"}\n\nid: 13\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"skill_selection\"}\n\nid: 15\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"skill_selection\"}\n\nid: 16\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"planner\"}\n\nid: 18\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"planner\"}\n\nid: 19\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"executor\"}\n\nid: 20\nevent: tool_call\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"tool\": \"strategy\"}\n\nid: 24\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"executor\"}\n\nid: 25\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"verifier\"}\n\nid: 27\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"verifier\"}\n\nid: 28\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"insight\"}\n\nid: 29\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"insight\"}\n\nid: 30\nevent: node_started\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"memory_candidate\"}\n\nid: 33\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"memory_candidate\"}\n\nid: 44\nevent: memory_candidate\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"status\": \"proposed_decision\", \"content\": \"{\\\"assumptions\\\":[\\\"预算约束为不增加投放预算，仅调整现有直播安排。\\\",\\\"主力客群为学生与职场新人，占比86%。\\\",\\\"当前流量结构异常源于泛流量引入，非自然流量减少。\\\"],\\\"diagnosis\\\":\\\"2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。已确认预算约束为不增加投放预算，需优先调整现有直播安排。\\\",\\\"evidence_refs\\\":[\\\"memory:ff278806-cea8-4f65-902b-a0d9ecff58e8\\\",\\\"memory:992fffc2-a89a-471b-9706-57e4d8304575\\\",\\\"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\\\",\\\"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\\\",\\\"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\\\",\\\"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\\\",\\\"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\\\",\\\"rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层\\\"],\\\"experiment_metric\\\":\\\"转化率\\\",\\\"limitations\\\":[\\\"未提供具体投放预算数字，无法量化调整空间。\\\",\\\"未提供历史转化率基线之外的详细数据，如各时段流量结构。\\\",\\\"实验观察期较短，可能受季节性因素干扰。\\\"],\\\"observation_window\\\":\\\"未来连续3场直播\\\",\\\"recommended_actions\\\":[\\\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\\\",\\\"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\\\",\\\"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\\\"],\\\"success_threshold\\\":\\\"转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\\\"}\", \"fact_type\": \"decision\", \"memory_id\": \"4c31079c-6522-42dd-83ac-7f3cdb9b9ff5\", \"candidate_id\": \"20283586-a097-4920-b903-3c310c6e92c0:decision\"}\n\nid: 46\nevent: node_completed\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"node\": \"agent\"}\n\nid: 47\nevent: evidence\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"items\": [\"商家画像:;\", \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"生成方式:llm\"]}\n\nid: 48\nevent: final\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"answer\": \"诊断：2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。已确认预算约束为不增加投放预算，需优先调整现有直播安排。\\n\\n建议：\\n1. 将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\\n2. 调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\\n3. 在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\\n\\n实验契约：\\n- 目标指标：转化率\\n- 观察窗口：未来连续3场直播\\n- 成功阈值：转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\\n\\n证据：memory:ff278806-cea8-4f65-902b-a0d9ecff58e8、memory:992fffc2-a89a-471b-9706-57e4d8304575、memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983、rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整、rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”、rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断、rag:operation-hook-vs-profit.md:引流款的选品与投放节奏、rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层\\n\\n假设：\\n- 预算约束为不增加投放预算，仅调整现有直播安排。\\n- 主力客群为学生与职场新人，占比86%。\\n- 当前流量结构异常源于泛流量引入，非自然流量减少。\\n\\n边界：\\n- 未提供具体投放预算数字，无法量化调整空间。\\n- 未提供历史转化率基线之外的详细数据，如各时段流量结构。\\n- 实验观察期较短，可能受季节性因素干扰。\", \"node_result\": {\"data\": {\"topic\": \"预算约束下优化直播货盘与话术\", \"decision\": {\"diagnosis\": \"2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。已确认预算约束为不增加投放预算，需优先调整现有直播安排。\", \"assumptions\": [\"预算约束为不增加投放预算，仅调整现有直播安排。\", \"主力客群为学生与职场新人，占比86%。\", \"当前流量结构异常源于泛流量引入，非自然流量减少。\"], \"limitations\": [\"未提供具体投放预算数字，无法量化调整空间。\", \"未提供历史转化率基线之外的详细数据，如各时段流量结构。\", \"实验观察期较短，可能受季节性因素干扰。\"], \"evidence_refs\": [\"memory:ff278806-cea8-4f65-902b-a0d9ecff58e8\", \"memory:992fffc2-a89a-471b-9706-57e4d8304575\", \"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\", \"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\", \"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\", \"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\", \"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\", \"rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层\"], \"experiment_metric\": \"转化率\", \"success_threshold\": \"转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\", \"observation_window\": \"未来连续3场直播\", \"recommended_actions\": [\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\", \"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\", \"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\"]}, \"generation\": \"llm\", \"rag_status\": \"ok\", \"profile_source\": \"canonical_pgvector\", \"recommendations\": [\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\", \"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\", \"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\"], \"merchant_profile\": {\"style\": \"\", \"audience\": \"\", \"category\": \"\", \"recent_concerns\": [], \"canonical_context\": [{\"kind\": \"core\", \"content\": \"未来经营优化不增加投放预算，优先调整现有直播安排。\", \"subject\": \"merchant\", \"scope_id\": \"xiaozhang_women\", \"fact_type\": \"user_fact\", \"memory_id\": \"ff278806-cea8-4f65-902b-a0d9ecff58e8\", \"predicate\": \"budget_constraint\", \"scope_type\": \"merchant\", \"effective_to\": null, \"effective_from\": null, \"source_event_id\": \"74509400-9eaf-4386-b9e9-a23059d1607f\"}, {\"kind\": \"episodic\", \"content\": \"{\\\"aov\\\":315.5,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"days\\\":1,\\\"gmv\\\":11358.17,\\\"net_gmv\\\":10952.17,\\\"orders\\\":36,\\\"refund_rate_pct\\\":2.8,\\\"uv\\\":3221,\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"subject\": \"merchant\", \"scope_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\", \"fact_type\": \"observation\", \"memory_id\": \"992fffc2-a89a-471b-9706-57e4d8304575\", \"predicate\": \"metric_result\", \"scope_type\": \"thread\", \"effective_to\": null, \"effective_from\": null, \"source_event_id\": \"1f6ec7e8-84e8-4c85-99d1-82b99c6a58a6\"}, {\"kind\": \"episodic\", \"content\": \"{\\\"anomaly_type\\\":\\\"gmv\\\",\\\"buyer_student_youngpro_pct\\\":86.0,\\\"step1_split\\\":{\\\"baseline_conversion_pct\\\":4.2,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"gmv\\\":11358.17,\\\"orders\\\":36,\\\"uv\\\":3221},\\\"step2_product_drill\\\":[{\\\"baseline_share_pct\\\":0.78,\\\"name\\\":\\\"高端真丝醋酸连衣裙\\\",\\\"order_share_pct\\\":11.1,\\\"orders\\\":4,\\\"price_band\\\":\\\"high\\\",\\\"product_id\\\":\\\"P_C1\\\",\\\"target_audience\\\":\\\"mature\\\"},{\\\"baseline_share_pct\\\":0.51,\\\"name\\\":\\\"西装直筒裤032\\\",\\\"order_share_pct\\\":5.6,\\\"orders\\\":2,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P032\\\",\\\"target_audience\\\":\\\"student\\\"},{\\\"baseline_share_pct\\\":0.5,\\\"name\\\":\\\"蕾丝拼接上衣018\\\",\\\"order_share_pct\\\":2.8,\\\"orders\\\":1,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P018\\\",\\\"target_audience\\\":\\\"young_pro\\\"}],\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"subject\": \"merchant\", \"scope_id\": \"5297d2a2-677f-4c62-8876-e1648c8c951f\", \"fact_type\": \"observation\", \"memory_id\": \"b5eef826-e2f9-4fdf-9b28-0ed05ce69983\", \"predicate\": \"attribution_result\", \"scope_type\": \"thread\", \"effective_to\": null, \"effective_from\": null, \"source_event_id\": \"283b9965-0fd0-48e9-9a3d-a35fe8bb0f3b\"}]}, \"retrieved_chunks\": [{\"heading\": \"人群质量与货盘匹配的调整\", \"source_doc\": \"attribution-uv-up-gmv-flat.md\"}, {\"heading\": \"流量层排查：先确认“人没来”还是“来了不买”\", \"source_doc\": \"attribution-gmv-drop-drilldown.md\"}, {\"heading\": \"流量结构异常的核心判断\", \"source_doc\": \"attribution-uv-up-gmv-flat.md\"}, {\"heading\": \"引流款的选品与投放节奏\", \"source_doc\": \"operation-hook-vs-profit.md\"}, {\"heading\": \"从客户声音锁定问题层\", \"source_doc\": \"attribution-sku-anomaly-rootcause.md\"}]}, \"task\": \"strategy\", \"evidence\": [\"商家画像:;\", \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"生成方式:llm\"], \"headline\": \"策略建议:预算约束下优化直播货盘与话术\"}, \"structured_result\": {\"kind\": \"strategy\", \"summary\": \"策略建议:预算约束下优化直播货盘与话术\", \"diagnosis\": \"2026-04-02 GMV 异常下滑，根因是高端真丝醋酸连衣裙（高价位、面向成熟人群）订单份额异常升高至 11.1%，与店铺主力客群（学生+职场新人占 86%）严重错配，导致转化率从基线 4.2% 降至 1.12%。已确认预算约束为不增加投放预算，需优先调整现有直播安排。\", \"schema_version\": 1, \"recommended_actions\": [\"将主推位从高端真丝醋酸连衣裙换为基础通勤款，覆盖学生与职场新人需求，降低决策门槛。\", \"调整直播时段话术为场景化引导，如学生党上班都能穿，匹配泛流量人群偏好。\", \"在后台标记当日泛流量来源，后续开播前用相似人群包精准触达，避免重复吃泛流量。\"], \"evidence_refs\": [\"memory:ff278806-cea8-4f65-902b-a0d9ecff58e8\", \"memory:992fffc2-a89a-471b-9706-57e4d8304575\", \"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\", \"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\", \"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\", \"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\", \"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\", \"rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层\"], \"limitations\": [\"未提供具体投放预算数字，无法量化调整空间。\", \"未提供历史转化率基线之外的详细数据，如各时段流量结构。\", \"实验观察期较短，可能受季节性因素干扰。\"], \"assumptions\": [\"预算约束为不增加投放预算，仅调整现有直播安排。\", \"主力客群为学生与职场新人，占比86%。\", \"当前流量结构异常源于泛流量引入，非自然流量减少。\"], \"memory_refs\": [\"ff278806-cea8-4f65-902b-a0d9ecff58e8\", \"992fffc2-a89a-471b-9706-57e4d8304575\", \"b5eef826-e2f9-4fdf-9b28-0ed05ce69983\"], \"metrics\": [], \"evidence\": [{\"text\": \"商家画像:;\", \"id\": \"20283586-a097-4920-b903-3c310c6e92c0:evidence:0\"}, {\"text\": \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"id\": \"20283586-a097-4920-b903-3c310c6e92c0:evidence:1\"}, {\"text\": \"生成方式:llm\", \"id\": \"20283586-a097-4920-b903-3c310c6e92c0:evidence:2\"}, {\"text\": \"商家画像:;\", \"id\": \"tool:prior:0:evidence:0\"}, {\"text\": \"KB 召回 5 条相关片段(top-1:《人群质量与货盘匹配的调整》)\", \"id\": \"tool:prior:0:evidence:1\"}, {\"text\": \"生成方式:llm\", \"id\": \"tool:prior:0:evidence:2\"}, {\"text\": \"未来经营优化不增加投放预算，优先调整现有直播安排。\", \"id\": \"memory:ff278806-cea8-4f65-902b-a0d9ecff58e8\"}, {\"text\": \"{\\\"aov\\\":315.5,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"days\\\":1,\\\"gmv\\\":11358.17,\\\"net_gmv\\\":10952.17,\\\"orders\\\":36,\\\"refund_rate_pct\\\":2.8,\\\"uv\\\":3221,\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"id\": \"memory:992fffc2-a89a-471b-9706-57e4d8304575\"}, {\"text\": \"{\\\"anomaly_type\\\":\\\"gmv\\\",\\\"buyer_student_youngpro_pct\\\":86.0,\\\"step1_split\\\":{\\\"baseline_conversion_pct\\\":4.2,\\\"baseline_daily_gmv\\\":34411.53,\\\"conversion_pct\\\":1.12,\\\"gmv\\\":11358.17,\\\"orders\\\":36,\\\"uv\\\":3221},\\\"step2_product_drill\\\":[{\\\"baseline_share_pct\\\":0.78,\\\"name\\\":\\\"高端真丝醋酸连衣裙\\\",\\\"order_share_pct\\\":11.1,\\\"orders\\\":4,\\\"price_band\\\":\\\"high\\\",\\\"product_id\\\":\\\"P_C1\\\",\\\"target_audience\\\":\\\"mature\\\"},{\\\"baseline_share_pct\\\":0.51,\\\"name\\\":\\\"西装直筒裤032\\\",\\\"order_share_pct\\\":5.6,\\\"orders\\\":2,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P032\\\",\\\"target_audience\\\":\\\"student\\\"},{\\\"baseline_share_pct\\\":0.5,\\\"name\\\":\\\"蕾丝拼接上衣018\\\",\\\"order_share_pct\\\":2.8,\\\"orders\\\":1,\\\"price_band\\\":\\\"low\\\",\\\"product_id\\\":\\\"P018\\\",\\\"target_audience\\\":\\\"young_pro\\\"}],\\\"window\\\":{\\\"end\\\":\\\"2026-04-02\\\",\\\"start\\\":\\\"2026-04-02\\\"}}\", \"id\": \"memory:b5eef826-e2f9-4fdf-9b28-0ed05ce69983\"}, {\"text\": \"attribution-uv-up-gmv-flat.md · 人群质量与货盘匹配的调整\", \"id\": \"rag:attribution-uv-up-gmv-flat.md:人群质量与货盘匹配的调整\"}, {\"text\": \"attribution-gmv-drop-drilldown.md · 流量层排查：先确认“人没来”还是“来了不买”\", \"id\": \"rag:attribution-gmv-drop-drilldown.md:流量层排查：先确认“人没来”还是“来了不买”\"}, {\"text\": \"attribution-uv-up-gmv-flat.md · 流量结构异常的核心判断\", \"id\": \"rag:attribution-uv-up-gmv-flat.md:流量结构异常的核心判断\"}, {\"text\": \"operation-hook-vs-profit.md · 引流款的选品与投放节奏\", \"id\": \"rag:operation-hook-vs-profit.md:引流款的选品与投放节奏\"}, {\"text\": \"attribution-sku-anomaly-rootcause.md · 从客户声音锁定问题层\", \"id\": \"rag:attribution-sku-anomaly-rootcause.md:从客户声音锁定问题层\"}], \"experiment\": {\"experiment_metric\": \"转化率\", \"success_threshold\": \"转化率显著高于当前1.12%基线，且高端款订单份额回落至历史低位\", \"observation_window\": \"未来连续3场直播\"}}}\n\nid: 49\nevent: done\ndata: {\"run_id\": \"20283586-a097-4920-b903-3c310c6e92c0\", \"status\": \"completed\"}\n\n"
+    }
+  ],
+  "checks": {
+    "pending_not_used": true,
+    "all_runs_completed": true,
+    "confirmed_memory_used": true,
+    "metric_has_evidence": true,
+    "attribution_has_evidence": true,
+    "gmv_attribution_executed": true,
+    "real_public_progress": true
+  },
+  "transport_retries": [],
+  "passed": true,
+  "source_sha256": {
+    "app/api/__init__.py": "c5e79b75137811726e30acef2fa5cfc649514fce1c86da771535b368f43238c0",
+    "app/api/delivery_budget.py": "285f47af0870c673a2ea3014a87990f0b057b9ba5645caea8e8f8cfca5455c5b",
+    "app/api/delivery_contracts.py": "7f9692e13f50f010716c1b06ff64e6554b847da0e5f0d1d1c1a5191c759e47ab",
+    "app/api/delivery_presentation.py": "30e1b544950104ea0907d8ecbafa9deefdede0f9b3cd7bd7fe783d85cc90a8d4",
+    "app/api/delivery_routes.py": "f1e7fedc448af47a620a68b0b97365f57f7ed96fd38885e2922a46b302dae5b8",
+    "app/api/delivery_service.py": "39fc86f4657b0672d5704fb2424e3c9930d3a4abce7a960de27a178b1b4c2306",
+    "app/api/main.py": "bc6891c533c13899d7fb673e803a9a282d5184f8e397ec35ea39130b39ed4b98",
+    "app/agent/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/agent/context.py": "e3f857d20b6946a93ff6f94d366f87b857b1a2fcd4460c1475c0d8a3f7edc1c3",
+    "app/agent/decision.py": "da2adaad86cbe89f91d1252a35075e67072cdab8566474d31da06cb805209b5a",
+    "app/agent/graph.py": "16521a0e2aea1d33cc646c1554cf123bb696e2b9c61da70f27b3f07c0e1217f6",
+    "app/agent/graph_v2.py": "d2ca834f7e84581b2a2419c3e683fac4babe939902b5ebf4b67d562e068b85ca",
+    "app/agent/nodes/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/agent/nodes/attribution.py": "1d7ebe9b0c4d5ad97fd8cc9664b468ee50c44194c40463f01886e392195b6b0c",
+    "app/agent/nodes/insight.py": "ab9b5200b9fd9e9e1cad8e225d81580a0e44813a9c4909e76bbfe43e32161b58",
+    "app/agent/nodes/metric_query.py": "63d78f3bcfe937bc2a53f25935e1e401762d99e3cbb19f8dada023dcb41b5c12",
+    "app/agent/nodes/router.py": "0b1bd79813687ac91725fcfb996afe26658974ebb27a8662510b15103a792502",
+    "app/agent/nodes/strategy.py": "334d07d03e6d9eb17c77b184e7107bf31a940291eab5a1e08c910d280e4ca30a",
+    "app/agent/planning.py": "932a33f9c6f7c676e7b423101543db8c85f39f71de7bce354ae2aba94ce30bf8",
+    "app/agent/runtime.py": "215ad7fa46e3adaf25c5bf270b4497156e20427ecc1a7fc299236a8d4bded337",
+    "app/agent/state.py": "6089ccc9a2c31180469d38582469a7a3740dfa2cb789503815a43abc29835fb1",
+    "app/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/memory/bge_adapter.py": "80613294f4087ac5ff6955b21f77509cc5eca973dde284722bd66add4fefff4c",
+    "app/memory/extractor.py": "cce48578f67fb79c003523c604d4f2de10378370a4716bad6e31a28316397f56",
+    "app/memory/merchant_memory.py": "cb5580d09f945da7320b34031111d84f1d1b9f87f3dbece328ba524b6d107334",
+    "app/memory/policy.py": "91f2e7af9acd7b685b008f0d91f4abba89376216be9eafbc0081ded253468d76",
+    "app/memory/retriever.py": "a12c33d003077afe68679252904c82556181a853cc8431ede5ecfd76f1c59cb0",
+    "app/delivery/__init__.py": "0f7c551c7cc3e752e57a7e3fa23f538a41e70e6601553d946db4ed5d0f19badb",
+    "app/delivery/executor.py": "47dc38e65b83304f008b69a4e16cdd9df02fa94f00559704eddfc87dcf2b56ca",
+    "app/storage/__init__.py": "838cdfb3b5affecd17b2ecc2332990cb069cabcf306fce877995fcfd10bd1128",
+    "app/storage/api_repository.py": "61dfb16f0a2b4a1a9d4168852b22938b3e83a0b01601363eefe14bde985e2baa",
+    "app/storage/database.py": "bdcc8fe15a38817da30d47f4bd3ab72a3daf86563c93d5e52cc70e27d109396e",
+    "app/storage/delivery_repository.py": "ed775152f5422175704865a336e099befc93b84e6a84d2c4e487bf5e33de8e21",
+    "app/storage/memory_repository.py": "9b2fb8f87a72adaa54c7dc0b2a4fbf0fc9a0492e66d5ad5f5e872131f14e1e02",
+    "app/storage/run_event_repository.py": "edbfb19f2609118219459af940f9974f70eae34b12a148787fc45b745ab4622b",
+    "app/storage/skill_repository.py": "5afef7cccb4294cfc7a32351339dbdabf7d89494ac761209cd134ea40e635a7e",
+    "app/llm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/llm/client.py": "e05649eaefd7784540dbcc15806d217664718ede6f799809dd704e77f71ce280"
+  },
+  "fixture": {
+    "run_id": "7b0fbbfa-b2c8-4a74-9897-7cf0a2689a1f",
+    "memory_id": "ff278806-cea8-4f65-902b-a0d9ecff58e8",
+    "source_type": "fixture",
+    "content": "未来经营优化不增加投放预算，优先调整现有直播安排。"
+  },
+  "approval": {
+    "memory_id": "ff278806-cea8-4f65-902b-a0d9ecff58e8",
+    "merchant_id": "xiaozhang_women",
+    "source_event_id": "74509400-9eaf-4386-b9e9-a23059d1607f",
+    "fact_type": "user_fact",
+    "status": "active",
+    "version": 2,
+    "content": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+    "subject": "merchant",
+    "predicate": "budget_constraint",
+    "source_type": "fixture",
+    "scope_type": "merchant",
+    "scope_id": "xiaozhang_women",
+    "observed_at": "2026-09-07T17:54:22.341842+01:00",
+    "effective_from": null,
+    "effective_to": null,
+    "valid_from": "2026-09-07T17:54:22.341842+01:00",
+    "valid_to": null,
+    "approval_reason": "explicit_api_decision",
+    "index_status": "pending",
+    "evidence_refs": [],
+    "created_at": "2026-09-07T17:54:22.310986+01:00",
+    "kind": "core",
+    "type": "user_fact",
+    "value": "未来经营优化不增加投放预算，优先调整现有直播安排。",
+    "thread_id": "5297d2a2-677f-4c62-8876-e1648c8c951f",
+    "run_id": "7b0fbbfa-b2c8-4a74-9897-7cf0a2689a1f"
+  },
+  "budget": {
+    "schema_version": 1,
+    "price_snapshot": "price_snapshot_2026-08-17.json",
+    "historical_spent_cny": 3.39182976,
+    "calls": {
+      "c2b2fe1b-2f34-470a-a69b-25dc8157b4c7:040de0c5-2ab5-4d11-b1a8-4992e447c302": {
+        "run_id": "c2b2fe1b-2f34-470a-a69b-25dc8157b4c7",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04183872,
+        "actual_cny": 0.0018515200000000002,
+        "usage": {
+          "prompt_tokens": 481,
+          "completion_tokens": 15,
+          "total_tokens": 496
+        }
+      },
+      "c2b2fe1b-2f34-470a-a69b-25dc8157b4c7:f04e08a8-feac-43a5-b9e7-9242c0bea9ee": {
+        "run_id": "c2b2fe1b-2f34-470a-a69b-25dc8157b4c7",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.039240960000000005,
+        "actual_cny": 0.0012812799999999999,
+        "usage": {
+          "prompt_tokens": 346,
+          "completion_tokens": 6,
+          "total_tokens": 352
+        }
+      },
+      "9bd8d11b-95e9-42e1-9387-ea80d897f4ba:a493a277-1979-4e8f-aa9d-4af421d8c470": {
+        "run_id": "9bd8d11b-95e9-42e1-9387-ea80d897f4ba",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04183872,
+        "actual_cny": 0.00183744,
+        "usage": {
+          "prompt_tokens": 477,
+          "completion_tokens": 15,
+          "total_tokens": 492
+        }
+      },
+      "9bd8d11b-95e9-42e1-9387-ea80d897f4ba:927af554-57e1-4e48-8d60-7c72bb142ed7": {
+        "run_id": "9bd8d11b-95e9-42e1-9387-ea80d897f4ba",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.039240960000000005,
+        "actual_cny": 0.0012671999999999998,
+        "usage": {
+          "prompt_tokens": 342,
+          "completion_tokens": 6,
+          "total_tokens": 348
+        }
+      },
+      "23bdd710-bace-4f33-80ed-5ecb9515c5e5:06c3817a-b90b-482c-88c0-111fabd34605": {
+        "run_id": "23bdd710-bace-4f33-80ed-5ecb9515c5e5",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04305664,
+        "actual_cny": 0.0023302400000000003,
+        "usage": {
+          "prompt_tokens": 614,
+          "completion_tokens": 16,
+          "total_tokens": 630
+        }
+      },
+      "23bdd710-bace-4f33-80ed-5ecb9515c5e5:a1cdba28-0ab9-4a0a-85bd-cfb64ae09597": {
+        "run_id": "23bdd710-bace-4f33-80ed-5ecb9515c5e5",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04045888,
+        "actual_cny": 0.00174944,
+        "usage": {
+          "prompt_tokens": 479,
+          "completion_tokens": 6,
+          "total_tokens": 485
+        }
+      },
+      "9312bc0e-42e4-402a-9e89-1a622bf65c7b:6e3f2c94-4e0d-4649-89d2-b29f322631b5": {
+        "run_id": "9312bc0e-42e4-402a-9e89-1a622bf65c7b",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04277504,
+        "actual_cny": 0.0020662399999999996,
+        "usage": {
+          "prompt_tokens": 539,
+          "completion_tokens": 16,
+          "total_tokens": 555
+        }
+      },
+      "9312bc0e-42e4-402a-9e89-1a622bf65c7b:94c7834d-4064-4709-a53e-3805342c7c3e": {
+        "run_id": "9312bc0e-42e4-402a-9e89-1a622bf65c7b",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.09411424,
+        "actual_cny": 0.011813120000000002,
+        "usage": {
+          "prompt_tokens": 2339,
+          "completion_tokens": 339,
+          "total_tokens": 2678
+        }
+      },
+      "9312bc0e-42e4-402a-9e89-1a622bf65c7b:43786675-aba9-479a-b5af-678eb44d535d": {
+        "run_id": "9312bc0e-42e4-402a-9e89-1a622bf65c7b",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.040177279999999996,
+        "actual_cny": 0.0014854399999999998,
+        "usage": {
+          "prompt_tokens": 404,
+          "completion_tokens": 6,
+          "total_tokens": 410
+        }
+      },
+      "2c171f00-8013-4270-a987-57d7bf7ae415:89111c37-bb8c-42a4-83f7-1c224ea52441": {
+        "run_id": "2c171f00-8013-4270-a987-57d7bf7ae415",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04771008,
+        "actual_cny": 0.00343552,
+        "usage": {
+          "prompt_tokens": 928,
+          "completion_tokens": 16,
+          "total_tokens": 944
+        }
+      },
+      "2c171f00-8013-4270-a987-57d7bf7ae415:49aa4899-6853-40c8-a160-1da2cafb7459": {
+        "run_id": "2c171f00-8013-4270-a987-57d7bf7ae415",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.09999968000000001,
+        "actual_cny": 0.012327040000000001,
+        "usage": {
+          "prompt_tokens": 2746,
+          "completion_tokens": 252,
+          "total_tokens": 2998
+        }
+      },
+      "2c171f00-8013-4270-a987-57d7bf7ae415:3b382d85-141d-47a1-b290-b4ba826a9f62": {
+        "run_id": "2c171f00-8013-4270-a987-57d7bf7ae415",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04511232,
+        "actual_cny": 0.0028547200000000003,
+        "usage": {
+          "prompt_tokens": 793,
+          "completion_tokens": 6,
+          "total_tokens": 799
+        }
+      },
+      "35d6cde0-bf34-4a07-8f93-7f9b546a7614:14c37c5d-5f5b-4751-aa51-082c4c3c8a91": {
+        "run_id": "35d6cde0-bf34-4a07-8f93-7f9b546a7614",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04183872,
+        "actual_cny": 0.001848,
+        "usage": {
+          "prompt_tokens": 480,
+          "completion_tokens": 15,
+          "total_tokens": 495
+        }
+      },
+      "35d6cde0-bf34-4a07-8f93-7f9b546a7614:d888730c-ba7e-4c17-8fee-3ee5ba9888ba": {
+        "run_id": "35d6cde0-bf34-4a07-8f93-7f9b546a7614",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.039240960000000005,
+        "actual_cny": 0.00127776,
+        "usage": {
+          "prompt_tokens": 345,
+          "completion_tokens": 6,
+          "total_tokens": 351
+        }
+      },
+      "39e2938a-bb32-46ce-b4e7-768b223bc760:40df55ef-c6e6-4b52-a667-5a20589f41df": {
+        "run_id": "39e2938a-bb32-46ce-b4e7-768b223bc760",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04305664,
+        "actual_cny": 0.0023337600000000003,
+        "usage": {
+          "prompt_tokens": 615,
+          "completion_tokens": 16,
+          "total_tokens": 631
+        }
+      },
+      "39e2938a-bb32-46ce-b4e7-768b223bc760:b0d5df6e-bffd-4e45-ab10-0e04f8258dc2": {
+        "run_id": "39e2938a-bb32-46ce-b4e7-768b223bc760",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04045888,
+        "actual_cny": 0.0017529599999999998,
+        "usage": {
+          "prompt_tokens": 480,
+          "completion_tokens": 6,
+          "total_tokens": 486
+        }
+      },
+      "3a3a8865-72ef-46ea-84af-4f8cd22cd0bc:68821ce6-9250-4e0f-afe6-f2eabfe011ae": {
+        "run_id": "3a3a8865-72ef-46ea-84af-4f8cd22cd0bc",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04277504,
+        "actual_cny": 0.0020591999999999997,
+        "usage": {
+          "prompt_tokens": 537,
+          "completion_tokens": 16,
+          "total_tokens": 553
+        }
+      },
+      "3a3a8865-72ef-46ea-84af-4f8cd22cd0bc:8919577e-1b72-46b2-8118-6fd5b860aa46": {
+        "run_id": "3a3a8865-72ef-46ea-84af-4f8cd22cd0bc",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.09411424,
+        "actual_cny": 0.012341119999999999,
+        "usage": {
+          "prompt_tokens": 2342,
+          "completion_tokens": 388,
+          "total_tokens": 2730
+        }
+      },
+      "3a3a8865-72ef-46ea-84af-4f8cd22cd0bc:c8f63a09-2455-439e-a443-a89446021b81": {
+        "run_id": "3a3a8865-72ef-46ea-84af-4f8cd22cd0bc",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.040177279999999996,
+        "actual_cny": 0.0014784,
+        "usage": {
+          "prompt_tokens": 402,
+          "completion_tokens": 6,
+          "total_tokens": 408
+        }
+      },
+      "eb42aa3c-e821-44cf-9e0b-448daae494d6:474d8dd1-1186-46cc-9ae3-fde67a798dc3": {
+        "run_id": "eb42aa3c-e821-44cf-9e0b-448daae494d6",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04836832,
+        "actual_cny": 0.00361504,
+        "usage": {
+          "prompt_tokens": 979,
+          "completion_tokens": 16,
+          "total_tokens": 995
+        }
+      },
+      "eb42aa3c-e821-44cf-9e0b-448daae494d6:999a92db-6f1f-4f86-8008-a4ff4877b0b6": {
+        "run_id": "eb42aa3c-e821-44cf-9e0b-448daae494d6",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.10379776,
+        "actual_cny": 0.013530879999999999,
+        "usage": {
+          "prompt_tokens": 2941,
+          "completion_tokens": 301,
+          "total_tokens": 3242
+        }
+      },
+      "eb42aa3c-e821-44cf-9e0b-448daae494d6:cc224767-70e5-45a9-ad4c-a873f979d6f6": {
+        "run_id": "eb42aa3c-e821-44cf-9e0b-448daae494d6",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.045770559999999995,
+        "actual_cny": 0.00303424,
+        "usage": {
+          "prompt_tokens": 844,
+          "completion_tokens": 6,
+          "total_tokens": 850
+        }
+      },
+      "engineering-regression-20260908:unknown": {
+        "run_id": "engineering-regression-20260908",
+        "model": "deepseek-v4-flash",
+        "status": "unmetered_incident_reserved",
+        "reserved_cny": 10.0,
+        "usage_unknown": true,
+        "reason": "Legacy test_graph may have inherited local model configuration; provisional engineering reserve pending provider reconciliation, not an actual charge or proven upper bound."
+      },
+      "c7cd63e0-eaf4-4458-9cda-819e78498f73:3f57f3ff-1104-4de7-9fbb-7d978785a760": {
+        "run_id": "c7cd63e0-eaf4-4458-9cda-819e78498f73",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04183872,
+        "actual_cny": 0.0018620800000000001,
+        "usage": {
+          "prompt_tokens": 484,
+          "completion_tokens": 15,
+          "total_tokens": 499
+        }
+      },
+      "c7cd63e0-eaf4-4458-9cda-819e78498f73:9c4fc5e2-1b0e-456e-9e9a-7a7360ec8db3": {
+        "run_id": "c7cd63e0-eaf4-4458-9cda-819e78498f73",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.03987104,
+        "actual_cny": 0.0013551999999999998,
+        "usage": {
+          "prompt_tokens": 367,
+          "completion_tokens": 6,
+          "total_tokens": 373
+        }
+      },
+      "15d3128b-e32c-4e49-b038-37a4c038a9ff:dbbb2dd3-0a06-41b8-aa60-505ce5ec5961": {
+        "run_id": "15d3128b-e32c-4e49-b038-37a4c038a9ff",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04305664,
+        "actual_cny": 0.0023232,
+        "usage": {
+          "prompt_tokens": 612,
+          "completion_tokens": 16,
+          "total_tokens": 628
+        }
+      },
+      "15d3128b-e32c-4e49-b038-37a4c038a9ff:5100c030-02f9-488c-b594-77b486252258": {
+        "run_id": "15d3128b-e32c-4e49-b038-37a4c038a9ff",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04108896000000001,
+        "actual_cny": 0.00180576,
+        "usage": {
+          "prompt_tokens": 495,
+          "completion_tokens": 6,
+          "total_tokens": 501
+        }
+      },
+      "9146b64c-511c-4339-965a-6b8cfa35e11a:2fca786a-4ea3-43a8-8485-9b181dc1fb1e": {
+        "run_id": "9146b64c-511c-4339-965a-6b8cfa35e11a",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04685824,
+        "actual_cny": 0.00333344,
+        "usage": {
+          "prompt_tokens": 899,
+          "completion_tokens": 16,
+          "total_tokens": 915
+        }
+      },
+      "9146b64c-511c-4339-965a-6b8cfa35e11a:ec4d89fc-8774-4f4e-933f-a9496adc247f": {
+        "run_id": "9146b64c-511c-4339-965a-6b8cfa35e11a",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.11146784000000001,
+        "actual_cny": 0.015628799999999998,
+        "usage": {
+          "prompt_tokens": 3321,
+          "completion_tokens": 373,
+          "total_tokens": 3694
+        }
+      },
+      "9146b64c-511c-4339-965a-6b8cfa35e11a:4f9160ca-8ca5-45c4-8e5e-5499abaf6ee3": {
+        "run_id": "9146b64c-511c-4339-965a-6b8cfa35e11a",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.044890559999999996,
+        "actual_cny": 0.002816,
+        "usage": {
+          "prompt_tokens": 782,
+          "completion_tokens": 6,
+          "total_tokens": 788
+        }
+      },
+      "20283586-a097-4920-b903-3c310c6e92c0:e70893a8-2b4e-40d7-9804-da39f03e98e2": {
+        "run_id": "20283586-a097-4920-b903-3c310c6e92c0",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.04878368,
+        "actual_cny": 0.0037558400000000003,
+        "usage": {
+          "prompt_tokens": 1019,
+          "completion_tokens": 16,
+          "total_tokens": 1035
+        }
+      },
+      "20283586-a097-4920-b903-3c310c6e92c0:56deba60-0fb5-44fa-b99e-06aee7fe0c45": {
+        "run_id": "20283586-a097-4920-b903-3c310c6e92c0",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.11434368,
+        "actual_cny": 0.01610048,
+        "usage": {
+          "prompt_tokens": 3458,
+          "completion_tokens": 372,
+          "total_tokens": 3830
+        }
+      },
+      "20283586-a097-4920-b903-3c310c6e92c0:4feef207-c686-4621-9a1d-dc068f6e0069": {
+        "run_id": "20283586-a097-4920-b903-3c310c6e92c0",
+        "model": "deepseek-v4-flash",
+        "status": "completed",
+        "reserved_cny": 0.046816,
+        "actual_cny": 0.00620576,
+        "usage": {
+          "prompt_tokens": 902,
+          "completion_tokens": 287,
+          "total_tokens": 1189
+        }
+      }
+    },
+    "total_cny": 13.53458688,
+    "warning": false,
+    "hard_stop": false
+  }
+}

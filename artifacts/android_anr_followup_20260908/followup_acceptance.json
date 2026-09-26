@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "status": "verified_emulator_followup",
+  "historical_anr": "not reproduced or uniquely attributed; original evidence retained",
+  "physical_device": "pending; user scheduled last",
+  "additional_paid_model_calls": 0,
+  "budget_sha256_after": "fd249928887aa6e4ede1c445ebaa1af87d3ef222092c288c5e1f6c56a3719bba",
+  "user_reported_incident_actual_cny": 0.07,
+  "production_apks": {
+    "status": "passed",
+    "source_sha256": "f85245af412b5c57502a14e75951f9a3b9bf308a9ae290930b216ae11a5c35ea",
+    "gradle_properties_sha256": "53773561b6df5d9c0af01bd7f439352e3be415d00ff29f3cc5a61269a93e76d0",
+    "builds": [
+      {
+        "entrypoint": "lib/main.dart",
+        "mode": "debug",
+        "seconds": 40.393,
+        "sha256": "fa0d6fc828fb11af4f213b3499cfb1607692c9bccb5a7d7197949be6bfa7516b",
+        "bytes": 146415205,
+        "path": "artifacts/android_anr_followup_20260908/app-debug.apk"
+      },
+      {
+        "entrypoint": "lib/main.dart",
+        "mode": "release",
+        "seconds": 65.625,
+        "sha256": "000a025333d66c1f5e80ec85b2380895fcf83168b1eda98227a8e283f05192f7",
+        "bytes": 50976698,
+        "path": "artifacts/android_anr_followup_20260908/app-release.apk"
+      }
+    ]
+  },
+  "keystore_control": {
+    "status": "passed",
+    "scope": "Controlled slow token I/O before/after; original input ANR not reproduced by this probe",
+    "paid_model_calls": 0,
+    "runs": [
+      {
+        "variant": "before",
+        "delay_ms": 1200,
+        "status": "failed",
+        "checks": {
+          "save_read_clear_read_order": true,
+          "all_token_handlers_off_main": false,
+          "main_looper_responds_during_slow_io": false,
+          "main_looper_max_gap_within_budget": false,
+          "previous_token_restored": true,
+          "absolute_wall_boundary": true
+        },
+        "max_gap_ms": 4956,
+        "new_anr_count": 0
+      },
+      {
+        "variant": "after",
+        "delay_ms": 1200,
+        "status": "passed",
+        "checks": {
+          "save_read_clear_read_order": true,
+          "all_token_handlers_off_main": true,
+          "main_looper_responds_during_slow_io": true,
+          "main_looper_max_gap_within_budget": true,
+          "previous_token_restored": true,
+          "absolute_wall_boundary": true
+        },
+        "max_gap_ms": 35,
+        "new_anr_count": 0
+      },
+      {
+        "variant": "after",
+        "delay_ms": 6000,
+        "status": "passed",
+        "checks": {
+          "save_read_clear_read_order": true,
+          "all_token_handlers_off_main": true,
+          "main_looper_responds_during_slow_io": true,
+          "main_looper_max_gap_within_budget": true,
+          "previous_token_restored": true,
+          "absolute_wall_boundary": true
+        },
+        "max_gap_ms": 36,
+        "new_anr_count": 0
+      }
+    ]
+  },
+  "native_checks": {
+    "debug": 8,
+    "release": 8
+  },
+  "flutter": {
+    "passed": 47,
+    "opt_in_skipped": 1,
+    "analyze": "passed"
+  },
+  "strict_input": {
+    "cycles": 50,
+    "all_shown_and_hidden": true,
+    "same_pid": true,
+    "new_anr_count": 0,
+    "max_show_observed_ms": 884.2889579827897,
+    "max_hide_observed_ms": 423.5077920020558,
+    "max_whole_cycle_ms": 2023.3295409707353,
+    "semantics": "Each cycle shares one absolute five-second budget across tap, IME-visible polling, Back, IME-hidden polling and pauses. Show latency starts before tap; hide latency starts before Back. Both end at the observed dumpsys result and include ADB overhead; neither is Android event dispatch latency.",
+    "real_backend_warmed": true
+  },
+  "lifecycle_checks": [
+    "page:记录",
+    "page:经营信息",
+    "page:概览",
+    "settings_open_close",
+    "background_resume:1",
+    "background_resume:2",
+    "background_resume:3",
+    "background_resume:4",
+    "background_resume:5",
+    "process_restart:1",
+    "process_restart:2",
+    "process_restart:3",
+    "process_restart:4",
+    "process_restart:5",
+    "unreachable_service_cached_overview_with_timestamp",
+    "reconnected_overview_refreshed",
+    "same_completed_run_payload_and_cursor_after_restart",
+    "no_anr_events_this_boot"
+  ],
+  "historical_artifacts_preserved_sha256": {
+    "app-debug.apk": "d609be6f5d57b166381cebbbca7cd41fd6f2935ecc1d48c971aba37220230848",
+    "app-release.apk": "c22a6791fbe83c0a5f31cc9b37bf103b10779236108e6cc1fb0a9f3ad492534b",
+    "acceptance_manifest.json": "59a5cdcf7348bbf0f31766446624d87752e7e7e6f64363db3bdb1e93029c7bb9"
+  },
+  "real_backend_restored": {
+    "status": "passed",
+    "read_only_checks": [
+      {
+        "endpoint": "readyz",
+        "status": 200,
+        "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd"
+      },
+      {
+        "endpoint": "overview",
+        "status": 200,
+        "sha256": "1e342cea5e17e77346eca7563066e7e70255d3f66ee8821923c09844f51f9a64"
+      },
+      {
+        "endpoint": "runs",
+        "status": 200,
+        "sha256": "44d4dafe96522405ac7f57856e4fc2451ff2b9dd391069e088966426e6de8852"
+      },
+      {
+        "endpoint": "memories",
+        "status": 200,
+        "sha256": "2b35e867085004572817881b78cc5a9d8369350d37c77531c10cb4f374a43fc2"
+      },
+      {
+        "endpoint": "latest_run",
+        "status": 200,
+        "sha256": "e5f4db94bafdd7adc0033e143a19d2e153eea1ded8389522773538c4d0ef29b2"
+      }
+    ],
+    "budget_unchanged": true,
+    "budget_sha256": "fd249928887aa6e4ede1c445ebaa1af87d3ef222092c288c5e1f6c56a3719bba",
+    "paid_model_calls": 0,
+    "readiness_wait_scope": "real_backend_restored.json elapsed is polling wait; not full cold-start duration",
+    "server": "real FastAPI + spawned worker; read-only replay server stopped"
+  },
+  "video": {
+    "path": "fixed_input_retest_excerpt.mp4",
+    "seconds": 19.9811,
+    "scope": "emulator input response excerpt; no analysis submitted",
+    "frame_at_seconds": 3,
+    "frame_visually_checked": true
+  },
+  "trace_coverage_limits": "See perfetto-analysis/README.md and summary.json; ring buffers overwrote earlier packets",
+  "failed_attempts_preserved": true,
+  "frozen_v3_and_user_untracked_files_unchanged": true
+}

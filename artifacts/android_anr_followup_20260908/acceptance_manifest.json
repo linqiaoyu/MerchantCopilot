@@ -1,0 +1,752 @@
+{
+  "schema_version": 1,
+  "delivery": "MerchantCopilot Android local synthetic demonstration",
+  "date": "2026-09-08",
+  "git_base_revision": "e83a7ce6a293daf8f79fb90d5b603cc3d252e89b",
+  "working_tree_changes_included": true,
+  "versions": {
+    "python": "3.12.10",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "fastapi": "0.141.1",
+    "uvicorn": "0.47.0",
+    "psycopg": "3.3.4",
+    "duckdb": "1.5.2",
+    "langgraph": "1.2.0",
+    "mcp": "1.27.1",
+    "pydantic": "2.13.4",
+    "pytest": "9.0.3"
+  },
+  "scope": {
+    "synthetic_only": true,
+    "frozen_v3_results_unchanged": true,
+    "physical_android": "pending; scheduled last by user",
+    "emulator_anr_root_cause": "Historical single event not uniquely attributed; main-thread Keystore blocking fixed and emulator renderer explicitly verified. See docs/android_anr_followup.md.",
+    "unmetered_regression_provider_reconciliation": "reconciled at CNY 0.07 from user-reported provider check; per-call usage unavailable",
+    "production_signing": "deferred",
+    "cloud": "deferred",
+    "app_store": "deferred"
+  },
+  "source_sha256": {
+    ".gitignore": "623bdd0c391e758ed2cf00b1d28bcd3772f4bd75fc815aed6c431cf225f21b27",
+    "AGENTS.md": "e3fd549a5a967adec4b9e9a4430ef42eb6a376247aaa5c98cb60853d73514957",
+    "README.md": "c0516180505a5b2592d3ea1d4a0038bbe84ba5f565e99fa1b26cfbb565f57940",
+    "app/agent/graph_v2.py": "d2ca834f7e84581b2a2419c3e683fac4babe939902b5ebf4b67d562e068b85ca",
+    "app/agent/nodes/attribution.py": "1d7ebe9b0c4d5ad97fd8cc9664b468ee50c44194c40463f01886e392195b6b0c",
+    "app/agent/runtime.py": "215ad7fa46e3adaf25c5bf270b4497156e20427ecc1a7fc299236a8d4bded337",
+    "app/api/delivery_budget.py": "285f47af0870c673a2ea3014a87990f0b057b9ba5645caea8e8f8cfca5455c5b",
+    "app/api/delivery_contracts.py": "7f9692e13f50f010716c1b06ff64e6554b847da0e5f0d1d1c1a5191c759e47ab",
+    "app/api/delivery_presentation.py": "30e1b544950104ea0907d8ecbafa9deefdede0f9b3cd7bd7fe783d85cc90a8d4",
+    "app/api/delivery_routes.py": "f1e7fedc448af47a620a68b0b97365f57f7ed96fd38885e2922a46b302dae5b8",
+    "app/api/delivery_service.py": "740bb5b0d48d009b5384855e48899af2c77f0609aa4fdeeee159a77186f4dc86",
+    "app/api/main.py": "bc6891c533c13899d7fb673e803a9a282d5184f8e397ec35ea39130b39ed4b98",
+    "app/delivery/__init__.py": "0f7c551c7cc3e752e57a7e3fa23f538a41e70e6601553d946db4ed5d0f19badb",
+    "app/delivery/executor.py": "9ad6407a8be63284fa1a557fe09566f2952471557fa23743532a84f6b43d7312",
+    "app/llm/client.py": "e05649eaefd7784540dbcc15806d217664718ede6f799809dd704e77f71ce280",
+    "app/memory/extractor.py": "cce48578f67fb79c003523c604d4f2de10378370a4716bad6e31a28316397f56",
+    "app/public_projection.py": "1d906fab4163f0b8fb92d80dc5dd735dbcd33f0a13d2cf06efffa482cb7b66b6",
+    "app/storage/delivery_repository.py": "c8c2eb6ed8b20ef236fb2bfd1d43caeef9e22a7472eef3d2de7b2bb6f1bbe185",
+    "docs/android_anr_followup.md": "c00f4a1816d7dec71e390c255580825b374a2cb80473a332e465b237db7900e8",
+    "docs/android_api.md": "49a48304f11e49d0e76854f4610bb92fcff248ceca4c9c319a388968db937c31",
+    "docs/android_client.md": "760fbe80fd632951d0a84677994bf47592c08651cd77894c9b6005b49f1fdf11",
+    "docs/android_delivery.md": "a8a1ab3f0b81bc167ebba6f378a006afd7b7e650213956e63139069f097ddd99",
+    "docs/v3_resume_evidence.md": "da16654c8820f31c07ff29ac3140111b0134b810954c86feca3d085cb7a90391",
+    "docs/v3_verification_ledger.md": "63623c1858ed9363d4b5ca1fb492b4100d87da19c4ee935333b974fd275bedbb",
+    "migrations/006_android_delivery.sql": "c59f1fd353f526f9896c4c97ed71259cfd7d144bfbcdd0f8012571dad2b54a96",
+    "mobile/.gitignore": "9f5331fb6c489199f927ac61f208839875fee2752928a9fd52927d84b3dce5cd",
+    "mobile/android/app/build.gradle.kts": "f5337962addddc971ab123edda3f98aac6e847292f83a3a6805505bbf132d543",
+    "mobile/android/app/src/debug/AndroidManifest.xml": "32c1c3e79efafd62dc7d926ab2c8631419ff03885aac011239ce5e90839775cd",
+    "mobile/android/app/src/debug/res/xml/network_security_config.xml": "83e1b37035cbd8ec0e13a02a6b25179f1f7232657a3422f36ea885d36fb36b61",
+    "mobile/android/app/src/main/AndroidManifest.xml": "51b9dbd2e2fe624e6c92ae596ec234ce5475de516c5524523cb4c138a8eef167",
+    "mobile/android/app/src/main/kotlin/com/merchantcopilot/v2/MainActivity.kt": "f85245af412b5c57502a14e75951f9a3b9bf308a9ae290930b216ae11a5c35ea",
+    "mobile/android/app/src/main/res/xml/network_security_config.xml": "dea35ebed76536c24c13f74036f02dc874f944147cb3a49c2ad0550f71e3e0c7",
+    "mobile/android/gradle.properties": "53773561b6df5d9c0af01bd7f439352e3be415d00ff29f3cc5a61269a93e76d0",
+    "mobile/android/gradle/wrapper/gradle-wrapper.properties": "3221993eac1057198d652b7437105e2953ca4850d415eb0eb2b9625874fd059e",
+    "mobile/android/settings.gradle.kts": "b76d554153a63772dddbe2ee91abdf582f5f871af40698b80a2ef7b70903d96f",
+    "mobile/lib/main.dart": "24e7f2e9c1f5eccac04acec14dafd57270e35f01be732b2f67936071b9dc357e",
+    "mobile/lib/src/api_client.dart": "76fbfc5189e3c7f6c2581ddceeea631d46ee3fd1da69ce3a843bbc5b67a1650e",
+    "mobile/lib/src/controller.dart": "d70ee301e49094875db56fcb9b3560252b7a01bb679a270ec134247688179c81",
+    "mobile/lib/src/local_store.dart": "839b474f0d07cf4a0157b57098cd597dc040f9173cebc0b0dbee7f72bc5570a0",
+    "mobile/lib/src/models.dart": "026e7af4eaaf34a2fcb1142da8ea6432ef8852b60b49ad5334bc30bd0f5a316c",
+    "mobile/lib/src/repository.dart": "acfdc5488fc6dad5d64c8ea9a835dfe4eb4918e0468b04570a5f6bc18fd3d751",
+    "mobile/lib/src/session.dart": "6eb1c662dbafe39ed0488952ad5b75168134296f6d4cf0239712aaa229d2a8ea",
+    "mobile/lib/src/sse.dart": "66f79757377f01f7f7889d513688a6bb2047b6b2b1e7876bb8371e318a54136b",
+    "mobile/lib/src/token_store.dart": "ef56076168140c5decf67b09886d668deaaeeab99dd2ac34d832d9f47cc031ca",
+    "mobile/lib/src/view_model.dart": "28fb8b9679fcf9435db08be634e8285959713c6fec81bfc357e3f2bca16ba044",
+    "mobile/pubspec.lock": "91c745e513063939632b8a9300640c7786869f5767538ed842cabd46da34d5d6",
+    "mobile/pubspec.yaml": "e05af1930b5756d3af82bff15429f8969b8cfa6f380d95a41c1a26fc7412122f",
+    "mobile/test/api_client_test.dart": "158b368a944924e25a885cf032dc67c2cfbafdd4c2894bfc8d45a498310ea08c",
+    "mobile/test/controller_test.dart": "e1f8ef5e1bce7c7626df059f21fbd8ab3bb65dac8a076de973f81feca7b8ef89",
+    "mobile/test/live_api_test.dart": "16a72fcde39161f985eb9ada23118dd7abed143e4e8a1ae1391ff30794933543",
+    "mobile/test/network_policy_test.dart": "8aaed5863d683efc4d0710a9b44bd64c0fcae9197131ae9511c6c050c3eded53",
+    "mobile/test/recovery_test.dart": "8c588d8f45bd33232e9eaa378acc8a57ba6e1399846621eca2043fb95c14a6c2",
+    "mobile/test/session_test.dart": "b2495308eccc61340610a06a6b955756a1adf63a1206e53b69f9a2e77fda3886",
+    "mobile/test/sse_test.dart": "761d59a9ec04371f385e4b4879be9eacee05e524abe25108017ef26471b9c84c",
+    "mobile/test/ui_test.dart": "89f3b4cc5c47f4535e142b9caf3230e52812d13feeafcc1295571e73bea1b221",
+    "mobile/test/view_model_test.dart": "f3d971f8a7dcc1378c2b96a84fa8953278bc446f9b46d4b318a0ef01288b96a9",
+    "mobile/tool/anr_input_probe.py": "8c6ff869b289bd5d98a930f1f3f33cbd08e42a927d192fdae29f79c35f0db163",
+    "mobile/tool/anr_replay_server.py": "9dc00275a06ce62b9e258ba9f771b6d7c0181452ac64333ddc936d8a13ad5008",
+    "mobile/tool/keystore_queue_acceptance.dart": "56a319dc542f08fb55c0c22e51577f041760505d44b16901c67e9142783520f2",
+    "mobile/tool/native_acceptance.dart": "99b7c441e9429ed948ba257f11485e7a3b5344187aac33b3784149b8edbda151",
+    "mobile/tool/prepare_keystore_queue_diagnostic.py": "48e6c82ae0c1e414d5f1396558940be070bbed11549a5f65a4f892877f516bad",
+    "mobile/tool/run_android_acceptance.py": "74cf9bd9d069b06782112f1001e1c19d3ef549a45ab09e6d3e73069590119bf2",
+    "mobile/tool/start_delivery_emulator.py": "d4164877af06ab4ec4ec50afdd7ee8025ea8d6b59dfffb6b9c0865c01f7c3b86",
+    "mobile/tool/test_prepare_keystore_queue_diagnostic.py": "157a0d8368bf647f62a73469f12e85a721a543523ea7775f71a220a383f57bc4",
+    "mobile/tool/verify_client.py": "1e9a05e7c7f71877e4eec9848190e4515bdfddbf15d1360f92b18f1f3648d611",
+    "requirements.txt": "9cf4afa1480f668028701310d2c4be2e796da381fa4331040b58c9d0650a3646",
+    "scripts/build_android_delivery_manifest.py": "242ef90f605d11c072e1bb2219a28cd548305d0618e08c3a19d31c27afd5aa07",
+    "scripts/run_android_delivery.py": "bce11fa6f2ab1be978d4c439f627b0ea8c852910f192d4a70c3b4a257a7d6fc8",
+    "scripts/scan_secrets.py": "72c7dbf58a72a931cccb1acc156f1c511b7d409d800c687fd6faefffb13616f6",
+    "scripts/test_native_regression.py": "07176cc1764020929382728ac05e16bf67a16be492be7816ef9401709f9693bc",
+    "scripts/verify_android_delivery.py": "6b94b76a804024bd67e581bb861195de4e41fd05e019000b1335a7932ed11081",
+    "scripts/verify_live_android_delivery.py": "e2e9240b297fc437104eeece727df35fb7f4543129340ee19647c5c44250f329",
+    "tests/test_api_health.py": "c714cbf1402c9895a48a26c19aa5c4f4193f5d9faa4ad71786d2e6224c9eab88",
+    "tests/test_api_postgres_http_integration.py": "3843ef5ea23f762dade9f1a1601ae5038573eaadef2548ed5209a9bb468fc08d",
+    "tests/test_attribution_language.py": "8a5010afd4dbcdc2c6ac32eceb029562a351e4b8e33158436dc188d56e5b8252",
+    "tests/test_delivery_api.py": "cb459fc5c5473861da0dcac0d21f54da93726dc10b9760cd362c1a6c27c33514",
+    "tests/test_delivery_budget.py": "5f38aaf6742d9deed63c6bec35975cb8cdf845469c687c2dfc0a870e23ab3fd6",
+    "tests/test_delivery_contracts.py": "21d98ff5384103f4ee5d81903f8739268d0548a68392a323e9a19beae7265c79",
+    "tests/test_delivery_executor.py": "61c85964f2984eea5ef80c2839a3621e4eed4f911e92eb74fd8fc1e40b734881",
+    "tests/test_delivery_lifecycle.py": "055c77c801f64e410fcc938546ec674e8147bd645ac3d1753883cf37a5730310",
+    "tests/test_delivery_repository.py": "d8be62372993538dff26ec5685ac6c475bd3c2d6059d228020e6132761eedbe4",
+    "tests/test_delivery_runtime_acceptance.py": "3ff61c8945fe5b5dcc41e251c3df1fda3ea28e222a8e4414204f7a113a889a9a",
+    "tests/test_delivery_runtime_hooks.py": "4b56571a40b0b35817d0bb3db47674f65617cec2153faf2385c30a1f0ce81fda",
+    "tests/test_graph.py": "1d12200c789c4a15191e7de54263fd558b1c2ddfcc99727fe9d770d12d8fe501"
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/android_anr_followup_20260908/apk_builds.json",
+      "bytes": 787,
+      "sha256": "5f03825935046547ac92e661f168c2f9c21e95938844c5d6a11eadd4063405f6"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/apk_layout.json",
+      "bytes": 671,
+      "sha256": "12215fd8bd2409bf624b3c0815bfd057d1588855fa10fa6c6be964a6dd3d627e"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/apk_scan_debug.log",
+      "bytes": 22,
+      "sha256": "c5883f8cf199751d3073038549e08e9ccde39169b8b5d26b27a338d841be46d6"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/apk_scan_release.log",
+      "bytes": 22,
+      "sha256": "c5883f8cf199751d3073038549e08e9ccde39169b8b5d26b27a338d841be46d6"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/apk_validation_failure_controls.json",
+      "bytes": 1767,
+      "sha256": "5dec3c4d96d0dda36907d313c189f3da4112a25a9bde2d7314bd34d41fb24c38"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/app-debug.apk",
+      "bytes": 146415205,
+      "sha256": "fa0d6fc828fb11af4f213b3499cfb1607692c9bccb5a7d7197949be6bfa7516b"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/app-release.apk",
+      "bytes": 50976698,
+      "sha256": "000a025333d66c1f5e80ec85b2380895fcf83168b1eda98227a8e283f05192f7"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_activitymanager_errors.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_analysis_before_focus.png",
+      "bytes": 328030,
+      "sha256": "3e2dc8087e7a3f08d8c98c6d99970cf70e1c084a3c997aecc5dfd2557bd3d66b"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_focus.perfetto-trace",
+      "bytes": 33500293,
+      "sha256": "4db89d060c4fe885673aa5e02dfbfcf44aa56cb017c73dbfaa3463adc1c2f470"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_focus_cpu.json",
+      "bytes": 28215452,
+      "sha256": "96e31e2b39289ca96ea52c0ca7ae5520368069f81c04a3c93f40e94cf661da5f"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_focus_cycles.json",
+      "bytes": 477,
+      "sha256": "3eedc2773b86e8d33862786133e152a2e024ab685331496786056656a0196776"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_gfxinfo.txt",
+      "bytes": 36217,
+      "sha256": "b640b8c4d72894901f0e9b6a52a15a4cde4b437f5b3b2b0d0e5dc16000cc8b6c"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_perfetto_focus_cycles.json",
+      "bytes": 1600,
+      "sha256": "a4b82e8aa99d7b1d352c4b6602f84ce518cf959af378512794e9b8c9c0504d08"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/baseline_surfaceflinger.txt",
+      "bytes": 40002,
+      "sha256": "9443e072df537cc79437b0320d726dcbeca670be05cad90b29699190ef4d3e50"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/budget_before_backend_restore.json",
+      "bytes": 294,
+      "sha256": "16345a88b7f99409f6543839fb5bf771d56a0591ce4facd2f737271d5379e8e1"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/build_cache_recovery.json",
+      "bytes": 507,
+      "sha256": "49716af5fe0bcf061db769f827d84f90265b9c874c1bbfcd3e96409e77d9747d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_host_gpu/after.png",
+      "bytes": 328499,
+      "sha256": "2ee4edb4bfc27656898c20f5f6d4515bd840a33dbf190b7f19ef8da8d7a4efe0"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_host_gpu/before.png",
+      "bytes": 328041,
+      "sha256": "824fae22dc79f84528917d4a48ef96f2b5c5da1bb919ea70f0816c7eaf9a6832"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_host_gpu/cpuinfo.txt",
+      "bytes": 9179,
+      "sha256": "d31b20ff1226367fcc20198dae0023991f988c6d183c4cd27f490e2c1e91aace"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_host_gpu/gfxinfo.txt",
+      "bytes": 35800,
+      "sha256": "d379822919e15e6ff532753dabfd12d61ee9d7f5e3b287659f2a2c57ef07450a"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_host_gpu/report.json",
+      "bytes": 5724,
+      "sha256": "fe9cc61f0310df790e5e506f66d2d0e06f5e708a13a9216836b4c54c7795f731"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_host_gpu/surfaceflinger.txt",
+      "bytes": 41996,
+      "sha256": "f6a6013b1918642137a189dcb0e0c1f63c0fbd45d46372602cc39627f5682ebb"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_real_backend_strict/after.png",
+      "bytes": 326043,
+      "sha256": "18a0acb3792120b45ce3a7331e5415f71f552ff882ffec58f9c7b716f7a1ba87"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_real_backend_strict/before.png",
+      "bytes": 326068,
+      "sha256": "591ed1175c427c4834157643520348e8da4a054775fa0b546ef00a0f00d1283d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_real_backend_strict/cpuinfo.txt",
+      "bytes": 1339,
+      "sha256": "fefe0283b17dc058bd743e146b3323fcac48f65aae5197ab0272ca07ca79f15d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_real_backend_strict/gfxinfo.txt",
+      "bytes": 35938,
+      "sha256": "e4206f76497807273e0f7dbb1dc0c710b7c4ee700d83ba2db8783145610fdff4"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_real_backend_strict/report.json",
+      "bytes": 13048,
+      "sha256": "131621d2ef61c7b6f91236d7aa476de8ce1fff7779dd5e23616bcd646f6bba49"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_apk_real_backend_strict/surfaceflinger.txt",
+      "bytes": 40390,
+      "sha256": "b6d14292d0106a00eb6c47b2bf42d3ef5dd4e08279b43cb57cd1fad7aec7b29c"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_host_gpu_focus.perfetto-trace",
+      "bytes": 66984248,
+      "sha256": "197d0a28f8eec8cacbd2dcc12c82aa9d593c4f2fc71ada94eca0deecd8d3604f"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_input_retest_excerpt.mp4",
+      "bytes": 3334617,
+      "sha256": "37c8a67f1adba5c67d821f1555b04bb8f54ea44a12aafc2b432582e1b75a4481"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_input_retest_frame.png",
+      "bytes": 248111,
+      "sha256": "823e377b0c59d586fb8ff9718c3da9816ab92a5b64806fc564c0ef5fac7b4266"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_lifecycle/offline.png",
+      "bytes": 204476,
+      "sha256": "282afd1e2ffcc3016beeeb6f16263c06e3ea5205f3f794f5c9fd7ff00a094232"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_lifecycle/online.png",
+      "bytes": 175102,
+      "sha256": "d80b690a3df2d82d972255bc8d6e63c33dd9fee194f2715fd490ff106eb30ea8"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_lifecycle/report.json",
+      "bytes": 7755,
+      "sha256": "982ef7201a32d9a54a7045f95550c59f7492e410d3e4e16b0461b3063afb1587"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_lifecycle_01_selector_failure/report.json",
+      "bytes": 3781,
+      "sha256": "5592db9e34c33e35b6e2416a9624c36cee7ea0d15ac3471789258c8f2694b1dc"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_lifecycle_02_wrong_network_injection/explanation.json",
+      "bytes": 366,
+      "sha256": "9e38110a6ce6d3dc6ec8839d41f625ca65685e40c21d8b7edad298ce82da6491"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/fixed_lifecycle_02_wrong_network_injection/report.json",
+      "bytes": 4169,
+      "sha256": "ed9272a08e59936753a56136ba34a5e00509e215597a655931e27df6c665ff5e"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/flutter-verification/flutter_analyze.log",
+      "bytes": 712,
+      "sha256": "60f222371c3c2218a7c715d5d84a4da4fe6ce297489e2baba5342fb65a2693f0"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/flutter-verification/flutter_test.log",
+      "bytes": 8723,
+      "sha256": "ec9c6169a0dda947a517a0c4957843a05d007d7884de21c86a221f04eda404d3"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/flutter-verification/flutter_version.log",
+      "bytes": 320,
+      "sha256": "43ec09ac298a87b67ade2293017ae0c466ec4154f06ec46826161528ff992a33"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/flutter-verification/manifest.json",
+      "bytes": 1062,
+      "sha256": "2b324d0d7afcb6f7e3064512a09e717d937730359d9a89ee84918e3f2c584180"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/flutter_cache_recovery.json",
+      "bytes": 477,
+      "sha256": "4da698c2edc3b5b6f81af10174b8d638f869ffe9ac3749fc899106d6758fa0b2"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/followup_acceptance.json",
+      "bytes": 6139,
+      "sha256": "3884cf921f4a039cd891c64e8ea39c0ab74501b7936bc55c7520cf8b4fb2f5b1"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/host_gpu_focus.perfetto-trace",
+      "bytes": 33454776,
+      "sha256": "3f711722c15bfb5c7543eb75ee0734b6b38a0e68470d7daba8c6aed1bd90da6c"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/MainActivity.after.1200ms.kt",
+      "bytes": 6922,
+      "sha256": "1c883e2bc45ba5a819840fefd1adb72a71075b2e5f851117ca77f25c1d006190"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/MainActivity.after.6000ms.kt",
+      "bytes": 6922,
+      "sha256": "d977b9340ced14c31177d83769cbcb90ea9f6461f66e9a4c9186613855221f56"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/MainActivity.before.1200ms.kt",
+      "bytes": 6618,
+      "sha256": "e8da31a93ee7306419dbe16027ebca95df2f63fb20e2fe6d4847e0e05f4a746a"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/MainActivity.before.kt",
+      "bytes": 3618,
+      "sha256": "b3620830241d78267b92ad1e4addb05da681ac917a557de1034170210f173f37"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/MainActivity.production.kt",
+      "bytes": 3923,
+      "sha256": "f85245af412b5c57502a14e75951f9a3b9bf308a9ae290930b216ae11a5c35ea"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_1200ms.apk",
+      "bytes": 146307915,
+      "sha256": "c499b90424d0116b27fb89a7ee066bbaff0c6ec522cbcac456a8888fdf00b56f"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_1200ms.png",
+      "bytes": 98305,
+      "sha256": "e5a6260afe9a23998e10808fccd787bd7d1a653c8a7c2a3f1f1f064e496ac5b7"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_1200ms_build.log",
+      "bytes": 7169,
+      "sha256": "685e8cd3e71409d3e63b187c0a6353c2c31ff34ea31c7af13f62cb77dbaf22e8"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_1200ms_result.json",
+      "bytes": 2468,
+      "sha256": "3d0969ad81704ce3f619b13fb5aa6c4603b1b7a94b6d4e3d5804e10d8643b81f"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_6000ms.apk",
+      "bytes": 146315172,
+      "sha256": "285124976f07caef5a1ed73e1f5d2ed916f6453d2935bf5472a471990eaca55f"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_6000ms.png",
+      "bytes": 97466,
+      "sha256": "0ffe39fce0f5b1df372fc297f532c52a827ecb1eff644f49918c1ae4839c0060"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_6000ms_build.log",
+      "bytes": 7338,
+      "sha256": "78a8b6e16c4eef737910425a9da28107bd454c90ae281a1a2ee606b806d0f681"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/after_6000ms_result.json",
+      "bytes": 2470,
+      "sha256": "f454ceef666964ae4d860a97b2747b4bc486f54c7381f5db0b29e798faea25c6"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms.apk",
+      "bytes": 146300665,
+      "sha256": "cd46ec49a0fb2eef69e0159460e8434f5f9b9ce3778da9937df0ab7bcd6eb5a1"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms.png",
+      "bytes": 100321,
+      "sha256": "31ef5fe7671db57a725f0d1794d42303287967fd677426c6edbdc85c5905f123"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms_build_01_failed.log",
+      "bytes": 7615,
+      "sha256": "5ce12002b2e29582340e83d603643d344424f0a9c4200fc9fe5fcd9aba8f350b"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms_build_02_missing_kernel.log",
+      "bytes": 6564,
+      "sha256": "2d0f1d6525cbdf7673985e0bf899ffd75645902dad701d4ef618620f52ef8ea2"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms_build_03.log",
+      "bytes": 9626,
+      "sha256": "553310b3f8873bc7d7f2953b0a457f1a10ac372e661bef6e6993df8381fe7d8f"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms_missing_kernel.apk",
+      "bytes": 127310645,
+      "sha256": "dcb4f58de99951a09b5f443ab16299cab47df99784422662f20ba32e405f76f0"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms_probe_report_01.json",
+      "bytes": 1392,
+      "sha256": "4207a37618e9ef6d494afd01a577aed92f03c6110ceb192d9c2373b10f3443f8"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_1200ms_result.json",
+      "bytes": 2060,
+      "sha256": "1d550283bd29bc46a101636cf293553c22aa1deefe15ddc4d18ab06da0311200"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/before_rebuild.json",
+      "bytes": 287,
+      "sha256": "0b5de46d61d19626900102926064eff17e70ef5c0c808643eb20c9edad1ca894"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/builds.json",
+      "bytes": 715,
+      "sha256": "05832b56941a6d51b4084b736a74bede375934d7174b992f06b209947f3de0ae"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/builds_01_failed.json",
+      "bytes": 55,
+      "sha256": "72efe4ab3db46a3cd4a8e78d09343d4c13f790b8b3d94cdd4c135b99f881e8c1"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/comparison.json",
+      "bytes": 1488,
+      "sha256": "2b237896a1a44e3f59584dba3aafc4f4c94511d3318fcbf930080aca2f4ef192"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/keystore/runner_path_correction.json",
+      "bytes": 384,
+      "sha256": "e61bb59a8bb201a562af679e67a5d54f0cf47555f5b626f6f3da09b06196675c"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/launcher_host/launcher.jsonl",
+      "bytes": 1386,
+      "sha256": "c6ba1899badc3045dcbbead0355ef58149b63935494fad6e93d02de59c3f22c8"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/launcher_host/report.json",
+      "bytes": 1897,
+      "sha256": "1d744ab3b990b535af2c5fd3dbadf1c672e8126c7df360f60b8017a09fe302cd"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/launcher_real_backend/launcher.jsonl",
+      "bytes": 1396,
+      "sha256": "7072202b10fa16ffb7cb4e9f62c3b77886b7588665fd7487f8867a39ba17e1fb"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/launcher_real_backend/report.json",
+      "bytes": 1898,
+      "sha256": "df9bbb8058d2bdd1644b3acf0583fac682588c139cfdeaf92d7e69c3af868f41"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/manifest_preservation_check.json",
+      "bytes": 260,
+      "sha256": "996804e0dc7bc4da7ef1a641ece0a4c86d2e3e490360323aede0d7f9ed556230"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/missing_runtime_apk_builds.json",
+      "bytes": 1326,
+      "sha256": "ddb2c6a78d803045ada8f7bdbd228af3d36c458ca0adc781cc40d7f92b657031"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/missing_runtime_app-debug.apk",
+      "bytes": 127310645,
+      "sha256": "fd984774f1fd89bd2bb19c23ba8db34892980d69136743ff24ab346eafa119ee"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/missing_runtime_app-release.apk",
+      "bytes": 33871596,
+      "sha256": "e6a392babab64e00fb7f0aa090e1eb154792601ecab26435f6b379f4776a92fe"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/missing_runtime_normal_build.log",
+      "bytes": 12854,
+      "sha256": "2b02e82c8fa38c5361e95a64e2086ac878c7c78ab89adb7c5471de5dbbb8b02f"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/native-debug.apk",
+      "bytes": 161110213,
+      "sha256": "c1eec986e4506118339df1bc174032e0cfbc9e16311ee76552aeb9351472ec42"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/native-release.apk",
+      "bytes": 46454714,
+      "sha256": "b067f6202e107a8e77f5969a6825df4fc31f5106985e23df607ea8073745556d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/native_acceptance.json",
+      "bytes": 2310,
+      "sha256": "9b36510a0458019e5942836e621adf076074c3e6d46064ed3d00b94cb4babf86"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/native_build.log",
+      "bytes": 12015,
+      "sha256": "3e161bc080182c1795ea70d92c7f7c9eeb54e25b929a047b9a0b0ae71319d203"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/native_debug_result.json",
+      "bytes": 947,
+      "sha256": "1dc50a0f5419b6f9807f0912be65477d2ad888b31d4172376e3da880e6b92883"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/native_release_result.json",
+      "bytes": 963,
+      "sha256": "13c91060eb70b13233b7c3d50c27cc9432bddeaffabf7110618fda7c9f288b13"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/normal_debug_build.log",
+      "bytes": 9626,
+      "sha256": "07b1c317bad1400079e8fd150fae7587684d3c33dcb6de8f34e8fda058ebba06"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/normal_release_build.log",
+      "bytes": 10787,
+      "sha256": "74ce03fa80217d4baba308d7cba5c152cf694ec0d3265d703bc2a487e738d46b"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/ordinary_entrypoint_check.json",
+      "bytes": 309,
+      "sha256": "d4e73d26156c81a7b6a88fe02375675ef0dc9e333f1762f4e8939aa58b3f7f9e"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu/after.png",
+      "bytes": 327953,
+      "sha256": "dc1857fe027bca7148fbb2a6d6bdb37a70b8c286f57d9817a0358107f0c7646a"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu/before.png",
+      "bytes": 328133,
+      "sha256": "1d4da92f7e81b96eb1d8c8aa8d3a43c4004eba396c54019d58c3955487722f62"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu/cpuinfo.txt",
+      "bytes": 978,
+      "sha256": "902bbe009e5e0dc03f19689ecd80514ac906fec66f2cfdcc645cf5b099471fde"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu/gfxinfo.txt",
+      "bytes": 35922,
+      "sha256": "3d9fa0d503f00405af251f255505c250c14c7f56dc51d6c96863fd16fc89bb38"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu/report.json",
+      "bytes": 1819,
+      "sha256": "99e60c83fca8dcb703b76ec522e74e6d4af29fc1b4e11636ab845e6a2ed9b6ae"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu/surfaceflinger.txt",
+      "bytes": 40363,
+      "sha256": "6791d599872be5f97e9a19db007944d7f43f919a1434928658ed2d311104481e"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu_trace/after.png",
+      "bytes": 327598,
+      "sha256": "3274e11701c251c44a8bc4fd393d13f2d10f29c1f6c98a6feb974bba631c08f3"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu_trace/before.png",
+      "bytes": 327634,
+      "sha256": "02ebed3495e7ba7af9da52b9c68b1473e4f40faa46706d23a33292000c3df95e"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu_trace/cpuinfo.txt",
+      "bytes": 978,
+      "sha256": "6fbbc78538e9403d8307ab284295c7d6afdaad367eb769800a80b08d90aacdca"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu_trace/gfxinfo.txt",
+      "bytes": 35887,
+      "sha256": "9a1baf652b3688ea5f1a7036e8fccd074c58e438a2ba9fbea8dc60a717028443"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu_trace/report.json",
+      "bytes": 1822,
+      "sha256": "cda78ad9bab598e967ff91e6fa201b99d7d78793ec2347141ff1de52603b7dde"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/original_apk_host_gpu_trace/surfaceflinger.txt",
+      "bytes": 40286,
+      "sha256": "6e76418df75d14acca48ece5297cdd10d4d98bbf929432dfed8bf06717e65557"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/README.md",
+      "bytes": 3021,
+      "sha256": "b6f448475d24f50ba5f683a934c674521ca0af6bb78c5447487ec11cac189b32"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/analyze.py",
+      "bytes": 11820,
+      "sha256": "0d13f06f90f9a394f6a9298cfe34cf98739cda4d0e44460cc85f4b9ee09ca2dc"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/analyze.sql",
+      "bytes": 6021,
+      "sha256": "437d8e1fc857c80fe607973f097aa751613876ec51892df2b468d4c39cb54378"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/baseline_parsed.json",
+      "bytes": 1127091,
+      "sha256": "4ea3ac867144497fd5c4f00e6cf8d5b164f4ee66a53a22b66c679f24d8f47f04"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/baseline_processor.stderr",
+      "bytes": 190,
+      "sha256": "36385e5f3a9cbc45b32f904a19e1f956a32dd4e509f2af1dac899222e03a9f35"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/baseline_raw.csv",
+      "bytes": 721014,
+      "sha256": "4f936859a6e1378edbd61c7ba544da1838484bdb3fab4f526a8a93bd3a318d62"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/discovery_baseline.csv",
+      "bytes": 1715,
+      "sha256": "f6e09cd3b024734cd60049a467c7f74dd55b554dddbccf71e7a7eefd5ec5883a"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/discovery_baseline.stderr",
+      "bytes": 188,
+      "sha256": "bfc9b49d8c8c30cef2a316355d61eb27ad5032bf3c4e34f58a73881107f18076"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/discovery_frames.csv",
+      "bytes": 1893,
+      "sha256": "646b1c97e4a312370c025f1d0c89258ec5259bad2481a4e0065bb8993f7a74f9"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/discovery_frames.stderr",
+      "bytes": 188,
+      "sha256": "4db8721d87aafeb2c41b6bd53c4ad9a3613905836a2d0c7816bdb6152a088c35"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/fixed_host_gpu_parsed.json",
+      "bytes": 2048975,
+      "sha256": "cffa9f33be03755a7ad1a766c3d540cf2f6e56107c243e9a26ddca05d2faa73d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/fixed_host_gpu_processor.stderr",
+      "bytes": 190,
+      "sha256": "b5f22561baa8bc1e77408f13e6ce479626b97775db536322423dae3c0fe93766"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/fixed_host_gpu_raw.csv",
+      "bytes": 1297811,
+      "sha256": "4390a6c516d7ae22a3ce514f30eec72ba234dd91916bef3a0df9d04eddf4c188"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/fixed_identity_discovery.csv",
+      "bytes": 277,
+      "sha256": "516e363863d6c4e6fc8711ab40cdc36d11028a6f7d3d2aaf40124349877909fa"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/fixed_identity_discovery.stderr",
+      "bytes": 188,
+      "sha256": "c15bf378d9810acb6b2d0dfacbbeaf895026a9f2e0d748c3422c763e5acf3cb0"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/host_gpu_parsed.json",
+      "bytes": 1050336,
+      "sha256": "c3b503693c8524b47fc8cb2e9c56172af39b9389409fd701afa44a2e67dba948"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/host_gpu_processor.stderr",
+      "bytes": 189,
+      "sha256": "8601c7fc7404e22034184074021cdf1216761f2b611c3a15561460ca619726bc"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/host_gpu_raw.csv",
+      "bytes": 673389,
+      "sha256": "060aa8154b5e20df87afca87777d6b5a850ab35400bf1305c0adbcd15694857d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/run.log",
+      "bytes": 172,
+      "sha256": "0490bd653e99af553004391789f1093e2c1fd476e69946a9f764c512532b9ba1"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/run.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/perfetto-analysis/summary.json",
+      "bytes": 122558,
+      "sha256": "533082a02876d330115f751977bd774199aae1d7ab08a595a5b0ae10d1755a3d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/readonly_code_trace_audit.json",
+      "bytes": 12099,
+      "sha256": "1e66155ec9458c6e20bc6e2571082bac2bda37a08d2c15108ab51356d3ecdb65"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/real_backend_read_only_checks.json",
+      "bytes": 1112,
+      "sha256": "52556b66a8e2fd66c0e69cbfcf1f9bee8c65e31f278624d5ab4d60028f78cdf6"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/real_backend_restored.json",
+      "bytes": 904,
+      "sha256": "7c5ede1e44d18e3c6b2a6447a6fe66190fdf54aea1f366e8fe4a609722fa6894"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/source_artifact_secret_scan.json",
+      "bytes": 230,
+      "sha256": "ab39ed18a7f344d1e8cb11376b9efb6cb5537c40e0b0c2f188c6ffdd67eafb9d"
+    },
+    {
+      "path": "artifacts/android_anr_followup_20260908/video_metadata.txt",
+      "bytes": 25,
+      "sha256": "46d4fbd4d553d6d25c211d2eb978b8cf15d68156485d3754caec3d88c64e2188"
+    }
+  ]
+}

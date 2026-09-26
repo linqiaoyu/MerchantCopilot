@@ -1,5 +1,5 @@
 name: merchant_copilot
-description: MerchantCopilot v2 Android-first reference client.
+description: MerchantCopilot synthetic-data Android demonstration client.
 publish_to: none
 version: 0.1.0+1
 
@@ -9,10 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: 2.4.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  sqflite_common_ffi: 2.3.6
+  sqlite3: 2.9.4
 
 flutter:
   uses-material-design: true

@@ -16,17 +16,20 @@ class FakeTokenStore implements TokenStore {
 }
 
 void main() {
-  test('settings save and restore demo token through the token store', () async {
-    final store = FakeTokenStore();
-    final first = ClientSession(tokenStore: store);
+  test(
+    'settings save and restore demo token through the token store',
+    () async {
+      final store = FakeTokenStore();
+      final first = ClientSession(tokenStore: store);
 
-    await first.updateSettings('https://demo.example', 'demo-token');
-    expect(store.value, 'demo-token');
+      await first.updateSettings('https://demo.example', 'demo-token');
+      expect(store.value, 'demo-token');
 
-    final second = ClientSession(tokenStore: store);
-    await second.restoreAccessToken();
-    expect(second.settings.accessToken, 'demo-token');
-  });
+      final second = ClientSession(tokenStore: store);
+      await second.restoreAccessToken();
+      expect(second.settings.accessToken, 'demo-token');
+    },
+  );
 
   test('empty token clears the secure store', () async {
     final store = FakeTokenStore()..value = 'old-token';

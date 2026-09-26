@@ -23,13 +23,17 @@ def test_health_and_ready_are_public():
     assert client.get("/readyz").json() == {"status": "ready"}
 
 
-def test_public_http_surface_is_exactly_the_nine_fixed_routes():
-    paths = {route.path for route in app.routes}
-    assert paths == {
+def test_public_http_surface_preserves_legacy_and_declares_delivery_routes():
+    paths = set(app.openapi()["paths"])
+    legacy = {
         "/healthz", "/readyz", "/v1/threads", "/v1/threads/{thread_id}/runs:stream",
         "/v1/runs/{run_id}", "/v1/threads/{thread_id}/memories",
         "/v1/memories/{memory_id}/approve", "/v1/memories/{memory_id}/reject",
         "/v1/runs/{run_id}/feedback",
+    }
+    assert paths == legacy | {
+        "/v1/overview", "/v1/threads/{thread_id}/runs", "/v1/runs",
+        "/v1/runs/{run_id}/events", "/v1/memories",
     }
 
 

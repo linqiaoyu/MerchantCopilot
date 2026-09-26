@@ -1,4 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- 仅 debug 允许模拟器通过 10.0.2.2 访问宿主机 HTTP API。 -->
+    <!-- Debug 的 network_security_config 进一步限定三个本机地址。 -->
     <application android:usesCleartextTraffic="true" />
 </manifest>

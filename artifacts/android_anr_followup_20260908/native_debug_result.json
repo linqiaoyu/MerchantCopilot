@@ -1,0 +1,34 @@
+{
+  "mode": "debug",
+  "apk_sha256": "c1eec986e4506118339df1bc174032e0cfbc9e16311ee76552aeb9351472ec42",
+  "first_process": {
+    "status": "waiting_process_restart",
+    "checks": [
+      "sqlite_pending_operation_reopen",
+      "sqlite_event_cursor_reopen",
+      "sqlite_event_rollback",
+      "sse_half_frame_discarded"
+    ],
+    "device": "android",
+    "release_mode": false,
+    "pid": 4341,
+    "time": "2026-09-08T00:11:43.639147Z"
+  },
+  "second_process": {
+    "status": "passed",
+    "checks": [
+      "sqlite_pending_operation_reopen",
+      "sqlite_event_cursor_reopen",
+      "sqlite_event_rollback",
+      "sse_half_frame_discarded",
+      "android_keystore_cross_process_read_clear",
+      "android_keystore_save_restore_clear",
+      "actual_debug_apk_loopback_http",
+      "release_policy_rejects_http"
+    ],
+    "device": "android",
+    "release_mode": false,
+    "pid": 4433,
+    "time": "2026-09-08T00:11:46.154823Z"
+  }
+}

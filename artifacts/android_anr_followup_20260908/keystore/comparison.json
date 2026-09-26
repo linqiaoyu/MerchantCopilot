@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "scope": "Controlled slow token I/O before/after; original input ANR not reproduced by this probe",
+  "paid_model_calls": 0,
+  "runs": [
+    {
+      "variant": "before",
+      "delay_ms": 1200,
+      "status": "failed",
+      "checks": {
+        "save_read_clear_read_order": true,
+        "all_token_handlers_off_main": false,
+        "main_looper_responds_during_slow_io": false,
+        "main_looper_max_gap_within_budget": false,
+        "previous_token_restored": true,
+        "absolute_wall_boundary": true
+      },
+      "max_gap_ms": 4956,
+      "new_anr_count": 0
+    },
+    {
+      "variant": "after",
+      "delay_ms": 1200,
+      "status": "passed",
+      "checks": {
+        "save_read_clear_read_order": true,
+        "all_token_handlers_off_main": true,
+        "main_looper_responds_during_slow_io": true,
+        "main_looper_max_gap_within_budget": true,
+        "previous_token_restored": true,
+        "absolute_wall_boundary": true
+      },
+      "max_gap_ms": 35,
+      "new_anr_count": 0
+    },
+    {
+      "variant": "after",
+      "delay_ms": 6000,
+      "status": "passed",
+      "checks": {
+        "save_read_clear_read_order": true,
+        "all_token_handlers_off_main": true,
+        "main_looper_responds_during_slow_io": true,
+        "main_looper_max_gap_within_budget": true,
+        "previous_token_restored": true,
+        "absolute_wall_boundary": true
+      },
+      "max_gap_ms": 36,
+      "new_anr_count": 0
+    }
+  ]
+}

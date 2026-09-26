@@ -31,6 +31,7 @@ def extract_candidates(
     thread_id: str | None = None, merchant_id: str | None = None,
     evidence_refs: list[str] | tuple[str, ...] = (),
     allowed_fact_types: tuple[str, ...] | None = None,
+    allowed_kinds: tuple[str, ...] | None = None,
 ) -> list[MemoryCandidate]:
     """Extract bounded candidates; extraction failure cannot invalidate an answer.
 
@@ -44,6 +45,8 @@ def extract_candidates(
         schema = deepcopy(_SCHEMA)
         if allowed_fact_types:
             schema["properties"]["candidates"]["items"]["properties"]["fact_type"]["enum"] = list(allowed_fact_types)
+        if allowed_kinds:
+            schema["properties"]["candidates"]["items"]["properties"]["kind"]["enum"] = list(allowed_kinds)
         payload, _ = llm.complete_json(
             "Extract durable merchant-memory candidates. Return JSON only; do not invent facts.",
             text, schema, thinking=False,

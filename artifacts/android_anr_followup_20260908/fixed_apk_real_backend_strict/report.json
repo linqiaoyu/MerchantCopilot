@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "device": "emulator-5554",
+  "requested_cycles": 50,
+  "paid_model_calls": 0,
+  "submitted_analyses": 0,
+  "cycles": [
+    {
+      "cycle": 1,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 884.2889579827897,
+      "hide_elapsed_ms": 320.2625419944525,
+      "cycle_elapsed_ms": 2023.3295409707353
+    },
+    {
+      "cycle": 2,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 245.6929169711657,
+      "hide_elapsed_ms": 161.690125009045,
+      "cycle_elapsed_ms": 1225.5739999818616
+    },
+    {
+      "cycle": 3,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 255.48645795788616,
+      "hide_elapsed_ms": 295.2505410066806,
+      "cycle_elapsed_ms": 1368.269499973394
+    },
+    {
+      "cycle": 4,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 143.99858296383172,
+      "hide_elapsed_ms": 153.48108304897323,
+      "cycle_elapsed_ms": 1111.1237909644842
+    },
+    {
+      "cycle": 5,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 200.67691599251702,
+      "hide_elapsed_ms": 302.5546669960022,
+      "cycle_elapsed_ms": 1316.5289579774253
+    },
+    {
+      "cycle": 6,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 370.0685410294682,
+      "hide_elapsed_ms": 232.94558405177668,
+      "cycle_elapsed_ms": 1422.1607080544345
+    },
+    {
+      "cycle": 7,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 282.40637498674914,
+      "hide_elapsed_ms": 249.5867499965243,
+      "cycle_elapsed_ms": 1342.0318749849685
+    },
+    {
+      "cycle": 8,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 202.0511250011623,
+      "hide_elapsed_ms": 347.2105829860084,
+      "cycle_elapsed_ms": 1361.8513339897618
+    },
+    {
+      "cycle": 9,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 544.7454170207493,
+      "hide_elapsed_ms": 367.0172500424087,
+      "cycle_elapsed_ms": 1721.363749995362
+    },
+    {
+      "cycle": 10,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 244.01070800377056,
+      "hide_elapsed_ms": 270.6855839933269,
+      "cycle_elapsed_ms": 1320.2923749922775
+    },
+    {
+      "cycle": 11,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 351.8866249942221,
+      "hide_elapsed_ms": 219.7158340131864,
+      "cycle_elapsed_ms": 1384.048540960066
+    },
+    {
+      "cycle": 12,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 204.42262495635077,
+      "hide_elapsed_ms": 310.51112501882017,
+      "cycle_elapsed_ms": 1325.5544159910642
+    },
+    {
+      "cycle": 13,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 237.53791698254645,
+      "hide_elapsed_ms": 305.1465000025928,
+      "cycle_elapsed_ms": 1357.4998329859227
+    },
+    {
+      "cycle": 14,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 260.9211669769138,
+      "hide_elapsed_ms": 242.07158299395815,
+      "cycle_elapsed_ms": 1311.507459031418
+    },
+    {
+      "cycle": 15,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 255.2249589934945,
+      "hide_elapsed_ms": 423.5077920020558,
+      "cycle_elapsed_ms": 1494.243709021248
+    },
+    {
+      "cycle": 16,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 221.46520798560232,
+      "hide_elapsed_ms": 240.11245800647885,
+      "cycle_elapsed_ms": 1279.8553750035353
+    },
+    {
+      "cycle": 17,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 330.68320801248774,
+      "hide_elapsed_ms": 318.13062500441447,
+      "cycle_elapsed_ms": 1465.370291029103
+    },
+    {
+      "cycle": 18,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 162.30087500298396,
+      "hide_elapsed_ms": 289.62554200552404,
+      "cycle_elapsed_ms": 1256.7893750383519
+    },
+    {
+      "cycle": 19,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 263.11125000938773,
+      "hide_elapsed_ms": 264.44412500131875,
+      "cycle_elapsed_ms": 1344.2757080192678
+    },
+    {
+      "cycle": 20,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 369.7680840268731,
+      "hide_elapsed_ms": 365.2451249654405,
+      "cycle_elapsed_ms": 1550.8609170210548
+    },
+    {
+      "cycle": 21,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 170.21324997767806,
+      "hide_elapsed_ms": 180.1517080166377,
+      "cycle_elapsed_ms": 1165.434499969706
+    },
+    {
+      "cycle": 22,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 208.35370797431096,
+      "hide_elapsed_ms": 150.1716659986414,
+      "cycle_elapsed_ms": 1169.094041979406
+    },
+    {
+      "cycle": 23,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 147.4957910249941,
+      "hide_elapsed_ms": 150.73425002628937,
+      "cycle_elapsed_ms": 1110.3380409767851
+    },
+    {
+      "cycle": 24,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 150.66408296115696,
+      "hide_elapsed_ms": 143.62833299674094,
+      "cycle_elapsed_ms": 1108.8131249998696
+    },
+    {
+      "cycle": 25,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 169.80437497841194,
+      "hide_elapsed_ms": 296.3175000040792,
+      "cycle_elapsed_ms": 1270.9429590031505
+    },
+    {
+      "cycle": 26,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 179.07908302731812,
+      "hide_elapsed_ms": 148.52929103653878,
+      "cycle_elapsed_ms": 1133.9200420188718
+    },
+    {
+      "cycle": 27,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 141.39345899457112,
+      "hide_elapsed_ms": 165.3716249857098,
+      "cycle_elapsed_ms": 1126.673499995377
+    },
+    {
+      "cycle": 28,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 162.28695801692083,
+      "hide_elapsed_ms": 132.76029197731987,
+      "cycle_elapsed_ms": 1106.5532500506379
+    },
+    {
+      "cycle": 29,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 127.49391596298665,
+      "hide_elapsed_ms": 184.20933303423226,
+      "cycle_elapsed_ms": 1116.6667499928735
+    },
+    {
+      "cycle": 30,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 152.3822500021197,
+      "hide_elapsed_ms": 156.28799999831244,
+      "cycle_elapsed_ms": 1126.3097500195727
+    },
+    {
+      "cycle": 31,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 183.1587499473244,
+      "hide_elapsed_ms": 306.95495899999514,
+      "cycle_elapsed_ms": 1307.5767499976791
+    },
+    {
+      "cycle": 32,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 158.2524999976158,
+      "hide_elapsed_ms": 145.3480829950422,
+      "cycle_elapsed_ms": 1120.360000000801
+    },
+    {
+      "cycle": 33,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 148.08912499574944,
+      "hide_elapsed_ms": 156.15408297162503,
+      "cycle_elapsed_ms": 1117.0430420315824
+    },
+    {
+      "cycle": 34,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 147.4107090034522,
+      "hide_elapsed_ms": 180.91912497766316,
+      "cycle_elapsed_ms": 1145.0210000039078
+    },
+    {
+      "cycle": 35,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 163.27054100111127,
+      "hide_elapsed_ms": 160.84254201268777,
+      "cycle_elapsed_ms": 1132.4812499806285
+    },
+    {
+      "cycle": 36,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 167.29879099875689,
+      "hide_elapsed_ms": 123.7895839731209,
+      "cycle_elapsed_ms": 1098.9270000136457
+    },
+    {
+      "cycle": 37,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 178.14533301861957,
+      "hide_elapsed_ms": 221.2577079772018,
+      "cycle_elapsed_ms": 1201.7879580380395
+    },
+    {
+      "cycle": 38,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 176.62537499563769,
+      "hide_elapsed_ms": 157.25099999690428,
+      "cycle_elapsed_ms": 1136.7647079750896
+    },
+    {
+      "cycle": 39,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 130.977958033327,
+      "hide_elapsed_ms": 159.95954198297113,
+      "cycle_elapsed_ms": 1105.7019170257263
+    },
+    {
+      "cycle": 40,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 169.25345797790214,
+      "hide_elapsed_ms": 186.78749998798594,
+      "cycle_elapsed_ms": 1164.306165999733
+    },
+    {
+      "cycle": 41,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 242.4202500260435,
+      "hide_elapsed_ms": 163.12704200390726,
+      "cycle_elapsed_ms": 1223.5496250214055
+    },
+    {
+      "cycle": 42,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 165.6729580136016,
+      "hide_elapsed_ms": 161.96125000715256,
+      "cycle_elapsed_ms": 1136.0758329974487
+    },
+    {
+      "cycle": 43,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 147.6850420003757,
+      "hide_elapsed_ms": 181.60795798758045,
+      "cycle_elapsed_ms": 1140.362209000159
+    },
+    {
+      "cycle": 44,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 152.32991700759158,
+      "hide_elapsed_ms": 402.935084013734,
+      "cycle_elapsed_ms": 1364.9862500024028
+    },
+    {
+      "cycle": 45,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 208.57983303721994,
+      "hide_elapsed_ms": 162.391708989162,
+      "cycle_elapsed_ms": 1182.758458016906
+    },
+    {
+      "cycle": 46,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 212.45145797729492,
+      "hide_elapsed_ms": 149.58912500878796,
+      "cycle_elapsed_ms": 1172.8160830098204
+    },
+    {
+      "cycle": 47,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 131.58283301163465,
+      "hide_elapsed_ms": 136.48679200559855,
+      "cycle_elapsed_ms": 1078.6792080034502
+    },
+    {
+      "cycle": 48,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 129.85766696510836,
+      "hide_elapsed_ms": 132.6460419804789,
+      "cycle_elapsed_ms": 1076.6082089976408
+    },
+    {
+      "cycle": 49,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 143.9782500383444,
+      "hide_elapsed_ms": 133.04554199567065,
+      "cycle_elapsed_ms": 1082.7207500115037
+    },
+    {
+      "cycle": 50,
+      "ime_visible": true,
+      "ime_hidden": true,
+      "status": "passed",
+      "ime_observed_ms": 144.96449998114258,
+      "hide_elapsed_ms": 152.40087499842048,
+      "cycle_elapsed_ms": 1110.7629170292057
+    }
+  ],
+  "absolute_cycle_budget_ms": 5000,
+  "latency_semantics": "Each cycle shares one absolute five-second budget across tap, IME-visible polling, Back, IME-hidden polling and pauses. Show latency starts before tap; hide latency starts before Back. Both end at the observed dumpsys result and include ADB overhead; neither is Android event dispatch latency.",
+  "installed_apk_sha256": "fa0d6fc828fb11af4f213b3499cfb1607692c9bccb5a7d7197949be6bfa7516b",
+  "query_length": 59,
+  "query_sha256": "0c4258920963bf64ebcf76b0a70e97c621d62661a10a21fffc8aa1ede5ebb691",
+  "pid_before": "2911",
+  "anr_before": [],
+  "pid_after": "2911",
+  "new_anr": [],
+  "status": "passed"
+}

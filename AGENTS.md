@@ -33,8 +33,17 @@ v2 基线 commit、数据集与工件哈希固定在 `docs/v3_baseline.md`；历
 | T22 离线演化与回滚 | 已验证 | 同上 |
 | T23–T24 冻结评测与正式结果 | 已验证 | `docs/v3_evaluation_report.md` |
 | T25 文档与简历证据 | 已验证 | `docs/v3_resume_evidence.md` |
+| T26 Android 契约与失败测试 | 已验证 | migrations 006、delivery repository/API tests |
+| T27 服务端任务闭环 | 已验证 | 411 项全量回归、`controlled_http_delivery_final_03.json`、真实模型确认后引用工件 |
+| T28 Flutter 业务闭环 | 已验证（自动化与 APK 构建） | 47 项 Flutter 测试、单独 HTTP 1 项；`docs/android_client.md` |
+| T29 恢复与设备验收 | 模拟器阻塞修复与复测已验证；真机最后验收 | 模拟器 debug/release 原生各 8 项、严格输入 50 轮、恢复检查；历史单次 ANR 不能唯一归因，见 `docs/android_anr_followup.md` |
+| T30 客户端证据与交付 | 本地 APK、文档、录像与带哈希清单已交付 | `docs/android_delivery.md`、`docs/android_api.md`、`docs/android_client.md` |
 
-Cloud Run、Supabase 云端验收、Flutter 联调和应用商店发布均为 **deferred**，不阻塞 v3。APK 只保留为历史展示产物。
+v3 原验收中的 Flutter deferred 状态作为历史保留；T26–T30 是用户批准的新增本地 Android 交付阶段。Cloud Run、Supabase 云端验收、正式发布签名和应用商店发布继续 **deferred**。新客户端验收不改写 v3 冻结指标，真机缺失时明确保留待验收。
+
+T26–T30 初次交付证据位于 `artifacts/android_delivery_20260908/`：`regression_delivery_final` 为 **411 passed / 861.36s**，耗时包含 iCloud 文件等待，不作性能指标；同一后端源码的 `controlled_http_delivery_final_03.json` 为 12 项通过，loopback 受控 worker 各顺序 100 次的 overview/accept p95 为 **14.6465/37.5829ms**。此前 406 项回归、旧性能与所有失败记录保留。普通 APK 两轮 force-stop 恢复同一 run、游标 45；真实后端 Memory 确认后引用已通过，模拟器 UI 确认独立合成 user_fact 已通过（pending v1→active v2，审计收据一条）。此前未知费用已按用户后台核对的 **¥0.07** 结算，原 ¥10 预留释放差额 ¥9.93；逐调用 usage 仍不可得，未补造，见 `budget_reconciliation_20260908.json`。
+
+ANR 后续修复与新 APK 位于 `artifacts/android_anr_followup_20260908/`。Keystore 改串行后台 TaskQueue，1.2 秒慢 I/O 对照主线程心跳最大间隔 4,956→35ms；6 秒慢 I/O 为 36ms。普通 APK 在真实后端已预热时严格输入 50 轮通过，无新增 ANR；原生 debug/release 各 8 项、Flutter 47 项通过。模拟器显式核验 host GPU，Gradle 堆限 2G。历史单次 ANR 未重现、不能唯一归因；物理真机按用户安排最后验收。本轮新增模型费用为 0。详见 `docs/android_anr_followup.md`。
 
 ## 锁定技术栈
 
@@ -48,6 +57,7 @@ Cloud Run、Supabase 云端验收、Flutter 联调和应用商店发布均为 **
 | Canonical state | PostgreSQL 15 + pgvector | 本地 Homebrew；不恢复 Colima，不依赖云端 |
 | 工具 | 官方 Python MCP SDK | 保持现有工具白名单 |
 | API | FastAPI + SSE | 保持 `/v1` 路由和既有事件兼容 |
+| Android 客户端 | Flutter / Dart / Material 3、ChangeNotifier、SQLite | MVVM + Repository；Keystore 存 token；单商家本地演示 |
 | 测试评测 | pytest + 自建 eval harness | deterministic 主指标；Judge 与主结论分离 |
 
 ## 架构不变量
@@ -75,6 +85,8 @@ Cloud Run、Supabase 云端验收、Flutter 联调和应用商店发布均为 **
 Skill 每次最多选择 1 个主 Skill；完整内容只在 metadata 选择后加载。允许 action：`metric`、`attribution`、`strategy`；允许证据操作符：`exists`、`eq`、`contains`、`gte`；失败策略仅 `stop` 或一次 `replan`。
 
 既有 `/v1` API 与 SSE 词汇保持兼容。新增内部字段必须是向后兼容的可选字段，客户端不是 v3 验收消费者。
+
+T26–T30 增量边界：API 父进程独占任务及 Canonical 终态事务，常驻 spawn worker 计算；每 run 独立 checkpoint，120 秒 deadline 包含接受后所有工作；SSE 从持久公开事件回放。新客户端是独立交付消费者，不是冻结 v3 评测消费者。演示入口 `scripts/run_android_delivery.py` 创建隔离原生数据库，凭据只存忽略的私有配置。
 
 ## 评测与预算纪律
 

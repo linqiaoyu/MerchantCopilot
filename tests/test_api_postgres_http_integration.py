@@ -14,7 +14,8 @@ from app.api.main import PostgresRuntime, app
 
 @pytest.fixture
 def postgres_http(monkeypatch):
-    dsn = "postgresql://merchantcopilot:merchantcopilot@127.0.0.1:55432/merchantcopilot"
+    import os
+    dsn = os.environ.get("LEGACY_TEST_DATABASE_URL", "postgresql://merchantcopilot:merchantcopilot@127.0.0.1:55432/merchantcopilot")
     merchant_id = f"http-test-{uuid4()}"
     calls: list[tuple[str, str]] = []
 
@@ -23,6 +24,9 @@ def postgres_http(monkeypatch):
         return {"final_answer": "持久化验收完成", "node_result": {"evidence": ["controlled-source"]}}
 
     monkeypatch.setenv("DATABASE_URL", dsn)
+    # This fixture specifically verifies the retained v2 injection boundary.
+    # New/legacy shared delivery semantics are exercised by test_delivery_api.
+    monkeypatch.setenv("MERCHANTCOPILOT_DELIVERY_ENABLED", "0")
     monkeypatch.setenv("DEMO_ACCESS_TOKEN", "postgres-demo")
     monkeypatch.setattr(PostgresRuntime, "execute", fake_execute)
     with TestClient(app) as client:

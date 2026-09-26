@@ -1,6 +1,6 @@
 # MerchantCopilot v3 验证台账
 
-更新时间：2026-08-17。状态值为`待实现`、`已实现未验证`、`已验证`、`失败保留`。本表只登记实际命令、测试和不可变工件；目标阈值不算结果。
+更新时间：2026-09-08。状态值为`待实现`、`已实现未验证`、`已验证`、`失败保留`，可在部分验收项明确标注待验收。本表只登记实际命令、测试和不可变工件；目标阈值不算结果。T16–T25 历史记录保留，T26–T30 为新增客户端阶段。
 
 | 任务 | 状态 | 已验收内容 | 证据 |
 |---|---|---|---|
@@ -14,8 +14,23 @@
 | T23 | 已验证 | Memory-E2E-80、Skill-Eval-140 v3.2 hash 冻结；独立 oracle；完整性/污染检查；checkpoint 恢复；预算硬停止；McNemar/bootstrap/Holm | `evals/datasets/v3.2/PREREGISTRATION.md`、`evals/v3/`、`tests/test_v3_eval_harness.py` |
 | T24 | 已验证 | Memory 240/240；Skill dev 180/180、regression 120/120、首次 frozen test 360/360，全部 nil=0；预算 ¥3.39182976/¥100 | `docs/v3_evaluation_report.md` 与其中原始 JSON 链接 |
 | T25 | 已验证 | README、章程、架构、结果、简历映射一致；Memory 纠错、Skill 晋升、自动回滚案例齐备 | `README.md`、`docs/v3_architecture.md`、`docs/v3_resume_evidence.md` |
+| T26 | 已验证 | 增量契约、迁移 006、请求指纹、版本审批及失败先行用例；原生隔离 PostgreSQL | `tests/test_delivery_repository.py`、`tests/test_delivery_contracts.py`、`tests/test_delivery_api.py` |
+| T27 | 已验证 | 单槽 spawn、父进程事务、持久 REST/SSE、SQL 概览；接受前上下文读取、旧无 owner 非终态恢复、IPC 截止回收；411 项全量及最终 HTTP 12 项通过，真实 GMV SQL 归因与 Memory 确认后引用通过 | `artifacts/android_delivery_20260908/regression_delivery_final/`、`controlled_http_delivery_final_03.json`、`live_model_final.json`；`docs/android_delivery.md` |
+| T28 | 已验证（自动化/构建） | 四类页面、MVVM/Repository、SQLite、结构化结果；47 项 Flutter 测试、单独 HTTP 1 项、analyze、debug/release APK 构建与扫描 | `mobile/`、`docs/android_client.md`、`artifacts/android_delivery_20260908/mobile-verification/` |
+| T29 | 部分验证 | HTTP 生命周期与各 100 次性能通过；模拟器 debug/release 原生各 8 项；普通 APK 展示真实模型分析，两轮 force-stop 恢复同一 run、游标 45。独立合成 Memory 的模拟器 UI 确认通过；Keystore 主线程阻塞已修复，真实后端预热下严格输入 50 轮通过，无新增 ANR；历史单次原因仍不唯一，物理真机按用户安排最后验收 | `artifacts/android_delivery_20260908/controlled_http_delivery_final_03.json`、`native-acceptance/`、`android_ui_acceptance.json`；`docs/android_anr_followup.md` |
+| T30 | 已交付（本地演示） | 普通 debug/release APK、接口文档、测试日志及 108.27 秒初次模拟器录像已交付；追加修复后 APK 与 19.98 秒输入复测片段，各自版本/哈希分开保留 | `docs/android_delivery.md`、`docs/android_api.md`、`docs/android_client.md`；`artifacts/android_delivery_20260908/android_emulator_demo.mp4` |
 
 ## 回归记录
+
+- ANR 后续修复：`artifacts/android_anr_followup_20260908/`，Flutter 47 passed / 1 opt-in skipped、analyze 通过；普通 debug/release 构建、运行文件门槛和凭据扫描通过；原生各 8 项通过。1.2s 慢 I/O 对照主线程心跳 4,956→35ms，6s 慢 I/O 36ms，原 token 恢复且 FIFO 正确。三个页面与设置、5 次前后台、5 次进程重启、服务不可达后缓存及联网校准通过。真实后端预热下 50 轮严格输入通过，最长整轮 2,023.33ms（含 ADB 和暂停），0 新 ANR、0 模型调用。历史 ANR 未重现，不作唯一因果结论，详见 `docs/android_anr_followup.md`。
+
+- T26–T30 最新全量：`artifacts/android_delivery_20260908/regression_delivery_final/` 为 **411 passed / 861.36s**；隔离原生 PostgreSQL、显式禁用真实模型 key。861.36 秒包含 iCloud/FileProvider 文件等待，是测试执行时间，不是 API 性能。被冻结文件恢复本地可读后完成同一源码回归，未修改冻结内容或重算历史 benchmark。
+- 同一后端源码的最终受控 HTTP：`controlled_http_delivery_final_03.json` **12 项通过 / 27.27s**；本机预热 loopback、受控 worker、各顺序 100 次，overview p95 **14.6465ms**、accept p95 **37.5829ms**，0 模型调用。原始样本、环境与源码哈希均在工件中；不包含模型耗时、冷启动或设备链路。
+- 早前全量 **406 passed / 140.20s**、公开投影/旧分页定向 **55 passed / 8.14s**、GMV 同义与旧图隔离 **11 passed / 2.35s** 原样保留，见同目录；不把这些记录替换成最新 411 项结果。
+- 早前 `controlled_http_acceptance_final.json` 各 100 次 overview/accept p95 **13.839/34.813ms** 保留其原始源码归属。最终结果以上述 `_03` 为准，不覆盖或重新标记历史性能样本。
+- `live_model_final.json`：4 个 completed、7 检查通过，含实际 GMV SQL 归因、待确认信息不采用、确认后具体 Memory ID 引用。它验证真实后端确认回路；模拟器另实际确认了独立 core/user_fact 夹具，pending v1→active v2，UI/REST/canonical 审计一致，未再调用模型。
+- Flutter/Dart 47 项通过；默认跳过的 opt-in 后端只读 HTTP 测试单独 1/1 通过。模拟器 debug/release 原生各 8 项通过；普通 APK 的真实分析及两轮 force-stop 恢复同一 run、游标 45，详见 `android_ui_acceptance.json` 和 `docs/android_client.md`。最终中文 APK 只读恢复已有分析，没有额外发起模型调用。
+- 旧回归读取本地 key 的事故初始记录 `budget_incident.json` 与旧 `budget_snapshot.json` 保持不变。用户后续报告已在后台核对该事故费用为 **¥0.07**；现于原事故账本条目结算，释放 ¥9.93 临时预留，没有新增调用或补造逐调用 usage。新记录 `budget_reconciliation_20260908.json` 明确金额来自用户后台核对；新快照 `budget_snapshot_reconciled_20260908.json` 合计 **¥3.60732896**（历史 v3 ¥3.39182976、其余计量调用 ¥0.1454992、事故 ¥0.07）。后续测试继续自动隔离模型配置。
 
 - v3 核心/单元集：151 passed。
 - v3 PostgreSQL 集成：新增 runtime-boundary 用例后 6 passed；此前数据库专项累计 17 passed。
@@ -25,6 +40,9 @@
 
 ## 永久保留的失败与修订
 
+- ANR 后续的主线程慢 I/O 失败对照、iCloud 打包超时、缺失 Flutter 运行文件的坏包、诊断报告路径错误、UI 标签与断网注入错误均保留；修正后的结果单独存放。三份 Perfetto 环形缓冲覆盖了早期包，实际采集窗口已记录，不声称完整覆盖或重现历史 ANR。
+
+- T26–T30 首轮 `controlled_http_delivery_final.json` 与第二轮 `controlled_http_delivery_final_02.json` 失败记录保留；`_03` 的新增诊断与通过结果不能证明前两次失败具有相同原因。FileProvider 阻塞期间含 4 个失败的中断回归也保留，后续 411 项通过不覆盖它。
 - v3.0 Memory 首次正式运行暴露 provenance oracle 错误：16/80 失败、answer provenance 0.80；原始工件保留，未覆盖。
 - v3.1 formal Skill test 未运行。架构审阅发现 anomaly static Skill 与 bare 同为单步 attribution，无法证明程序性价值，因此发布 v3.2 数据/contract 修订。
 - `v3_2_skill_dev_api_20260817.json` 使用旧 Strategy 超时路径，作为无效工程 run 保留；修正契约后的正式 dev 工件另存为 `v3_2_skill_dev_api_contract_v2_20260817.json`。

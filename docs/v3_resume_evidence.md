@@ -8,6 +8,16 @@
 
 面试时必须同时说清：这是合成、确定性、exact-contract benchmark；没有真人策略质量结论，也不代表生产收益或 SLA。
 
+## 新增 Android 客户端阶段（与冻结结果分开）
+
+实现 Flutter MVVM + Repository 本地经营助手，SQLite 保存原请求与幂等操作、任务快照和持久事件游标，Android Keystore 保存 token；FastAPI 通过受生命周期管理的 spawn worker 执行，PostgreSQL 父进程事务同时提交结果、Memory 与终态事件，支持断流回放、服务重启收敛及超时进程回收。
+
+最新完成 **411 项 Python 全量回归**（`regression_delivery_final`，861.36 秒含 iCloud 文件等待，不作性能指标）、47 项 Flutter/Dart 测试及单独 1 项真实后端只读 HTTP 测试、debug/release APK 构建。此前 406 项全量和各轮定向验证、失败记录均保留。真实模型 GMV 归因及后端 Memory 确认后引用回路通过；普通 APK 在模拟器展示真实模型分析，两轮 force-stop 后恢复同一 run 和游标 45。模拟器 debug/release 原生检查各 8 项通过，最终普通 APK 与 108.27 秒模拟器录像已交付；版本与哈希见 acceptance_manifest.json。
+
+同一后端源码的 `controlled_http_delivery_final_03.json` 为 **12 项通过**，本机预热 loopback 受控执行器各顺序 100 次测得概览 p95 **14.6465ms**、接受 p95 **37.5829ms**。这些数字不包含模型耗时、冷启动或设备链路，不可表述为生产 SLA；此前 13.839/34.813ms 样本保留其历史源码归属。设备与工件详见 `v3_verification_ledger.md`、`android_delivery.md`、`android_client.md`。
+
+模拟器 UI 已实际确认独立合成 user_fact，pending v1→active v2，来源事件不变且确认收据恰一条；后续模型引用由独立真实后端回路验证。物理真机按用户安排最后验收，模拟器结果不能表述为真机交付。ANR 后续已修复 Keystore 主线程阻塞风险并核验 host GPU：1.2s 慢 I/O 对照心跳最大间隔 4,956→35ms，6s 慢 I/O 为 36ms；真实后端预热下普通新 APK 严格输入 50 轮通过、无新增 ANR。历史单次 ANR 未重现，不能把它唯一归因于上述因素；不声称永久消除 ANR。新 APK、19.98 秒复测片段和独立哈希清单见 `android_anr_followup.md`，旧录像与工件保持原样。原 v3 的 ¥3.39 是历史冻结评测费用；新增客户端计量费用独立记录。此前未计量事故已按用户后台核对的 ¥0.07 结算，释放 ¥9.93 临时预留；逐调用 usage 未恢复或补造。新账本快照合计 ¥3.60732896，依据及旧记录保留见 `budget_reconciliation_20260908.json` 与 `budget_snapshot_reconciled_20260908.json`。
+
 ## 三个演示案例
 
 ### 1. Memory 纠错

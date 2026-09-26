@@ -2,8 +2,10 @@
     <!-- Release 仅允许 HTTPS Cloud Run；权限本身不授予 cleartext。 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="MerchantCopilot v2"
+        android:label="MerchantCopilot"
         android:name="${applicationName}"
+        android:allowBackup="false"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

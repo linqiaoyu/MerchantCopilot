@@ -52,3 +52,6 @@ data/mem0_chroma/
 # --- Flutter generated artifacts ---
 mobile/.dart_tool/
 mobile/build/
+
+# Local delivery usage ledger (actual costs, separate from frozen eval artifacts)
+/data/delivery_budget.json

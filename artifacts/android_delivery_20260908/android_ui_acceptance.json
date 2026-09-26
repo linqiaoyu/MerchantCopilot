@@ -1,0 +1,303 @@
+{
+  "status": "passed_with_documented_display_limits",
+  "created_at": "2026-09-07T17:52:39.038721+00:00",
+  "device_kind": "Android emulator",
+  "device_id": "emulator-5554",
+  "avd": "merchantcopilot_delivery_20260908",
+  "android_api": 35,
+  "abi": "arm64-v8a",
+  "checks": {
+    "overview_loaded_with_real_default_dates": true,
+    "gmv_entry_conditional_query_and_metric_context": true,
+    "one_live_run_created_from_android_ui": true,
+    "real_sse_progress_and_terminal_run": true,
+    "structured_normal_window_conclusion_and_evidence": true,
+    "same_run_and_cursor_after_process_restart": true,
+    "final_apk_chinese_progress_labels_visible": true,
+    "memory_user_fact_confirmed_status_version_type_and_source_entry_visible": true,
+    "confirmed_memory_budget_constraint_visible_in_run_evidence": true,
+    "android_physical_device_verified": false,
+    "memory_confirmation_submitted_in_this_ui_session": false,
+    "existing_strategy_run_shown_in_ui": false
+  },
+  "live_submission": {
+    "record_started_at": "2026-09-07T17:15:23.648177+00:00",
+    "initial_pid": "5764",
+    "paid_analyses_submitted": 1,
+    "submitted_at": "2026-09-07T17:15:55.347713+00:00",
+    "force_stopped_at": "2026-09-07T17:17:53.955470+00:00",
+    "restarted_pid": "6714",
+    "restart_observed_at": "2026-09-07T17:20:44.299089+00:00",
+    "run_id": "b2fce95b-773e-475d-bad4-f4ec39375a33",
+    "local_status": "completed",
+    "local_cursor": 45,
+    "query": "检查 2026-05-17 至 2026-05-17 的GMV是否下跌；若下跌，分析原因并列出证据；未下跌则说明数据。",
+    "client_sqlite_reopened": true,
+    "source_apk_sha256": "8498efd593aa849ec41e561f8a11d5ee44bad349ba8774dfd1687714e76b822c",
+    "server_status": "completed",
+    "server_last_event_id": 45,
+    "structured_summary": "该时段毛GMV与转化率未见显著异常"
+  },
+  "final_apk_read_only_restart": {
+    "started_at": "2026-09-07T17:31:34.225749+00:00",
+    "before_pid": "7207",
+    "apk_sha256": "d609be6f5d57b166381cebbbca7cd41fd6f2935ecc1d48c971aba37220230848",
+    "paid_analyses_submitted": 0,
+    "after_pid": "7352"
+  },
+  "live_window": {
+    "start_date": "2026-05-17",
+    "end_date": "2026-05-17",
+    "conclusion": "未见显著异常，不称作已证实下跌"
+  },
+  "backend_anomaly_fixture_window": "2026-04-02; separate root-owned backend evidence",
+  "existing_memory_strategy_snapshot": "android_existing_memory_run.json",
+  "recording_notes": [
+    "android_emulator_live_raw.mp4 is the original live submission recording from APK 8498efd... before Chinese progress labels.",
+    "android_emulator_restart_raw.mp4 preserves final APK force-stop startup and navigation; startup includes simulator waiting.",
+    "android_emulator_demo_raw.mp4 and android_emulator_demo.mp4 show the final APK Chinese progress and evidence without creating another run.",
+    "Labelled versions only add an Android emulator / synthetic data banner; original recordings are retained.",
+    "The existing strategy run REST snapshot was read; uncertain UI navigation is not counted as its display."
+  ],
+  "display_limits": [
+    "Observation records may display their full canonical JSON as a long card.",
+    "Physical Android device and store signing are not verified."
+  ],
+  "artifacts": [
+    {
+      "path": "app-debug.apk",
+      "sha256": "d609be6f5d57b166381cebbbca7cd41fd6f2935ecc1d48c971aba37220230848",
+      "bytes": 161274150
+    },
+    {
+      "path": "app-release.apk",
+      "sha256": "c22a6791fbe83c0a5f31cc9b37bf103b10779236108e6cc1fb0a9f3ad492534b",
+      "bytes": 50976698
+    },
+    {
+      "path": "android_emulator_demo.mp4",
+      "sha256": "e5c5bfdf32195807fb0321959a3120a185c2dabd38ec4b3082a6bb09fa494542",
+      "bytes": 17208249
+    },
+    {
+      "path": "android_emulator_demo_raw.mp4",
+      "sha256": "be056de13e1891ae8373ce367c9cd52c02a42fa514304d914672857858dbc964",
+      "bytes": 510499
+    },
+    {
+      "path": "android_emulator_live.mp4",
+      "sha256": "5844de3e2d49f7b2d5256514c07378e54160503b2e0a0226914e053e8bfbfbe0",
+      "bytes": 13072750
+    },
+    {
+      "path": "android_emulator_live_raw.mp4",
+      "sha256": "dc7a4ac77cacc3036d7a6ad5ebcb33ff9b45e9adb2c43edaa8dcb2098d73f562",
+      "bytes": 899392
+    },
+    {
+      "path": "android_emulator_restart_raw.mp4",
+      "sha256": "771fa4fbbf6ceae33944d586e00a9167832374e7cf0c5d7cff1413932854516c",
+      "bytes": 1093388
+    },
+    {
+      "path": "ui-screenshots/01_overview.png",
+      "sha256": "566df50ab8b0c140675fd3029bdfa3973d5aeef4813c4f72912a0ecd7aee56c8",
+      "bytes": 170017
+    },
+    {
+      "path": "ui-screenshots/02_gmv_question.png",
+      "sha256": "b461c9e5c8c018c9e910d9e182459eb9bea8108f93c8391edf558eb3a5ad2f3b",
+      "bytes": 111127
+    },
+    {
+      "path": "ui-screenshots/03_progress.png",
+      "sha256": "3f24ef12190c4ef6596bf19716600e9c26c17c87ef5ecd31c20641583ce78aa9",
+      "bytes": 138838
+    },
+    {
+      "path": "ui-screenshots/04_result.png",
+      "sha256": "25ddd0754525e0d18d8216d6d2a4d906c750a976efd7a6279abd2d2e671e0c87",
+      "bytes": 189997
+    },
+    {
+      "path": "ui-screenshots/05_conclusion_evidence.png",
+      "sha256": "41687df681993e61112b837f0ca579eab581d053af72e0af425de04a15f16b7e",
+      "bytes": 175216
+    },
+    {
+      "path": "ui-screenshots/06_expanded_evidence.png",
+      "sha256": "7f74f93460f6fb7bba54ac8ae6066eaf77dd059bcb50e0b5156e450e616a1c6a",
+      "bytes": 194138
+    },
+    {
+      "path": "ui-screenshots/07_restart_startup.png",
+      "sha256": "c2e0a21c007033b996ce1723f786cb825301c05ba9546ef210290a3a25c3152c",
+      "bytes": 36230
+    },
+    {
+      "path": "ui-screenshots/08_chinese_progress_restored.png",
+      "sha256": "57903adc795e82c52bd212677dfc42b10ab56ac6e5af9805980544f0bf63e4ee",
+      "bytes": 194809
+    },
+    {
+      "path": "ui-screenshots/09_final_evidence.png",
+      "sha256": "51e562a470ad0e6adbcb8c8b3ada2faa5a4869ff5c847958c3bf43e379132608",
+      "bytes": 247984
+    },
+    {
+      "path": "ui-screenshots/10_memory_facts.png",
+      "sha256": "17811fb090560cb1f92614360cac6067c1e296a609505ed72dce92051a03cb84",
+      "bytes": 369341
+    },
+    {
+      "path": "ui-screenshots/11_memory_fact_sources.png",
+      "sha256": "5856f3bc57c94451207c6d48744f24f3675e1ca955ed4dbd94db6e419e1201b6",
+      "bytes": 268674
+    },
+    {
+      "path": "ui-screenshots/12_restored_run_after_navigation.png",
+      "sha256": "0a7ebc9a22729fa00ac420642987037bf53ed216fe490fd23aff919a7c19d934",
+      "bytes": 232465
+    },
+    {
+      "path": "android_live_run.json",
+      "sha256": "0f78621f1915c5fc08ea9a5ff15f288bb24930f0026592597161650be63dd5de",
+      "bytes": 4144
+    },
+    {
+      "path": "android_existing_memory_run.json",
+      "sha256": "58214b052c569eeb5ece30c322430ffc1f8642777a91acbb0c656fcff45632c3",
+      "bytes": 15122
+    },
+    {
+      "path": "android_emulator_demo_poster.png",
+      "sha256": "b3c67db4b32e7469d2cc66d176a4461270388254b67bc09b49d94be0af6c085d",
+      "bytes": 165043
+    },
+    {
+      "path": "label_video.swift",
+      "sha256": "d6c02e7aa53532d5767d1a1484cf415d371e7724fb186446772c7fadac627990",
+      "bytes": 2943
+    }
+  ],
+  "video_visual_qa": {
+    "poster": "android_emulator_demo_poster.png",
+    "checked_at_seconds": 3,
+    "emulator_and_synthetic_data_banner_visible": true,
+    "final_chinese_steps_and_run_id_visible": true
+  },
+  "memory_confirmation_supplement": {
+    "status": "passed",
+    "completed_at_utc": "2026-09-07T18:19:05.235820+00:00",
+    "device_kind": "Android emulator",
+    "device_id": "emulator-5554",
+    "source_apk_sha256": "d609be6f5d57b166381cebbbca7cd41fd6f2935ecc1d48c971aba37220230848",
+    "apk_identity_verification": "sha256sum of installed /data/app/.../base.apk",
+    "prior_report": {
+      "path": "android_ui_acceptance_before_memory_confirmation.json",
+      "sha256": "92b95d8a742184bbb57edfe8bc653e06d466333e773836f381abfd723f7c6cdc",
+      "bytes": 7381
+    },
+    "history_policy": "Original top-level checks describe the earlier recording session and are retained unchanged; this later supplemental session actually submitted one Memory confirmation.",
+    "memory_id": "2c34fdfd-bc41-4867-b27c-e8f4c1003c92",
+    "source_event_id": "7b393f4a-62ca-46bb-9074-6bed6bdf94de",
+    "confirmation_event_id": "259725e2-da27-4d10-8ec9-5fe6ec16bc09",
+    "source_type": "android_ui_acceptance_fixture",
+    "content": "UI确认验收夹具：每周经营复盘安排在周二。",
+    "before": {
+      "status": "pending",
+      "version": 1
+    },
+    "after": {
+      "status": "active",
+      "version": 2,
+      "index_status": "pending"
+    },
+    "fixture_creation": "Dedicated core/user_fact canonical event and pending fact inserted in one SQL transaction using psql, with no run_id, thread_id or model invocation; non-production synthetic UI acceptance only.",
+    "ui_action": {
+      "count": 1,
+      "button": "确认",
+      "tap_device_pixels": [
+        193,
+        1242
+      ],
+      "screen_resolution": [
+        1080,
+        2400
+      ],
+      "before_screenshot": "ui-screenshots/14_memory_confirmation_before.png",
+      "after_screenshot": "ui-screenshots/15_memory_confirmation_after.png",
+      "visual_mapping": "待确认 v1 → 已确认 v2; same displayed source event"
+    },
+    "paid_analyses_submitted": 0,
+    "checks": {
+      "dedicated_synthetic_fixture_label_and_source": true,
+      "source_event_visually_matched_before_single_ui_confirmation": true,
+      "ui_before_pending_v1_and_after_confirmed_v2_visible": true,
+      "rest_before_pending_v1_and_after_active_v2": true,
+      "same_memory_and_original_event": true,
+      "one_canonical_confirmation_event_and_receipt": true,
+      "expected_version_1_in_app_operation_receipt": true,
+      "historical_unsupported_semantic_fixture_untouched": true,
+      "no_model_calls_or_additional_runs": true,
+      "same_final_normal_apk": true
+    },
+    "attempt_history": [
+      {
+        "kind": "initial_system_anr",
+        "evidence": "ui-screenshots/13_confirmation_initial_anr.png",
+        "observation": "On waking the emulator, the system showed MerchantCopilot is not responding. Cause is undiagnosed. Force-stop and relaunch of the same final APK restored interaction before the fixture was confirmed."
+      },
+      {
+        "kind": "fixture_setup_environment",
+        "observation": "Two attempts to import psycopg stalled on local dependency file reads; both owned Python processes were killed before any fixture operation. The fixture was then inserted once using system psql."
+      },
+      {
+        "kind": "read_only_harness_route_correction",
+        "observation": "Initial harness GET /v1/memories/{id} received 404 because this route is not exposed; corrected to documented list/filter endpoint without another confirm action."
+      }
+    ],
+    "limits": [
+      "No physical device acceptance.",
+      "No new analysis was submitted to demonstrate use of this supplemental fixture; earlier backend confirmed-Memory-use evidence remains separate.",
+      "This supplement adds screenshots and REST/canonical records; existing APKs and videos are unchanged."
+    ],
+    "artifacts": [
+      {
+        "path": "android_ui_acceptance_before_memory_confirmation.json",
+        "sha256": "92b95d8a742184bbb57edfe8bc653e06d466333e773836f381abfd723f7c6cdc",
+        "bytes": 7381
+      },
+      {
+        "path": "android_ui_memory_confirmation_fixture.json",
+        "sha256": "3aeccbe23c7c869da5eb388ecab64399698fee58c65f004bed7d2ab71642fa1f",
+        "bytes": 391
+      },
+      {
+        "path": "android_ui_memory_confirmation_before.json",
+        "sha256": "7fc841b5218b38abd41a427888743aea71fdfc818a17ee90244594227f767c2f",
+        "bytes": 2292
+      },
+      {
+        "path": "android_ui_memory_confirmation_after.json",
+        "sha256": "6178efa3b88a2e029d827b9b10f4f21469893122652cda1b0cf2ca2c3906d2a5",
+        "bytes": 5621
+      },
+      {
+        "path": "ui-screenshots/13_confirmation_initial_anr.png",
+        "sha256": "a11ef636a0813497eed1fcaf56f49b84e4fc79d2d1aa2d0e6c3b16bcacb922da",
+        "bytes": 294002
+      },
+      {
+        "path": "ui-screenshots/14_memory_confirmation_before.png",
+        "sha256": "3ea96cf71521e65a112f155b7da76d32d2fea5cc73811b9fa8f2a61958bf35c8",
+        "bytes": 293538
+      },
+      {
+        "path": "ui-screenshots/15_memory_confirmation_after.png",
+        "sha256": "df9d7b4a6657d7b8d1a33f921f091f95410734182976a544d95472eddee55485",
+        "bytes": 321554
+      }
+    ]
+  }
+}

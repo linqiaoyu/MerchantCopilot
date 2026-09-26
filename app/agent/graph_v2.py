@@ -4,7 +4,10 @@ from __future__ import annotations
 import os
 import re
 import time
+from contextlib import contextmanager
+from contextvars import ContextVar
 from datetime import datetime, timezone
+from functools import wraps
 
 import psycopg
 from langgraph.graph import END, START, StateGraph
@@ -24,6 +27,60 @@ from app.skills.selector import rank_skills, select_skill
 from app.skills.verifier import verify_skill_evidence
 
 MAX_RUN_SECONDS = 120
+DELIVERY_MEMORY_KINDS = ("core", "episodic", "decision", "outcome")
+_graph_observer: ContextVar[dict | None] = ContextVar("delivery_graph_observer", default=None)
+
+
+@contextmanager
+def observe_graph(callback, *, max_actions=None, analysis_context=None):
+    """Optional delivery hooks; legacy evaluation/CLI retain the original path."""
+    token = _graph_observer.set({"callback": callback, "actions": 0,
+                                 "max_actions": max_actions, "context": analysis_context or {}})
+    try:
+        yield
+    finally:
+        _graph_observer.reset(token)
+
+
+def _emit(event_type, payload, model_visible=False):
+    observer = _graph_observer.get()
+    if observer and observer["callback"]:
+        observer["callback"](event_type, payload, model_visible=model_visible)
+
+
+def _observed_node(name, implementation):
+    @wraps(implementation)
+    def execute(state, **kwargs):
+        observer = _graph_observer.get()
+        context = observer["context"] if observer else {}
+        if context.get("start_date") and context.get("end_date") and name in {
+            "skill_discovery", "skill_selection", "planner",
+        }:
+            # 显式UI窗口控制计划；原query保留在run输入，避免附加日期重复编译action。
+            dates = list(dict.fromkeys((context["start_date"], context["end_date"])))
+            query = re.sub(r"\d{4}-\d{1,2}-\d{1,2}", "", state["user_query"])
+            state = {**state, "user_query": query + " " + " ".join(dates)}
+        _emit("node_started", {"node": name})
+        result = implementation(state, **kwargs)
+        if name == "router" and observer:
+            if context.get("start_date") and context.get("end_date"):
+                result["time_window"] = {"start": context["start_date"], "end": context["end_date"]}
+        if name == "recall":
+            _emit("memory_context", {"items": result.get("recalled_memories", []),
+                                      "usage": result.get("memory_usage_trace", {})}, True)
+        elif name == "skill_selection":
+            _emit("skill_selection", {"selected": result.get("selected_skill", {}),
+                                       "trace": result.get("skill_selection_trace", {})}, True)
+        elif name == "planner":
+            plan = result.get("plan")
+            _emit("compiled_plan", {"actions": [{"name": a.name, "arguments": a.arguments}
+                                                  for a in getattr(plan, "actions", ())],
+                                      "replan_count": getattr(plan, "replan_count", 0)})
+        elif name == "verifier":
+            _emit("evidence_verified", {"verification": result.get("evidence_verification", {})})
+        _emit("node_completed", {"node": name, "steps": result.get("steps", [])})
+        return result
+    return execute
 
 
 def _skill_discovery(state: dict) -> dict:
@@ -72,6 +129,19 @@ def metric_query(state: dict) -> dict:
     """Delay tool-node imports until their bounded action is actually chosen."""
     from app.agent.nodes.metric_query import metric_query as implementation
 
+    observer = _graph_observer.get()
+    context = observer["context"] if observer else {}
+    if context.get("start_date") and context.get("end_date"):
+        from app.agent.nodes.metric_query import _parse_group_by, _enum_metric
+        from app.tools.client import call_tool
+
+        window = state.get("time_window", {})
+        result = call_tool("query_metric", metric=_enum_metric(context.get("metric", "gmv")),
+                           start_date=window.get("start", context["start_date"]),
+                           end_date=window.get("end", context["end_date"]),
+                           group_by=_parse_group_by(state["user_query"]) or None)
+        return {"node_result": result, "steps": [{"node": "MetricQuery", "summary": result["headline"],
+                                                  "data": result["data"]}]}
     return implementation(state)
 
 
@@ -208,6 +278,15 @@ def _execute(state: dict) -> dict:
             outcomes.append({"status": "error", "evidence": [], "reason": "agent_timeout"})
             step_rows.append({"node": "ActionExecutor", "summary": f"{action.name}: agent_timeout"})
             break
+        observer = _graph_observer.get()
+        if observer and observer["max_actions"] is not None:
+            if observer["actions"] >= observer["max_actions"]:
+                outcomes.append({"status": "error", "evidence": [], "reason": "action_budget_exhausted"})
+                step_rows.append({"node": "ActionExecutor", "summary": "action_budget_exhausted"})
+                break
+            observer["actions"] += 1
+        _emit("tool_call", {"tool": action.name, "arguments": action.arguments,
+                            "action_index": observer["actions"] - 1 if observer else cursor})
         try:
             scoped_state = dict(state)
             scoped_state["prior_action_results"] = [item.get("result", {}) for item in outcomes]
@@ -219,6 +298,9 @@ def _execute(state: dict) -> dict:
             reason = f"tool_failure:{type(exc).__name__}"
             outcomes.append({"status": "error", "evidence": [], "reason": reason})
             step_rows.append({"node": "ActionExecutor", "summary": f"{action.name}: {reason}"})
+        _emit("tool_execution", {"action": action.name, "action_index":
+                                   observer["actions"] - 1 if observer else cursor,
+                                   **outcomes[-1]})
 
     successful = [item["result"] for item in outcomes if item["status"] == "ok"]
     selected_id = (state.get("selected_skill") or {}).get("id")
@@ -300,6 +382,7 @@ def _memory_candidate(state: dict) -> dict:
     candidates = extract_candidates(
         f"{run_id}:user", state.get("user_query", ""), "user", thread_id, merchant_id,
         (f"user:{run_id}:query",), ("user_fact",),
+        **({"allowed_kinds": DELIVERY_MEMORY_KINDS} if _graph_observer.get() else {}),
     )
     node_result = state.get("node_result", {})
     if node_result.get("task") in {"metric", "attribution", "attribution_comparison", "cross_period_comparison"} and evidence_refs:
@@ -320,6 +403,11 @@ def _memory_candidate(state: dict) -> dict:
         ))
     rows = []
     for candidate in candidates:
+        if _graph_observer.get() and getattr(candidate, "kind", "episodic") not in DELIVERY_MEMORY_KINDS:
+            # 仅delivery拒绝无法进入既有召回分区的类型；历史eval路径保持原语义。
+            _emit("memory_candidate_rejected", {"candidate_id": candidate.candidate_id,
+                                                 "reason": "unsupported_memory_kind"})
+            continue
         payload = candidate_to_dict(candidate) if hasattr(candidate, "source_type") else {
             "candidate_id": candidate.candidate_id, "subject": candidate.subject,
             "predicate": candidate.predicate, "value": candidate.value,
@@ -333,15 +421,12 @@ def _memory_candidate(state: dict) -> dict:
 def build_graph_v2(checkpointer=None):
     """Build the bounded graph; callers may supply MemorySaver or PostgresSaver."""
     graph = StateGraph(AgentState)
-    graph.add_node("router", router)
-    graph.add_node("recall", _recall)
-    graph.add_node("skill_discovery", _skill_discovery)
-    graph.add_node("skill_selection", _skill_selection)
-    graph.add_node("planner", _plan)
-    graph.add_node("executor", _execute)
-    graph.add_node("verifier", _verify)
-    graph.add_node("insight", insight)
-    graph.add_node("memory_candidate", _memory_candidate)
+    for name, implementation in (
+        ("router", router), ("recall", _recall), ("skill_discovery", _skill_discovery),
+        ("skill_selection", _skill_selection), ("planner", _plan), ("executor", _execute),
+        ("verifier", _verify), ("insight", insight), ("memory_candidate", _memory_candidate),
+    ):
+        graph.add_node(name, _observed_node(name, implementation))
     graph.add_edge(START, "router")
     graph.add_edge("router", "recall")
     graph.add_edge("recall", "skill_discovery")

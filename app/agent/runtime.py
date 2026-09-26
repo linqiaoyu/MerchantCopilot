@@ -4,23 +4,35 @@ from __future__ import annotations
 from typing import Any
 
 from app.agent.context import RunContext
-from app.agent.graph_v2 import build_graph_v2
+from app.agent.graph_v2 import build_graph_v2, observe_graph
 
 
 def run_query(
     query: str, *, graph: Any = None, thread_id: str | None = None,
     run_context: RunContext | None = None, state_overrides: dict[str, Any] | None = None,
+    checkpoint_id: str | None = None, event_callback=None, max_actions: int | None = None,
+    analysis_context: dict | None = None,
 ) -> dict[str, Any]:
     """Run the bounded v2 graph and retain the common result contract."""
     compiled = graph or build_graph_v2()
     explicit_v3_context = run_context is not None or bool(state_overrides)
     context = run_context or RunContext(thread_id=thread_id or "local-thread")
-    config = {"configurable": {"thread_id": context.thread_id}}
+    config = {"configurable": {"thread_id": checkpoint_id or context.thread_id}}
     initial = {"user_query": query, "steps": []}
     if explicit_v3_context:
         initial.update(context.as_state())
     initial.update(state_overrides or {})
-    state = compiled.invoke(initial, config=config)
+    if event_callback is None:
+        state = compiled.invoke(initial, config=config)
+    else:
+        state = dict(initial)
+        with observe_graph(event_callback, max_actions=max_actions, analysis_context=analysis_context):
+            for update in compiled.stream(initial, config=config, stream_mode="updates"):
+                for fields in update.values():
+                    if not isinstance(fields, dict):
+                        continue
+                    for key, value in fields.items():
+                        state[key] = state.get(key, []) + value if key == "steps" else value
     result = {
         "final_answer": state.get("final_answer", ""),
         "node_result": state.get("node_result", {}),

@@ -7,6 +7,7 @@ import android.util.Base64
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.common.StandardMethodCodec
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -21,7 +22,10 @@ class MainActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName).setMethodCallHandler { call, result ->
+        val messenger = flutterEngine.dartExecutor.binaryMessenger
+        // Flutter 默认后台 TaskQueue 串行执行，完整 I/O 留在 handler 内保证读写顺序。
+        val tokenTaskQueue = messenger.makeBackgroundTaskQueue()
+        MethodChannel(messenger, channelName, StandardMethodCodec.INSTANCE, tokenTaskQueue).setMethodCallHandler { call, result ->
             try {
                 when (call.method) {
                     "getToken" -> result.success(readToken())
@@ -34,7 +38,7 @@ class MainActivity : FlutterActivity() {
                         }
                     }
                     "clearToken" -> {
-                        preferences().edit().remove(tokenKey).apply()
+                        check(preferences().edit().remove(tokenKey).commit()) { "Token clear failed" }
                         result.success(null)
                     }
                     else -> result.notImplemented()
@@ -64,7 +68,7 @@ class MainActivity : FlutterActivity() {
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
         cipher.init(Cipher.ENCRYPT_MODE, secretKey())
         val payload = cipher.iv + cipher.doFinal(token.toByteArray(Charsets.UTF_8))
-        preferences().edit().putString(tokenKey, Base64.encodeToString(payload, Base64.NO_WRAP)).apply()
+        check(preferences().edit().putString(tokenKey, Base64.encodeToString(payload, Base64.NO_WRAP)).commit()) { "Token save failed" }
     }
 
     private fun readToken(): String? {

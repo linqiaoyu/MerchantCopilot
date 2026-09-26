@@ -15,7 +15,8 @@ class AndroidKeystoreTokenStore implements TokenStore {
   Future<String?> read() => _channel.invokeMethod<String>('getToken');
 
   @override
-  Future<void> write(String token) => _channel.invokeMethod<void>('setToken', {'token': token});
+  Future<void> write(String token) =>
+      _channel.invokeMethod<void>('setToken', {'token': token});
 
   @override
   Future<void> clear() => _channel.invokeMethod<void>('clearToken');

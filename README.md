@@ -4,7 +4,9 @@
 
 ## v3 已完成状态
 
-T16–T25 已完成并验证。当前运行栈为 Homebrew PostgreSQL 15 + pgvector，不需要 Docker/Colima；Cloud Run、Supabase 和 Flutter 联调 deferred。权威状态见 [v3 验证台账](docs/v3_verification_ledger.md)，架构见 [v3 架构](docs/v3_architecture.md)，完整数字和结论边界见 [正式评测报告](docs/v3_evaluation_report.md)。
+T16–T25 已完成并验证。当前运行栈为 Homebrew PostgreSQL 15 + pgvector，不需要 Docker/Colima；Cloud Run、Supabase 继续 deferred。原 v3 阶段的 Flutter deferred 决策保留为历史，后续 T26–T30 新增本地 Android 客户端。权威状态见 [v3 验证台账](docs/v3_verification_ledger.md)，架构见 [v3 架构](docs/v3_architecture.md)，完整数字和结论边界见 [正式评测报告](docs/v3_evaluation_report.md)。
+
+Android 新阶段的启动、恢复与验收见 [本地客户端交付](docs/android_delivery.md)、[API 契约](docs/android_api.md) 和 [Android 构建与设备记录](docs/android_client.md)。研究结果与客户端工件分开记录。修复后的 APK 与输入响应验证见 [模拟器 ANR 修复记录](docs/android_anr_followup.md)。
 
 冻结的 v3.2 受控合成 benchmark 上：
 
@@ -42,7 +44,7 @@ flowchart LR
 - Memory：Postgres append-only event + current fact + pgvector 可重建索引；五类事实有独立 policy。
 - Skill：仅声明式 DSL；metadata-first progressive disclosure；文件用于 bootstrap，Postgres registry 是运行时事实源。
 - Harness：模型可见输入、工具证据、状态转换和 final 可按 `run_events` 重放，不保存思维链。
-- 服务：FastAPI + SSE，原 `/v1` 契约兼容；APK 只作为历史可选展示。
+- 服务：FastAPI + SSE，原 `/v1` 契约兼容；新增 Android 阶段使用持久任务、spawn worker 与可恢复 SSE，历史 APK 保留。
 
 固定 API、SSE 事件和 Memory 数据模型以 [AGENTS.md](AGENTS.md) 为准。
 
@@ -81,6 +83,11 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv-v3/bin/python -m pytest -q \
 POST /v1/threads
 POST /v1/threads/{thread_id}/runs:stream
 GET  /v1/runs/{run_id}
+POST /v1/threads/{thread_id}/runs
+GET  /v1/runs/{run_id}/events
+GET  /v1/runs
+GET  /v1/overview
+GET  /v1/memories
 GET  /v1/threads/{thread_id}/memories
 POST /v1/memories/{memory_id}/approve
 POST /v1/memories/{memory_id}/reject
@@ -99,7 +106,7 @@ Memory 使用 append-only event、可 supersede 的 fact 和 `source_event_id` p
 
 ## 部署与边界
 
-v3 不以上云、Supabase 或客户端联调为完成条件；这些工作全部 deferred。HTTP/SSE 与历史 APK 只保留兼容和展示价值，不把免费实例表述为生产高并发能力。
+v3 冻结研究验收不以上云、Supabase 或客户端联调为完成条件。新增 T26–T30 交付本地 Android 演示，云端、正式签名与上架仍 deferred；不把本机单实例性能表述为生产高并发能力。
 
 明确不做：登录注册、商业多租户、真实电商 API/商家数据、K8s、消息队列、Redis、自动经营操作、支付、推送、应用商店发布、独立 Dart SDK、图数据库与无限 ReAct 循环。
 

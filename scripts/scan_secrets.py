@@ -35,7 +35,8 @@ def scan(root: Path = ROOT) -> list[str]:
         directories[:] = [
             name for name in directories
             if name not in EXCLUDED_PARTS
-            and not (current_path == root / "mobile" and name == "build")
+            and not (current_path == root / "mobile"
+                     and (name == "build" or name.startswith(".build-before-delivery-")))
         ]
         for filename in filenames:
             path = current_path / filename

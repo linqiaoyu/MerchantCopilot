@@ -29,7 +29,7 @@ def _anomaly_type(query: str) -> str | None:
     ):
         return "traffic"
     if any(k in q for k in ["gmv", "销售", "成交", "营业额"]) and any(
-        k in q for k in ["跌", "暴跌", "掉", "降", "少", "崩"]
+        k in q for k in ["跌", "暴跌", "掉", "降", "少", "崩", "下滑"]
     ):
         return "gmv"
     return None
